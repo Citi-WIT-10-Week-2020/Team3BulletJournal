@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "BulletJournal"
+    }
+  },
+  "defaultProject": "BulletJournal",
+  "cli": {
+    "analytics": "b090cf3f-cd74-4717-aab9-11fe2a9a63d9"
+  }
 }
