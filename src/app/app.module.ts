@@ -13,6 +13,7 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
 import { CoffeeChatComponent } from './coffee-chat/coffee-chat.component';
+import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.component';
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import { CoffeeChatComponent } from './coffee-chat/coffee-chat.component';
         LoginComponent,
         RegisterComponent,
         AlertComponent,
-        CoffeeChatComponent
+        CoffeeChatComponent,
+        NavButtonsHomeComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
