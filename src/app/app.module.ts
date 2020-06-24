@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
-
 import { appRoutingModule } from './app.routing';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
@@ -14,6 +13,9 @@ import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
 import { CoffeeChatComponent } from './coffee-chat/coffee-chat.component';
 import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.component';
+import { JournalComponent } from './journal/journal.component';
+import { MoodTrackerComponent } from './mood-tracker/mood-tracker.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
     imports: [
@@ -30,6 +32,9 @@ import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.com
         AlertComponent,
         CoffeeChatComponent,
         NavButtonsHomeComponent,
+        JournalComponent,
+        MoodTrackerComponent,
+        UserProfileComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
