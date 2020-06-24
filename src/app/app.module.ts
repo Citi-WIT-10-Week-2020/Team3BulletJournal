@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
 
@@ -13,6 +12,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
+import { CoffeeChatComponent } from './coffee-chat/coffee-chat.component';
 import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.component';
 
 @NgModule({
@@ -28,6 +28,7 @@ import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.com
         LoginComponent,
         RegisterComponent,
         AlertComponent,
+        CoffeeChatComponent,
         NavButtonsHomeComponent
     ],
     providers: [
