@@ -29,7 +29,7 @@ import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.com
         RegisterComponent,
         AlertComponent,
         CoffeeChatComponent,
-        NavButtonsHomeComponent
+        NavButtonsHomeComponent,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
