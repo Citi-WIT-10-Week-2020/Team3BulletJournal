@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
 
@@ -13,6 +12,8 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
+import { CoffeeChatComponent } from './coffee-chat/coffee-chat.component';
+import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.component';
 
 @NgModule({
     imports: [
@@ -26,7 +27,9 @@ import { AlertComponent } from './_components';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        AlertComponent
+        AlertComponent,
+        CoffeeChatComponent,
+        NavButtonsHomeComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

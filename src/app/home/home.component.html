@@ -1,9 +1,22 @@
-<h1>Hi {{currentUser.firstName}}!</h1>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<div class="jumbotron background-water">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <alert></alert>
+                <h1>Hi {{currentUser.firstName}}!</h1>
 <p>You're logged in with Angular 7!!</p>
 <h3>All registered users:</h3>
 <ul>
     <li *ngFor="let user of users">
-        {{user.username}} ({{user.firstName}} {{user.lastName}})
+        {{user.username}} ({{user.firstName}} {{user.lastName}}) {{user.email}}
         - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
     </li>
 </ul>
+
+<app-nav-buttons-home></app-nav-buttons-home>
+            </div>
+        </div>
+    </div>
+</div>
+
