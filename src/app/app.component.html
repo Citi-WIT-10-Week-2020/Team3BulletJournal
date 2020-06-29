@@ -1,11 +1,21 @@
-<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+<!-- header -->
+<nav class="navbar navbar-expand navbar-dark bg-secondary" *ngIf="currentUser">
     <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/">Home</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
         <a class="nav-item nav-link" routerLink="/coffee-chat">Coffee Chat</a>
     </div>
 </nav>
+<!-- footer -->
+<footer class="page-footer bg-secondary fixed-bottom">
+    <div class="container text-center text-white mt-1">  
+        <h5>Creators</h5>
+        <h6>Maanasi Vadlamani |
+         Katie Duncan |
+         Emily Kelsey |
+         Shannon Campbell</h6>
+    </div>
+</footer>
 
 <!-- main content container -->
 

@@ -14,6 +14,7 @@ import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
 import { CoffeeChatComponent } from './coffee-chat/coffee-chat.component';
 import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.component';
+import { JournalingComponent } from './journaling/journaling.component';
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.com
         RegisterComponent,
         AlertComponent,
         CoffeeChatComponent,
-        NavButtonsHomeComponent
+        NavButtonsHomeComponent,
+        JournalingComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -38,6 +40,9 @@ import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.com
         // provider used to create fake backend
         fakeBackendProvider
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [
+        AppComponent,
+        JournalingComponent,
+        ]
 })
 export class AppModule { };
