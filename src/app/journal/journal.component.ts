@@ -10,6 +10,7 @@ export class JournalComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+   
   }
 
 }

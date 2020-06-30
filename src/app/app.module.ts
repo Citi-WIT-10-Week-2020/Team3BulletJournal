@@ -11,18 +11,24 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
+
 import { CoffeeChatComponent } from './coffee-chat/coffee-chat.component';
 import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.component';
 import { JournalComponent } from './journal/journal.component';
 import { MoodTrackerComponent } from './mood-tracker/mood-tracker.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
+import { SidebarModule } from 'ng-sidebar';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        appRoutingModule
+        appRoutingModule,
+        SidebarModule,
+        BsDropdownModule
     ],
     declarations: [
         AppComponent,
