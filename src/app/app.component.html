@@ -1,9 +1,12 @@
 <!-- header -->
 <nav class="navbar navbar-expand navbar-dark bg-secondary" *ngIf="currentUser">
     <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/user-profile">{{currentUser.firstName}} {{currentUser.lastName}}</a>
         <a class="nav-item nav-link" routerLink="/">Home</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
+        <a class="nav-item nav-link" routerLink="/journal">Journal</a>
         <a class="nav-item nav-link" routerLink="/coffee-chat">Coffee Chat</a>
+        <a class="nav-item nav-link" routerLink="/mood-tracker">Mood Tracker</a>
     </div>
 </nav>
 <!-- footer -->
