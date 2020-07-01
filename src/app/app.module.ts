@@ -20,6 +20,19 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { SidebarModule } from 'ng-sidebar';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CoffeeChatUpcomingMeetingsComponent } from './coffee-chat-upcoming-meetings/coffee-chat-upcoming-meetings.component';
+import { CoffeeChatPendingMeetingsComponent } from './coffee-chat-pending-meetings/coffee-chat-pending-meetings.component';
+import { CoffeeChatSelectFriendsComponent } from './coffee-chat-select-friends/coffee-chat-select-friends.component';
+import { CoffeeChatRandomFriendsComponent } from './coffee-chat-random-friends/coffee-chat-random-friends.component';
+import { JournalDraftsComponent } from './journal-drafts/journal-drafts.component';
+import { JournalPublishedComponent } from './journal-published/journal-published.component';
+import { JournalFreeWriteComponent } from './journal-free-write/journal-free-write.component';
+import { JournalPromptComponent } from './journal-prompt/journal-prompt.component';
+import { MoodTrackerWeeklyChartsComponent } from './mood-tracker-weekly-charts/mood-tracker-weekly-charts.component';
+import { MoodTrackerMonthlyChartsComponent } from './mood-tracker-monthly-charts/mood-tracker-monthly-charts.component';
+import { UserProfileProfileComponent } from './user-profile-profile/user-profile-profile.component';
+import { UserProfileDashboardComponent } from './user-profile-dashboard/user-profile-dashboard.component';
+import { UserProfileContactsComponent } from './user-profile-contacts/user-profile-contacts.component';
 
 @NgModule({
     imports: [
@@ -40,7 +53,20 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
         NavButtonsHomeComponent,
         JournalComponent,
         MoodTrackerComponent,
-        UserProfileComponent
+        UserProfileComponent,
+        CoffeeChatUpcomingMeetingsComponent,
+        CoffeeChatPendingMeetingsComponent,
+        CoffeeChatSelectFriendsComponent,
+        CoffeeChatRandomFriendsComponent,
+        JournalDraftsComponent,
+        JournalPublishedComponent,
+        JournalFreeWriteComponent,
+        JournalPromptComponent,
+        MoodTrackerWeeklyChartsComponent,
+        MoodTrackerMonthlyChartsComponent,
+        UserProfileProfileComponent,
+        UserProfileDashboardComponent,
+        UserProfileContactsComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
