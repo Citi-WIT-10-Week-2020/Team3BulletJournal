@@ -1,22 +1,39 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<div class="jumbotron background-water">
+<div class="jumbotron jumbotron-fluid background-water" style="padding-top: 9%; padding-bottom: 9%; margin-bottom: 0;">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <alert></alert>
-                <h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 7!!</p>
-<h3>All registered users:</h3>
-<ul>
-    <li *ngFor="let user of users">
-        {{user.username}} ({{user.firstName}} {{user.lastName}}) {{user.email}}
-        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-    </li>
-</ul>
-
-<app-nav-buttons-home></app-nav-buttons-home>
+        <div class="text-center">
+            <img src="assets/images/logo transparent.png" alt="" width="140" height="100">
+            <p class="fancy-font">Meaningful Minutes</p>
+            <div>
+                <hr style="background-color: #fff;"/>
             </div>
+            <p class="type-font" style="font-size: 25px; color: #fff">Connect and Reflect</p>
         </div>
     </div>
 </div>
 
+
+<div class="navbar sticky-top">
+    <app-navbar></app-navbar>
+</div>
+
+
+<div class="container">
+    <div class="text-center">
+        <p class="reg-font" style="color: #000000; size: 40px">Ask yourself if what you're doing <a class="fancy-font">today</a> is getting you closer to where you want to be <a class="fancy-font">tomorrow.</a></p>
+    </div>
+</div>
+
+
+<app-nav-buttons-home></app-nav-buttons-home>
+<div>
+    <h3>All registered users:</h3>
+    <ul>
+        <li *ngFor="let user of users">
+            {{user.username}} ({{user.firstName}} {{user.lastName}}) {{user.email}}
+            - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+        </li>
+    </ul>
+</div>
+<app-footer></app-footer>
+          

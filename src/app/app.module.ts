@@ -20,6 +20,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { SidebarModule } from 'ng-sidebar';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
     imports: [
@@ -40,7 +42,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
         NavButtonsHomeComponent,
         JournalComponent,
         MoodTrackerComponent,
-        UserProfileComponent
+        UserProfileComponent,
+        NavbarComponent,
+        FooterComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

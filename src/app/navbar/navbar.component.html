@@ -1,0 +1,39 @@
+<body>
+    <nav class="navbar navbar-expand-md" style="background: #7e8288">
+        <a class="navbar-brand" href="#"><img src="assets/images/logo.jpg" alt="" width="80" height="60"></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbar" style="font-size: 18px;">
+            <ul class="navbar-nav">
+                <li class="nav-item nav-link">
+                    <a class="type-font" routerLink="/">HOME</a>
+                </li>
+                <li class="nav-item nav-link">
+                    <a class="type-font" routerLink="/journal">JOURNAL</a>
+                </li>
+                <li class="nav-item nav-link">
+                    <a class="type-font" routerLink="/coffee-chat">COFFEE CHAT</a>
+                </li>
+                <li class="nav-item nav-link">
+                    <a class="type-font" routerLink="/mood-tracker">MOOD TRACKER</a>
+                </li>
+                <li class="nav-item nav-link">
+                    <a class="type-font text-white" (click)="logout()">LOGOUT</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbar" style="font-size: 18px;">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a><span class="fa fa-user-circle mr-2 mt-1"></span>{{currentUser.firstName}} {{currentUser.lastName}}</a>
+                </button>
+                <div class="dropdown-menu">
+                    <div class="dropdown-item nav-item nav-link type-font">
+                        <div routerLink="/user-profile">Profile</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
