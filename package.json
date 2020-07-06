@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start-b": "node ./server.js",
-    "start-f": "ng serve -o",
+    "start": "node ./server.js",
+    "frontstart": "ng serve -o",
     "start-dev": "nodemon ./server.js",
     "build": "ng build",
     "test": "ng test",
