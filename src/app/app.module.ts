@@ -34,6 +34,8 @@ import { UserProfileProfileComponent } from './user-profile-profile/user-profile
 import { UserProfileDashboardComponent } from './user-profile-dashboard/user-profile-dashboard.component';
 import { UserProfileContactsComponent } from './user-profile-contacts/user-profile-contacts.component';
 
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -41,7 +43,7 @@ import { UserProfileContactsComponent } from './user-profile-contacts/user-profi
         HttpClientModule,
         appRoutingModule,
         SidebarModule,
-        BsDropdownModule
+        NgMultiSelectDropDownModule
     ],
     declarations: [
         AppComponent,
