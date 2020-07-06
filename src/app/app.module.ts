@@ -6,7 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { fakeBackendProvider } from './_helpers';
 
 import { appRoutingModule } from './app.routing';
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { JwtInterceptor, ErrorInterceptor} from './_helpers';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
@@ -14,6 +14,8 @@ import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
 import { CoffeeChatComponent } from './coffee-chat/coffee-chat.component';
 import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.component';
+import { CommonService } from './common.service';
+import { UserService } from './_services';
 
 @NgModule({
     imports: [
@@ -36,7 +38,9 @@ import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.com
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
         // provider used to create fake backend
+        //CommonService
         fakeBackendProvider
+        
     ],
     bootstrap: [AppComponent]
 })

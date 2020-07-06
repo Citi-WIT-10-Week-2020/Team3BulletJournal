@@ -8,6 +8,7 @@
     position: relative;
     width: 250px;
     align-items: center;
+    border: 6px solid black;
     
   }
   .img img {
@@ -26,6 +27,7 @@
     top: 0;
     transition: opacity 0.25s;
     z-index: 1;
+    
        
   }
 
@@ -34,6 +36,8 @@
     background: linear-gradient(65deg, rgba(46,204,113,0.4), rgba(243,156,18,0.4));
     color: #fafafa;
     font-size: 24px;
+    
+    
   }
 
   .img__overlay:hover {
@@ -46,4 +50,18 @@
     display:block;
  }
 
+  .border-journal {
+    border-color: #8999B1;
+   
+  }
+
+  .border-coffee {
+    border-color: #D3AC89;
+   
+  }
+
+  .border-mood {
+    border-color: #EBA07E;
+   
+  }
   
