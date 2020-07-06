@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+    <title>Journaling Component</title>
+
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="coffee-chat.component.css">
+    <link rel="stylesheet" href="journal.component.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -31,19 +33,19 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="coffee-chat-upcoming-meetings">Upcoming Meetings</a>
+                                <a class="nav-link" href="journal-drafts">Drafts</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="coffee-chat-pending-meetings">Pending Meetings</a>
+                                <a class="nav-link" href="journal-published">Published</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="#new-meeting" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">New Meeting</a>
-                                <ul class="collapse list-unstyled" id="new-meeting">
+                                <a class="nav-link" href="#new-entry-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">New Entry</a>
+                                <ul class="collapse list-unstyled" id="new-entry-submenu">
                                     <li>
-                                        <a href="coffee-chat-select-friends">Select Friends</a>
+                                        <a href="journal-free-write">Free Write</a>
                                     </li>
                                     <li>
-                                        <a href="coffee-chat-random-friends">Randomly Generate Friends</a>
+                                        <a href="journal-prompt">Respond to a Prompt</a>
                                     </li>
                                 </ul>
                             </li>
@@ -52,7 +54,7 @@
                 </div>
             </nav>
             
-            <h2>It's a Brew-tiful Day {{currentUser.firstName}}!!</h2>
+            <h2>Journaling Component</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
