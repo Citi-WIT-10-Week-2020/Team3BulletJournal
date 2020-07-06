@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AuthenticationService, AlertService } from '../_services'
+import { ThrowStmt } from '@angular/compiler';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({templateUrl: 'login.component.html'})
 export class LoginComponent implements OnInit {
@@ -49,16 +51,46 @@ export class LoginComponent implements OnInit {
             return;
         }
 
+        console.log(this.f.username.value);
         this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
+        this.authenticationService.getAllUsers()
+            //.pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    //this.router.navigate([this.returnUrl]);
+                    console.log(data);
+                    this.loading = false;
+                    let found = false;
+                    for (let user of data){
+                        if(user.username == this.f.username.value){
+                            console.log('Yay we found it');
+                            found = true;
+                            this.loading = false;
+                            
+                            this.authenticationService.login(this.f.username.value, this.f.password.value)
+                                .pipe(first())
+                                    .subscribe(
+                                        data => {
+                                            this.router.navigate([this.returnUrl]);
+                                            
+                                         },
+                                        error => {
+                                            this.alertService.error(error);
+                                            this.loading = false;
+                                });
+                        }
+                    }
+                    if(found == false){
+                        console.log("No user found :(");
+                        this.loading = false;
+                        this.alertService.error("Username or password is incorrect");
+                    }
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+
+                
     }
 }
