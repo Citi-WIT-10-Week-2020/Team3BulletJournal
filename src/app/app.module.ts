@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
 import { appRoutingModule } from './app.routing';
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { JwtInterceptor, ErrorInterceptor} from './_helpers';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
@@ -14,6 +14,10 @@ import { AlertComponent } from './_components';
 
 import { CoffeeChatComponent } from './coffee-chat/coffee-chat.component';
 import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.component';
+
+import { CommonService } from './common.service';
+import { UserService } from './_services';
+
 import { JournalComponent } from './journal/journal.component';
 import { MoodTrackerComponent } from './mood-tracker/mood-tracker.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -75,7 +79,9 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
         // provider used to create fake backend
+        //CommonService
         fakeBackendProvider
+        
     ],
     bootstrap: [AppComponent]
 })
