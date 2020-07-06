@@ -10,6 +10,7 @@ export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
     submitted = false;
+    
 
     constructor(
         private formBuilder: FormBuilder,
@@ -48,10 +49,9 @@ export class RegisterComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
-
         this.loading = true;
-        this.userService.register(this.registerForm.value)
-            .pipe(first())
+        this.authenticationService.register(this.registerForm.value)
+            //.pipe(first())
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);

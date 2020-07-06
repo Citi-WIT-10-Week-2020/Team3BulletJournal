@@ -29,39 +29,17 @@ export class HomeComponent implements OnInit {
     }
 
     deleteUser(id: number) {
-        this.userService.delete(id)
+        this.authenticationService.delete(id)
             .pipe(first())
             .subscribe(() => this.loadAllUsers());
     }
 
     private loadAllUsers() {
-        this.userService.getAll()
-            .pipe(first())
+        this.authenticationService.getAllUsers()
+            //.pipe(first())
             .subscribe(users => this.users = users);
     }
 
-    onSubmit() {
-        this.submitted = true;
-
-        // reset alerts on submit
-        this.alertService.clear();
-
-        // stop here if form is invalid
-        if (this.journalEntry.invalid) {
-            return;
-        }
-
-        this.loading = true;
-        this.userService.register(this.journalEntry.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/home'], );
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
-    }
+    
+    
 }
