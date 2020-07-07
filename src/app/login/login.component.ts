@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
                     console.log(data);
                     this.loading = false;
                     let found = false;
+                    //look into querying data
                     for (let user of data){
                         if(user.username == this.f.username.value){
                             console.log('Yay we found it');

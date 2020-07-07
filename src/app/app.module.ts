@@ -41,6 +41,7 @@ import { MoodTrackerMonthlyChartsComponent } from './mood-tracker-monthly-charts
 import { UserProfileProfileComponent } from './user-profile-profile/user-profile-profile.component';
 import { UserProfileDashboardComponent } from './user-profile-dashboard/user-profile-dashboard.component';
 import { UserProfileContactsComponent } from './user-profile-contacts/user-profile-contacts.component';
+import { ProfileComponent } from './profile/profile.component';
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
 
@@ -81,7 +82,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
         MoodTrackerMonthlyChartsComponent,
         UserProfileProfileComponent,
         UserProfileDashboardComponent,
-        UserProfileContactsComponent
+        UserProfileContactsComponent,
+        ProfileComponent
 
     ],
     providers: [
