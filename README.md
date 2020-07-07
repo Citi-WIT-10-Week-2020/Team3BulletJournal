@@ -26,6 +26,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+
+
+Hello team :)
+
 ## IMPORTANT INFORMATION FOR RUNNING BACKEND SERVER WITH FRONT END
 
 In order to successfully run the program, do npm start-b and npm start-f in two separate terminals in order to start both sides of the application
