@@ -80,7 +80,7 @@ app.post("/api/SaveUser", function(req, res) {
     })
 
     app.post("/api/login", function(req,res){
-        model.find({}, function(err, data) {
+        model.find({username: req.body.username}, function(err, data) {
             if(err) {
                 res.send(err);
             }

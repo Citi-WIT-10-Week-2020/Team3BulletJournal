@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
         private router: Router,
         private alertService: AlertService
     ) {
-        this.currentUser = this.authenticationService.currentUserValue;
+        this.currentUser = this.authenticationService.currentUserValue[0];
     }
 
     ngOnInit() {

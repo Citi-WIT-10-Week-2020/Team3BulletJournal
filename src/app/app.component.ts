@@ -15,7 +15,8 @@ export class AppComponent {
         private authenticationService: AuthenticationService,
         //private newService: CommonService
     ) {
-        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+        //this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+        this.currentUser = this.authenticationService.currentUserValue[0];
     }
 
     //Repdata;

@@ -26,6 +26,10 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { SidebarModule } from 'ng-sidebar';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+
 import { CoffeeChatUpcomingMeetingsComponent } from './coffee-chat-upcoming-meetings/coffee-chat-upcoming-meetings.component';
 import { CoffeeChatPendingMeetingsComponent } from './coffee-chat-pending-meetings/coffee-chat-pending-meetings.component';
 import { CoffeeChatSelectFriendsComponent } from './coffee-chat-select-friends/coffee-chat-select-friends.component';
@@ -39,10 +43,10 @@ import { MoodTrackerMonthlyChartsComponent } from './mood-tracker-monthly-charts
 import { UserProfileProfileComponent } from './user-profile-profile/user-profile-profile.component';
 import { UserProfileDashboardComponent } from './user-profile-dashboard/user-profile-dashboard.component';
 import { UserProfileContactsComponent } from './user-profile-contacts/user-profile-contacts.component';
+import { ProfileComponent } from './profile/profile.component';
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
 import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-profiles.component';
-
 
 
 @NgModule({
@@ -66,6 +70,10 @@ import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-
         JournalComponent,
         MoodTrackerComponent,
         UserProfileComponent,
+
+        NavbarComponent,
+        FooterComponent,
+
         CoffeeChatUpcomingMeetingsComponent,
         CoffeeChatPendingMeetingsComponent,
         CoffeeChatSelectFriendsComponent,

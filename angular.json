@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "BulletJournal"
+    }
+  },
+  "defaultProject": "BulletJournal",
+  "cli": {
+    "analytics": "d42d4c0e-5d5e-486c-8275-d437aa1fc3a5"
+  }
 }

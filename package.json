@@ -28,11 +28,13 @@
     "@types/jquery": "^3.5.0",
     "angular2-multiselect-dropdown": "^4.6.3",
     "bootstrap": "^4.5.0",
+    "font-awesome": "^4.7.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-jwt": "^5.3.3",
     "fs": "0.0.1-security",
     "install": "^0.13.0",
+
     "jquery": "^3.5.1",
     "ng-multiselect-dropdown-angular7": "^0.1.5",
     "jsonwebtoken": "^8.5.1",
