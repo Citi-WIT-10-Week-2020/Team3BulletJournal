@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -8,10 +7,8 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./coffee-chat-select-friends.component.css'],
 })
 export class CoffeeChatSelectFriendsComponent implements OnInit {
-  peopleList=[];
+  peopleList = [];
   dropdownSettings= {};
-
-  constructor() { }
 
   ngOnInit(): void {
 
@@ -23,8 +20,6 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
       { person_id: 5, person_name: 'Jordan'},
       { person_id: 6, person_name: 'Michelle'},
       { person_id: 7, person_name: 'Duy'},
-
-
     ];
 
     this.dropdownSettings = {
@@ -34,10 +29,17 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
       selectAllText: 'Select All',
       UnselectAllText: 'UnSelect All',
       itemsShowLimit: 5,
-      enableSearchFilter: true,
-    }
+      allowSearchFilter: false
+    };
+
   }
 
+  onPersonSelect(person: any){
+    console.log(person);
+  }
 
+  onSelectAll(persons: any){
+    console.log(persons);
+  }
 
 }
