@@ -1,0 +1,9 @@
+.gradient_line{ 
+    margin: 0 0 50px 0;
+    display: block;
+    border: none;
+    height: 1px;
+    background: #0071B9;
+    background: linear-gradient(to right, white, #c0c1c2, #505152, #c0c1c2, white);
+}
+

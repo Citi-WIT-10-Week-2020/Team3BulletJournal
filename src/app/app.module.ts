@@ -24,6 +24,10 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { SidebarModule } from 'ng-sidebar';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+
 import { CoffeeChatUpcomingMeetingsComponent } from './coffee-chat-upcoming-meetings/coffee-chat-upcoming-meetings.component';
 import { CoffeeChatPendingMeetingsComponent } from './coffee-chat-pending-meetings/coffee-chat-pending-meetings.component';
 import { CoffeeChatSelectFriendsComponent } from './coffee-chat-select-friends/coffee-chat-select-friends.component';
@@ -39,7 +43,6 @@ import { UserProfileDashboardComponent } from './user-profile-dashboard/user-pro
 import { UserProfileContactsComponent } from './user-profile-contacts/user-profile-contacts.component';
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
-
 
 
 @NgModule({
@@ -62,6 +65,10 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
         JournalComponent,
         MoodTrackerComponent,
         UserProfileComponent,
+
+        NavbarComponent,
+        FooterComponent
+
         CoffeeChatUpcomingMeetingsComponent,
         CoffeeChatPendingMeetingsComponent,
         CoffeeChatSelectFriendsComponent,
@@ -75,6 +82,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
         UserProfileProfileComponent,
         UserProfileDashboardComponent,
         UserProfileContactsComponent
+
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

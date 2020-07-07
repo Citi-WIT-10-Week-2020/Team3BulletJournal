@@ -1,0 +1,35 @@
+<body>
+    <nav class="navbar navbar-expand-md" style="background: #a5a5a5">
+        <a class="navbar-brand" href="#"><img src="assets/images/logo transparent.png" alt="" width="80" height="60"></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar">
+            <span class="fa fa-bars" style="color: white"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar" style="font-size: 18px;">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link type-font hoverable" id="len1" routerLink="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link type-font hoverable" id="len2" routerLink="/journal">Journal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link type-font hoverable" id="len3" routerLink="/coffee-chat">Coffee Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link type-font hoverable" id="len4" routerLink="/mood-tracker">Mood Tracker</a>
+                </li>
+                <li class="nav-item dropdown left-border-div">
+                    <a class="nav-link dropdown-toggle type-font hoverable" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-user-circle mr-2 mt-1"></span>{{currentUser.firstName}} {{currentUser.lastName}}
+                    </a>
+                    <ul class="dropdown-menu type-font" aria-labelledby="navbarDropdown">
+                        <li class="dropdown-item" href="#" routerLink="/user-profile">Profile</li>
+                        <li class="dropdown-item" href="#">Contacts</li>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</body>
