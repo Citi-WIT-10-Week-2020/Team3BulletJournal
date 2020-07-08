@@ -48,7 +48,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
 import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-profiles.component';
 
-
 @NgModule({
     imports: [
         BrowserModule,
@@ -72,6 +71,7 @@ import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-
         UserProfileComponent,
 
         NavbarComponent,
+
         FooterComponent,
 
         CoffeeChatUpcomingMeetingsComponent,
@@ -87,7 +87,10 @@ import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-
         UserProfileProfileComponent,
         UserProfileDashboardComponent,
         UserProfileContactsComponent,
-        CoffeeChatProfilesComponent
+
+        CoffeeChatProfilesComponent,
+        ProfileComponent
+
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
