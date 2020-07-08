@@ -67,7 +67,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
         UserProfileComponent,
 
         NavbarComponent,
-        FooterComponent
+        FooterComponent,
 
         CoffeeChatUpcomingMeetingsComponent,
         CoffeeChatPendingMeetingsComponent,
