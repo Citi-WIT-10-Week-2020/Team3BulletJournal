@@ -71,10 +71,6 @@ import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-
         UserProfileComponent,
 
         NavbarComponent,
-<<<<<<< HEAD
-=======
-
->>>>>>> 915d6c095411fc4cace97d70c98f5509c86a43f9
         FooterComponent,
 
         CoffeeChatUpcomingMeetingsComponent,

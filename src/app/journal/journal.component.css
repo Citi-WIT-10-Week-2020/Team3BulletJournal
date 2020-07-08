@@ -41,7 +41,8 @@ ul.CTAs a {
 ----------------------------------------------------- */
 #content {
     width: 100%;
-    padding: 20px;
+    padding: 0px;
+    margin-top: 0px;
     min-height: 100vh;
     transition: all 0.3s;
 }
