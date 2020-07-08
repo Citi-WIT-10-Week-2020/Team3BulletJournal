@@ -21,6 +21,7 @@ import { MoodTrackerWeeklyChartsComponent } from './mood-tracker-weekly-charts/m
 import { UserProfileProfileComponent } from './user-profile-profile/user-profile-profile.component';
 import { UserProfileContactsComponent } from './user-profile-contacts/user-profile-contacts.component';
 import { UserProfileDashboardComponent } from './user-profile-dashboard/user-profile-dashboard.component';
+import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-profiles.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
     { path: 'coffee-chat-random-friends', component: CoffeeChatRandomFriendsComponent },
     { path: 'coffee-chat-select-friends', component: CoffeeChatSelectFriendsComponent },
     { path: 'coffee-chat-upcoming-meetings', component: CoffeeChatUpcomingMeetingsComponent },
+    { path: 'coffee-chat-profiles', component: CoffeeChatProfilesComponent},
 
     /*Journal*/
 
