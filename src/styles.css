@@ -1,3 +1,7 @@
+/* ---------------------------------------------------
+    BACKGROUND STYLES
+----------------------------------------------------- */
+
 .background-water {
     background: url('assets/images/backgroundhome.jpeg') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -6,6 +10,21 @@
     background-size: cover;
     -o-background-size: cover;
  }
+
+ .journal{
+  background: url('assets/images/journal background.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover; 
+ }
+
+
+
+
+
+
+
 
  .center-block {
     margin-left:auto;
@@ -127,3 +146,6 @@
       padding-left: 2px;
       padding-right: 2px;
    }
+
+
+
