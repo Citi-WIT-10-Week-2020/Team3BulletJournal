@@ -19,13 +19,18 @@
 
 </head>
 
+<div>
+    <app-navbar></app-navbar>
+</div>
+
 <body>
 
         <!-- Page Content Holder -->
         <div id="content">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #dad8d8;">
                 <div class="container-fluid">
+                    <a class="navbar-brand fancy-font" style="font-size: 45px;">Journal</a>
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button>
@@ -53,6 +58,19 @@
                     </div>
                 </div>
             </nav>
+
+            <!--Actual Content-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <h4 class="text-center reg-font" style="color: black;">Describe a moment in your life that you are proud of.</h4>
+                        <h6 class="text-center reg-font" style="color: grey;">July 08, 2020</h6>
+                        <textarea rows="5" class="notes" placeholder="Begin entry here..." style="box-shadow: gray 5px;"></textarea>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div>   
             
         
         </div>

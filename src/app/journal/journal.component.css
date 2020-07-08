@@ -41,9 +41,68 @@ ul.CTAs a {
 ----------------------------------------------------- */
 #content {
     width: 100%;
-    padding: 20px;
+    padding: 0px;
+    margin-top: 0px;
     min-height: 100vh;
     transition: all 0.3s;
 }
+
+/* ---------------------------------------------------
+    BUTTON STYLE
+----------------------------------------------------- */
+
+html,body{
+    height:100%;
+  }
+  body{
+    text-align:center;
+  }
+  body:before{
+    content:'';
+    height:100%;
+    display:inline-block;
+    vertical-align:middle;
+  }
+  .button-choice{
+    background:#e2bff1;
+    color:#fff;
+    border:none;
+    position:relative;
+    width: 420px;
+    height:180px;
+    font-size:1.6em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+  .button-choice:hover{
+    background:#fff;
+    color:#a979be;
+  }
+  .button-choice:before,button-choice:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #a979be;
+    transition:400ms ease all;
+  }
+  .button-choice:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .button-choice:hover:before,button-choice:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+  
+  
 
     

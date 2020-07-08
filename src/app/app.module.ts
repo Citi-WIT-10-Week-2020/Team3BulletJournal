@@ -71,7 +71,6 @@ import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-
         UserProfileComponent,
 
         NavbarComponent,
-
         FooterComponent,
 
         CoffeeChatUpcomingMeetingsComponent,
