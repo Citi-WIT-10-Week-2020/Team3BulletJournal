@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 // used to create fake backend
-import { fakeBackendProvider } from './_helpers';
+// import { fakeBackendProvider } from './_helpers';
 import { appRoutingModule } from './app.routing';
 import { JwtInterceptor, ErrorInterceptor} from './_helpers';
 import { AppComponent } from './app.component';
@@ -15,7 +17,7 @@ import { AlertComponent } from './_components';
 import { CoffeeChatComponent } from './coffee-chat/coffee-chat.component';
 import { NavButtonsHomeComponent } from './nav-buttons-home/nav-buttons-home.component';
 
-import { CommonService } from './common.service';
+// import { CommonService } from './common.service';
 import { UserService } from './_services';
 
 import { JournalComponent } from './journal/journal.component';
@@ -23,7 +25,6 @@ import { MoodTrackerComponent } from './mood-tracker/mood-tracker.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { SidebarModule } from 'ng-sidebar';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
@@ -44,17 +45,19 @@ import { UserProfileContactsComponent } from './user-profile-contacts/user-profi
 import { ProfileComponent } from './profile/profile.component';
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
-
+import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-profiles.component';
+import { CoffeeChatNavbarComponent } from './coffee-chat-navbar/coffee-chat-navbar.component';
 
 
 @NgModule({
     imports: [
         BrowserModule,
+        FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
         appRoutingModule,
         SidebarModule,
-        NgMultiSelectDropDownModule
+        NgMultiSelectDropDownModule.forRoot()
     ],
     declarations: [
         AppComponent,
@@ -85,7 +88,9 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
         UserProfileDashboardComponent,
         UserProfileContactsComponent,
         ProfileComponent,
-
+        CoffeeChatProfilesComponent,
+        ProfileComponent,
+        CoffeeChatNavbarComponent
 
     ],
     providers: [
@@ -94,7 +99,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
 
         // provider used to create fake backend
         //CommonService
-        fakeBackendProvider
+        // fakeBackendProvider
         
     ],
     bootstrap: [AppComponent]

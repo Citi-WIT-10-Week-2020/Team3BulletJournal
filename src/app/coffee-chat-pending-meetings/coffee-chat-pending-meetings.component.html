@@ -17,40 +17,99 @@
 
 </head>
 
+<div class="sticky-top">
+    <app-navbar></app-navbar>
+</div>
+<div class="coffee-chat-navbar">
+    <app-coffee-chat-navbar></app-coffee-chat-navbar>
+</div>
+
 <body>
 
         <!-- Page Content Holder -->
         <div id="content">
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="coffee-chat-upcoming-meetings">Upcoming Meetings</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="coffee-chat-pending-meetings">Pending Meetings</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="#new-meeting" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">New Meeting</a>
-                                <ul class="collapse list-unstyled" id="new-meeting">
-                                    <li>
-                                        <a href="coffee-chat-select-friends">Select Friends</a>
-                                    </li>
-                                    <li>
-                                        <a href="coffee-chat-random-friends">Randomly Generate Friends</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+    
+            <h3>Pending Meetings</h3>
+            <div class = "hostMeetings">
+                <div class="row">
+                    <div class="col-md-auto">
+                        <h5>Meetings I Scheduled...</h5>
                     </div>
                 </div>
-            </nav>
+                <div class="row">
+                    <div class="col col-md-auto">
+                        <div class="row justify-content-between">
+                            <div class="col-8 col-sm-4">
+                                Saturday, May 14
+                            </div>
+                            <div class="col-8 col-sm-4">
+                                8:00 AM
+                            </div>
+                            <div class="col-8 col-sm-4">
+                                3 Attendees <!--Pull sum of attendees-->
+                            </div>
+                        </div>
+                        <div class="row justify-content-between">
+                            <div class="col-8 col-sm-4">
+                                Emily
+                            </div>
+
+                            <div class="col-8 col-sm-4">
+                                Pending
+                            </div>
+                        </div>
+                        <div class="row justify-content-between">
+                            <div class="col-8 col-sm-4">
+                                Shannon
+                            </div>
+                            <div class="col-8 col-sm-4">
+                                Pending
+                            </div>
+                        </div>
+                        <div class="row justify-content-between">
+                            <div class="col-8 col-sm-4">
+                                Katie
+                            </div>
+                            <div class="col-8 col-sm-4">
+                                Accepted
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <p>
+                    </p>
+                </div>
+
+                
+                <div class="row">
+                    <div class="col-md-auto">
+                        <h5>Meetings Scheduled with Me...</h5>
+                    </div>
+                </div>
+
+                <div class="row justify-content-between">
+                    <div class="col-8 col-sm-4">
+                        Sunday, May 15
+                    </div>
+                    <div class="col-8 col-sm-4">
+                        2:15 PM
+                    </div>
+                    <div class="col-8 col-sm-4">
+                        <button style="margin-right:10px">
+                            Accept
+                        </button>
+                        <button>
+                            Reject
+                        </button>
+                    </div>
+                </div>
+            </div>
+         
+            
+
+
+
         </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -60,5 +119,7 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 </body>
+
+<app-footer></app-footer>
 
 </html>

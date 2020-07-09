@@ -10,14 +10,15 @@ import { AuthenticationService } from '../_services';
   styleUrls: ['./coffee-chat-select-friends.component.css'],
 })
 export class CoffeeChatSelectFriendsComponent implements OnInit {
-  peopleList=[];
+  peopleList = [];
   dropdownSettings= {};
+  currentUser: any;
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
   ) {
-    this.authenticationService.currentUserValue[0]
+    this.currentUser = this.authenticationService.currentUserValue[0]
    }
   ngOnInit(): void {
 
@@ -29,8 +30,6 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
       { person_id: 5, person_name: 'Jordan'},
       { person_id: 6, person_name: 'Michelle'},
       { person_id: 7, person_name: 'Duy'},
-
-
     ];
 
     this.dropdownSettings = {
@@ -40,10 +39,17 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
       selectAllText: 'Select All',
       UnselectAllText: 'UnSelect All',
       itemsShowLimit: 5,
-      enableSearchFilter: true,
-    }
+      allowSearchFilter: false
+    };
+
   }
 
+  onPersonSelect(person: any){
+    console.log(person);
+  }
 
+  onSelectAll(persons: any){
+    console.log(persons);
+  }
 
 }

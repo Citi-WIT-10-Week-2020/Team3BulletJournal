@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-profile-profile.component.css']
 })
 export class UserProfileProfileComponent implements OnInit {
+  currentUser: any;
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
   ) {
-    this.authenticationService.currentUserValue[0]
-   }
+    this.currentUser = this.authenticationService.currentUserValue[0];   }
 
   ngOnInit(): void {
   }
