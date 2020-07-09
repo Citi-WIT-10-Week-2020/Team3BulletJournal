@@ -1,19 +1,110 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-
+@font-face{
+    font-family: 'Big Caslon';
+    src: url('https://www.cssfontstack.com/Big-Caslon');
+}
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Big Caslon', sans-serif;
     background: #fafafa;
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Big Caslon', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
     color: #999;
 }
 
+button {
+    width:125px;
+    height:125px;
+    border-radius: 50%;
+    border: none;
+}
+
+button#anxious{
+    background-image: url(/assets/images/anxious.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+button#excited{
+    background-image: url(/assets/images/excited.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#confused{
+    background-image: url(/assets/images/confused.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#happy{
+    background-image: url(/assets/images/happy.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#sad{
+    background-image: url("/assets/images/sad boy.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+img {
+    max-width:100%;
+    max-height:100%;
+
+.img-center {
+    position: relative;  
+    margin: auto;
+  }
+
+#first {
+    color:black;
+    font-size: 28px;
+    margin:auto;
+    width: 700px;
+    height: 350px;
+    background: #FBF8E7;
+    overflow: hidden;
+    border-radius:15px;
+    border:1px solid black;
+}
+
+#second{
+    border-radius:15px;
+    border:1px solid black;
+    width: 75%;
+    height: 25%;
+    margin: auto;
+    margin-top: 10px;
+    background: #B8E5DE;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+}
+#title{
+    margin-top: 20px;
+}
+
+.mood-container{
+    display: flex;
+    padding:5px;
+    flex-wrap: wrap;
+}
+ 
+.mood-item{
+    flex:20%;
+    padding: 0 4px;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 20px;
+
+}
 
 
 /* ---------------------------------------------------

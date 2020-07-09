@@ -1,4 +1,10 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
 <h2>Register</h2>
+<alert></alert>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="firstName">First Name</label>
@@ -22,11 +28,26 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="zoomLink">Personal Zoom Meeting Link</label>
+        <input type="text" formControlName="zoomLink" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.zoomLink.errors }" />
+        <div *ngIf="submitted && f.zoomLink.errors" class="invalid-feedback">
+            <div *ngIf="f.zoomLink.errors.required">Zoom Link is required</div>
+        </div>
+    </div>
+    <div class="form-group">
         <label for="password">Password</label>
         <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
             <div *ngIf="f.password.errors.required">Password is required</div>
             <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Must be a valid email</div>
         </div>
     </div>
     <div class="form-group">
@@ -37,3 +58,7 @@
         <a routerLink="/login" class="btn btn-link">Cancel</a>
     </div>
 </form>
+</div>
+</div>
+</div>
+</div>

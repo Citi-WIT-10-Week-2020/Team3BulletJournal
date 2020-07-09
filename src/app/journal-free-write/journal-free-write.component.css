@@ -1,0 +1,76 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    TEXTAREA STYLE
+----------------------------------------------------- */
+
+textarea {
+	resize: none !important;
+	overflow: auto !important;
+	outline: none;
+	box-shadow: none !important;
+    border-color: #ced4da !important;
+    }
+textarea:hover {
+		resize: none !important;
+		overflow: auto !important;
+		outline: none;
+		box-shadow: none !important;
+		border-color: #ced4da !important;
+    }
+    
+.notes {
+	width: 99%;
+	height: 40em;
+	line-height: 31px;
+	background-image: -webkit-linear-gradient(left, white 0, transparent 0), -webkit-linear-gradient(right, white 0, transparent 0), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+	background-repeat: repeat-y;
+	background-size: 100% 100%, 100% 100%, 100% 31px;
+	background-attachment: local;
+}
