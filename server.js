@@ -36,6 +36,7 @@ const UsersSchema = Schema({
     zoom: {type: String},
     password: {type: String},
     email: {type: String},
+    friends: {type: Array}
 
 },{versionKey: false});
 
@@ -99,7 +100,7 @@ app.post("/api/SaveUser", function(req, res) {
                 res.send(err);
             }
             else{
-                console.log(data);
+                //console.log(data);
                 res.send(data);
             }
         });
@@ -128,6 +129,23 @@ app.post("/api/SaveUser", function(req, res) {
                 console.log('b');
             }
         });
+    })    
+
+    
+    app.put('/api/addAFriend', function(req,res){
+        //console.log('hit')
+        model.findByIdAndUpdate(req.body._id, {$push: {friends: req.body.friendToAdd}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    //console.log(err);
+                    res.send(err);
+                }
+                else{
+                    console.log(req.body.username);
+                    res.send({data:"Record has been updated"});
+                }
+            });
+
     })    
 
     app.delete('/api/deleteUser', function(req, res){
