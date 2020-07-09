@@ -46,6 +46,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
 
 
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -68,7 +69,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
         UserProfileComponent,
 
         NavbarComponent,
-        FooterComponent
+        FooterComponent,
 
         CoffeeChatUpcomingMeetingsComponent,
         CoffeeChatPendingMeetingsComponent,
@@ -83,7 +84,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
         UserProfileProfileComponent,
         UserProfileDashboardComponent,
         UserProfileContactsComponent,
-        ProfileComponent
+        ProfileComponent,
+
 
     ],
     providers: [

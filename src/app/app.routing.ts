@@ -60,7 +60,7 @@ const routes: Routes = [
     { path: 'user-profile-dashboard', component: UserProfileDashboardComponent},
 
     // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: 'login' }
 ];
 
 export const appRoutingModule = RouterModule.forRoot(routes); 

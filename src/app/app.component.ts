@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import {CommonService} from './common.service';
 import {FormGroup, FormControl, Validators, FormsModule} from '@angular/forms';
 import {Http,Response, Headers, RequestOptions } from '@angular/http';
-
 import { AuthenticationService } from './_services';
 
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
@@ -16,7 +15,7 @@ export class AppComponent {
         //private newService: CommonService
     ) {
         //this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-        this.currentUser = this.authenticationService.currentUserValue[0];
+        
     }
 
     //Repdata;
