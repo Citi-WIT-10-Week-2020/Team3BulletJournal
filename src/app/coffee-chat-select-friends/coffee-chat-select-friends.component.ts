@@ -1,4 +1,7 @@
 import { Component, OnInit} from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../_services';
 
 
 @Component({
@@ -9,7 +12,14 @@ import { Component, OnInit} from '@angular/core';
 export class CoffeeChatSelectFriendsComponent implements OnInit {
   peopleList = [];
   dropdownSettings= {};
+  currentUser: any;
 
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService,
+  ) {
+    this.currentUser = this.authenticationService.currentUserValue[0]
+   }
   ngOnInit(): void {
 
     this.peopleList = [ //can add database community here later!!! and enforce max 5 people per chat

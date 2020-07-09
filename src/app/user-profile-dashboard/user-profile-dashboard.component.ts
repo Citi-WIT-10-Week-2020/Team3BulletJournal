@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../_services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile-dashboard',
@@ -7,8 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileDashboardComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService,
+  ) {
+    this.authenticationService.currentUserValue[0]
+   }
   ngOnInit(): void {
   }
 
