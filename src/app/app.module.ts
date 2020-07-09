@@ -26,7 +26,6 @@ import { MoodTrackerComponent } from './mood-tracker/mood-tracker.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { SidebarModule } from 'ng-sidebar';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
@@ -48,6 +47,7 @@ import { ProfileComponent } from './profile/profile.component';
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
 import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-profiles.component';
+import { CoffeeChatNavbarComponent } from './coffee-chat-navbar/coffee-chat-navbar.component';
 
 @NgModule({
     imports: [
@@ -92,7 +92,8 @@ import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-
         UserProfileContactsComponent,
 
         CoffeeChatProfilesComponent,
-        ProfileComponent
+        ProfileComponent,
+        CoffeeChatNavbarComponent
 
 >>>>>>> d282a3c914d4609a5f1c4aa7763b5e6094b89c76
     ],

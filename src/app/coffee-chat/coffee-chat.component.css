@@ -14,33 +14,6 @@ p {
     color: #999;
 }
 
-.h2{
-    padding-top: 500px;
-}
-
-
-
-
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
-
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-}
-
-ul.CTAs {
-    padding: 20px;
-}
-
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    margin-bottom: 5px;
-}
-
 
 /* ---------------------------------------------------
     CONTENT STYLE
@@ -48,10 +21,12 @@ ul.CTAs a {
 #content {
     width: 100%;
     padding: 20px;
+    margin-top: 0px;
     min-height: 100vh;
     transition: all 0.3s;
+    vertical-align: middle;
+    text-align: center;
 }
-
 
 /* ---------------------------------------------------
     BUTTON STYLE
@@ -59,15 +34,7 @@ ul.CTAs a {
 html,body{
     height:100%;
   }
-  body{
-    text-align:center;
-  }
-  body:before{
-    content:'';
-    height:100%;
-    display:inline-block;
-    vertical-align:middle;
-  }
+
   .button-choice{
     background:#8b593b;
     color:#fff;
