@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JournalFreeWriteComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() { 
   }
 
+  ngOnInit(): void {
+
+  }
 }
