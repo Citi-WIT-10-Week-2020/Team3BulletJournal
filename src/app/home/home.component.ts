@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
         private alertService: AlertService
     ) {
         this.currentUser = this.authenticationService.currentUserValue[0];
-        //console.log(this.currentUser.friends[0]);
+        console.log(this.currentUser.friends[0]);
     }
 
     ngOnInit() {
