@@ -60,18 +60,28 @@
             </nav>
 
             <!--Actual Content-->
+            <form [formGroup]="journalForm" (ngSubmit)="onSubmit()">
             <div class="container">
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-8">
                         <h4 class="text-center reg-font" style="color: black;">Describe a moment in your life that you are proud of.</h4>
                         <h6 class="text-center reg-font" style="color: grey;">July 08, 2020</h6>
-                        <textarea rows="5" class="notes" placeholder="Begin entry here..." style="box-shadow: gray 5px;"></textarea>
+                        <div class="form-group">
+                            <textarea rows="5" class="notes" formControlName="textEntry" placeholder="Begin entry here..." style="box-shadow: gray 5px;"></textarea>
                     </div>
+                        </div>
                     <div class="col-2"></div>
-                </div>
+                    </div>
+                    <div class="form-group">
+                        <button [disabled]="loading" class="btn btn-primary">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            Submit
+                        </button>
+                        <a routerLink="/journal" class="btn btn-link">Back to Journaling Options</a>
+                    </div>
             </div>   
-            
+            </form>
         
         </div>
 
