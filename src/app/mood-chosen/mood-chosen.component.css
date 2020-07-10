@@ -101,14 +101,14 @@ p {
     font-family: 'Big Caslon', sans-serif;
 }
 
-.mood-container{
+.resource-container{
     display: flex;
     padding:5px;
     flex-wrap: wrap;
 }
  
-.mood-item{
-    flex:20%;
+.resource-item{
+    flex:33%;
     padding: 0 4px;
     margin-top: 30px;
     text-align: center;
