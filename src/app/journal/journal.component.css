@@ -54,15 +54,11 @@ ul.CTAs a {
 html,body{
     height:100%;
   }
+  
   body{
     text-align:center;
   }
-  body:before{
-    content:'';
-    height:100%;
-    display:inline-block;
-    vertical-align:middle;
-  }
+
   .button-choice{
     background:#e2bff1;
     color:#fff;
