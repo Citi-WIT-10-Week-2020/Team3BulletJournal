@@ -8,13 +8,11 @@ import { AuthenticationService } from '../_services';
   styleUrls: ['./coffee-chat-random-friends.component.css']
 })
 export class CoffeeChatRandomFriendsComponent implements OnInit {
-
-  constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService,
-  ) {
+  
+  constructor(private router: Router,private authenticationService: AuthenticationService) {
     this.authenticationService.currentUserValue[0]
    }
+
   numberList = ["1", "2", "3", "4", "5"];
   
   ngOnInit(): void {}

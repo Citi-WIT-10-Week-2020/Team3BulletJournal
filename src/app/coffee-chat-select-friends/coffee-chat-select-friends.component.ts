@@ -1,8 +1,6 @@
 import { Component, OnInit} from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../_services';
-
 
 @Component({
   selector: 'app-coffee-chat-select-friends',
@@ -10,7 +8,21 @@ import { AuthenticationService } from '../_services';
   styleUrls: ['./coffee-chat-select-friends.component.css'],
 })
 export class CoffeeChatSelectFriendsComponent implements OnInit {
-  
-  ngOnInit(): void {}
+  currentUser: any;
+  peopleList = [];
 
+  constructor(private router: Router,private authenticationService: AuthenticationService) {
+    this.currentUser = this.authenticationService.currentUserValue[0];
+   }
+
+   ngOnInit(){
+    this.peopleList[0] = this.currentUser.friends[0];
+    console.log(this.currentUser.friends[0]);
+    //this.peopleList[1] = "Sally";
+    //this.peopleList[0] = "Jenny";
+    /*for(let i = 0; i < 3; i++){
+      this.peopleList[i] = "Jenny";
+    }*/
+
+   }
 }
