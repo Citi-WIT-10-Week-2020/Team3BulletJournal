@@ -9,7 +9,7 @@
 .dropdown {
     position: relative;
     display: inline-block;
-  }
+}
   
 .dropdown-menu{
     background-color: #a5a5a5 !important;
@@ -23,5 +23,5 @@
     padding: 0;
 }
 .dropdown-item:hover{
-    background-color: #7a7a7a;
+    background-color: #9e9d9d;
 }
