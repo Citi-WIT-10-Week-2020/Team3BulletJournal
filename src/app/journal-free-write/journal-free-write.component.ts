@@ -28,7 +28,6 @@ export class JournalFreeWriteComponent implements OnInit {
         private alertService: AlertService ) {
     this.currentUser = this.authenticationService.currentUserValue[0]
    }
-
    ngOnInit() {
     var d = new Date();
 
@@ -85,4 +84,3 @@ onSubmit() {
             
 }
 }
-
