@@ -9,9 +9,14 @@ import { AuthenticationService } from '../_services';
 })
 export class CoffeeChatRandomFriendsComponent implements OnInit {
 
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService,
+  ) {
+    this.authenticationService.currentUserValue[0]
+   }
   numberList = ["1", "2", "3", "4", "5"];
   
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-  }
 }
