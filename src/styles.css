@@ -19,12 +19,21 @@
   -o-background-size: cover; 
  }
 
+.coffee-chat{
+  background: url('assets/images/joshua-bartell-6vvIBTvL90A-unsplash.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover; 
+ }
 
-
-
-
-
-
+ .background-mood {
+  background: url('assets/images/mt-background.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
 
  .center-block {
     margin-left:auto;
