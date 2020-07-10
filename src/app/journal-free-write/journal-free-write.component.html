@@ -27,20 +27,30 @@
         <div id="content">
 
             <!--Actual Content-->
+            <form [formGroup]="journalForm" (ngSubmit)="onSubmit()">
             <div class="container">
                 <div class="row">
                     <div class="col-2"></div>
-                    <div class="col-8">
-                        <h4 class="text-center reg-font" style="color: black;">Free Writing</h4>
-                        <h6 class="text-center reg-font" style="color: grey;">July 08, 2020</h6>
-                        <textarea rows="2" class="notes text-center" placeholder="Title
-Date" ></textarea>
-                        <textarea rows="10" class="notes" placeholder="Begin entry here..."></textarea>
+                    
+
+                   
+                        <textarea rows="2" class="notes text-center" placeholder="TitleDate" ></textarea>
+               <div class="form-group">
+                        <textarea rows="10" formControlName="textEntry" class="notes" placeholder="Begin entry here..."></textarea>
+              </div>
+
                     </div>
-                    <div class="col-2"></div>
-                </div>
-            </div>        
-        </div>
+                    <div class="form-group">
+                        <button [disabled]="loading" class="btn btn-primary">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            Submit
+                        </button>
+                        <a routerLink="/journal" class="btn btn-link">Back to Journaling Options</a>
+                    </div>
+              </div>
+                </div>   
+            </form>     
+            </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -45,6 +45,11 @@ export class AuthenticationService {
         // }));
         
     }
+
+    saveJournal(username, title, day, month, year, text){
+        return this.http.post<any>(`http://localhost:8080/api/saveJournalEntry`, {username, title, day, month, year, text});
+
+    }
  
     logout() {
         // remove user from local storage and set current user to null
