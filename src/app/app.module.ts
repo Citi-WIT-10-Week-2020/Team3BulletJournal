@@ -47,6 +47,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
 import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-profiles.component';
 import { CoffeeChatNavbarComponent } from './coffee-chat-navbar/coffee-chat-navbar.component';
+import { JournalNavbarComponent } from './journal-navbar/journal-navbar.component';
+import { MoodTrackerNavbarComponent } from './mood-tracker-navbar/mood-tracker-navbar.component';
+import { UserProfileNavbarComponent } from './user-profile-navbar/user-profile-navbar.component';
 
 
 @NgModule({
@@ -90,7 +93,10 @@ import { CoffeeChatNavbarComponent } from './coffee-chat-navbar/coffee-chat-navb
         ProfileComponent,
         CoffeeChatProfilesComponent,
         ProfileComponent,
-        CoffeeChatNavbarComponent
+        CoffeeChatNavbarComponent,
+        JournalNavbarComponent,
+        MoodTrackerNavbarComponent,
+        UserProfileNavbarComponent
 
     ],
     providers: [

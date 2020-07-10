@@ -18,47 +18,14 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 </head>
-
-<div>
-    <app-navbar></app-navbar>
-</div>
-
 <body>
-
+    <div class="sticky-top">
+        <app-navbar></app-navbar>
+        <app-journal-navbar></app-journal-navbar>
+    </div>
         <!-- Page Content Holder -->
         <div id="content">
 
-            <nav class="navbar navbar-expand-lg" style="background-color: #dad8d8;">
-                <div class="container-fluid">
-                    <a class="navbar-brand fancy-font" style="font-size: 45px;">Journal</a>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link reg-font hoverable" href="journal-drafts">Drafts</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link reg-font hoverable" href="journal-published">Published</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link reg-font hoverable" href="#new-entry-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">New Entry</a>
-                                <ul class="collapse list-unstyled" id="new-entry-submenu">
-                                    <li>
-                                        <a href="journal-free-write">Free Write</a>
-                                    </li>
-                                    <li>
-                                        <a href="journal-prompt">Respond to a Prompt</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            
             <!--Actual Content-->
             <div class="container">
                 <div class="row">
