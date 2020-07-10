@@ -76,6 +76,7 @@ import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
         UserProfileProfileComponent,
         UserProfileDashboardComponent,
         UserProfileContactsComponent,
+        ProfileComponent,
         CoffeeChatProfilesComponent,
         ProfileComponent,
         CoffeeChatNavbarComponent,
