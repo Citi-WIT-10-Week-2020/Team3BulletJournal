@@ -20,22 +20,56 @@
 </head>
 <body>
 
-    <div class="sticky-top">
-        <app-navbar></app-navbar>
-        <app-journal-navbar></app-journal-navbar>
-    </div>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg" style="background-color: #dad8d8;">
+                <div class="container-fluid">
+                    <a class="navbar-brand fancy-font" style="font-size: 45px;">Journal</a>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="journal-drafts">Drafts</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="journal-published">Published</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#new-entry-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">New Entry</a>
+                                <ul class="collapse list-unstyled" id="new-entry-submenu">
+                                    <li>
+                                        <a href="journal-free-write">Free Write</a>
+                                    </li>
+                                    <li>
+                                        <a href="journal-prompt">Respond to a Prompt</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
             <!--Actual Content-->
             <div class="container">
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-8">
-                        <h4 class="text-center reg-font" style="color: black;">Describe a moment in your life that you are proud of.</h4>
-                        <h6 class="text-center reg-font" style="color: grey;">July 08, 2020</h6>
-                        <textarea rows="5" class="notes" placeholder="Begin entry here..." style="box-shadow: gray 5px;"></textarea>
+                        <h4 class="text-center reg-font" style="color: black;">Respond to a Prompt</h4>
+                        <textarea rows="2" class="notes text-center" placeholder="Prompt
+Date" ></textarea>
+                        <textarea rows="10" class="notes" placeholder="Begin entry here..."></textarea>
                     </div>
                     <div class="col-2"></div>
                 </div>
-            </div>   
+            </div>        
+        </div>
             
         
     <!-- jQuery CDN - Slim version (=without AJAX) -->

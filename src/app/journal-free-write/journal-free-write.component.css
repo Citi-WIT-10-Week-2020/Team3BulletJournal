@@ -51,26 +51,32 @@ ul.CTAs a {
 ----------------------------------------------------- */
 
 textarea {
-	resize: none !important;
-	overflow: auto !important;
 	outline: none;
-	box-shadow: none !important;
+	box-shadow:  1px 1px 5px grey;
     border-color: #ced4da !important;
+    min-height: 5em;
+	max-height: 50vh;
+	width: 100%;
     }
 textarea:hover {
-		resize: none !important;
+		resize: auto !important;
 		overflow: auto !important;
 		outline: none;
-		box-shadow: none !important;
+		box-shadow: 2px 2px 5px grey;
 		border-color: #ced4da !important;
     }
     
 .notes {
-	width: 99%;
-	height: 40em;
-	line-height: 31px;
-	background-image: -webkit-linear-gradient(left, white 0, transparent 0), -webkit-linear-gradient(right, white 0, transparent 0), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+	width: 100%;
+	height: auto;
+    line-height: 31px;
+    background-image: -webkit-linear-gradient(left, white 0, transparent 0), 
+        -webkit-linear-gradient(right, white 0, transparent 0), 
+        -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
 	background-repeat: repeat-y;
 	background-size: 100% 100%, 100% 100%, 100% 31px;
-	background-attachment: local;
+    background-attachment: local;
 }
+
+
+

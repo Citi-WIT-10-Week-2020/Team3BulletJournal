@@ -16,6 +16,6 @@ export class JournalFreeWriteComponent implements OnInit {
     this.authenticationService.currentUserValue[0]
    }
   ngOnInit(): void {
-  }
 
+  }
 }
