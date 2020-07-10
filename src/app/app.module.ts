@@ -85,7 +85,7 @@ import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
         CoffeeChatNavbarComponent,
         JournalNavbarComponent,
         MoodTrackerNavbarComponent,
-        UserProfileNavbarComponent
+        UserProfileNavbarComponent,
         MoodChosenComponent
 
     ],
