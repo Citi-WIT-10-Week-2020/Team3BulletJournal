@@ -22,6 +22,7 @@ import { UserProfileProfileComponent } from './user-profile-profile/user-profile
 import { UserProfileContactsComponent } from './user-profile-contacts/user-profile-contacts.component';
 import { UserProfileDashboardComponent } from './user-profile-dashboard/user-profile-dashboard.component';
 import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-profiles.component';
+import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
 
 
 const routes: Routes = [
@@ -55,6 +56,7 @@ const routes: Routes = [
 
     { path: 'mood-tracker-monthly-charts', component: MoodTrackerMonthlyChartsComponent},
     { path: 'mood-tracker-weekly-charts', component: MoodTrackerWeeklyChartsComponent},
+    { path: 'mood-chosen', component: MoodChosenComponent},
 
     /*User-Profile*/
     { path: 'user-profile-profile', component: UserProfileProfileComponent},
