@@ -46,6 +46,10 @@ export class AuthenticationService {
         
     }
 
+    getAllJournals(){
+        return this.http.get<any>(`http://localhost:8080/api/getAllJournals`);
+    }
+
     saveJournal(username, title, day, month, year, text){
         return this.http.post<any>(`http://localhost:8080/api/saveJournalEntry`, {username, title, day, month, year, text});
 
