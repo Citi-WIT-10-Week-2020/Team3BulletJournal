@@ -14,6 +14,8 @@ export class JournalPromptComponent implements OnInit {
   journalForm: FormGroup;
   returnUrl: any;
   submitted: boolean;
+  promptIndexSelected: any;
+  promptUsed: any;
   loading = false;
 
   prompts = [
@@ -23,8 +25,9 @@ export class JournalPromptComponent implements OnInit {
     {title: 'Dream Vacation', text: 'Describe your dream vacation.'},
     {title: 'Smile', text: 'List all the things that made you smile today.'}
   ]
-  promptIndexSelected: any;
-title: any;
+  title: { title: string; text: string; };
+ 
+
   constructor(
     private formBuilder: FormBuilder,
         private route: ActivatedRoute,
@@ -35,7 +38,7 @@ title: any;
     this.currentUser = this.authenticationService.currentUserValue[0];
     var promptIndexSelected = Math.random() * (this.prompts.length - 1);
     console.log(promptIndexSelected);
-    var promptUsed = this.prompts[Math.round(promptIndexSelected)].text;
+    this.title = this.prompts[Math.round(promptIndexSelected)];
   }
   ngOnInit(): void {
     var d = new Date();
@@ -43,11 +46,9 @@ title: any;
     var date = d.getUTCDate();
     var month = d.getUTCMonth() + 1;
     var year = d.getUTCFullYear();
-    var title = this.prompts[Math.round(promptIndexSelected)].text;// change when actual prompts are added by creating form group on front end
-
     this.journalForm = this.formBuilder.group({
         username: [this.currentUser.username],
-        title: [title],
+        title: [this.title.text],
         day: [date],
         month: [month],
         year: [year],
