@@ -16,8 +16,7 @@ export class UserProfileDashboardComponent implements OnInit {
   loading: boolean;
   returnUrl: any;
   currentUser: any;
-  validJournalText: Array<String>;
-  validJournalPrompt: Array<String>;
+  validJournal: Array<String>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,7 +26,8 @@ export class UserProfileDashboardComponent implements OnInit {
     private alertService: AlertService
   ) {
     this.currentUser = this.authenticationService.currentUserValue[0];
-    
+    this.validJournal = this.validJournal;
+
 
      }
   ngOnInit(): void {
@@ -56,8 +56,7 @@ export class UserProfileDashboardComponent implements OnInit {
     //console.log(this.f.username.value);
     console.log(this.f.selectedDate.value);
     this.loading = true;
-    this.validJournalPrompt = [];
-    this.validJournalText = [];
+    this.validJournal = [];
     this.authenticationService.getAllJournals()
         //.pipe(first())
         .subscribe(
@@ -76,8 +75,7 @@ export class UserProfileDashboardComponent implements OnInit {
                         if(user.year == this.f.selectedDate.value.substring(0,4)){
                           if(user.day == this.f.selectedDate.value.substring(8,10)){
                             if(user.month == this.f.selectedDate.value.substring(5,7) || user.month == this.f.selectedDate.value.substring(6,7)){
-                              this.validJournalText.push(user.text);
-                              this.validJournalPrompt.push(user.title);
+                              this.validJournal.push(user);
                               found = true;
                             }
                           }
@@ -91,6 +89,10 @@ export class UserProfileDashboardComponent implements OnInit {
                     this.alertService.error("No entries under that date found");
                 }
 
+                for(let user of this.validJournal){
+                  console.log('made it')
+                  console.log(user)
+                }
             },
             error => {
                 this.alertService.error(error);
