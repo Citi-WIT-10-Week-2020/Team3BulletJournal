@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
     private loadAllUsers() {
         this.authenticationService.getAllUsers()
             //.pipe(first())
-            .subscribe(users => this.users = users);
+            //.subscribe(users => this.users = users);
     }
 
     

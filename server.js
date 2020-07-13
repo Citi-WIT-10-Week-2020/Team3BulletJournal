@@ -115,6 +115,21 @@ var JournalModel = mongoose.model('Journals', JournalSchema, 'Journals');
         });
     })    
 
+
+    app.get('/api/getAllJournals', function(req,res){
+        console.log('found endpoint')
+        JournalModel.find({}, function(err, data) {
+            if(err) {
+                res.send(err);
+                console.log('a');
+            }
+            else{
+                res.send(data);
+                console.log('b');
+            }
+        });
+    })    
+
     
     app.put('/api/addAFriend', function(req,res){
         //console.log('hit')

@@ -8,11 +8,12 @@ import { AuthenticationService } from '../_services';
   styleUrls: ['./nav-buttons-home.component.css']
 })
 export class NavButtonsHomeComponent implements OnInit {
+  currentUser: any;
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
   ) {
-    this.authenticationService.currentUserValue[0]
+    this.currentUser = this.authenticationService.currentUserValue[0];
    }
   ngOnInit(): void {
   }

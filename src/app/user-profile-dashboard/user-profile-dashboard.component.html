@@ -23,7 +23,26 @@
     </div>
         <!-- Page Content Holder -->
         <div id="content">
-            
+            <div class="col-sm-6 offset-sm-3">
+                <div class="md-form md-outline">
+                    <alert></alert>
+                    <label for="default-picker">Enter Date For Which You Want To See:</label>
+    
+                  </div>
+            </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+        <div class="col-sm-6 offset-sm-3">
+            <input type="date" id="default-picker" formControlName="selectedDate" class="form-control" placeholder="Select time">
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Login
+        </button>
+    </div>
+    </form>
         </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
