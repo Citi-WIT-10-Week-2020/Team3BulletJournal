@@ -61,6 +61,10 @@ export class AuthenticationService {
     createMeeting(username, participants, day, month, year, time){
         return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, time});
     }
+
+    createRandomMeeting(username, numPeople, day, month, year, time){
+        return this.http.post<any>(`http://localhost:8080/api/createRandomMeeting`, {username, numPeople, day, month, year, time});
+    }
  
     logout() {
         // remove user from local storage and set current user to null
