@@ -15,6 +15,7 @@ import { getLocaleDateFormat } from '@angular/common';
 })
 export class JournalFreeWriteComponent implements OnInit {
   currentUser: any;
+  currentPage: string = "Free Write";
   journalForm: FormGroup;
   returnUrl: any;
   submitted: boolean;

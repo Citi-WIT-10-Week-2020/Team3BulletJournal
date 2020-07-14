@@ -12,11 +12,12 @@
  }
 
  .journal{
-  background: url('assets/images/journal background.jpg') no-repeat center center fixed;
+  background: url('assets/images/journal backgound.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover; 
+  margin: 0;
  }
 
 .coffee-chat{
@@ -107,8 +108,6 @@
    transform: translateY(-5px);
  }
  
- 
- 
  @keyframes bounce-animation {
    16.65% {
      -webkit-transform: translateY(8px);
@@ -166,4 +165,33 @@
 ----------------------------------------------------- */
 textarea{
   height: auto !important;
+}
+
+
+/* ---------------------------------------------------
+    Dividers
+----------------------------------------------------- */
+
+hr.divide {
+  border: 0;
+  height: 2px;
+  width: 50vh;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), white, rgba(0, 0, 0, 0));
+}
+
+hr.blur {
+  height: 4px;
+  border: 0;
+  padding: 0px;
+  margin: 0px;
+  box-shadow: inset 0 12px 12px -12px #7ca5af;
+}
+
+hr.divide2 {
+  border: 0;
+  height: 1px;
+  padding: 0;
+  margin: 0;
+  background: #333;
+  background-image: linear-gradient(to right, #9bc6d1, #6d6c6c, #9bc6d1);
 }

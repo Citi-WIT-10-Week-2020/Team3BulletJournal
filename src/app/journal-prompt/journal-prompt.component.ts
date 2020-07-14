@@ -23,7 +23,12 @@ export class JournalPromptComponent implements OnInit {
     {title: 'Role Model', text: 'Describe someone you look up to and why.'},
     {title: 'Extra Time', text: 'If you had 2 extra hours every day, how would you spend them?'},
     {title: 'Dream Vacation', text: 'Describe your dream vacation.'},
-    {title: 'Smile', text: 'List all the things that made you smile today.'}
+    {title: 'Smile', text: 'List all the things that made you smile today.'},
+    {title: 'Secret', text: 'What is something that you have never told anyone?'},
+    {title: 'Superpower', text: 'If you could have one superpower, what would it be and why?'},
+    {title: 'Gratitude', text: 'Make a list of things that you are grateful for today.'},
+    {title: 'Childhood', text: 'What is something from your childhood that everyone should experince as a child?'},
+    {title: 'Positive Event', text: 'Describe one positive event that happened today.'}
   ]
   title: { title: string; text: string; };
  
