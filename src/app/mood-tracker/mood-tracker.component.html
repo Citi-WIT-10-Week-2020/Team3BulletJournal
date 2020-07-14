@@ -21,22 +21,44 @@
         <app-navbar></app-navbar>
         <app-mood-tracker-navbar></app-mood-tracker-navbar>
     </div>
+
 <div class="background-mood" id="content">
     <div id="first">
         <div id="second">
             <div id="title"> How are you feeling today? </div>
         </div>
+        
     <div class="mood-container">
+        <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitAnxiety()">
+        <div class="form-group">
         <div class="mood-item">
-                <button id="anxious" value="anxious" name="button" routerLink="/mood-chosen"></button><hr>Anxious </div>
+            <button id="anxious" value="false" name="button"></button><hr>Anxious </div>
+            </div>
+        </form>
+        <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitExcited()">
+            <div class="form-group"> 
         <div class="mood-item">
-            <button id="excited" value="excited" name="button" routerLink="/mood-chosen"></button> <hr>Excited </div>
+            <button id="excited" value="excited" name="button"></button> <hr>Excited </div>
+        </div>
+        </form>
+        <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitConfused()">
+        <div class="form-group">
         <div class="mood-item">
-            <button id="confused" value="confused" name="button" routerLink="/mood-chosen"></button><hr>Confused </div>
+            <button id="confused" value="confused" name="button"></button><hr>Confused </div>
+        </div>
+        </form>
+        <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitHappy()">
+        <div class="form-group">
         <div class="mood-item">
-            <button id="happy" value="happy" name="button" routerLink="/mood-chosen"></button> <hr>Happy </div>
+            <button id="happy" value="happy" name="button"></button> <hr>Happy </div>
+        </div>
+        </form>
+        <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitSad()">
+        <div class="form-group">
         <div class="mood-item">
-            <button id="sad" value="sad" name="button" routerLink="/mood-chosen"></button><hr> Sad </div>
+            <button id="sad" value="sad" name="button"></button><hr> Sad </div>
+        </div>
+        </form>
         </div>
     </div>
  </div>
