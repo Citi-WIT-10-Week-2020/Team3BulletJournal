@@ -29,6 +29,15 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 const Schema = mongoose.Schema;
 
+const MoodSchema = Schema({
+    username: {type: String},
+    mood: {type: String},
+    day: {type: String},
+    month: {type: String},
+    year: {type: String}
+
+},{versionKey: false});
+
 const JournalSchema = Schema({
     username: {type: String},
     title: {type: String},
@@ -52,6 +61,8 @@ const UsersSchema = Schema({
 
 var model = mongoose.model('Users', UsersSchema, 'Users');
 var JournalModel = mongoose.model('Journals', JournalSchema, 'Journals');
+var MoodModel = mongoose.model('Moods', MoodSchema, 'Moods');
+
 
     app.post("/api/deleteUser", function(req,res){
         model.remove({ _id: req.body.id }, function(err) {
@@ -156,6 +167,21 @@ var JournalModel = mongoose.model('Journals', JournalSchema, 'Journals');
         var journal = new JournalModel(req.body);
         console.log(req.body.text);
         journal.save(function(err,data){
+            if(err){
+                console.log(err);
+                res.send(err);
+            }
+            else{
+                //console.log(data);
+                res.send(data);
+            }
+        });
+    })
+
+    app.post("/api/saveMood", function(req,res){
+        var mood = new MoodModel(req.body);
+        console.log(req.body.text);
+        mood.save(function(err,data){
             if(err){
                 console.log(err);
                 res.send(err);

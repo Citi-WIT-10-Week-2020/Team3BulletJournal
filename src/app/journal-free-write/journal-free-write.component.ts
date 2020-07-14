@@ -26,7 +26,7 @@ export class JournalFreeWriteComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService,
         private alertService: AlertService ) {
-    this.currentUser = this.authenticationService.currentUserValue[0]
+    this.currentUser = this.authenticationService.currentUserValue[0];
    }
    ngOnInit() {
     var d = new Date();
