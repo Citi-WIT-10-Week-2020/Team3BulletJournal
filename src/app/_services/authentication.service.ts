@@ -52,7 +52,14 @@ export class AuthenticationService {
 
     saveJournal(username, title, day, month, year, text){
         return this.http.post<any>(`http://localhost:8080/api/saveJournalEntry`, {username, title, day, month, year, text});
+    }
 
+    getAllMeetings(){
+        return this.http.get<any>(`http://localhost:8080/api/getAllMeetings`);
+    }
+
+    createMeeting(username, participants, day, month, year, time){
+        return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, time});
     }
  
     logout() {
