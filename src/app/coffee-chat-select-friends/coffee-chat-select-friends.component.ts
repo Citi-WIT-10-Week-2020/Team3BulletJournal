@@ -1,8 +1,7 @@
 import { Component, OnInit} from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../_services';
-
+import { UserService, AlertService, AuthenticationService } from '../_services';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-coffee-chat-select-friends',
@@ -10,46 +9,55 @@ import { AuthenticationService } from '../_services';
   styleUrls: ['./coffee-chat-select-friends.component.css'],
 })
 export class CoffeeChatSelectFriendsComponent implements OnInit {
-  peopleList = [];
-  dropdownSettings= {};
   currentUser: any;
+  peopleList = [];
+  createMeeting: FormGroup;
+  submitted = false;
+  loading = false;
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
-  ) {
-    this.currentUser = this.authenticationService.currentUserValue[0]
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private alertService: AlertService) 
+  {
+    this.currentUser = this.authenticationService.currentUserValue[0];
    }
-  ngOnInit(): void {
 
-    this.peopleList = [ //can add database community here later!!! and enforce max 5 people per chat
-      { person_id: 1, person_name: 'Emily'},
-      { person_id: 2, person_name: 'Shannon'},
-      { person_id: 3, person_name: 'Katie'},
-      { person_id: 4, person_name: 'Millie'},
-      { person_id: 5, person_name: 'Jordan'},
-      { person_id: 6, person_name: 'Michelle'},
-      { person_id: 7, person_name: 'Duy'},
-    ];
-
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'person_id',
-      textField: 'person_name',
-      selectAllText: 'Select All',
-      UnselectAllText: 'UnSelect All',
-      itemsShowLimit: 5,
-      allowSearchFilter: false
-    };
-
+   ngOnInit(){
+    this.peopleList = this.currentUser.friends;
+    this.createMeeting = this.formBuilder.group({
+      people: ['', Validators.required],
+      date: ['', Validators.required],
+      time: ['', Validators.required],
+    })
   }
 
-  onPersonSelect(person: any){
-    console.log(person);
-  }
+  // convenience getter for easy access to form fields
+  get f() { return this.createMeeting.controls; }
 
-  onSelectAll(persons: any){
-    console.log(persons);
-  }
+  onSubmit() {
+    this.submitted = true;
 
+    // reset alerts on submit
+    this.alertService.clear();
+
+    // stop here if form is invalid
+    if (this.createMeeting.invalid) {
+        return;
+    }
+    this.loading = true;
+    this.authenticationService.register(this.createMeeting.value)
+        //.pipe(first())
+        .subscribe(
+            data => {
+                this.alertService.success('Meeting Scheduled', true);
+                this.router.navigate(['/coffee-chat-profiles'], { queryParams: { scheduled: true }});
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            });
+}
 }

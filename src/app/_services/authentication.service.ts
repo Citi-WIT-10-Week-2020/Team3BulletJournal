@@ -24,7 +24,7 @@ export class AuthenticationService {
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
+                this.currentUserSubject.next(JSON.stringify(user));
                 
                 return user;
             }));
@@ -44,6 +44,15 @@ export class AuthenticationService {
         //     return user;
         // }));
         
+    }
+
+    getAllJournals(){
+        return this.http.get<any>(`http://localhost:8080/api/getAllJournals`);
+    }
+
+    saveJournal(username, title, day, month, year, text){
+        return this.http.post<any>(`http://localhost:8080/api/saveJournalEntry`, {username, title, day, month, year, text});
+
     }
  
     logout() {

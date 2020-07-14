@@ -93,3 +93,13 @@ body{
     font-weight: 600;
     color: #0062cc;
 }
+
+.text-centered{
+    text-align: center;
+}
+
+.col-md-6{
+    text-align: center;
+    border: 2px solid black;
+    box-shadow: 5px 10px #888888;
+}
