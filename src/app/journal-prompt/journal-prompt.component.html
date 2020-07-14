@@ -20,23 +20,27 @@
 </head>
 <body>
 
-    <div class="sticky-top">
-        <app-navbar></app-navbar>
-        <app-journal-navbar></app-journal-navbar>
+    <div>
+        <app-navbar style="z-index: 9999;"></app-navbar>
     </div>
+    <div class="sticky-top">
+        <app-journal-navbar style="z-index: 1;"></app-journal-navbar>
+    </div>
+
+    <div class="journal" id="content">
             <!--Actual Content-->
             <div class="container">
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-8">
-                        <h4 class="text-center reg-font" style="color: black;">Respond to a Prompt</h4>
-                        <textarea rows="2" class="notes text-center" placeholder="Prompt
-Date" ></textarea>
-                        <textarea rows="10" class="notes" placeholder="Begin entry here..."></textarea>
+                        <textarea rows="2" class="title text-center" style="margin-top: 50px; vertical-align: middle;" readonly>Prompt</textarea>
+                        <div class="text-center reg-font" style="color: white; font-weight: 900; font-size: 20px; text-shadow: 2px 2px grey; text-align: center;">July 08, 2020</div>
+                        <textarea rows="20" class="notes" placeholder="Begin entry here..."></textarea>
                     </div>
                     <div class="col-2"></div>
                 </div>
-            </div>        
+            </div>    
+    </div>      
             
         
     <!-- jQuery CDN - Slim version (=without AJAX) -->

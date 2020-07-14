@@ -19,26 +19,29 @@
 
 </head>
 <body>
+    <div>
+        <app-navbar style="z-index: 9999;"></app-navbar>
+    </div>
     <div class="sticky-top">
-        <app-navbar></app-navbar>
-        <app-journal-navbar></app-journal-navbar>
+        <app-journal-navbar style="z-index: 1;"></app-journal-navbar>
     </div>
         <!-- Page Content Holder -->
-        <div id="content">
+        <div class="journal" id="content">
 
             <!--Actual Content-->
             <div class="container">
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-8">
-                        <textarea rows="1" class="title text-center" style="margin-top: 50px" placeholder="Title"></textarea>
-                        <h6 class="text-center reg-font" style="color: grey;">July 08, 2020</h6>
+                        <textarea rows="1" class="title text-center" style="margin-top: 50px;" placeholder="Title"></textarea>
+                        <div class="text-center reg-font" style="color: white; font-weight: 900; font-size: 20px; text-shadow: 2px 2px grey ;">July 08, 2020</div>
                         <textarea rows="20" class="notes" placeholder="Begin entry here..."></textarea>
                     </div>
                     <div class="col-2"></div>
                 </div>
             </div>        
         </div>
+    <app-footer></app-footer>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

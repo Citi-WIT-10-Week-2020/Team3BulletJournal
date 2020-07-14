@@ -53,6 +53,8 @@ textarea {
     outline: none;
     resize: none !important;
     margin: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
 	box-shadow:  1px 1px 5px grey;
     border-color: #ced4da !important;
     width: 100%;
@@ -81,6 +83,6 @@ textarea:hover {
 	background-size: 100% 100%, 100% 100%, 100% 32px;
     background-attachment: local;
 }
-
+  
 
 

@@ -1,8 +1,8 @@
-    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #7ca5af;">
+    <nav class="navbar navbar-expand-lg" style="background-color: #7ca5af;">
         <div class="container-fluid">
             <a class="navbar-brand fancy-font" style="font-size: 45px;">Journal</a>
-            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-align-justify"></i>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="fa fa-bars" style="color: white"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -13,15 +13,12 @@
                     <li class="nav-item">
                         <a class="nav-link reg-font hoverable" href="journal-published">Published</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link reg-font hoverable text-white" href="#new-entry-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">New Entry</a>
-                        <ul class="collapse-left list-unstyled" id="new-entry-submenu">
-                            <li>
-                                <a href="journal-free-write">Free Write</a>
-                            </li>
-                            <li>
-                                <a href="journal-prompt">Respond to a Prompt</a>
-                            </li>
+                    <li class="dropdown nav-item">
+                        <a class="nav-link dropdown-toggle reg-font hoverable" href="#new-entry-submenu" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            New Entry</a>
+                        <ul class="dropdown-menu reg-font dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <li class="dropdown-item text-white" style="cursor: pointer;" href="journal-free-write" routerLink="/journal-free-write">Free Write</li>
+                            <li class="dropdown-item text-white" style="cursor: pointer;" href="journal-prompt" routerLink="/journal-prompt">Respond to a Prompt</li>
                         </ul>
                     </li>
                 </ul>

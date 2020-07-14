@@ -43,7 +43,7 @@ ul.CTAs a {
     width: 100%;
     padding: 0px;
     margin-top: 0px;
-    min-height: 100vh;
+    min-height: 60vh;
     transition: all 0.3s;
 }
 
@@ -60,8 +60,8 @@ html,body{
   }
 
   .button-choice{
-    background:#a3c0c7;
-    color:#a3c0c7;
+    background:#b3cbd0;
+    color:#b3cbd0;
     border:none;
     position:relative;
     width: 420px;

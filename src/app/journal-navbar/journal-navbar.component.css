@@ -1,0 +1,11 @@
+.dropdown-menu{
+    background-color: #7ca5af !important;
+    width: fit-content !important;
+    border: none !important;
+    top: 56px !important;
+}
+
+.dropdown-item:hover{
+    cursor: pointer;
+    background-color: #b3cbd0;
+}
