@@ -3,6 +3,7 @@ const express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
+const { time } = require('console');
 
 var db = mongoose.connect("mongodb+srv://ekelsey:Gogators123@cluster0-rglxo.mongodb.net/Test?retryWrites=true&w=majority", function(err, responses){
     if(err) {
@@ -34,8 +35,17 @@ const MoodSchema = Schema({
     mood: {type: String},
     day: {type: String},
     month: {type: String},
-    year: {type: String}
+    year: {type: String},
+    
+},{versionKey: false});
 
+const MeetingSchema = Schema({
+    username: {type: String},
+    participants: {type: Array},
+    day: {type: String},
+    month: {type: String},
+    year: {type: String},
+    time: {type: String},
 },{versionKey: false});
 
 const JournalSchema = Schema({
@@ -62,7 +72,7 @@ const UsersSchema = Schema({
 var model = mongoose.model('Users', UsersSchema, 'Users');
 var JournalModel = mongoose.model('Journals', JournalSchema, 'Journals');
 var MoodModel = mongoose.model('Moods', MoodSchema, 'Moods');
-
+var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
 
     app.post("/api/deleteUser", function(req,res){
         model.remove({ _id: req.body.id }, function(err) {
@@ -139,6 +149,20 @@ var MoodModel = mongoose.model('Moods', MoodSchema, 'Moods');
                 console.log('b');
             }
         });
+    }) 
+    
+    app.get('/api/getAllMeetings', function(req,res){
+        console.log('found endpoint')
+        MeetingModel.find({}, function(err, data) {
+            if(err) {
+                res.send(err);
+                console.log('a');
+            }
+            else{
+                res.send(data);
+                console.log('b');
+            }
+        });
     })    
 
     
@@ -182,6 +206,20 @@ var MoodModel = mongoose.model('Moods', MoodSchema, 'Moods');
         var mood = new MoodModel(req.body);
         console.log(req.body.text);
         mood.save(function(err,data){
+          if(err){
+                console.log(err);
+                res.send(err);
+            }
+            else{
+                //console.log(data);
+                res.send(data);
+            }
+        });
+    })
+
+    app.post("/api/createMeeting", function(req,res){
+        var meeting = new MeetingModel(req.body);
+        meeting.save(function(err,data){
             if(err){
                 console.log(err);
                 res.send(err);

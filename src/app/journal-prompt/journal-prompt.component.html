@@ -20,71 +20,38 @@
 </head>
 <body>
 
+    <div>
+        <app-navbar style="z-index: 9999;"></app-navbar>
+    </div>
+    <div class="sticky-top">
+        <app-journal-navbar style="z-index: 1;"></app-journal-navbar>
+    </div>
 
-        <!-- Page Content Holder -->
-        <div id="content">
-
-            <nav class="navbar navbar-expand-lg" style="background-color: #dad8d8;">
-                <div class="container-fluid">
-                    <a class="navbar-brand fancy-font" style="font-size: 45px;">Journal</a>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="journal-drafts">Drafts</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="journal-published">Published</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="#new-entry-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">New Entry</a>
-                                <ul class="collapse list-unstyled" id="new-entry-submenu">
-                                    <li>
-                                        <a href="journal-free-write">Free Write</a>
-                                    </li>
-                                    <li>
-                                        <a href="journal-prompt">Respond to a Prompt</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-
+    <div class="journal" id="content">
             <!--Actual Content-->
-            <form [formGroup]="journalForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="journalForm" (ngSubmit)="onSubmit()">
             <div class="container">
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-8">
-
-                        
-                        <h4 class="text-center reg-font" style="color: black;">Respond to a Prompt</h4>
-                         
-                        <h4>{{title.text}}</h4>
-                   <div class="form-group">
-                        <textarea rows="10" class="notes" formControlName="textEntry" placeholder="Begin entry here..."></textarea>
-
-                    </div>
+                        <textarea rows="2" class="reg-font text-center" style="margin-top: 50px; font-size: 25px;" readonly>{{title.text}}</textarea>
+                        <div class="text-center reg-font" style="color: white; font-weight: 900; font-size: 20px; text-shadow: 2px 2px grey; text-align: center;">July 08, 2020</div>
+                        <div class="form-group">
+                            <textarea rows="20" class="notes" formControlName="textEntry" placeholder="Begin entry here..."></textarea>
                         </div>
+                    </div>
                     <div class="col-2"></div>
-
-                    </div>
-                    <div class="form-group">
-                        <button [disabled]="loading" class="btn btn-primary">
-                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                            Submit
-                        </button>
-                        <a routerLink="/journal" class="btn btn-link">Back to Journaling Options</a>
-                    </div>
+                </div>
+                <div class="form-group">
+                    <button [disabled]="loading" class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Submit
+                    </button>
+                    <a routerLink="/journal" class="btn btn-link">Back to Journaling Options</a>
+                </div>
             </div>  
-            </form>
-        </div>
+        </form>
+    </div>
         
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

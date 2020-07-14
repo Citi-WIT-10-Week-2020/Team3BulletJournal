@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
     ) {
       //TRY THIS IF OTHER LINE DOESN'T WORK
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+        
     }
 
     logout() {
