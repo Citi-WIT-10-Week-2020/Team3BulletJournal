@@ -15,30 +15,45 @@ p {
 }
 
 
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    margin-bottom: 5px;
+}
+
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
 #content {
     width: 100%;
     padding: 20px;
-    margin-top: 0px;
     min-height: 100vh;
     transition: all 0.3s;
-    vertical-align: middle;
-    text-align: center;
 }
+
 
 /* ---------------------------------------------------
     BUTTON STYLE
 ----------------------------------------------------- */
-html,body{
-    height:100%;
-    margin: 0;
-    overflow: hidden;
-}
+
 body{
   text-align:center;
-}
+} 
 
   .button-choice{
     background:#8b593b;
