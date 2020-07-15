@@ -65,12 +65,12 @@ export class UserProfileContactsComponent implements OnInit {
                   console.log(data);
                   this.loading = false;
                   let found = false;
-                  for(let user of this.currentUser.friends){
-                    if(this.f.friendToAdd.value == user){
-                        found = true;
-                        this.alertService.error("Username already added as a friend!");
-                    }
-                  }   
+                //   for(let user of this.currentUser.friends){
+                //     if(this.f.friendToAdd.value == user){
+                //         found = true;
+                //         this.alertService.error("Username already added as a friend!");
+                //     }
+                //   }   
                   if(found == false){
                   for (let user of data){
                       if(user.username == this.f.friendToAdd.value){
