@@ -26,12 +26,4 @@
       <div class="col"></div>
     </div>
 </div>
-<div>
-    <h3>All registered users:</h3>
-    <ul>
-        <li *ngFor="let user of users">
-            {{user.username}} ({{user.firstName}} {{user.lastName}}) {{user.email}}
-            - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-        </li>
-    </ul>
-</div>
+
