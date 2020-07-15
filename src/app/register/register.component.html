@@ -32,6 +32,7 @@
         <input type="tel" formControlName="zoomLink" class="form-control" placeholder="123 456 7890" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" [ngClass]="{ 'is-invalid': submitted && f.zoomLink.errors }" />
         <div *ngIf="submitted && f.zoomLink.errors" class="invalid-feedback">
             Zoom Meeting ID required in correct format
+            <p>If you don't have a Zoom Account, create an account here: https://zoom.us/freesignup/</p>
         </div>
     </div>
     <div class="form-group">
