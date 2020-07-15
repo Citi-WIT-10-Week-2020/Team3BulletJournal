@@ -1,0 +1,31 @@
+.navbar {
+    padding: 0;
+    z-index: 9999 !important;
+}
+
+.nav-item{
+    bottom: 58px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 9999 !important;
+}
+  
+.dropdown-menu{
+    background-color: #a5a5a5 !important;
+    width: 30px !important;
+    border: none !important;
+    top: 56px !important;
+    z-index: 9999 !important;
+}
+
+.dropdownitem{
+    padding: 0;
+    z-index: 9999 !important;
+}
+.dropdown-item:hover{
+    background-color: #9e9d9d;
+    z-index: 9999 !important;
+}

@@ -15,7 +15,9 @@ export class NavbarComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService
     ) {
+      //TRY THIS IF OTHER LINE DOESN'T WORK
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+        
     }
 
     logout() {

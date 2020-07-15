@@ -1,44 +1,73 @@
 <!DOCTYPE html>
-<div class="sticky-top">
-    <app-navbar></app-navbar>
-</div>
+<html>
 
+<<<<<<< HEAD
 <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #7CA5AF; border-bottom: 3px solid;">
     <div class="container-fluid">
         <a class="navbar-brand fancy-font" style="font-size: 45px;">Mood Tracker</a>
         <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-align-justify"></i>
         </button>
+=======
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+>>>>>>> cd57ad6e05a63afe7de85f1d6c53a9be880ca202
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link reg-font hoverable" href="mood-tracker-weekly-charts">Weekly Graph</a>
-                </li>
-                <li>
-                    <a class="nav-link reg-font hoverable" href="mood-tracker-monthly-charts">Monthly Graph</a>
-                </li>
-            </ul>
-        </div>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="mood-tracker.component.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="sticky-top">
+        <app-navbar></app-navbar>
+        <app-mood-tracker-navbar></app-mood-tracker-navbar>
     </div>
-</nav>
+
 <div class="background-mood" id="content">
     <div id="first">
         <div id="second">
             <div id="title"> How are you feeling today? </div>
         </div>
+        
     <div class="mood-container">
+        <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitAnxiety()">
+        <div class="form-group">
         <div class="mood-item">
-                <button id="anxious" value="anxious" name="button" routerLink="/mood-chosen"></button><hr>Anxious </div>
+            <button id="anxious" value="false" name="button"></button><hr>Anxious </div>
+            </div>
+        </form>
+        <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitExcited()">
+            <div class="form-group"> 
         <div class="mood-item">
-            <button id="excited" value="excited" name="button" routerLink="/mood-chosen"></button> <hr>Excited </div>
+            <button id="excited" value="excited" name="button"></button> <hr>Excited </div>
+        </div>
+        </form>
+        <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitConfused()">
+        <div class="form-group">
         <div class="mood-item">
-            <button id="confused" value="confused" name="button" routerLink="/mood-chosen"></button><hr>Confused </div>
+            <button id="confused" value="confused" name="button"></button><hr>Confused </div>
+        </div>
+        </form>
+        <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitHappy()">
+        <div class="form-group">
         <div class="mood-item">
-            <button id="happy" value="happy" name="button" routerLink="/mood-chosen"></button> <hr>Happy </div>
+            <button id="happy" value="happy" name="button"></button> <hr>Happy </div>
+        </div>
+        </form>
+        <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitSad()">
+        <div class="form-group">
         <div class="mood-item">
-            <button id="sad" value="sad" name="button" routerLink="/mood-chosen"></button><hr> Sad </div>
+            <button id="sad" value="sad" name="button"></button><hr> Sad </div>
+        </div>
+        </form>
         </div>
     </div>
  </div>
-<app-footer></app-footer>

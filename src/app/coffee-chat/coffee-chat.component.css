@@ -33,7 +33,12 @@ p {
 ----------------------------------------------------- */
 html,body{
     height:100%;
-  }
+    margin: 0;
+    overflow: hidden;
+}
+body{
+  text-align:center;
+}
 
   .button-choice{
     background:#8b593b;

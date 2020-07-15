@@ -41,9 +41,10 @@ ul.CTAs a {
 ----------------------------------------------------- */
 #content {
     width: 100%;
-    padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 /* ---------------------------------------------------
@@ -51,26 +52,39 @@ ul.CTAs a {
 ----------------------------------------------------- */
 
 textarea {
-	resize: none !important;
-	overflow: auto !important;
-	outline: none;
-	box-shadow: none !important;
+    outline: none;
+    resize: none !important;
+    margin: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+	box-shadow:  1px 1px 5px grey;
     border-color: #ced4da !important;
+    width: 100%;
+    margin: 10px;
     }
 textarea:hover {
 		resize: none !important;
 		overflow: auto !important;
 		outline: none;
-		box-shadow: none !important;
+		box-shadow: 2px 2px 5px grey;
 		border-color: #ced4da !important;
     }
+
+.title{
+    font-size: 30px;
+}
     
 .notes {
-	width: 99%;
-	height: 40em;
-	line-height: 31px;
-	background-image: -webkit-linear-gradient(left, white 0, transparent 0), -webkit-linear-gradient(right, white 0, transparent 0), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+	width: 100%;
+	height: auto;
+    line-height: 32px;
+    background-image: -webkit-linear-gradient(left, white 0, transparent 0), 
+        -webkit-linear-gradient(right, white 0, transparent 0), 
+        -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
 	background-repeat: repeat-y;
-	background-size: 100% 100%, 100% 100%, 100% 31px;
-	background-attachment: local;
+	background-size: 100% 100%, 100% 100%, 100% 32px;
+    background-attachment: local;
 }
+  
+
+
