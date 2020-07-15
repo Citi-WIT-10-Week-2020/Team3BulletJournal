@@ -1,8 +1,4 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-@font-face{
-    font-family: 'Big Caslon';
-    src: url('https://www.cssfontstack.com/Big-Caslon');
-}
 
 
 /* ---------------------------------------------------
@@ -11,38 +7,28 @@
 button {
     width:125px;
     height:125px;
-    border-radius: 50%;
     border: none;
 }
 
-button#anxious{
-    background-image: url(/assets/images/anxious.png);
+button#read{
+    background:transparent url(/assets/images/book.png);
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center bottom;
 }
 
-button#excited{
-    background-image: url(/assets/images/excited.png);
+button#watch{
+    background:transparent url(/assets/images/watch.png);
     background-repeat: no-repeat;
     background-size: contain;
 }
-#confused{
-    background-image: url(/assets/images/confused.png);
+#do{
+    background:transparent url(/assets/images/do.png);
     background-repeat: no-repeat;
-    background-size: contain;
-}
-
-#happy{
-    background-image: url(/assets/images/happy.png);
-    background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 90%;
+    background-position: center bottom;
 }
 
-#sad{
-    background-image: url("/assets/images/sad boy.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-}
 
 /* ---------------------------------------------------
     CONTENT
@@ -77,7 +63,7 @@ p {
     margin:auto;
     width: 700px;
     height: 350px;
-    background: #FBF8E7;
+    background: #F9F0EF;
     overflow: hidden;
     border-radius:15px;
     border:1px solid black;
@@ -90,7 +76,7 @@ p {
     height: 25%;
     margin: auto;
     margin-top: 10px;
-    background: #B8E5DE;
+    background: #EED4CF;
     display: flex;
     justify-content: center;
     align-content: center;
