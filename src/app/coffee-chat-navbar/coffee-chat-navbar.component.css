@@ -1,21 +1,14 @@
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
-
-
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
+.dropdown-menu{
+    background-color: #fae5cc !important;
+    width: fit-content !important;
+    border: none !important;
+    top: 45px !important;
 }
 
-ul.CTAs {
-    padding: 20px;
+.dropdown-item:hover{
+    cursor: pointer;
+    background-color: #ffe5ad ;
 }
-
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    margin-bottom: 5px;
+.text-grey{
+    color: rgb(97, 96, 96) !important;
 }
-

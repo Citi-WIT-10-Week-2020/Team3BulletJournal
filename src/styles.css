@@ -21,7 +21,7 @@
  }
 
 .coffee-chat{
-  background: url('assets/images/joshua-bartell-6vvIBTvL90A-unsplash.jpg') no-repeat center center fixed;
+  background: url('assets/images/coffee background.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -195,3 +195,9 @@ hr.divide2 {
   background: #333;
   background-image: linear-gradient(to right, #9bc6d1, #6d6c6c, #9bc6d1);
 }
+
+
+
+/*--------------------------------------------
+Buttons for Components
+---------------------------------------------*/

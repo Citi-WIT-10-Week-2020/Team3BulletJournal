@@ -1,0 +1,14 @@
+.dropdown-menu{
+    background-color: #E2b8af  !important;
+    width: fit-content !important;
+    border: none !important;
+    top: 45px !important;
+}
+
+.dropdown-item:hover{
+    cursor: pointer;
+    background-color: #F9f0ef ;
+}
+.text-grey{
+    color: rgb(97, 96, 96) !important;
+}
