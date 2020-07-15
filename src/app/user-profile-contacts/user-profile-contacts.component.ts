@@ -38,7 +38,7 @@ export class UserProfileContactsComponent implements OnInit {
       });
 
       // get return url from route parameters or default to '/'
-      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/user-profile-contacts';
   }
 
   // convenience getter for easy access to form fields
@@ -61,7 +61,6 @@ export class UserProfileContactsComponent implements OnInit {
           //.pipe(first())
           .subscribe(
               data => {
-                  //this.router.navigate([this.returnUrl]);
                   console.log(data);
                   this.loading = false;
                   let found = false;
@@ -77,6 +76,7 @@ export class UserProfileContactsComponent implements OnInit {
                                   .subscribe(
                                       data => {
                                           this.router.navigate([this.returnUrl]);
+                                          this.alertService.success("Added Friend to Contacts");
                                           
                                        },
                                       error => {
