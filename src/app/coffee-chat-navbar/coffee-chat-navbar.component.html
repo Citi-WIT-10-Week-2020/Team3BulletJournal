@@ -1,29 +1,26 @@
 <!-- Page Content Holder -->
 
-    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #dad8d8;">
+    <nav class="navbar navbar-expand-lg" style="background-color: #fae5cc;">
         <div class="container-fluid">
-            <a class="navbar-brand fancy-font" style="font-size: 45px;">Coffee Chat: It's a Brew-tiful Day</a>
-            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-align-justify"></i>
+            <a class="navbar-brand fancy-font text-grey" style="font-size: 40px;">Coffee Chat</a>
+            <a class="reg-font text-grey" style="font-size: 30">>> {{currentPage}}</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="fa fa-bars" style="color: white"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="coffee-chat-upcoming-meetings">Upcoming Meetings</a>
+                    <li class="nav-item">
+                        <a class="nav-link reg-font text-grey hoverable" href="coffee-chat-upcoming-meetings">Upcoming Meetings</a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="coffee-chat-pending-meetings">Pending Meetings</a>
+                    <li class="nav-item">
+                        <a class="nav-link reg-font text-grey hoverable" href="coffee-chat-pending-meetings">Pending Meetings</a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="#new-meeting" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">New Meeting</a>
-                        <ul class="collapse list-unstyled" id="new-meeting">
-                            <li>
-                                <a href="coffee-chat-select-friends">Select Friends</a>
-                            </li>
-                            <li>
-                                <a href="coffee-chat-random-friends">Randomly Generate Friends</a>
-                            </li>
+                    <li class="dropdown nav-item">
+                        <a class="nav-link dropdown-toggle reg-font text-grey hoverable" href="#new-meeting-submenu" id="new-meeting" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">New Meeting</a>
+                        <ul class="dropdown-menu reg-font dropdown-menu-right" aria-labelledby="new-meeting">
+                            <li class="dropdown-item text-grey" href="coffee-chat-select-friends" routerLink="/coffee-chat-select-friends">Select Friends</li>
+                            <li class="dropdown-item text-grey" href="coffee-chat-random-friends" routerLink="/coffee-chat-random-friends">Randomly Generate Friends</li>
                         </ul>
                     </li>
                 </ul>

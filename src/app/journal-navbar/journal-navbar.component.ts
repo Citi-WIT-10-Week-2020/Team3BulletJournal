@@ -27,7 +27,7 @@ export class JournalNavbarComponent implements OnInit {
     if(this.href == '/journal-prompt'){
       this.currentPage = 'Respond to a Prompt'
     }
-    else{
+    if(this.href == '/journal'){
       this.currentPage == 'Home'
     }
   }

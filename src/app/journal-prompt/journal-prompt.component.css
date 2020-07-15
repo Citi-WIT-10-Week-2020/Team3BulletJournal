@@ -18,25 +18,6 @@ h4{
     text-align: center;
 }
 
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-}
-
-ul.CTAs {
-    padding: 20px;
-}
-
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    margin-bottom: 5px;
-}
-
 
 /* ---------------------------------------------------
     CONTENT STYLE
@@ -56,7 +37,6 @@ ul.CTAs a {
 textarea {
     outline: none;
     resize: none !important;
-    margin: 20px;
     padding-left: 10px;
     padding-right: 10px;
 	box-shadow:  1px 1px 5px grey;
@@ -64,6 +44,7 @@ textarea {
     width: 100%;
     display:inline-block !important;
     vertical-align:middle !important;
+    margin: 10px;
     }
 
 textarea:hover {
