@@ -66,6 +66,7 @@ export class AuthenticationService {
   
     createRandomMeeting(username, numPeople, day, month, year, time){
         return this.http.post<any>(`http://localhost:8080/api/createRandomMeeting`, {username, numPeople, day, month, year, time});
+    }
     
     saveMood(username, mood, day, month, year){
         return this.http.post<any>(`http://localhost:8080/api/saveMood`, {username, mood, day, month, year})
