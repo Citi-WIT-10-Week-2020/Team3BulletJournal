@@ -16,6 +16,7 @@ export class UserProfileContactsComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
   submitted = false;
+  friendList = [];
   returnUrl: string;
     currentUser: any;
 
@@ -32,6 +33,7 @@ export class UserProfileContactsComponent implements OnInit {
   }
 
   ngOnInit() {
+      this.friendList = this.currentUser.friends;
       this.loginForm = this.formBuilder.group({
           friendToAdd: ['', Validators.required],
           
