@@ -47,7 +47,6 @@ const MeetingSchema = Schema({
     month: {type: String},
     year: {type: String},
     time: {type: String},
-
 },{versionKey: false});
 
 const JournalSchema = Schema({
@@ -207,6 +206,21 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
         });
     })
 
+    app.post("/api/saveMood", function(req,res){
+        var mood = new MoodModel(req.body);
+        console.log(req.body.text);
+        mood.save(function(err,data){
+          if(err){
+                console.log(err);
+                res.send(err);
+            }
+            else{
+                //console.log(data);
+                res.send(data);
+            }
+        });
+    })
+
     app.post("/api/createMeeting", function(req,res){
         var meeting = new MeetingModel(req.body);
         meeting.save(function(err,data){
@@ -215,6 +229,7 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
                 res.send(err);
             }
             else{
+                //console.log(data);
                 res.send(data);
             }
         });
