@@ -64,10 +64,13 @@ const UsersSchema = Schema({
     firstName: {type: String},
     lastName: {type: String},
     username: {type: String},
-    zoom: {type: String},
+    zoomLink: {type: String},
     password: {type: String},
     email: {type: String},
-    friends: {type: Array}
+    friends: {type: Array},
+    bio: {type: String},
+    hobbies: {type:String},
+    role: {type:String},
 
 },{versionKey: false});
 
