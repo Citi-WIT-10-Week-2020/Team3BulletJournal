@@ -46,14 +46,6 @@ export class AuthenticationService {
 
     getAllUsers(){
         return this.http.get<any>(`http://localhost:8080/api/getAllUsers`);
-        // .pipe(map(user => {
-        //     // store user details and jwt token in local storage to keep user logged in between page refreshes
-        //     JSON.stringify(user);
-        //     // localStorage.setItem('currentUser', JSON.stringify(user));
-        //     // this.currentUserSubject.next(user);
-        //     return user;
-        // }));
-        
     }
 
     getAllJournals(){
@@ -71,7 +63,11 @@ export class AuthenticationService {
     createMeeting(username, participants, day, month, year, time){
         return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, time});
     }
-
+  
+    createRandomMeeting(username, numPeople, day, month, year, time){
+        return this.http.post<any>(`http://localhost:8080/api/createRandomMeeting`, {username, numPeople, day, month, year, time});
+    }
+    
     saveMood(username, mood, day, month, year){
         return this.http.post<any>(`http://localhost:8080/api/saveMood`, {username, mood, day, month, year})
         .pipe(map(user => {

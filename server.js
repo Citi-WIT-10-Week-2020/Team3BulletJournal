@@ -42,6 +42,7 @@ const MoodSchema = Schema({
 const MeetingSchema = Schema({
     username: {type: String},
     participants: {type: Array},
+    numPeople: {type: String},
     day: {type: String},
     month: {type: String},
     year: {type: String},
@@ -62,10 +63,13 @@ const UsersSchema = Schema({
     firstName: {type: String},
     lastName: {type: String},
     username: {type: String},
-    zoom: {type: String},
+    zoomLink: {type: String},
     password: {type: String},
     email: {type: String},
-    friends: {type: Array}
+    friends: {type: Array},
+    bio: {type: String},
+    hobbies: {type:String},
+    role: {type:String},
 
 },{versionKey: false});
 
@@ -231,6 +235,19 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
         });
     })
 
+    app.post("/api/createRandomMeeting", function(req,res){
+        var meeting = new MeetingModel(req.body);
+        console.log("reached random meeting");
+        meeting.save(function(err,data){
+            if(err){
+                console.log(err);
+                res.send(err);
+            }
+            else{
+                res.send(data);
+            }
+        });
+    })
     // app.listen(8080, function () {
     //     console.log('Correct port found')
     // })
