@@ -39,6 +39,7 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    console.log("in on SUBMIT")
 
     // reset alerts on submit
     this.alertService.clear();
@@ -48,8 +49,7 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
         return;
     }
     this.loading = true;
-    this.authenticationService.register(this.createMeeting.value)
-        //.pipe(first())
+    this.authenticationService.createMeeting(this.currentUser.username, this.f.people.value, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value)
         .subscribe(
             data => {
                 this.alertService.success('Meeting Scheduled', true);
