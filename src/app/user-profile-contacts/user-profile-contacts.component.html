@@ -41,6 +41,13 @@
                     <a routerLink="/user-profile-contacts" class="btn btn-link">Cancel</a>
                 </div>
             </form>
+
+            <div class="" *ngFor="let friend of friendList"  [ngValue]="friend">
+                <label>Friends: </label>
+                <p>
+                    {{friend}}
+                </p>
+            </div>
         </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->

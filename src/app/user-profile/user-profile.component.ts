@@ -14,7 +14,9 @@ export class UserProfileComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
   ) {
-    this.currentUser = this.authenticationService.currentUserValue[0];   }
+    this.currentUser = this.authenticationService.currentUserValue[0];
+    console.log(this.currentUser.firstName);
+     }
   ngOnInit(): void {
   }
 

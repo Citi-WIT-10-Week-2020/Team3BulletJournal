@@ -16,12 +16,14 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 </head>
+<div>
+    <app-navbar style="z-index: 9999;"></app-navbar>
+</div>
+<div class="sticky-top">
+    <app-coffee-chat-navbar style="z-index: 1;"></app-coffee-chat-navbar>
+</div>
+
 <body>
-    <div class="sticky-top">
-        <app-navbar></app-navbar>
-        <app-coffee-chat-navbar></app-coffee-chat-navbar>
-    </div>
-   
     <div class="coffee-chat" id="content">
 
             <!--Button-->

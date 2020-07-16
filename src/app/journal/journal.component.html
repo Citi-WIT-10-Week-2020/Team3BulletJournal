@@ -20,17 +20,35 @@
 </head>
 <body>
     <div>
-        <app-navbar></app-navbar>
-        <app-journal-navbar></app-journal-navbar>
+        <app-navbar style="z-index: 9999;"></app-navbar>
+    </div>
+    <div class="sticky-top">
+        <app-journal-navbar style="z-index: 1;"></app-journal-navbar>
     </div>
 
-    <div class="journal" id="content">
-        <!--Button-->
-        <button class="button-choice reg-font text-white" style="margin:3rem" routerLink="/journal-free-write">Free Write</button>
-        <button class="button-choice reg-font text-white" style="margin:3rem" routerLink="/journal-prompt">Respond to a Prompt</button>
-    </div>
-        <app-footer></app-footer>
-    
+    <div class="journal container-fluid" id="content">
+        <div class="row">
+            <div class="col-2"></div>
+                <!--Button 1-->
+                <div class="col-3 bkrd">
+                <button class="button" href="/journal-free-write" routerLink="/journal-free-write">
+                    Free Writing Entry
+                    <div class="button__horizontal"></div>
+                    <div class="button__vertical"></div>
+                </button>
+            </div>
+            <div class="col-2"></div>
+            <!--Button 2-->
+            <div class="col-3 bkrd">
+            <button class="button" href="/journal-prompt" routerLink="/journal-prompt">
+                Respond to a Prompt
+                <div class="button__horizontal"></div>
+                <div class="button__vertical"></div>
+            </button>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>   
 
     
 

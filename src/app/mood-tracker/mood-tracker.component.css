@@ -71,7 +71,7 @@ p {
     margin:auto;
     width: 700px;
     height: 350px;
-    background: #D8E4E7;
+    background: #f9f0ef;
     overflow: hidden;
     border-radius:15px;
     border:1px solid black;
@@ -84,7 +84,7 @@ p {
     height: 25%;
     margin: auto;
     margin-top: 10px;
-    background: #A3C0C7;
+    background: #eed4cf;
     display: flex;
     justify-content: center;
     align-content: center;

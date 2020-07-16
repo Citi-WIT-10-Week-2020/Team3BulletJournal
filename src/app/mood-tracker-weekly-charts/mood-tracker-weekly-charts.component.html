@@ -17,9 +17,11 @@
 
 </head>
 <body>
-    <div class="mood-tracker-navbar">    
-        <app-navbar></app-navbar>
-        <app-mood-tracker-navbar></app-mood-tracker-navbar>
+    <div>
+        <app-navbar style="z-index: 9999;"></app-navbar>
+    </div>
+    <div class="sticky-top">
+        <app-mood-tracker-navbar style="z-index: 1;"></app-mood-tracker-navbar>
     </div>
 
         <!-- Page Content Holder -->
