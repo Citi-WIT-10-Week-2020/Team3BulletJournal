@@ -1,8 +1,5 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-@font-face{
-    font-family: 'Big Caslon';
-    /* src: url('https://www.cssfontstack.com/Big-Caslon'); */
-}
+
 
 
 /* ---------------------------------------------------
@@ -53,9 +50,6 @@ button#excited{
     margin-top: 0px;
     min-height: 100vh;
     transition: all 0.3s;
-}
-html,body{
-    height:100%;
 }
 
 body {
