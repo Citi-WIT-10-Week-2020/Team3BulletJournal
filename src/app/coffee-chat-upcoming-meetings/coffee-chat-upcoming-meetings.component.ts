@@ -15,8 +15,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
   loading: boolean;
   returnUrl: any;
   currentUser: any;
-  participants: Array<String>;
-  meetings: Array<Object>;
+  meetings: any[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -48,7 +47,6 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
     var minutes = date.getMinutes();
 
     this.loading = true;
-    this.participants = [];
     this.authenticationService.getAllMeetings()
         .subscribe(
             data => {
@@ -67,18 +65,21 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                                 console.log('greater minutes');
                                 this.loading = false;
                                 found = true;
+                                this.meetings.push(user);
                               }
                             }
                             if(user.time > hour){
                               console.log('greater hour');
                               this.loading = false;
                               found = true;
+                              this.meetings.push(user);
                             }
                           }
                           if (user.day > day){
                             console.log('greater day');
                               this.loading = false;
                               found = true;
+                              this.meetings.push(user);
                           }
 
                         }
@@ -86,6 +87,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                           console.log('greater month');
                               this.loading = false;
                               found = true;
+                              this.meetings.push(user);
                         }
                       }
                         
@@ -93,6 +95,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                         console.log('greater year');
                               this.loading = false;
                               found = true;
+                              this.meetings.push(user);
                         }
                     }
                 }

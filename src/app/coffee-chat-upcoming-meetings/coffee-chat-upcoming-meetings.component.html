@@ -27,58 +27,42 @@
 
         <!-- Page Content Holder -->
         <div id="content">
-            
             <h3>Upcoming Meetings</h3>
             <div class="row">
                     <div class="col-md-auto">
                         <h5>Meetings I Scheduled...</h5>
                     </div>
-                </div>
-                <div class="row">
+                <div class="row" *ngFor="let meeting of meetings"  [ngValue]="meeting">
                     <div class="col col-md-auto">
                         <div class="row justify-content-between">
                             <div class="col-8 col-sm-4">
                                 Saturday, May 14
+                                <!-- {{meeting.month}} {{meeting.day}}, {{meeting.year}} -->
                             </div>
                             <div class="col-8 col-sm-4">
-                                8:00 AM
+                                8:00 AM <!--change from military time to standard time-->
+                                <!-- {{meeting.time}} -->
                             </div>
                             <div class="col-8 col-sm-4">
                                 3 Attendees <!--Pull sum of attendees-->
+                                <!-- {{meeting.participants.length}} -->
                             </div>
                         </div>
-                        <div class="row justify-content-between">
+                        <div class="row justify-content-between" *ngFor="let participant of participants"  [ngValue]="participant">
                             <div class="col-8 col-sm-4">
                                 Emily
+                                <!-- {{meeting.participant}} -->
+                                <!--Find a way to loop through names-->
                             </div>
 
                             <div class="col-8 col-sm-4">
                                 Pending
-                            </div>
-                        </div>
-                        <div class="row justify-content-between">
-                            <div class="col-8 col-sm-4">
-                                Shannon
-                            </div>
-                            <div class="col-8 col-sm-4">
-                                Pending
-                            </div>
-                        </div>
-                        <div class="row justify-content-between">
-                            <div class="col-8 col-sm-4">
-                                Katie
-                            </div>
-                            <div class="col-8 col-sm-4">
-                                Accepted
+                                <!--add status later!-->
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <p>
-                    </p>
-                </div>
-            
+            </div>
         </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
