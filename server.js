@@ -102,6 +102,7 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
     })
 
     app.post("/api/register", function(req,res){
+        console.log('working in server');
         var mod = new model(req.body);
         mod.save(function(err,data){
             if(err){
