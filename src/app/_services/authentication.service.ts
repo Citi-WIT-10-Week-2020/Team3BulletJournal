@@ -93,6 +93,7 @@ export class AuthenticationService {
     }
 
     register(user) {
+        console.log('in auth');
         return this.http.post(`http://localhost:8080/api/register`, user);
     }
 

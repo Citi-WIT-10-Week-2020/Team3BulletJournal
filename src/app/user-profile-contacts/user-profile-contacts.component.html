@@ -38,14 +38,14 @@
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                         Add Friend
                     </button>
-                    <a routerLink="/user-profile-contacts" class="btn btn-link">Cancel</a>
+                    <a routerLink="/" class="btn btn-link">Cancel</a>
                 </div>
             </form>
-
-            <div class="" *ngFor="let friend of friendList"  [ngValue]="friend">
-                <label>Friends: </label>
+            <label>Friends: </label>
+            <div class="" *ngFor="let friend of currentUser.friends"  [ngValue]="friend">
+                
                 <p>
-                    {{friend}}
+                    {{friend.username}}
                 </p>
             </div>
         </div>
