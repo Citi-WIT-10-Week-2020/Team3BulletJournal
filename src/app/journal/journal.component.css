@@ -41,7 +41,6 @@ ul.CTAs a {
 ----------------------------------------------------- */
 #content {
     width: 100%;
-    padding: 0px;
     margin-top: 0px;
     min-height: 60vh;
     transition: all 0.3s;
@@ -50,141 +49,87 @@ ul.CTAs a {
 /* ---------------------------------------------------
     BUTTON STYLE
 ----------------------------------------------------- */
+.row{
+    padding-top: 8% !important;
+    padding-bottom: 15%;
+} 
 
-html,body{
-    height:100%;
-  }
-  
-  body{
-    text-align:center;
-  }
+.bkrd{
+    background-color: #d8e4e7;
+    height: 25%;
+    width: 25%;
+    padding: 0;
+    margin: 0;
 
-  .button-choice{
-    background:#b3cbd0;
-    color:#b3cbd0;
-    border:none;
-    position:relative;
-    width: 420px;
-    height:180px;
-    font-size:1.6em;
-    padding:0 2em;
-    cursor:pointer;
-    transition:800ms ease all;
-    outline:none;
-    white-space: normal;
-    word-wrap: break-word;
-  }
-  .button-choice:hover{
-    background:#d8e4e7;
-    color:#d8e4e7;
-  }
-  .button-choice:before,button-choice:after{
-    content:'';
-    position:absolute;
-    top:0;
-    right:0;
-    height:2px;
-    width:0;
-    background: #7ca5af;
-    transition:400ms ease all;
-  }
-  .button-choice:after{
-    right:inherit;
-    top:inherit;
-    left:0;
-    bottom:0;
-  }
-  .button-choice:hover:before,button-choice:hover:after{
-    width:100%;
-    transition:800ms ease all;
-  }
-
-
-  
-
-  div[class*=box] {
-    height: 150px;
-    width: 100%; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;
 }
 
-.box-1 { background-color: #d8e4e7; }
-.box-2 { background-color: #3C3C3C; }
-.box-3 { background-color: #66A182; }
 
-.btn {
-    line-height: 50px;
-    height: 150px;
-    text-align: center;
-    padding-top: 10%;
-    width: 100%;
-    cursor: pointer;
-    font-family: 'Montserrat';
-}
-
-/* 
-========================
-      BUTTON ONE
-========================
-*/
-.btn-one {
-    color: grey;
-    transition: all 0.3s;
-    position: relative;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-top-style: solid;
-    border-bottom-style: solid;
-    border-top-color: grey;
-    border-bottom-color: rgb(167, 167, 167);
-}
-.btn-one span {
-    transition: all 0.3s;
-}
-.btn-one::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 150px;
-    z-index: 1;
-    opacity: 0;
-    transition: all 0.3s;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-top-style: solid;
-    border-bottom-style: solid;
-    border-top-color: grey;
-    border-bottom-color: grey;
-    transform: scale(0.1, 1);
-}
-.btn-one:hover span {
-    letter-spacing: 2px;
-}
-.btn-one:hover::before {
-    opacity: 1; 
-    transform: scale(1, 1); 
-}
-.btn-one::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 150px;
-    z-index: 1;
-    transition: all 0.3s;
-    background-color: rgba(255,255,255,0.1);
-}
-.btn-one:hover::after {
-    opacity: 0; 
-    transform: scale(0.1, 1);
-}
-
-  
-
+.button {
+    --offset: 10px;
+    --border-size: 2px;
     
+    display: inline-block;
+    position: relative;
+    padding: 10% 22%;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: rgb(117, 116, 116);
+    letter-spacing: 0.25em;
+    outline: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+    transition: background 0.8s ease;
+    font-family: 'Montserrat';
+    margin: 5%;
+
+
+}
+.button:hover {
+    background: #afc5ca;
+}
+.button__horizontal, .button__vertical {
+    position: absolute;
+    top: var(--horizontal-offset, 0);
+    right: var(--vertical-offset, 0);
+    bottom: var(--horizontal-offset, 0);
+    left: var(--vertical-offset, 0);
+    transition: transform 0.8s ease;
+    will-change: transform;
+}
+.button__horizontal::before, .button__vertical::before {
+    content: '';
+    position: absolute;
+    border: inherit;
+}
+.button__horizontal {
+    --vertical-offset: calc(var(--offset) * -1);
+    border-top: var(--border-size) solid currentcolor;
+    border-bottom: var(--border-size) solid currentcolor;
+}
+.button__horizontal::before {
+    top: calc(var(--vertical-offset) - var(--border-size));
+    bottom: calc(var(--vertical-offset) - var(--border-size));
+    left: calc(var(--vertical-offset) * -1);
+    right: calc(var(--vertical-offset) * -1);
+}
+.button:hover .button__horizontal {
+    transform: scaleX(0);
+}
+.button__vertical {
+    --horizontal-offset: calc(var(--offset) * -1);
+    border-left: var(--border-size) solid currentcolor;
+    border-right: var(--border-size) solid currentcolor;
+}
+.button__vertical::before {
+    top: calc(var(--horizontal-offset) * -1);
+    bottom: calc(var(--horizontal-offset) * -1);
+    left: calc(var(--horizontal-offset) - var(--border-size));
+    right: calc(var(--horizontal-offset) - var(--border-size));
+}
+.button:hover .button__vertical {
+    transform: scaleY(0);
+}
