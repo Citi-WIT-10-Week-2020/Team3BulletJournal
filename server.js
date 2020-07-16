@@ -102,6 +102,7 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
     })
 
     app.post("/api/register", function(req,res){
+        console.log('working in server');
         var mod = new model(req.body);
         mod.save(function(err,data){
             if(err){
@@ -172,7 +173,7 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
     
     app.put('/api/addAFriend', function(req,res){
         //console.log('hit')
-        model.findByIdAndUpdate(req.body._id, {$push: {friends: req.body.friendToAdd}}, {new: true},
+        model.findByIdAndUpdate(req.body._id, {$addToSet: {friends: req.body.friendToAdd}}, {new: true},
             function(err,data) {
                 if(err) {
                     //console.log(err);
@@ -180,7 +181,7 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
                 }
                 else{
                     console.log(req.body.username);
-                    res.send({data:"Record has been updated"});
+                    res.send(data);
                 }
             });
 
