@@ -30,12 +30,11 @@ export class HomeComponent implements OnInit {
 
     deleteUser(id: number) {
         this.authenticationService.delete(id)
-            .pipe(first())
             .subscribe(() => this.loadAllUsers());
     }
 
     private loadAllUsers() {
-        this.authenticationService.getAllUsers()
+        this.authenticationService.getAllUsers();
             //.pipe(first())
             //.subscribe(users => this.users = users);
     }

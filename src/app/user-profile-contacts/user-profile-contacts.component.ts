@@ -93,7 +93,6 @@ export class UserProfileContactsComponent implements OnInit {
                           this.loading = false;
                           this.currentUser.friends.push(user);
                           this.authenticationService.addAFriend(this.currentUser._id, user) //look into pushng whole user
-                              .pipe(first())
                                   .subscribe(
                                       data => {
                                     

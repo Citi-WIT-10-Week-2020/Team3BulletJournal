@@ -47,6 +47,7 @@ const MeetingSchema = Schema({
     month: {type: String},
     year: {type: String},
     time: {type: String},
+    
 },{versionKey: false});
 
 const JournalSchema = Schema({
@@ -69,7 +70,7 @@ const UsersSchema = Schema({
     friends: {type: Array},
     bio: {type: String},
     hobbies: {type:String},
-    role: {type:String},
+    role: {type:String}
 
 },{versionKey: false});
 
@@ -110,7 +111,6 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
                 res.send(err);
             }
             else{
-                //console.log(data);
                 res.send(data);
             }
         });
