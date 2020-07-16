@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService, AlertService } from '../_services';
-import { FormBuilder, Validators } from '@angular/forms';
-import { time } from 'console';
+import { Validators, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -25,6 +24,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
     private alertService: AlertService
   ) {
     this.currentUser = this.authenticationService.currentUserValue[0];
+    this.meetings = this.meetings;
     
      }
      
@@ -47,55 +47,54 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
     var minutes = date.getMinutes();
 
     this.loading = true;
+    this.meetings = [];
     this.authenticationService.getAllMeetings()
         .subscribe(
             data => {
                 console.log(data);
                 this.loading = false;
                 let found = false;
+
                 //look into querying data
                 for (let user of data){
-                  console.log(day, month, year);
+            
                     if(user.username == this.currentUser.username){
                       if (user.year == year){
                         if(user.month == month){
                           if(user.day == day){
                             if(user.time == hour){
                               if(user.time >= minutes){
-                                console.log('greater minutes');
                                 this.loading = false;
-                                found = true;
                                 this.meetings.push(user);
+                                found = true;
                               }
                             }
                             if(user.time > hour){
-                              console.log('greater hour');
                               this.loading = false;
-                              found = true;
                               this.meetings.push(user);
+                              found = true;
                             }
                           }
                           if (user.day > day){
-                            console.log('greater day');
                               this.loading = false;
-                              found = true;
                               this.meetings.push(user);
+                              found = true;
                           }
 
                         }
                         if(user.month > month){
                           console.log('greater month');
                               this.loading = false;
-                              found = true;
                               this.meetings.push(user);
+                              found = true;
                         }
                       }
                         
                       if(user.year > year){
                         console.log('greater year');
                               this.loading = false;
-                              found = true;
                               this.meetings.push(user);
+                              found = true;
                         }
                     }
                 }
@@ -105,14 +104,18 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                     this.alertService.error("No scheduled meetings");
                 }
 
+                for(let user of this.meetings){
+                  console.log('got through');
+                  console.log(user);
+                }
+
             },
             error => {
                 this.alertService.error(error);
                 this.loading = false;
             });
-            console.log('outside')
-
+            console.log('outside');
           
-}
+  }
 
 }
