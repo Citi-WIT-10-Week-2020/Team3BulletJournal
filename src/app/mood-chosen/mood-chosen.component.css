@@ -40,9 +40,7 @@ button#watch{
     min-height: 100vh;
     transition: all 0.3s;
 }
-html,body{
-    height:100%;
-}
+
 
 body {
     font-family: 'Big Caslon', sans-serif;
