@@ -35,10 +35,10 @@
                 Start Connecting (Randomly Generate Friends)
             </div>
             <alert></alert>
-            <form [formGroup]="createMeeting" (ngSubmit)="onSubmit()">
+            <form [formGroup]="createRandomMeeting" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label>Number of People:</label>
-                    <select>
+                    <select formControlName="numPeople"> 
                         <option *ngFor="let number of numberList" [ngValue]="number">{{number}}</option>
                     </select>
                 </div>

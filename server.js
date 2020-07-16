@@ -42,11 +42,11 @@ const MoodSchema = Schema({
 const MeetingSchema = Schema({
     username: {type: String},
     participants: {type: Array},
+    numPeople: {type: String},
     day: {type: String},
     month: {type: String},
     year: {type: String},
     time: {type: String},
-
 },{versionKey: false});
 
 const JournalSchema = Schema({
@@ -63,10 +63,13 @@ const UsersSchema = Schema({
     firstName: {type: String},
     lastName: {type: String},
     username: {type: String},
-    zoom: {type: String},
+    zoomLink: {type: String},
     password: {type: String},
     email: {type: String},
-    friends: {type: Array}
+    friends: {type: Array},
+    bio: {type: String},
+    hobbies: {type:String},
+    role: {type:String},
 
 },{versionKey: false});
 
@@ -169,7 +172,7 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
     
     app.put('/api/addAFriend', function(req,res){
         //console.log('hit')
-        model.findByIdAndUpdate(req.body._id, {$push: {friends: req.body.friendToAdd}}, {new: true},
+        model.findByIdAndUpdate(req.body._id, {$addToSet: {friends: req.body.friendToAdd}}, {new: true},
             function(err,data) {
                 if(err) {
                     //console.log(err);
@@ -177,7 +180,7 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
                 }
                 else{
                     console.log(req.body.username);
-                    res.send({data:"Record has been updated"});
+                    res.send(data);
                 }
             });
 
@@ -203,8 +206,38 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
         });
     })
 
+    app.post("/api/saveMood", function(req,res){
+        var mood = new MoodModel(req.body);
+        console.log(req.body.text);
+        mood.save(function(err,data){
+          if(err){
+                console.log(err);
+                res.send(err);
+            }
+            else{
+                //console.log(data);
+                res.send(data);
+            }
+        });
+    })
+
     app.post("/api/createMeeting", function(req,res){
         var meeting = new MeetingModel(req.body);
+        meeting.save(function(err,data){
+            if(err){
+                console.log(err);
+                res.send(err);
+            }
+            else{
+                //console.log(data);
+                res.send(data);
+            }
+        });
+    })
+
+    app.post("/api/createRandomMeeting", function(req,res){
+        var meeting = new MeetingModel(req.body);
+        console.log("reached random meeting");
         meeting.save(function(err,data){
             if(err){
                 console.log(err);
@@ -215,7 +248,6 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
             }
         });
     })
-
     // app.listen(8080, function () {
     //     console.log('Correct port found')
     // })

@@ -10,10 +10,15 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class CoffeeChatRandomFriendsComponent implements OnInit {
   currentUser: any;
-  numberList = ["1", "2", "3", "4", "5"];
-  createMeeting: FormGroup;
+  numberList;
+  index;
+  friendIndex;
+  indicesOfSelected = [];
+  selectedPeopleList = [];
+  createRandomMeeting: FormGroup;
   submitted = false;
   loading = false;
+  numAvailableFriends;
 
   constructor(
     private router: Router,
@@ -23,19 +28,41 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
     private alertService: AlertService) 
   {
     this.currentUser = this.authenticationService.currentUserValue[0];
-   }
+    this.numAvailableFriends = this.currentUser.friends.length;
+    console.log(this.numAvailableFriends);
 
+    switch(this.numAvailableFriends){
+      case 0:
+        this.numberList = [];
+        break;
+      case 1:
+        this.numberList = [1];
+        break;
+      case 2:
+        this.numberList = [1, 2];
+        break;
+      case 3:
+        this.numberList = [1, 2, 3];
+        break;
+      case 4:
+        this.numberList = [1, 2, 3, 4];
+        break;
+      default:
+        this.numberList = [1, 2, 3, 4, 5];
+    }
+   }
   
    ngOnInit(){
-    this.createMeeting = this.formBuilder.group({
+    this.createRandomMeeting = this.formBuilder.group({
       numPeople: ['', Validators.required],
       date: ['', Validators.required],
       time: ['', Validators.required],
     })
-  }
 
+  }
+  
   // convenience getter for easy access to form fields
-  get f() { return this.createMeeting.controls; }
+  get f() { return this.createRandomMeeting.controls; }
 
   onSubmit() {
     this.submitted = true;
@@ -44,21 +71,49 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
     this.alertService.clear();
 
     // stop here if form is invalid
-    if (this.createMeeting.invalid) {
+    if (this.createRandomMeeting.invalid || this.numAvailableFriends <= 0) {
         return;
     }
     this.loading = true;
-    this.authenticationService.register(this.createMeeting.value)
-        //.pipe(first())
-        .subscribe(
+    console.log(this.f.numPeople.value);
+    this.authenticationService.createRandomMeeting(this.currentUser.username, this.f.numPeople.value, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value)    
+    .subscribe(
             data => {
-                this.alertService.success('Meeting Scheduled', true);
-                this.router.navigate(['/coffee-chat-profiles'], { queryParams: { scheduled: true }});
-            },
+              this.alertService.success('Random Meeting Scheduled', true);
+              this.router.navigate(['/coffee-chat-profiles'], { queryParams: { scheduled: true }});
+              console.log(data);
+              this.loading = false;
+              //look into querying data
+              for (let user of data){
+                  if(user.username == this.currentUser.username){
+                      console.log('Yay we found it');
+                      this.loading = false;
+                //randomize people based on numPeople in group
+                //create random indices
+              for(var i = 0; i < this.f.numPeople.value; i++){
+                this.index = Math.floor(Math.random() * this.numAvailableFriends);
+                for(var j = 0; j < this.indicesOfSelected.length; j++){
+                  if(this.index != this.indicesOfSelected[j]){
+                    this.indicesOfSelected[i] = this.index;
+                  }
+                }
+              }
+
+              console.log(this.indicesOfSelected.length);
+
+              for(var i = 0; i < this.indicesOfSelected.length; i++){
+                this.friendIndex = this.indicesOfSelected[i];
+                this.selectedPeopleList[i] = this.currentUser.friends[this.friendIndex].value;
+              }
+            }
+          }
+  
+                       },
             error => {
                 this.alertService.error(error);
                 this.loading = false;
             });
 }
+
 
 }

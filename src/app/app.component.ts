@@ -9,6 +9,7 @@ import { AuthenticationService } from './_services';
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
     currentUser: any;
+    currentMood: any;
 
     constructor(
         private router: Router,
@@ -17,6 +18,7 @@ export class AppComponent {
     ) {
         //this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
        // this.currentUser = this.authenticationService.currentUserValue[0];
+       this.currentMood = null;
     }
 
     //Repdata;

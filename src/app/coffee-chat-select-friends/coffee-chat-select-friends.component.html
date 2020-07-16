@@ -37,7 +37,6 @@
                 <form [formGroup]="createMeeting" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <label for="people">People: </label>
-                
                         <select multiple formControlName="people">
                             <option *ngFor="let person of peopleList"  [ngValue]="person">{{person}}</option>
                         </select>

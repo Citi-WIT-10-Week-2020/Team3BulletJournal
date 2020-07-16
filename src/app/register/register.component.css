@@ -5,4 +5,15 @@ body {
     background-size: cover;
     -o-background-size: cover;
     height: 100%;
+    overflow-wrap: break-word;
   }
+  
+  .form-group{
+    width: 90px; height: 390px; padding: 5px;
+  }
+ 
+
+
+
+
+   
