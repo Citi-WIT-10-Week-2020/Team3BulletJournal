@@ -7,12 +7,15 @@ import { AuthenticationService, AlertService } from '../_services'
 import { ThrowStmt } from '@angular/compiler';
 import { HttpResponse } from '@angular/common/http';
 import { getLocaleDateFormat } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-journal-free-write',
   templateUrl: './journal-free-write.component.html',
-  styleUrls: ['./journal-free-write.component.css']
+  styleUrls: ['./journal-free-write.component.css'],
+  providers: [DatePipe]
 })
+
 export class JournalFreeWriteComponent implements OnInit {
   currentUser: any;
   currentPage: string = "Free Write";
@@ -20,15 +23,21 @@ export class JournalFreeWriteComponent implements OnInit {
   returnUrl: any;
   submitted: boolean;
   loading = false;
+  pipe = new DatePipe('en-US');
+  now = Date.now();
+
+  currentDate = this.pipe.transform(this.now, 'MMM dd, yyyy')
+
 
   constructor(
     private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService ) {
+        private alertService: AlertService) {
     this.currentUser = this.authenticationService.currentUserValue[0]
    }
+
    ngOnInit() {
     var d = new Date();
 
