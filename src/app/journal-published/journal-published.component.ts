@@ -44,29 +44,22 @@ export class JournalPublishedComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     console.log('submitted');
+
     // reset alerts on submit
     this.alertService.clear();
     
-    // stop here if form is invalid
-    // if (this.loginForm.invalid) {
-    //     return;
-    // }
-
-    //console.log(this.f.username.value);
     console.log(this.f.selectedDate.value);
     this.loading = true;
     this.validJournal = [];
     this.authenticationService.getAllJournals()
-        //.pipe(first())
         .subscribe(
             data => {
-                //this.router.navigate([this.returnUrl]);
                 console.log(data);
                 this.loading = false;
                 let found = false;
+
                 //look into querying data
                 for (let user of data){
-                  //console.log(this.f.selectedDate.value.substring(0,5));
                     if(user.username == this.currentUser.username){
                         console.log('Yay we found it');
                         this.loading = false;
