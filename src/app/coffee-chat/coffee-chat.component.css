@@ -23,7 +23,7 @@
 } 
 
 .bkrd{
-  background-color: #e9c7bc;
+  background-color: #ffd59a;
   max-width: 600px !important;
   max-height: 300px !important;
   box-shadow: 3px !important;
@@ -57,7 +57,7 @@
 
 }
 .button:hover {
-  background: #cc9688;
+  background: #F2B57C;
 }
 .button__horizontal, .button__vertical {
   position: absolute;
