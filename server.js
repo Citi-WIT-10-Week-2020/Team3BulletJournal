@@ -80,20 +80,24 @@ var JournalModel = mongoose.model('Journals', JournalSchema, 'Journals');
 var MoodModel = mongoose.model('Moods', MoodSchema, 'Moods');
 var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
 
-    app.post("/api/deleteMood", function(req,res){
-        console.log('inside delete');
-        MoodModel.remove({ _id: req.body.id, username: req.body.username, day: req.body.day, month: req.body.month, year: req.body.year }, function(err, data) {
+app.put('/api/removeMood', function(req,res){
+    console.log(req.body.id)
+    console.log(req.body.mood);
+    MoodModel.findByIdAndUpdate({_id: req.body.id}, {$set: {mood: req.body.mood}}, {new: true},
+        function(err,data) {
             if(err) {
+                //console.log(err);
                 res.send(err);
             }
             else{
-                //res.send(res.status);
+                console.log(req.body.username);
                 res.send(data);
             }
         });
-    })
+})   
 
     app.post("/api/login", function(req,res){
+        console.log('login reached');
         model.find({username: req.body.username}, function(err, data) {
             if(err) {
                 res.send(err);
@@ -196,7 +200,7 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
 
     
     app.put('/api/addAFriend', function(req,res){
-        //console.log('hit')
+        console.log('hit')
         model.findByIdAndUpdate(req.body._id, {$addToSet: {friends: req.body.friendToAdd}}, {new: true},
             function(err,data) {
                 if(err) {
