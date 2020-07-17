@@ -78,13 +78,15 @@ var JournalModel = mongoose.model('Journals', JournalSchema, 'Journals');
 var MoodModel = mongoose.model('Moods', MoodSchema, 'Moods');
 var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
 
-    app.post("/api/deleteUser", function(req,res){
-        model.remove({ _id: req.body.id }, function(err) {
+    app.post("/api/deleteMood", function(req,res){
+        console.log('inside delete');
+        MoodModel.remove({ _id: req.body.id, username: req.body.username, day: req.body.day, month: req.body.month, year: req.body.year }, function(err, data) {
             if(err) {
                 res.send(err);
             }
             else{
-                res.send({data:"Record has been deleted"});
+                //res.send(res.status);
+                res.send(data);
             }
         });
     })
@@ -170,6 +172,20 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
         });
     })    
 
+    app.get('/api/getAllMoods', function(req,res){
+        console.log('found endpoint')
+        MoodModel.find({}, function(err, data) {
+            if(err) {
+                res.send(err);
+                console.log('a');
+            }
+            else{
+                res.send(data);
+                console.log('b');
+            }
+        });
+    })    
+
     
     app.put('/api/addAFriend', function(req,res){
         //console.log('hit')
@@ -187,9 +203,23 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
 
     })    
 
-    app.delete('/api/deleteUser', function(req, res){
-        console.log('trying to delete');
-        res.json(req.body);
+    // app.delete('/api/deleteUser', function(req, res){
+    //     console.log('trying to delete');
+    //     res.json(req.body);
+    // })
+
+    app.delete('/api/getAllMoods', function(req, res){
+        console.log('id:' + req.body.id);
+        MoodModel.findByIdAndDelete(req.body.id, function(err, data) {
+            if(err) {
+                res.send(err);
+                console.log('a');
+            }
+            else{
+                console.log('bahh');
+                res.send(data);
+            }
+        });
     })
 
     app.post("/api/saveJournalEntry", function(req,res){

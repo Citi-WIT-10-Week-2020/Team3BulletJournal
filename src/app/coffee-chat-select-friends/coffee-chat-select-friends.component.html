@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <label for="people">People: </label>
                         <select multiple formControlName="people">
-                            <option *ngFor="let person of peopleList"  [ngValue]="person">{{person}}</option>
+                            <option *ngFor="let person of peopleList"  [ngValue]="person">{{person.firstName}} {{person.lastName}}</option>
                         </select>
                     </div>
                     <div class="form-group">

@@ -85,6 +85,15 @@ export class AuthenticationService {
             return user;
         }));
     }
+
+    getAllMoods(){
+        return this.http.get<any>(`http://localhost:8080/api/getAllMoods`);
+    }
+
+    deleteMood(id, username, day, month, year){
+        //console.log('inside of the auth for delete: ' + id);
+        return this.http.post<any>(`http://localhost:8080/api/deleteMood`, {id, username, day, month, year});
+    }
  
     logout() {
         // remove user from local storage and set current user to null

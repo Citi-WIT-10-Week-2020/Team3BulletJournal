@@ -109,13 +109,20 @@ export class MoodTrackerComponent implements OnInit {
     // reset alerts on submit
     this.alertService.clear();
     
-    
-    // stop here if form is invalid
-    // if (this.loginForm.invalid) {
-    //     return;
-    // }
-
-    //console.log(this.f.username.value);
+    //check all moods for one on the same day, if there is one, then delete from DB, no action is required on the local storage
+    // this.authenticationService.getAllMoods()
+    // .subscribe(
+    //   data => {
+    //     for (let user of data){
+    //       console.log(user.username)
+    //       if(user.username == this.f.username.value && user.day == this.f.day.value && user.month == this.f.month.value && user.year == this.f.year.value){
+    //           console.log('Yay we found it');
+    //           this.loading = false;
+    //           this.authenticationService.deleteMood(user._id, user.username, user.day, user.month, user.year);
+    //       }
+    //     }
+    //   });
+    console.log(this.f.username.value);
     this.loading = true;
     this.validJournal = [];
     this.authenticationService.saveMood(this.f.username.value, this.f.mood.value, this.f.day.value, this.f.month.value, this.f.year.value)
