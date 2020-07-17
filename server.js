@@ -47,6 +47,7 @@ const MeetingSchema = Schema({
     month: {type: String},
     year: {type: String},
     time: {type: String},
+    status: {type: String}
     
 },{versionKey: false});
 
@@ -192,16 +193,14 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
         res.json(req.body);
     })
 
-    app.post("/api/saveJournalEntry", function(req,res){
+    app.post('/api/saveJournalEntry', function(req,res){
         var journal = new JournalModel(req.body);
-        console.log(req.body.text);
         journal.save(function(err,data){
             if(err){
                 console.log(err);
                 res.send(err);
             }
             else{
-                //console.log(data);
                 res.send(data);
             }
         });

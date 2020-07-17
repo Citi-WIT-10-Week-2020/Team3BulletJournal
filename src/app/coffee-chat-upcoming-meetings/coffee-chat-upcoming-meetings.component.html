@@ -29,49 +29,54 @@
         <div id="content">
             <h3>Upcoming Meetings</h3>
             <div class="row">
-                    <div class="col-md-auto">
-                        <h5>Meetings I Scheduled...</h5>
-                    </div>
+                <div class="col-md-auto center-block">
+                    <h5>Meetings I Scheduled...</h5>
+                </div>
+                <div class="col-sm-10 offset-sm-1">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between heading">
+                            <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Date:</p>
+                            <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Time:</p>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between" *ngFor="let meeting of meetings"  [ngValue]="meeting">
+                            <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.month}}/{{meeting.day}}/{{meeting.year}}</p>
+                            <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.time}}</p>
+                            <div class="icons">
+                                <button class="btn-2" title="View" data-toggle="modal" data-target="#entry"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>                            </div>
+                        </li>
+                      </ul>
+                </div>
             </div>
-            <div class="boxed">
-                <div class="col col-md-auto">
-                    <div class="row justify-content-between">
+           
+
+                
+
+                <!-- Modal -->
+            <div class="modal" id="entry">
+                <div class="modal-sandbox"></div>
+                <div class="modal-box" *ngFor="let meeting of meetings"  [ngValue]="meeting">
+                    <div class="modal-header">
+                        <h1 class="reg-font">Meeting Details:</h1>
+                    <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
+                    </div>
+                    <div class="modal-body">
                         <div class="col-2">
-                            Date:
+                            {{meeting.participants.length}}
                         </div>
-                        <div class="col-2">
-                            Time:
-                        </div>
-                        <div class="col-2">
-                            # of Participants:
-                        </div>
+                        
                         <div class="col-4">
-                            Participants:
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="boxed" *ngFor="let meeting of meetings"  [ngValue]="meeting">
-                    <div class="col col-md-auto">
-                        <div class="row justify-content-between">
-                            <div class="col-2">
-                                {{meeting.month}}/{{meeting.day}}/{{meeting.year}}
-                            </div>
-                            <div class="col-2">
-                                {{meeting.time}}
-                            </div>
-                            <div class="col-2">
-                                {{meeting.participants.length}}
-                            </div>
-                            <div class="col-4" *ngFor="let participant of meeting.participants" [ngValue]="participant">
-                                <div class="row">
-                                    {{participant.firstName}}
-                                </div>
+                            <div class="row" *ngFor="let participant of meeting.participants" [ngValue]="participant">
+                                {{participant.firstName}}
                             </div>
                         </div>
+                    <br />
+                    <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
+                </div>
             </div>
+
+
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

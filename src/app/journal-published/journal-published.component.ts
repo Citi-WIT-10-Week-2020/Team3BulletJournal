@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService, AlertService } from '../_services';
-import { Validators, FormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-journal-published',
@@ -9,11 +9,10 @@ import { Validators, FormBuilder } from '@angular/forms';
   styleUrls: ['./journal-published.component.css']
 })
 export class JournalPublishedComponent implements OnInit {
-  loginForm: any;
-  returnUrl: any;
   submitted: boolean;
+  returnUrl: any;
   loading: boolean;
-  validJournal: any[];
+  entries: any[];
   currentUser: any;
 
   constructor(
@@ -24,22 +23,13 @@ export class JournalPublishedComponent implements OnInit {
     private alertService: AlertService
   ) {
     this.currentUser = this.authenticationService.currentUserValue[0];
-    this.validJournal = this.validJournal;
+    this.entries = this.entries;
 
 
      }
    ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      
-      selectedDate: ['', Validators.required]
-  });
-
-  // get return url from route parameters or default to '/'
-  this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+   this.onSubmit();
   }
-
-  get f() { return this.loginForm.controls; }
-
 
   onSubmit() {
     this.submitted = true;
@@ -47,10 +37,9 @@ export class JournalPublishedComponent implements OnInit {
 
     // reset alerts on submit
     this.alertService.clear();
-    
-    console.log(this.f.selectedDate.value);
+
     this.loading = true;
-    this.validJournal = [];
+    this.entries = [];
     this.authenticationService.getAllJournals()
         .subscribe(
             data => {
@@ -60,19 +49,13 @@ export class JournalPublishedComponent implements OnInit {
 
                 //look into querying data
                 for (let user of data){
+                    console.log("user:" + user.username);
+                    console.log("currentUser:" + this.currentUser.username);
                     if(user.username == this.currentUser.username){
                         console.log('Yay we found it');
                         this.loading = false;
-
-                        if(user.year == this.f.selectedDate.value.substring(0,4)){
-                          if(user.day == this.f.selectedDate.value.substring(8,10)){
-                            if(user.month == this.f.selectedDate.value.substring(5,7) || user.month == this.f.selectedDate.value.substring(6,7)){
-                              this.validJournal.push(user);
-                              found = true;
-                            }
-                          }
-                        }
-                        
+                        this.entries.push(user);
+                        found = true;
                     }
                 }
                 if(found == false){
@@ -81,7 +64,7 @@ export class JournalPublishedComponent implements OnInit {
                     this.alertService.error("No entries under that date found");
                 }
 
-                for(let user of this.validJournal){
+                for(let user of this.entries){
                   console.log('made it')
                   console.log(user)
                 }
@@ -92,6 +75,5 @@ export class JournalPublishedComponent implements OnInit {
             });
             console.log('outside')
 
-          
 }
 }

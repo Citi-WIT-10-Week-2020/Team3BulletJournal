@@ -67,12 +67,12 @@ export class AuthenticationService {
         return this.http.get<any>(`http://localhost:8080/api/getAllMeetings`);
     }
 
-    createMeeting(username, participants, day, month, year, time){
-        return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, time});
+    createMeeting(username, participants, day, month, year, time, status){
+        return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, time, status});
     }
   
-    createRandomMeeting(username, numPeople, day, month, year, time){
-        return this.http.post<any>(`http://localhost:8080/api/createRandomMeeting`, {username, numPeople, day, month, year, time});
+    createRandomMeeting(username, numPeople, day, month, year, time, status){
+        return this.http.post<any>(`http://localhost:8080/api/createRandomMeeting`, {username, numPeople, day, month, year, time, status});
     }
     
     saveMood(username, mood, day, month, year){

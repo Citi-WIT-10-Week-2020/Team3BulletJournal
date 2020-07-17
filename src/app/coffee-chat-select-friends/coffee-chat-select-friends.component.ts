@@ -27,11 +27,13 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
    }
 
    ngOnInit(){
+    var status = "pending";
     this.peopleList = this.currentUser.friends;
     this.createMeeting = this.formBuilder.group({
       people: ['', Validators.required],
       date: ['', Validators.required],
       time: ['', Validators.required],
+      status: [status]
     })
   }
 
@@ -49,7 +51,7 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.createMeeting(this.currentUser.username, this.f.people.value, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value)
+    this.authenticationService.createMeeting(this.currentUser.username, this.f.people.value, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.f.status.value)
         .subscribe(
             data => {
                 this.alertService.success('Meeting Scheduled', true);
