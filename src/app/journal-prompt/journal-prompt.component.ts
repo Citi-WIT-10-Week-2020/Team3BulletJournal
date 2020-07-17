@@ -3,11 +3,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService, AlertService } from '../_services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-journal-prompt',
   templateUrl: './journal-prompt.component.html',
-  styleUrls: ['./journal-prompt.component.css']
+  styleUrls: ['./journal-prompt.component.css'],
+  providers: [DatePipe]
 })
 export class JournalPromptComponent implements OnInit {
   currentUser: any;
@@ -17,6 +19,10 @@ export class JournalPromptComponent implements OnInit {
   promptIndexSelected: any;
   promptUsed: any;
   loading = false;
+  pipe = new DatePipe('en-US');
+  now = Date.now();
+
+  currentDate = this.pipe.transform(this.now, 'MMM dd, yyyy')
 
   prompts = [
     {title: 'Accomplishment', text: 'What is your greatest accomplishment?'}, 

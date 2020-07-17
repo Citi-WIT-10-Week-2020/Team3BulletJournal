@@ -1,21 +1,15 @@
-<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="coffee-chat-select-friends.component.css">
-
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-
-
 </head>
 <div>
     <app-navbar style="z-index: 9999;"></app-navbar>
@@ -23,12 +17,9 @@
 <div class="sticky-top">
     <app-coffee-chat-navbar style="z-index: 1;"></app-coffee-chat-navbar>
 </div>
-
 <body>
-
         <!-- Page Content Holder -->
         <div id="content">
-
             <div class="container">
                 <div class="row justify-content-center">
                     Start Connecting (Select Friends)
@@ -38,7 +29,9 @@
                     <div class="form-group">
                         <label for="people">People: </label>
                         <select multiple formControlName="people">
-                            <option *ngFor="let person of peopleList"  [ngValue]="person">{{person.firstName}} {{person.lastName}}</option>
+                            <option *ngFor="let person of peopleList"  [ngValue]="person">
+                                {{person.firstName}} {{person.lastName}}
+                            </option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -70,10 +63,6 @@
                 </form>
             </div>    
         </div>
-
-        
-        
-
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Popper.JS -->

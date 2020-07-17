@@ -27,59 +27,57 @@
 
         <!-- Page Content Holder -->
         <div id="content">
-            
             <h3>Upcoming Meetings</h3>
             <div class="row">
                     <div class="col-md-auto">
                         <h5>Meetings I Scheduled...</h5>
                     </div>
+            </div>
+            <div class="boxed">
+                <div class="col col-md-auto">
+                    <div class="row justify-content-between">
+                        <div class="col-2">
+                            Date:
+                        </div>
+                        <div class="col-2">
+                            Time:
+                        </div>
+                        <div class="col-2">
+                            # of Participants:
+                        </div>
+                        <div class="col-4">
+                            Participants:
+                        </div>
+                        <div>
+                            Status:
+                        </div>
+                    </div>
                 </div>
-                <div class="row">
+            </div>
+            <div class="boxed" *ngFor="let meeting of meetings"  [ngValue]="meeting">
                     <div class="col col-md-auto">
                         <div class="row justify-content-between">
-                            <div class="col-8 col-sm-4">
-                                Saturday, May 14
+                            <div class="col-2">
+                                {{meeting.month}}/{{meeting.day}}/{{meeting.year}}
                             </div>
-                            <div class="col-8 col-sm-4">
-                                8:00 AM
+                            <div class="col-2">
+                                {{meeting.time}}
                             </div>
-                            <div class="col-8 col-sm-4">
-                                3 Attendees <!--Pull sum of attendees-->
+                            <div class="col-2">
+                                {{meeting.participants.length}}
                             </div>
-                        </div>
-                        <div class="row justify-content-between">
-                            <div class="col-8 col-sm-4">
-                                Emily
+                            <div class="col-4" *ngFor="let participant of meeting.participants" [ngValue]="participant">
+                                <div class="row">
+                                    {{participant.firstName}}
+                                </div>
                             </div>
-
-                            <div class="col-8 col-sm-4">
-                                Pending
-                            </div>
-                        </div>
-                        <div class="row justify-content-between">
-                            <div class="col-8 col-sm-4">
-                                Shannon
-                            </div>
-                            <div class="col-8 col-sm-4">
-                                Pending
-                            </div>
-                        </div>
-                        <div class="row justify-content-between">
-                            <div class="col-8 col-sm-4">
-                                Katie
-                            </div>
-                            <div class="col-8 col-sm-4">
-                                Accepted
+                            <div>
+                                 <!--add status later!-->
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <p>
-                    </p>
-                </div>
-            
-        </div>
+            </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

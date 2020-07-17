@@ -8,13 +8,14 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   templateUrl: './coffee-chat-select-friends.component.html',
   styleUrls: ['./coffee-chat-select-friends.component.css'],
 })
+
 export class CoffeeChatSelectFriendsComponent implements OnInit {
   currentUser: any;
   peopleList = [];
   createMeeting: FormGroup;
   submitted = false;
   loading = false;
-
+  
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -40,14 +41,13 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     console.log("in on SUBMIT")
-
     // reset alerts on submit
     this.alertService.clear();
-
     // stop here if form is invalid
     if (this.createMeeting.invalid) {
         return;
     }
+
     this.loading = true;
     this.authenticationService.createMeeting(this.currentUser.username, this.f.people.value, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value)
         .subscribe(
