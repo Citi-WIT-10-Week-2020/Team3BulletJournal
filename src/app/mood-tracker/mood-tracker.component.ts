@@ -110,18 +110,31 @@ export class MoodTrackerComponent implements OnInit {
     this.alertService.clear();
     
     //check all moods for one on the same day, if there is one, then delete from DB, no action is required on the local storage
-    // this.authenticationService.getAllMoods()
-    // .subscribe(
-    //   data => {
-    //     for (let user of data){
-    //       console.log(user.username)
-    //       if(user.username == this.f.username.value && user.day == this.f.day.value && user.month == this.f.month.value && user.year == this.f.year.value){
-    //           console.log('Yay we found it');
-    //           this.loading = false;
-    //           this.authenticationService.deleteMood(user._id, user.username, user.day, user.month, user.year);
-    //       }
-    //     }
-    //   });
+    this.authenticationService.getAllMoods()
+    .subscribe(
+      data => {
+        for (let user of data){
+          console.log(user.username)
+          if(user.username == this.f.username.value && user.day == this.f.day.value && user.month == this.f.month.value && user.year == this.f.year.value){
+              console.log('Yay we found it');
+              this.loading = false;
+              this.f.mood.value = 'testing';
+              this.authenticationService.deleteMood(user._id, this.f.mood.value)
+              .pipe(first())
+              .subscribe(
+                  data => {
+                
+                      //this.router.navigate([this.returnUrl]);
+                      //this.alertService.success("Added Friend to Contacts");
+                      //add put request to update
+                   },
+                  error => {
+                      this.alertService.error(error);
+                      this.loading = false;
+          });
+          }
+        }
+      });
     console.log(this.f.username.value);
     this.loading = true;
     this.validJournal = [];
