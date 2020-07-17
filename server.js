@@ -283,4 +283,4 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
     //     console.log('Correct port found')
     // })
 
-    app.listen(8080, () => console.log(`Example app listening at http://localhost:8080`))
+    app.listen(process.env.PORT || 8080, () => console.log(`Example app listening at http://localhost:8080`))
