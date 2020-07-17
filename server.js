@@ -20,6 +20,8 @@ app.use(bodyParser());
 app.use(bodyParser.json({linit:'5mb'}));
 app.use(bodyParser.urlencoded({extended:true}));
 
+app.set('port', (process.env.PORT || 8080));
+
  app.use(function (req, res, next) {
      res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -143,6 +145,12 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
         });
     })    
 
+    app.get('/', function(request, response) {
+        var result = 'App is running'
+        response.send(result);
+    }).listen(app.get('port'), function() {
+        console.log('App is running, server is listening on port ', app.get('port'));
+    });
 
     app.get('/api/getAllJournals', function(req,res){
         console.log('found endpoint')
@@ -283,4 +291,4 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
     //     console.log('Correct port found')
     // })
 
-    app.listen(process.env.PORT || 8080, () => console.log(`Example app listening at http://localhost:8080`))
+    //app.listen(process.env.PORT || 8080, () => console.log(`Example app listening at http://localhost:8080`))
