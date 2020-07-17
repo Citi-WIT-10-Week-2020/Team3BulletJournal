@@ -11,7 +11,7 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./mood-tracker.component.css']
 })
 export class MoodTrackerComponent implements OnInit {
-
+  moodExists: boolean;
   submitted: boolean;
   loading: boolean;
   returnUrl: any;
@@ -116,15 +116,14 @@ export class MoodTrackerComponent implements OnInit {
         for (let user of data){
           console.log(user.username)
           if(user.username == this.f.username.value && user.day == this.f.day.value && user.month == this.f.month.value && user.year == this.f.year.value){
-              console.log('Yay we found it');
+            this.moodExists = true;
               this.loading = false;
-              this.f.mood.value = 'testing';
               this.authenticationService.deleteMood(user._id, this.f.mood.value)
               .pipe(first())
               .subscribe(
                   data => {
                 
-                      //this.router.navigate([this.returnUrl]);
+                      this.router.navigate([this.returnUrl]);
                       //this.alertService.success("Added Friend to Contacts");
                       //add put request to update
                    },
@@ -135,7 +134,8 @@ export class MoodTrackerComponent implements OnInit {
           }
         }
       });
-    console.log(this.f.username.value);
+    //console.log(this.f.username.value);
+    if(this.moodExists == false){
     this.loading = true;
     this.validJournal = [];
     this.authenticationService.saveMood(this.f.username.value, this.f.mood.value, this.f.day.value, this.f.month.value, this.f.year.value)
@@ -149,7 +149,7 @@ export class MoodTrackerComponent implements OnInit {
                      this.alertService.error(error);
                      this.loading = false;
        });
-          
+      }  
 }
 
 onSubmitExcited() {
@@ -158,13 +158,33 @@ onSubmitExcited() {
   // reset alerts on submit
   this.alertService.clear();
   
-  
-  // stop here if form is invalid
-  // if (this.loginForm.invalid) {
-  //     return;
-  // }
+  this.authenticationService.getAllMoods()
+    .subscribe(
+      data => {
+        for (let user of data){
+          console.log(user.username)
+          if(user.username == this.h.username.value && user.day == this.h.day.value && user.month == this.h.month.value && user.year == this.h.year.value){
+            this.moodExists = true;
+              this.loading = false;
+              this.authenticationService.deleteMood(user._id, this.h.mood.value)
+              .pipe(first())
+              .subscribe(
+                  data => {
+                
+                      this.router.navigate([this.returnUrl]);
+                      //this.alertService.success("Added Friend to Contacts");
+                      //add put request to update
+                   },
+                  error => {
+                      this.alertService.error(error);
+                      this.loading = false;
+          });
+          }
+        }
+      });
 
   //console.log(this.f.username.value);
+  if(this.moodExists == false){
   this.loading = true;
   this.validJournal = [];
   this.authenticationService.saveMood(this.h.username.value, this.h.mood.value, this.h.day.value, this.h.month.value, this.h.year.value)
@@ -178,7 +198,7 @@ onSubmitExcited() {
                    this.alertService.error(error);
                    this.loading = false;
      });
-        
+    }
 }
 
 onSubmitConfused() {
@@ -187,13 +207,33 @@ onSubmitConfused() {
   // reset alerts on submit
   this.alertService.clear();
   
-  
-  // stop here if form is invalid
-  // if (this.loginForm.invalid) {
-  //     return;
-  // }
+  this.authenticationService.getAllMoods()
+    .subscribe(
+      data => {
+        for (let user of data){
+          console.log(user.username)
+          if(user.username == this.i.username.value && user.day == this.i.day.value && user.month == this.i.month.value && user.year == this.i.year.value){
+            this.moodExists = true;
+              this.loading = false;
+              this.authenticationService.deleteMood(user._id, this.i.mood.value)
+              .pipe(first())
+              .subscribe(
+                  data => {
+                
+                      this.router.navigate([this.returnUrl]);
+                      //this.alertService.success("Added Friend to Contacts");
+                      //add put request to update
+                   },
+                  error => {
+                      this.alertService.error(error);
+                      this.loading = false;
+          });
+          }
+        }
+      });
 
   //console.log(this.f.username.value);
+  if(this.moodExists == false){
   this.loading = true;
   this.validJournal = [];
   this.authenticationService.saveMood(this.i.username.value, this.i.mood.value, this.i.day.value, this.i.month.value, this.i.year.value)
@@ -207,7 +247,7 @@ onSubmitConfused() {
                    this.alertService.error(error);
                    this.loading = false;
      });
-        
+    }
 }
 
 onSubmitHappy() {
@@ -217,12 +257,33 @@ onSubmitHappy() {
   this.alertService.clear();
   
   
-  // stop here if form is invalid
-  // if (this.loginForm.invalid) {
-  //     return;
-  // }
+  this.authenticationService.getAllMoods()
+  .subscribe(
+    data => {
+      for (let user of data){
+        console.log(user.username)
+        if(user.username == this.j.username.value && user.day == this.j.day.value && user.month == this.j.month.value && user.year == this.j.year.value){
+            this.moodExists = true;
+            this.loading = false;
+            this.authenticationService.deleteMood(user._id, this.j.mood.value)
+            .pipe(first())
+            .subscribe(
+                data => {
+              
+                    this.router.navigate([this.returnUrl]);
+                    //this.alertService.success("Added Friend to Contacts");
+                    //add put request to update
+                 },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+        });
+        }
+      }
+    });
 
   //console.log(this.f.username.value);
+  if(this.moodExists == false){
   this.loading = true;
   this.validJournal = [];
   this.authenticationService.saveMood(this.j.username.value, this.j.mood.value, this.j.day.value, this.j.month.value, this.j.year.value)
@@ -236,7 +297,7 @@ onSubmitHappy() {
                    this.alertService.error(error);
                    this.loading = false;
      });
-        
+    } 
 }
 
 onSubmitSad() {
@@ -246,12 +307,33 @@ onSubmitSad() {
   this.alertService.clear();
   
   
-  // stop here if form is invalid
-  // if (this.loginForm.invalid) {
-  //     return;
-  // }
+  this.authenticationService.getAllMoods()
+    .subscribe(
+      data => {
+        for (let user of data){
+          console.log(user.username)
+          if(user.username == this.k.username.value && user.day == this.k.day.value && user.month == this.k.month.value && user.year == this.k.year.value){
+            this.moodExists = true;
+              this.loading = false;
+              this.authenticationService.deleteMood(user._id, this.k.mood.value)
+              .pipe(first())
+              .subscribe(
+                  data => {
+                
+                      this.router.navigate([this.returnUrl]);
+                      //this.alertService.success("Added Friend to Contacts");
+                      //add put request to update
+                   },
+                  error => {
+                      this.alertService.error(error);
+                      this.loading = false;
+          });
+          }
+        }
+      });
 
   //console.log(this.f.username.value);
+  if(this.moodExists == false){
   this.loading = true;
   this.validJournal = [];
   this.authenticationService.saveMood(this.k.username.value, this.k.mood.value, this.k.day.value, this.k.month.value, this.k.year.value)
@@ -265,6 +347,6 @@ onSubmitSad() {
                    this.alertService.error(error);
                    this.loading = false;
      });
-        
+    } 
 }
 }
