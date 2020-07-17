@@ -100,8 +100,14 @@ export class AuthenticationService {
 
     deleteMood(id, mood) {
         console.log('inside new deleteMood in auth');
-        mood = 'testing';
-        return this.http.put<any>(`http://localhost:8080/api/removeMood`, {id, mood});
+        return this.http.put<any>(`http://localhost:8080/api/removeMood`, {id, mood})
+        .pipe(map(user => {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('currentMood', JSON.stringify(user));
+            this.currentUserSubject.next(JSON.stringify(user));
+            
+            return user;
+        }));
     }
  
     logout() {
