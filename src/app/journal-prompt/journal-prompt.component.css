@@ -72,5 +72,23 @@ textarea:hover {
     background-attachment: local;
 }
 
+.buttons{
+    border: 2px solid #7CA5AF;
+    background-color: whitesmoke;
+    color: #7CA5AF;
+    height: 75%;
+    width: 90%;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    font-family: 'Montserrat';
+}
+
+.buttons:hover{
+    background-color:#7CA5AF;
+    color: white; 
+}
+
 
 

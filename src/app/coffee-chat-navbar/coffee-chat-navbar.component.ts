@@ -28,6 +28,9 @@ export class CoffeeChatNavbarComponent implements OnInit {
     if(this.href == '/coffee-chat-pending-meetings'){
       this.currentPage = 'Pending Meetings'
     }
+    if(this.href == '/coffee-chat-profiles'){
+      this.currentPage = 'Meeting Profiles'
+    }
     else{
       this.currentPage == 'Home'
     }

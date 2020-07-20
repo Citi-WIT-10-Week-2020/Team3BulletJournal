@@ -174,9 +174,9 @@ textarea{
 
 hr.divide {
   border: 0;
-  height: 2px;
-  width: 50vh;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), white, rgba(0, 0, 0, 0));
+  height: 1px;
+  width: 100%;
+  background-image: linear-gradient(to right, rgb(216, 213, 213), black, rgb(216, 213, 213));
 }
 
 hr.blur {

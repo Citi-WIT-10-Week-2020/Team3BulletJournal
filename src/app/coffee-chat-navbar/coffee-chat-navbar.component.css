@@ -1,5 +1,5 @@
 .dropdown-menu{
-    background-color: #fae5cc !important;
+    background-color: #e4955e !important;
     width: fit-content !important;
     border: none !important;
     top: 45px !important;
@@ -7,8 +7,12 @@
 
 .dropdown-item:hover{
     cursor: pointer;
-    background-color: #ffe5ad ;
+    background-color: #ffd59a ;
 }
 .text-grey{
     color: rgb(97, 96, 96) !important;
+}
+
+.navbar{
+    max-height: 80px !important;
 }
