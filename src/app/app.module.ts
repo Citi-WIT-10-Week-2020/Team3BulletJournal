@@ -32,7 +32,6 @@ import { JournalFreeWriteComponent } from './journal-free-write/journal-free-wri
 import { JournalPromptComponent } from './journal-prompt/journal-prompt.component';
 import { MoodTrackerWeeklyChartsComponent } from './mood-tracker-weekly-charts/mood-tracker-weekly-charts.component';
 import { MoodTrackerMonthlyChartsComponent } from './mood-tracker-monthly-charts/mood-tracker-monthly-charts.component';
-import { UserProfileProfileComponent } from './user-profile-profile/user-profile-profile.component';
 import { UserProfileDashboardComponent } from './user-profile-dashboard/user-profile-dashboard.component';
 import { UserProfileContactsComponent } from './user-profile-contacts/user-profile-contacts.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -76,7 +75,6 @@ import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
         JournalPromptComponent,
         MoodTrackerWeeklyChartsComponent,
         MoodTrackerMonthlyChartsComponent,
-        UserProfileProfileComponent,
         UserProfileDashboardComponent,
         UserProfileContactsComponent,
         ProfileComponent,
