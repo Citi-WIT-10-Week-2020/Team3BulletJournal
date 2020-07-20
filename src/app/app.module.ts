@@ -42,7 +42,7 @@ import { JournalNavbarComponent } from './journal-navbar/journal-navbar.componen
 import { MoodTrackerNavbarComponent } from './mood-tracker-navbar/mood-tracker-navbar.component';
 import { UserProfileNavbarComponent } from './user-profile-navbar/user-profile-navbar.component';
 import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
-import { PieChartComponent } from './pie-chart/pie-chart.component';
+//import { PieChartComponent } from './pie-chart/pie-chart.component';
 @NgModule({
     imports: [
         BrowserModule,
@@ -86,7 +86,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
         MoodTrackerNavbarComponent,
         UserProfileNavbarComponent,
         MoodChosenComponent,
-        PieChartComponent
+        //PieChartComponent
 
     ],
     providers: [
