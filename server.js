@@ -44,7 +44,6 @@ const MoodSchema = Schema({
 const MeetingSchema = Schema({
     username: {type: String},
     participants: {type: Array},
-    numPeople: {type: String},
     day: {type: String},
     month: {type: String},
     year: {type: String},
