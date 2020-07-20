@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService, AlertService } from '../_services';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { AuthenticationService, AlertService } from '../_services'
+import { ThrowStmt } from '@angular/compiler';
+import { HttpResponse } from '@angular/common/http';
+import { getLocaleDateFormat } from '@angular/common';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -33,7 +36,7 @@ export class JournalPromptComponent implements OnInit {
     {title: 'Secret', text: 'What is something that you have never told anyone?'},
     {title: 'Superpower', text: 'If you could have one superpower, what would it be and why?'},
     {title: 'Gratitude', text: 'Make a list of things that you are grateful for today.'},
-    {title: 'Childhood', text: 'What is something from your childhood that everyone should experince as a child?'},
+    {title: 'Childhood', text: 'What is something from your childhood that everyone should experience as a child?'},
     {title: 'Positive Event', text: 'Describe one positive event that happened today.'}
   ]
   title: { title: string; text: string; };
@@ -44,8 +47,8 @@ export class JournalPromptComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService
-  ) {
+        private alertService: AlertService ) 
+  {
     this.currentUser = this.authenticationService.currentUserValue[0];
     var promptIndexSelected = Math.random() * (this.prompts.length - 1);
     console.log(promptIndexSelected);
@@ -66,7 +69,7 @@ export class JournalPromptComponent implements OnInit {
         textEntry: ['', Validators.required]
         
     });
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/journal';
 
   }
 
@@ -75,19 +78,15 @@ export class JournalPromptComponent implements OnInit {
   onSubmit() {
       this.submitted = true;
       console.log(this.journalForm.controls.day.value);
+      
       // reset alerts on submit
       this.alertService.clear();
       
-      // if (this.journalForm.invalid) {
-      //     return;
-      // }
-  
       console.log('valid')
       this.loading = true;
       
         this.authenticationService.saveJournal(this.f.username.value, this.f.title.value, this.f.day.value, this.f.month.value, this.f.year.value, this.f.textEntry.value)
-            .pipe(first())
-                .subscribe(
+        .subscribe(
                   data => {
                     console.log('inside subscribe')
                     this.router.navigate([this.returnUrl]);          
@@ -96,9 +95,7 @@ export class JournalPromptComponent implements OnInit {
                        this.alertService.error(error);
                        this.loading = false;
          });
-  
-  
-              
+
   }
 }
 

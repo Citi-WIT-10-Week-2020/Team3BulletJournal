@@ -49,6 +49,8 @@ const MeetingSchema = Schema({
     month: {type: String},
     year: {type: String},
     time: {type: String},
+    status: {type: String}
+    
 },{versionKey: false});
 
 const JournalSchema = Schema({
@@ -71,7 +73,7 @@ const UsersSchema = Schema({
     friends: {type: Array},
     bio: {type: String},
     hobbies: {type:String},
-    role: {type:String},
+    role: {type:String}
 
 },{versionKey: false});
 
@@ -118,7 +120,6 @@ app.put('/api/removeMood', function(req,res){
                 res.send(err);
             }
             else{
-                //console.log(data);
                 res.send(data);
             }
         });
@@ -234,16 +235,14 @@ app.put('/api/removeMood', function(req,res){
         });
     })
 
-    app.post("/api/saveJournalEntry", function(req,res){
+    app.post('/api/saveJournalEntry', function(req,res){
         var journal = new JournalModel(req.body);
-        console.log(req.body.text);
         journal.save(function(err,data){
             if(err){
                 console.log(err);
                 res.send(err);
             }
             else{
-                //console.log(data);
                 res.send(data);
             }
         });

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -32,73 +31,32 @@
                 <div class="col-sm-10 offset-sm-1">
                     <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between heading">
-                            <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">TITLE</p>
-                            <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">DATE</p>
+                            <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Date:</p>
+                            <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Title:</p>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between">
-                            <p class="p-0 m-0 flex-grow-1" style="color: black">First Entry</p>
-                            <p class="p-0 m-0 flex-grow-1" style="color: black">Jul 08, 2020</p>
+                        <li class="list-group-item d-flex justify-content-between" *ngFor="let entry of entries" [ngValue]="entry">
+                            <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.month}}/{{entry.day}}/{{entry.year}}</p>
+                            <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.title.title}}</p>
                             <div class="icons">
                                 <button class="btn-2" title="Edit"><span class="fa fa-pencil fa-sm" style="color: grey"></span></button>
                                 <button class="btn-2" title="View" data-toggle="modal" data-target="#entry"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>
                                 <button class="btn-2" title="Delete"><span class="fa fa-trash-o"  style="color: grey"></span></button>
                             </div>
                         </li>
-                        <li class="list-group-item">Second Entry</li>
-                        <li class="list-group-item">Third Entry</li>
-                        <li class="list-group-item">Fourth Entry</li>
-                        <li class="list-group-item">Fifth Entry</li>
                       </ul>
-                      
-                    <div class="md-form md-outline">
-                        <alert></alert>
-                        <label for="default-picker">What Day's Data Do You Want To Load?</label>
-        
-                    </div>
                 </div>
-
-
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                    <div class="form-group">
-                    <div class="col-sm-6 offset-sm-3">
-                        <input type="date" id="default-picker" formControlName="selectedDate" class="form-control" placeholder="Select time">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-1 offset-sm-8">
-                        <button [disabled]="loading" class="btn btn-primary">
-                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                        Find
-                    </button>
-                    </div>
-                </div>
-                </form>
-                <div id="content">
-                <div class = "" *ngFor="let user of validJournal" id="entry">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 offset-md-3 journal-padding">
-                            <h2>Prompt: {{user.title}}</h2>
-                            
-                            <p>Entry: {{user.text}}</p>
-                            <div class="line"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Modal -->
             <div class="modal" id="entry">
             <div class="modal-sandbox"></div>
-            <div class="modal-box">
+            <div class="modal-box" *ngFor="let entry of entries" [ngValue]="entry">
                 <div class="modal-header">
-                    <h1 class="reg-font">First Entry</h1>
+                    <h1 class="reg-font">{{entry.title.title}}</h1>
                 <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
                 
                 </div>
                 <div class="modal-body">
-                    <p>Here is my entry!! Yay</p>
+                    <p> {{entry.text}} </p>
                 <br />
                 <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Close</button>
                 </div>
