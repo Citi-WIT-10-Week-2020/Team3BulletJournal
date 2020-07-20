@@ -18,7 +18,6 @@ import { JournalPromptComponent } from './journal-prompt/journal-prompt.componen
 import { JournalPublishedComponent } from './journal-published/journal-published.component';
 import { MoodTrackerMonthlyChartsComponent } from './mood-tracker-monthly-charts/mood-tracker-monthly-charts.component';
 import { MoodTrackerWeeklyChartsComponent } from './mood-tracker-weekly-charts/mood-tracker-weekly-charts.component';
-import { UserProfileProfileComponent } from './user-profile-profile/user-profile-profile.component';
 import { UserProfileContactsComponent } from './user-profile-contacts/user-profile-contacts.component';
 import { UserProfileDashboardComponent } from './user-profile-dashboard/user-profile-dashboard.component';
 import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-profiles.component';
@@ -59,7 +58,6 @@ const routes: Routes = [
     { path: 'mood-chosen', component: MoodChosenComponent},
 
     /*User-Profile*/
-    { path: 'user-profile-profile', component: UserProfileProfileComponent},
     { path: 'user-profile-contacts', component: UserProfileContactsComponent},
     { path: 'user-profile-dashboard', component: UserProfileDashboardComponent},
 

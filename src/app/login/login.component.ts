@@ -7,7 +7,10 @@ import { AuthenticationService, AlertService } from '../_services'
 import { ThrowStmt } from '@angular/compiler';
 import { HttpResponse } from '@angular/common/http';
 
-@Component({templateUrl: 'login.component.html'})
+@Component({
+    templateUrl: 'login.component.html',
+    styleUrls: ['login.component.css']
+})
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
@@ -22,7 +25,6 @@ export class LoginComponent implements OnInit {
         private alertService: AlertService
     ) {
         // redirect to home if already logged in
-        
         if (this.authenticationService.currentUserValue) { 
             this.router.navigate(['/']);
         }
@@ -58,7 +60,6 @@ export class LoginComponent implements OnInit {
             //.pipe(first())
             .subscribe(
                 data => {
-                    //this.router.navigate([this.returnUrl]);
                     console.log(data);
                     this.loading = false;
                     let found = false;
