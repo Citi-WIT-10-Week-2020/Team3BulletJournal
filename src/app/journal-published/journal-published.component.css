@@ -88,7 +88,6 @@ Modal CSS
   background: rgb(0,0,0);
   background: rgba(0,0,0,.8);
   overflow: auto;
-  z-index: 3000;
 }
 
 .modal-box {

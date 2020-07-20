@@ -1,41 +1,5 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #fafafa;
-}
-
-p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 1.7em;
-    color: #999;
-}
-
-
-
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-}
-
-ul.CTAs {
-    padding: 20px;
-}
-
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    margin-bottom: 5px;
-}
-
-
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -46,4 +10,79 @@ ul.CTAs a {
     transition: all 0.3s;
 }
 
+.card{
+    margin-top: 5px;
+    min-width: 200px;
+    max-width: 500px;
+    outline-width: 2px;
+    outline-color: black !important;
+}
+
+.card-title{
+    display: inline-flex;
+    justify-content: space-between !important;
+
+}
+
+.card, .card-body, .card-text{
+    max-width: 100%;
+    background-color: ivory;
+}
+
+.link{
+    color: grey;
+}
+
+
+.btn-2{
+    background: unset;
+    border: unset;
+    outline: unset;
+    color: black;
+}
+
+.button{
+    border: 1px solid #e4955e;
+    background-color: ivory;
+    color: #e4955e;
+    padding: 5px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button:hover{
+    background-color:#e4955e;
+    color: white; 
+}
+
+.accept-button{
+    border: 1px solid rgb(93, 204, 93);
+    background-color: ivory;
+    color: rgb(93, 204, 93);
+    padding: 5px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.accept-button:hover{
+    background-color: rgb(93, 204, 93);
+    color: white; 
+}
+
+.decline-button{
+    border: 1px solid rgb(240, 88, 88);
+    background-color: ivory;
+    color: rgb(240, 88, 88);
+    padding: 5px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.decline-button:hover{
+    background-color: rgb(240, 88, 88);
+    color: white; 
+}
     
