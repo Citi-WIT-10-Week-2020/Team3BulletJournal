@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 
 import { AuthenticationService, AlertService } from '../_services'
 import { ThrowStmt } from '@angular/compiler';
@@ -18,7 +17,6 @@ import { DatePipe } from '@angular/common';
 
 export class JournalFreeWriteComponent implements OnInit {
   currentUser: any;
-  currentPage: string = "Free Write";
   journalForm: FormGroup;
   returnUrl: any;
   submitted: boolean;
@@ -40,18 +38,16 @@ export class JournalFreeWriteComponent implements OnInit {
 
    ngOnInit() {
     var d = new Date();
-
     var date = d.getUTCDate();
     var month = d.getUTCMonth() + 1;
     var year = d.getUTCFullYear();
-    var title = "Free Write";
 
     this.journalForm = this.formBuilder.group({
         username: [this.currentUser.username],
-        title: [title],
         day: [date],
         month: [month],
         year: [year],
+        title: ['', Validators.required],
         textEntry: ['', Validators.required],
         
     });
@@ -59,7 +55,7 @@ export class JournalFreeWriteComponent implements OnInit {
     console.log(this.journalForm.controls.day.value);
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/journal';
 }
 
 // convenience getter for easy access to form fields
@@ -68,18 +64,14 @@ get f() { return this.journalForm.controls; }
 onSubmit() {
     this.submitted = true;
     console.log(this.journalForm.controls.day.value);
+
     // reset alerts on submit
     this.alertService.clear();
     
-    // if (this.journalForm.invalid) {
-    //     return;
-    // }
-
     console.log('valid')
     this.loading = true;
     
       this.authenticationService.saveJournal(this.f.username.value, this.f.title.value, this.f.day.value, this.f.month.value, this.f.year.value, this.f.textEntry.value)
-          .pipe(first())
               .subscribe(
                 data => {
                   console.log('inside subscribe')

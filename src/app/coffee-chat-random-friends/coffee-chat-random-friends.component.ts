@@ -53,10 +53,14 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
    }
   
    ngOnInit(){
+
+    var status = "pending";
+
     this.createRandomMeeting = this.formBuilder.group({
       numPeople: ['', Validators.required],
       date: ['', Validators.required],
       time: ['', Validators.required],
+      status: [status]
     })
 
   }
@@ -76,7 +80,7 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
     }
     this.loading = true;
     console.log(this.f.numPeople.value);
-    this.authenticationService.createRandomMeeting(this.currentUser.username, this.f.numPeople.value, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value)    
+    this.authenticationService.createRandomMeeting(this.currentUser.username, this.f.numPeople.value, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.f.status.value) 
     .subscribe(
             data => {
               this.alertService.success('Random Meeting Scheduled', true);

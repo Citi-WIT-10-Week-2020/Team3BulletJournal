@@ -35,8 +35,7 @@ export class RegisterComponent implements OnInit {
             bio: ['', Validators.required],
             hobbies: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]],
-            email: ['', [Validators.required, Validators.email]]
-
+            email: ['', [Validators.required, Validators.email]],
         });
     }
 
@@ -45,17 +44,18 @@ export class RegisterComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-
+        console.log('in')
         // reset alerts on submit
         this.alertService.clear();
 
         // stop here if form is invalid
         if (this.registerForm.invalid) {
+            console.log('he');
             return;
         }
+
         this.loading = true;
         this.authenticationService.register(this.registerForm.value)
-            //.pipe(first())
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);

@@ -3,7 +3,7 @@
 ----------------------------------------------------- */
 
 .background-water {
-    background: url('assets/images/backgroundhome.jpeg') no-repeat center center fixed;
+    background: url('assets/images/deskandclock.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     color: white;
     -moz-background-size: cover;
@@ -43,7 +43,7 @@
  }
 
  .text-center {
-    text-align:center
+    text-align:center;
  }
 
  .fancy-font {

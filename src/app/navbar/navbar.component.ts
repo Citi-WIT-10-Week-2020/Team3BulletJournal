@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService, AuthenticationService, AlertService } from '../_services';
 
@@ -8,15 +8,21 @@ import { UserService, AuthenticationService, AlertService } from '../_services';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+
 export class NavbarComponent implements OnInit {
   currentUser: any;
+  returnUrl: string;
 
     constructor(
         private router: Router,
+        private route: ActivatedRoute,
+        private alertService: AlertService,
         private authenticationService: AuthenticationService
     ) {
-      //TRY THIS IF OTHER LINE DOESN'T WORK
-        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+
+        this.currentUser = this.authenticationService.currentUserValue[0];  
+        console.log(this.currentUser.username);
+        console.log(this.currentUser.firstName);
         
     }
 
@@ -25,7 +31,13 @@ export class NavbarComponent implements OnInit {
         this.router.navigate(['/login']);
     }
 
-  ngOnInit(): void {
+  ngOnInit() {
+  
+
+    this.currentUser = this.authenticationService.currentUserValue[0];     
+    console.log(this.currentUser.lastName);  
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
 }

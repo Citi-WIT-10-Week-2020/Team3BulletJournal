@@ -32,11 +32,12 @@ export class UserProfileContactsComponent implements OnInit {
   ) {
 
     this.currentUser = this.authenticationService.currentUserValue[0];
-    console.log(this.currentUser.friends);
+    console.log(this.currentUser);
   }
 
   ngOnInit() {
-      this.friendList = this.currentUser.friends;
+      //this.friendList = this.currentUser.friends;
+      
       this.loginForm = this.formBuilder.group({
           friendToAdd: ['', Validators.required],
           
@@ -67,15 +68,15 @@ export class UserProfileContactsComponent implements OnInit {
         console.log(this.currentUser.friends);
       for(let user of this.currentUser.friends){
         console.log(user);
-      if(this.f.friendToAdd.value == user){
+      if(this.f.friendToAdd.value == user.username){
           this.validUser = false;
           this.alertService.error("Username already added as a friend!");
+      }else if(this.f.friendToAdd.value == this.currentUser.username){
+          this.validUser = false;
+          this.alertService.error("Don't add yourself as a friend silly!")
       }
     }
     
-
-
-      console.log(this.f.friendToAdd.value);
       this.loading = true;
       this.authenticationService.getAllUsers()
           //.pipe(first())
@@ -90,10 +91,8 @@ export class UserProfileContactsComponent implements OnInit {
                           console.log('Yay we found it');
                           found = true;
                           this.loading = false;
-                          this.currentUser.friends.push(user.username);
-                          this.currentUser = this.currentUser;
-                          this.authenticationService.addAFriend(this.currentUser._id, this.f.friendToAdd.value)
-                              .pipe(first())
+                          this.currentUser.friends.push(user);
+                          this.authenticationService.addAFriend(this.currentUser._id, user) //look into pushng whole user
                                   .subscribe(
                                       data => {
                                     

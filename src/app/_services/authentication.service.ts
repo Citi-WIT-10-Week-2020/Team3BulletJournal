@@ -67,16 +67,40 @@ export class AuthenticationService {
         return this.http.get<any>(`http://localhost:8080/api/getAllMeetings`);
     }
 
-    createMeeting(username, participants, day, month, year, time){
-        return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, time});
+    createMeeting(username, participants, day, month, year, time, status){
+        return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, time, status});
     }
   
-    createRandomMeeting(username, numPeople, day, month, year, time){
-        return this.http.post<any>(`http://localhost:8080/api/createRandomMeeting`, {username, numPeople, day, month, year, time});
+    createRandomMeeting(username, numPeople, day, month, year, time, status){
+        return this.http.post<any>(`http://localhost:8080/api/createRandomMeeting`, {username, numPeople, day, month, year, time, status});
     }
     
     saveMood(username, mood, day, month, year){
         return this.http.post<any>(`http://localhost:8080/api/saveMood`, {username, mood, day, month, year})
+        .pipe(map(user => {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('currentMood', JSON.stringify(user));
+            this.currentUserSubject.next(JSON.stringify(user));
+            
+            return user;
+        }));
+    }
+
+    getAllMoods(){
+        return this.http.get<any>(`http://localhost:8080/api/getAllMoods`);
+    }
+
+    // deleteMood(user){
+    //     console.log('inside of the auth for delete: ' + user._id);
+    //     console.log('username: ' + user.username);
+    //     console.log('mood: ' + user.mood);
+    //     console.log('date: ' + user.day);
+    //     return this.http.post<any>(`http://localhost:8080/api/deleteMood`, user);
+    // }
+
+    deleteMood(id, mood) {
+        console.log('inside new deleteMood in auth');
+        return this.http.put<any>(`http://localhost:8080/api/removeMood`, {id, mood})
         .pipe(map(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentMood', JSON.stringify(user));
@@ -93,6 +117,7 @@ export class AuthenticationService {
     }
 
     register(user) {
+        console.log('in auth');
         return this.http.post(`http://localhost:8080/api/register`, user);
     }
 

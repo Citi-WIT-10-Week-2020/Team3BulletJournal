@@ -57,7 +57,6 @@ export class LoginComponent implements OnInit {
             //.pipe(first())
             .subscribe(
                 data => {
-                    //this.router.navigate([this.returnUrl]);
                     console.log(data);
                     this.loading = false;
                     let found = false;
@@ -69,7 +68,7 @@ export class LoginComponent implements OnInit {
                             this.loading = false;
                             
                             this.authenticationService.login(this.f.username.value, this.f.password.value)
-                                .pipe(first())
+                                //.pipe(first())
                                     .subscribe(
                                         data => {
                                             this.router.navigate([this.returnUrl]);

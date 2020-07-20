@@ -20,6 +20,8 @@ app.use(bodyParser());
 app.use(bodyParser.json({linit:'5mb'}));
 app.use(bodyParser.urlencoded({extended:true}));
 
+app.set('port', (process.env.PORT || 8080));
+
  app.use(function (req, res, next) {
      res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -47,6 +49,8 @@ const MeetingSchema = Schema({
     month: {type: String},
     year: {type: String},
     time: {type: String},
+    status: {type: String}
+    
 },{versionKey: false});
 
 const JournalSchema = Schema({
@@ -69,7 +73,7 @@ const UsersSchema = Schema({
     friends: {type: Array},
     bio: {type: String},
     hobbies: {type:String},
-    role: {type:String},
+    role: {type:String}
 
 },{versionKey: false});
 
@@ -78,18 +82,24 @@ var JournalModel = mongoose.model('Journals', JournalSchema, 'Journals');
 var MoodModel = mongoose.model('Moods', MoodSchema, 'Moods');
 var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
 
-    app.post("/api/deleteUser", function(req,res){
-        model.remove({ _id: req.body.id }, function(err) {
+app.put('/api/removeMood', function(req,res){
+    console.log(req.body.id)
+    console.log(req.body.mood);
+    MoodModel.findByIdAndUpdate({_id: req.body.id}, {$set: {mood: req.body.mood}}, {new: true},
+        function(err,data) {
             if(err) {
+                //console.log(err);
                 res.send(err);
             }
             else{
-                res.send({data:"Record has been deleted"});
+                console.log(req.body.username);
+                res.send(data);
             }
         });
-    })
+})   
 
     app.post("/api/login", function(req,res){
+        console.log('login reached');
         model.find({username: req.body.username}, function(err, data) {
             if(err) {
                 res.send(err);
@@ -102,6 +112,7 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
     })
 
     app.post("/api/register", function(req,res){
+        console.log('working in server');
         var mod = new model(req.body);
         mod.save(function(err,data){
             if(err){
@@ -109,7 +120,6 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
                 res.send(err);
             }
             else{
-                //console.log(data);
                 res.send(data);
             }
         });
@@ -140,6 +150,12 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
         });
     })    
 
+    app.get('/', function(request, response) {
+        var result = 'App is running'
+        response.send(result);
+    }).listen(app.get('port'), function() {
+        console.log('App is running, server is listening on port ', app.get('port'));
+    });
 
     app.get('/api/getAllJournals', function(req,res){
         console.log('found endpoint')
@@ -169,9 +185,23 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
         });
     })    
 
+    app.get('/api/getAllMoods', function(req,res){
+        console.log('found endpoint')
+        MoodModel.find({}, function(err, data) {
+            if(err) {
+                res.send(err);
+                console.log('a');
+            }
+            else{
+                res.send(data);
+                console.log('b');
+            }
+        });
+    })    
+
     
     app.put('/api/addAFriend', function(req,res){
-        //console.log('hit')
+        console.log('hit')
         model.findByIdAndUpdate(req.body._id, {$addToSet: {friends: req.body.friendToAdd}}, {new: true},
             function(err,data) {
                 if(err) {
@@ -186,21 +216,33 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
 
     })    
 
-    app.delete('/api/deleteUser', function(req, res){
-        console.log('trying to delete');
-        res.json(req.body);
+    // app.delete('/api/deleteUser', function(req, res){
+    //     console.log('trying to delete');
+    //     res.json(req.body);
+    // })
+
+    app.delete('/api/getAllMoods', function(req, res){
+        console.log('id:' + req.body.id);
+        MoodModel.findByIdAndDelete(req.body.id, function(err, data) {
+            if(err) {
+                res.send(err);
+                console.log('a');
+            }
+            else{
+                console.log('bahh');
+                res.send(data);
+            }
+        });
     })
 
-    app.post("/api/saveJournalEntry", function(req,res){
+    app.post('/api/saveJournalEntry', function(req,res){
         var journal = new JournalModel(req.body);
-        console.log(req.body.text);
         journal.save(function(err,data){
             if(err){
                 console.log(err);
                 res.send(err);
             }
             else{
-                //console.log(data);
                 res.send(data);
             }
         });
@@ -252,4 +294,4 @@ var MeetingModel = mongoose.model('Meetings', MeetingSchema, 'Meetings');
     //     console.log('Correct port found')
     // })
 
-    app.listen(8080, () => console.log(`Example app listening at http://localhost:8080`))
+    //app.listen(process.env.PORT || 8080, () => console.log(`Example app listening at http://localhost:8080`))
