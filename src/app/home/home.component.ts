@@ -25,6 +25,12 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
+        if (!localStorage.getItem('autoLoad')) { 
+            localStorage.setItem('autoLoad', 'no reload') 
+            location.reload() 
+          } else {
+            localStorage.removeItem('autoLoad') 
+          }
         this.loadAllUsers();
     }
 
