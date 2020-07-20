@@ -19,14 +19,12 @@
 </div>
 <body>
         <!-- Page Content Holder -->
-        <div id="content">
-            <div class="container">
-                <div class="row justify-content-center">
-                    Start Connecting (Select Friends)
-                </div>
-                <alert></alert>
+        <div class="" id="content">
+            <div class="wrapper">
+                <div class="inner">
                 <form [formGroup]="createMeeting" (ngSubmit)="onSubmit()">
-                    <div class="form-group">
+                    <h3>Start Connecting</h3>
+                    <div class="form-wrapper">
                         <label for="people">People: </label>
                         <select multiple formControlName="people">
                             <option *ngFor="let person of peopleList"  [ngValue]="person">
@@ -34,7 +32,7 @@
                             </option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-wrapper">
                         <label for="start">Date:</label>
                             <input type="date" id="start" name="trip-start"  
                                 value="dateToday"
@@ -44,25 +42,27 @@
                                     <div *ngIf="f.date.errors.required">Date is required</div>
                                 </div>
                     </div>
-                    <div class="form-group">
-                        <div class="md-form md-outline">
+                    <div class="form-wrapper">
                             <label for="default-picker">Time:</label>
                             <input type="time" id="default-picker" placeholder="Select time" formControlName="time" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.time.errors }">
                             <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
                                 <div *ngIf="f.time.errors.required">Time is required</div>
                             </div>
-                          </div>
                     </div>
                     <div class="form-group">
-                        <button [disabled]="loading" class="btn btn-primary">
-                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                            <a routerLink="/coffee-chat-profiles" class="btn btn-link"></a>
+                        <button [disabled]="loading" class="button">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1" routerLink="/coffee-chat-profiles"></span>
                             Create Meeting
                         </button>
                     </div>
                 </form>
-            </div>    
+            </div>
+            <div class="image-holder">
+                <img src="'..src/assets/images/coffee select friends.jpg'" alt="" height="400px" width="200px">
+            </div>
+    </div>   
         </div>
+        
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Popper.JS -->
