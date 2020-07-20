@@ -75,5 +75,6 @@ export class JournalPublishedComponent implements OnInit {
             });
             console.log('outside')
 
+
 }
 }

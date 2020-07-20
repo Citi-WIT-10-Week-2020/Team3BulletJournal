@@ -116,7 +116,7 @@ export class MoodTrackerComponent implements OnInit {
     console.log('submitted');
     // reset alerts on submit
     this.alertService.clear();
-    
+    this.moodExists = false;
     //check all moods for one on the same day, if there is one, then delete from DB, no action is required on the local storage
     this.authenticationService.getAllMoods()
     .subscribe(
@@ -130,7 +130,7 @@ export class MoodTrackerComponent implements OnInit {
               .pipe(first())
               .subscribe(
                   data => {
-                
+                      console.log('inside remove user loop');
                       this.router.navigate([this.returnUrl]);
                       //this.alertService.success("Added Friend to Contacts");
                       //add put request to update
@@ -165,7 +165,8 @@ onSubmitExcited() {
   console.log('submitted');
   // reset alerts on submit
   this.alertService.clear();
-  
+  this.moodExists = false;
+
   this.authenticationService.getAllMoods()
     .subscribe(
       data => {
@@ -214,7 +215,8 @@ onSubmitConfused() {
   console.log('submitted');
   // reset alerts on submit
   this.alertService.clear();
-  
+  this.moodExists = false;
+
   this.authenticationService.getAllMoods()
     .subscribe(
       data => {
@@ -263,7 +265,8 @@ onSubmitHappy() {
   console.log('submitted');
   // reset alerts on submit
   this.alertService.clear();
-  
+  this.moodExists = false;
+
   
   this.authenticationService.getAllMoods()
   .subscribe(
@@ -294,6 +297,8 @@ onSubmitHappy() {
   if(this.moodExists == false){
   this.loading = true;
   this.validJournal = [];
+  this.moodExists = false;
+
   this.authenticationService.saveMood(this.j.username.value, this.j.mood.value, this.j.day.value, this.j.month.value, this.j.year.value)
         .pipe(first())
             .subscribe(
