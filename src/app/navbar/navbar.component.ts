@@ -33,12 +33,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
   
-    if (!localStorage.getItem('autoLoad')) { 
-      localStorage.setItem('autoLoad', 'no reload') 
-      location.reload() 
-    } else {
-      localStorage.removeItem('autoLoad') 
-    }
 
     this.currentUser = this.authenticationService.currentUserValue[0];     
     console.log(this.currentUser.lastName);  
