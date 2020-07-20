@@ -11,6 +11,7 @@
     -o-background-size: cover;
  }
 
+
  .journal{
   background: url('assets/images/journal backgound.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -200,4 +201,12 @@ hr.divide2 {
 
 /*--------------------------------------------
 Buttons for Components
+---------------------------------------------*/
+
+
+
+
+
+/*--------------------------------------------
+Login Page
 ---------------------------------------------*/

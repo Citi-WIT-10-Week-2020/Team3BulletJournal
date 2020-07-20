@@ -86,14 +86,7 @@ export class AuthenticationService {
         return this.http.get<any>(`http://localhost:8080/api/getAllMoods`);
     }
 
-    // deleteMood(user){
-    //     console.log('inside of the auth for delete: ' + user._id);
-    //     console.log('username: ' + user.username);
-    //     console.log('mood: ' + user.mood);
-    //     console.log('date: ' + user.day);
-    //     return this.http.post<any>(`http://localhost:8080/api/deleteMood`, user);
-    // }
-
+    
     deleteMood(id, mood) {
         console.log('inside new deleteMood in auth');
         return this.http.put<any>(`http://localhost:8080/api/removeMood`, {id, mood})
