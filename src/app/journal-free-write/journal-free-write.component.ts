@@ -44,11 +44,11 @@ export class JournalFreeWriteComponent implements OnInit {
     var date = d.getUTCDate();
     var month = d.getUTCMonth() + 1;
     var year = d.getUTCFullYear();
-    var title = "Free Write";
+    //var title = "Free Write";
 
     this.journalForm = this.formBuilder.group({
         username: [this.currentUser.username],
-        title: [title],
+        title: [''],
         day: [date],
         month: [month],
         year: [year],
