@@ -95,7 +95,6 @@ export class UserProfileContactsComponent implements OnInit {
                           this.authenticationService.addAFriend(this.currentUser._id, user) //look into pushng whole user
                                   .subscribe(
                                       data => {
-                                    
                                           this.router.navigate([this.returnUrl]);
                                           this.alertService.success("Added Friend to Contacts");
                                           //add put request to update

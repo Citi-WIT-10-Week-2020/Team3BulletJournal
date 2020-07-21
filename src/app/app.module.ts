@@ -43,6 +43,7 @@ import { MoodTrackerNavbarComponent } from './mood-tracker-navbar/mood-tracker-n
 import { UserProfileNavbarComponent } from './user-profile-navbar/user-profile-navbar.component';
 import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
     imports: [
         BrowserModule,
@@ -51,7 +52,8 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
         HttpClientModule,
         appRoutingModule,
         SidebarModule,
-        NgMultiSelectDropDownModule.forRoot()
+        NgMultiSelectDropDownModule.forRoot(),
+        ChartsModule
     ],
     declarations: [
         AppComponent,
@@ -86,7 +88,8 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
         MoodTrackerNavbarComponent,
         UserProfileNavbarComponent,
         MoodChosenComponent,
-        PieChartComponent
+        PieChartComponent,
+        
 
     ],
     providers: [

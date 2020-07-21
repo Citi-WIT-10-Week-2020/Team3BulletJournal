@@ -1,1 +1,11 @@
-<canvas id="pieChart"></canvas> 
+<div>
+    <canvas
+        baseChart
+        [chartType]="'pie'"
+        [datasets]="pieChartData"
+        [labels]="pieChartLabels"
+        [legend]="true"
+        [colors]="pieChartColor"
+        (chartClick)="onChartClick($event)">
+    </canvas>
+  </div>

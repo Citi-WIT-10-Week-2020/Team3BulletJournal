@@ -32,6 +32,8 @@ export class HomeComponent implements OnInit {
             localStorage.removeItem('autoLoad') 
           }
         this.loadAllUsers();
+        this.currentUser = this.authenticationService.currentUserValue[0];
+        console.log(this.currentUser.friends)
     }
 
     deleteUser(id: number) {
