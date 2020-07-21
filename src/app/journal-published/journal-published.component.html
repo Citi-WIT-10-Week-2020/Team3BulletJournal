@@ -34,12 +34,12 @@
                             <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Date:</p>
                             <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Title:</p>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between" *ngFor="let entry of entries" [ngValue]="entry">
+                        <li class="list-group-item d-flex justify-content-between" *ngFor="let entry of entries; index as i" [ngValue]="entry">
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.month}}/{{entry.day}}/{{entry.year}}</p>
-                            <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.title}}</p>
+                            <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.title}} {{i}} </p>
                             <div class="icons">
-                                <button class="btn-2" title="Edit"><span class="fa fa-pencil fa-sm" style="color: grey"></span></button>
-                                <button class="btn-2" title="View" data-toggle="modal" data-target="#entry"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>
+                                <button class="btn-2" title="Edit" (click) = "getValue(entry)"><span class="fa fa-pencil fa-sm" style="color: grey" ></span></button>
+                                <button class="btn-2" title="View" data-toggle="modal" data-target="#entry"><span class="fa fa-eye fa-sm"  style="color: grey" ></span></button>
                                 <button class="btn-2" title="Delete"><span class="fa fa-trash-o"  style="color: grey"></span></button>
                             </div>
                         </li>
@@ -52,7 +52,7 @@
             <div class="modal-sandbox"></div>
             <div class="modal-box" *ngFor="let entry of entries" [ngValue]="entry">
                 <div class="modal-header">
-                    <h1 class="reg-font">{{entry.title.title}}</h1>
+                    <h1 class="reg-font">{{entry.title}}</h1>
                 <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
                 
                 </div>

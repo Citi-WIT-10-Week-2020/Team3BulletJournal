@@ -31,6 +31,11 @@ export class JournalPublishedComponent implements OnInit {
    this.onSubmit();
   }
 
+  getValue(entry){
+    console.log('clicking!!');
+    console.log(entry.username);
+  }
+
   onSubmit() {
     this.submitted = true;
     console.log('submitted');
