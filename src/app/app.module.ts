@@ -26,7 +26,6 @@ import { CoffeeChatUpcomingMeetingsComponent } from './coffee-chat-upcoming-meet
 import { CoffeeChatPendingMeetingsComponent } from './coffee-chat-pending-meetings/coffee-chat-pending-meetings.component';
 import { CoffeeChatSelectFriendsComponent } from './coffee-chat-select-friends/coffee-chat-select-friends.component';
 import { CoffeeChatRandomFriendsComponent } from './coffee-chat-random-friends/coffee-chat-random-friends.component';
-import { JournalDraftsComponent } from './journal-drafts/journal-drafts.component';
 import { JournalPublishedComponent } from './journal-published/journal-published.component';
 import { JournalFreeWriteComponent } from './journal-free-write/journal-free-write.component';
 import { JournalPromptComponent } from './journal-prompt/journal-prompt.component';
@@ -70,7 +69,6 @@ import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
         CoffeeChatPendingMeetingsComponent,
         CoffeeChatSelectFriendsComponent,
         CoffeeChatRandomFriendsComponent,
-        JournalDraftsComponent,
         JournalPublishedComponent,
         JournalFreeWriteComponent,
         JournalPromptComponent,
