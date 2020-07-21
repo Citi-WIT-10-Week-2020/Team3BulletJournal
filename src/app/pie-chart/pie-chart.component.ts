@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import * as Chart from 'chart.js';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -141,3 +142,4 @@ export class PieChartComponent implements OnInit {
 
 
   }
+

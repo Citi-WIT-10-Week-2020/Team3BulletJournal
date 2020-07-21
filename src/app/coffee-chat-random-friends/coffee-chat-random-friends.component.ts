@@ -19,6 +19,7 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
   submitted = false;
   loading = false;
   numAvailableFriends;
+  goodIndex = true;
 
   constructor(
     private router: Router,
@@ -29,7 +30,6 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
   {
     this.currentUser = this.authenticationService.currentUserValue[0];
     this.numAvailableFriends = this.currentUser.friends.length;
-    console.log(this.numAvailableFriends);
 
     switch(this.numAvailableFriends){
       case 0:
@@ -63,12 +63,40 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
       status: [status]
     })
 
+     
   }
   
   // convenience getter for easy access to form fields
   get f() { return this.createRandomMeeting.controls; }
 
   onSubmit() {
+
+    //randomize people based on numPeople in group
+      for(var i = 0; i < this.f.numPeople.value; i++){
+        this.index = Math.floor(Math.random() * this.numAvailableFriends);
+        this.indicesOfSelected[i] = this.index;
+      }
+
+      for(var i = 0; i < this.indicesOfSelected.length; i++){
+        this.friendIndex = this.indicesOfSelected[i];
+        
+        if(this.selectedPeopleList.length >= 1){
+          for(var j = 0; j < this.selectedPeopleList.length; j++){
+            if(this.friendIndex == this.selectedPeopleList[j]){
+              this.goodIndex = false;
+            }
+          }
+          if(this.goodIndex == true){
+            this.selectedPeopleList[i] = this.currentUser.friends[this.friendIndex];
+          }
+          this.goodIndex = true;
+        }
+        else{
+          this.selectedPeopleList[i] = this.currentUser.friends[this.friendIndex];
+        }
+        
+      }
+
     this.submitted = true;
 
     // reset alerts on submit
@@ -79,8 +107,7 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
         return;
     }
     this.loading = true;
-    console.log(this.f.numPeople.value);
-    this.authenticationService.createRandomMeeting(this.currentUser.username, this.f.numPeople.value, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.f.status.value) 
+    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeopleList, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.f.status.value) 
     .subscribe(
             data => {
               this.alertService.success('Random Meeting Scheduled', true);
@@ -92,26 +119,11 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
                   if(user.username == this.currentUser.username){
                       console.log('Yay we found it');
                       this.loading = false;
-                //randomize people based on numPeople in group
-                //create random indices
-              for(var i = 0; i < this.f.numPeople.value; i++){
-                this.index = Math.floor(Math.random() * this.numAvailableFriends);
-                for(var j = 0; j < this.indicesOfSelected.length; j++){
-                  if(this.index != this.indicesOfSelected[j]){
-                    this.indicesOfSelected[i] = this.index;
-                  }
-                }
-              }
-
-              console.log(this.indicesOfSelected.length);
-
-              for(var i = 0; i < this.indicesOfSelected.length; i++){
-                this.friendIndex = this.indicesOfSelected[i];
-                this.selectedPeopleList[i] = this.currentUser.friends[this.friendIndex].value;
-              }
             }
+
+
           }
-  
+        
                        },
             error => {
                 this.alertService.error(error);

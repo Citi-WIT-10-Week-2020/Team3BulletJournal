@@ -20,10 +20,9 @@ export class NavbarComponent implements OnInit {
         private authenticationService: AuthenticationService
     ) {
 
-        this.currentUser = this.authenticationService.currentUserValue[0];  
-        //console.log(this.currentUser.username);
-        //console.log(this.currentUser.firstName);
-        
+
+        this.currentUser = this.authenticationService.currentUserValue[0];     
+
     }
 
     logout() {
@@ -35,7 +34,7 @@ export class NavbarComponent implements OnInit {
   
 
     this.currentUser = this.authenticationService.currentUserValue[0];     
-    //console.log(this.currentUser.lastName);  
+
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }

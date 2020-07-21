@@ -44,6 +44,7 @@ import { UserProfileNavbarComponent } from './user-profile-navbar/user-profile-n
 import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -89,7 +90,7 @@ import { ChartsModule } from 'ng2-charts';
         UserProfileNavbarComponent,
         MoodChosenComponent,
         PieChartComponent,
-        
+
 
     ],
     providers: [
