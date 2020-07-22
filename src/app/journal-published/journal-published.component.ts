@@ -29,11 +29,22 @@ export class JournalPublishedComponent implements OnInit {
      }
    ngOnInit(): void {
    this.onSubmit();
+
+   this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
   }
 
   getValue(entry){
     console.log('clicking!!');
     console.log(entry.username);
+    localStorage.setItem('currentJournal', JSON.stringify(entry));
+    if(entry.type == 'free-write'){
+      this.returnUrl = '/journal-free-edit';
+    }else if(entry.type == 'prompt'){
+      this.returnUrl = '/journal-prompt-edit';
+    }
+    this.router.navigate([this.returnUrl]);          
+
   }
 
   onSubmit() {

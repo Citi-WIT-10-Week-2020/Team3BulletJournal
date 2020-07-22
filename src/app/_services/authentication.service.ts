@@ -11,14 +11,19 @@ export class AuthenticationService {
     public currentUser: Observable<any>;
     private currentMoodSubject: BehaviorSubject<any>;
     public currentMood: Observable<any>;
+    public currentJournalSubject: BehaviorSubject<any>;
+    public currentJournal: any;
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
 
         this.currentMoodSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentMood')));
-
         this.currentMood = this.currentMoodSubject.value;
+        
+        this.currentJournalSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentJournal')));
+        this.currentJournal = this.currentJournalSubject.value;
+        console.log(this.currentJournalValue)
     }
 
     public get currentUserValue() {
@@ -28,6 +33,12 @@ export class AuthenticationService {
     public get currentMoodValue() {
         return this.currentMoodSubject.value;
     }
+
+    public get currentJournalValue() {
+        return this.currentJournalSubject.value;
+    }
+
+    
 
     login(username, password) {
         return this.http.post<any>(`http://localhost:8080/api/login`, { username, password })
@@ -59,8 +70,8 @@ export class AuthenticationService {
         return this.http.get<any>(`http://localhost:8080/api/getAllJournals`);
     }
 
-    saveJournal(username, title, day, month, year, text){
-        return this.http.post<any>(`http://localhost:8080/api/saveJournalEntry`, {username, title, day, month, year, text});
+    saveJournal(username, title, day, month, year, text, type){
+        return this.http.post<any>(`http://localhost:8080/api/saveJournalEntry`, {username, title, day, month, year, text, type});
     }
 
     getAllMeetings(){
@@ -96,6 +107,28 @@ export class AuthenticationService {
             this.currentUserSubject.next(JSON.stringify(user));
             
             return user;
+        }));
+    }
+
+    updatePromptJournal(_id, title, textEntry){
+        console.log('hi')
+        return this.http.put<any>(`http://localhost:8080/api/updatePromptJournal`, {_id, title, textEntry})
+        .pipe(map(user => {
+            console.log('in update')
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            //localStorage.removeItem('currentJournal');
+            localStorage.removeItem('currentJournal')
+        }));
+    }
+
+    updateFreeJournal(_id, title, textEntry){
+        console.log('hi')
+        return this.http.put<any>(`http://localhost:8080/api/updateFreeJournal`, {_id, title, textEntry})
+        .pipe(map(user => {
+            console.log('in update')
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            //localStorage.removeItem('currentJournal');
+            localStorage.removeItem('currentJournal')
         }));
     }
  

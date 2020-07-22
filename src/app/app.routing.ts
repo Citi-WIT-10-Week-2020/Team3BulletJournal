@@ -21,6 +21,8 @@ import { UserProfileContactsComponent } from './user-profile-contacts/user-profi
 import { UserProfileDashboardComponent } from './user-profile-dashboard/user-profile-dashboard.component';
 import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-profiles.component';
 import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
+import { JournalPromptEditComponent } from './journal-prompt-edit/journal-prompt-edit.component';
+import { JournalFreeEditComponent } from './journal-free-edit/journal-free-edit.component';
 
 
 const routes: Routes = [
@@ -48,6 +50,8 @@ const routes: Routes = [
     { path: 'journal-free-write', component: JournalFreeWriteComponent},
     { path: 'journal-prompt', component: JournalPromptComponent},
     { path: 'journal-published', component: JournalPublishedComponent},
+    { path: 'journal-prompt-edit', component: JournalPromptEditComponent},
+    { path: 'journal-free-edit', component: JournalFreeEditComponent},
 
     /*Mood-tracker*/
 

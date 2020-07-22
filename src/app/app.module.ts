@@ -43,6 +43,8 @@ import { UserProfileNavbarComponent } from './user-profile-navbar/user-profile-n
 import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ChartsModule } from 'ng2-charts';
+import { JournalPromptEditComponent } from './journal-prompt-edit/journal-prompt-edit.component';
+import { JournalFreeEditComponent } from './journal-free-edit/journal-free-edit.component';
 
 @NgModule({
     imports: [
@@ -88,6 +90,8 @@ import { ChartsModule } from 'ng2-charts';
         UserProfileNavbarComponent,
         MoodChosenComponent,
         PieChartComponent,
+        JournalPromptEditComponent,
+        JournalFreeEditComponent,
 
 
     ],
