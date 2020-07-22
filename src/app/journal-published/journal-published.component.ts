@@ -14,6 +14,7 @@ export class JournalPublishedComponent implements OnInit {
   loading: boolean;
   entries: any[];
   currentUser: any;
+  currentEntry: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +30,10 @@ export class JournalPublishedComponent implements OnInit {
      }
    ngOnInit(): void {
    this.onSubmit();
+  }
+
+  getEntry(entry){
+    this.currentEntry= entry;
   }
 
   onSubmit() {

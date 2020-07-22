@@ -2,19 +2,21 @@ import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService, AlertService, AuthenticationService } from '../_services';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-
+​
 @Component({
   selector: 'app-coffee-chat-select-friends',
   templateUrl: './coffee-chat-select-friends.component.html',
   styleUrls: ['./coffee-chat-select-friends.component.css'],
 })
-
+​
 export class CoffeeChatSelectFriendsComponent implements OnInit {
   currentUser: any;
   peopleList = [];
   createMeeting: FormGroup;
   submitted = false;
   loading = false;
+  selectedPeople = [];
+  maxCapacity = false;
   
   constructor(
     private router: Router,
@@ -25,22 +27,42 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
   {
     this.currentUser = this.authenticationService.currentUserValue[0];
    }
-
+​
    ngOnInit(){
     var status = "pending";
     this.peopleList = this.currentUser.friends;
     this.createMeeting = this.formBuilder.group({
-      people: ['', Validators.required],
       date: ['', Validators.required],
       time: ['', Validators.required],
       status: [status]
     })
   }
 
+  userSelect(username){
+    if(this.selectedPeople.includes(username)){ //deselect
+      this.selectedPeople = this.selectedPeople.filter(p => p !== username)
+    }
+    else{
+      this.selectedPeople.push(username);
+    }
+
+    if(this.selectedPeople.length >= 5){
+      console.log(this.maxCapacity);
+      this.maxCapacity = true;
+    }
+    else{
+      this.maxCapacity = false;
+    }
+
+    console.log(this.selectedPeople);
+    console.log(this.maxCapacity);
+
+  }
+
   // convenience getter for easy access to form fields
   get f() { return this.createMeeting.controls; }
-
-  onSubmit() {
+  
+  onSubmit() {​
     this.submitted = true;
     console.log("in on SUBMIT")
     // reset alerts on submit
@@ -49,9 +71,9 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
     if (this.createMeeting.invalid) {
         return;
     }
-
+​
     this.loading = true;
-    this.authenticationService.createMeeting(this.currentUser.username, this.f.people.value, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.f.status.value)
+    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeople, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.f.status.value)
         .subscribe(
             data => {
                 this.alertService.success('Meeting Scheduled', true);
@@ -61,5 +83,7 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
                 this.alertService.error(error);
                 this.loading = false;
             });
+
+            console.log("got through");
 }
 }

@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AuthenticationService, AlertService } from '../_services'
-import { ThrowStmt } from '@angular/compiler';
-import { HttpResponse } from '@angular/common/http';
-import { getLocaleDateFormat } from '@angular/common';
+import { AuthenticationService, AlertService } from '../_services';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -53,7 +50,6 @@ export class JournalFreeWriteComponent implements OnInit {
         
     });
 
-    console.log(this.journalForm.controls.day.value);
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/journal';

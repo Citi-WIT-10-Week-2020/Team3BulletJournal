@@ -12,10 +12,11 @@ import { FormBuilder } from '@angular/forms';
 export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
   submitted: boolean;
   loading: boolean;
-  returnUrl: any;
   currentUser: any;
   meetings: any[];
+  currentMeeting: any;
 
+  
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -26,12 +27,16 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
     this.currentUser = this.authenticationService.currentUserValue[0];
     this.meetings = this.meetings;
     
-     }
+    }
+   
      
   ngOnInit(): void {
     this.onSubmit();
   }
 
+  getMeeting(meeting){
+    this.currentMeeting = meeting;
+  }
   onSubmit() {
     this.submitted = true;
     console.log('submitted');
@@ -45,6 +50,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
     var year = date.getFullYear();
     var hour = date.getHours();
     var minutes = date.getMinutes();
+
 
     this.loading = true;
     this.meetings = [];
@@ -117,5 +123,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
             console.log('outside');
           
   }
+
+  
 
 }
