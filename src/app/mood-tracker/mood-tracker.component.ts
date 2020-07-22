@@ -132,7 +132,7 @@ export class MoodTrackerComponent implements OnInit {
                   data => {
                       console.log('inside remove user loop');
                       this.moodExists = true;
-                      //this.router.navigate([this.returnUrl]);
+                      this.router.navigate([this.returnUrl]);
                       //this.alertService.success("Added Friend to Contacts");
                       //add put request to update
                    },
@@ -154,7 +154,7 @@ export class MoodTrackerComponent implements OnInit {
                     .subscribe(
                       data => {
                         console.log('inside subscribe')
-                        //this.router.navigate([this.returnUrl]);          
+                        this.router.navigate([this.returnUrl]);          
                       },
                       error => {
                            this.alertService.error(error);

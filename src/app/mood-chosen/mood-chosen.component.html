@@ -31,11 +31,11 @@
                 </div>
             <div class="resource-container">
                 <div class="resource-item">
-                        <button id="read" value="anxious" name="button" routerLink="/mood-chosen"></button> <hr>Read </div>
+                        <button id="read" value="anxious" name="button"(click) = "onSubmitRead()" routerLink="/mood-chosen"></button> <hr>Read </div>
                 <div class="resource-item">
-                    <button id="watch" value="excited" name="button" routerLink="/mood-chosen"></button><hr> Watch </div>
+                    <button id="watch" value="excited" name="button" (click) = "onSubmitWatch()" routerLink="/mood-chosen"></button><hr> Watch </div>
                 <div class="resource-item">
-                    <button id="do" value="confused" name="button" routerLink="/mood-chosen"></button><hr>Do </div>
+                    <button id="do" value="confused" name="button" (click) = "onSubmitDo()" routerLink="/mood-chosen"></button><hr>Do </div>
                 </div>
             </div>
          </div>
