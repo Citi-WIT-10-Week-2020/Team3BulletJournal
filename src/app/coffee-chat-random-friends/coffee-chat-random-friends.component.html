@@ -30,11 +30,13 @@
     <div class="coffee-chat" id="content">
         <!--Adjust the min and max value to the min being today and the max up to one-year ahead -->
         <!---Pull from JSON for Participant names-->
-        <div class="wrapper">
-            <div class="inner">
-            <form [formGroup]="createRandomMeeting" (ngSubmit)="onSubmit()">
-                 <h3>Start Connecting</h3>
-                <div class="form-wrapper">
+        <div class="container">
+            <div class="row justify-content-center">
+                Start Connecting (Randomly Generate Friends)
+            </div>
+            <alert></alert>
+            <form [formGroup]="createMeeting" (ngSubmit)="onSubmit()">
+                <div class="form-group">
                     <label>Number of People:</label>
                     <div class="form-holder">
                         <i class="fa fa-chevron-down fa-sm"></i>

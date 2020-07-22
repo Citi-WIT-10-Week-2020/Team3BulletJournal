@@ -35,41 +35,38 @@
                 <div class="col-sm-10 offset-sm-1">
                     <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between heading">
-                            <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Date:</p>
-                            <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Time:</p>
+                            <p class="p-0 m-0 flex-grow-1" style="color: white; font-weight: 600;">Date:</p>
+                            <p class="p-0 m-0 flex-grow-1" style="color: white; font-weight: 600;">Time:</p>
                         </li>
                         <li class="list-group-item d-flex justify-content-between" *ngFor="let meeting of meetings"  [ngValue]="meeting">
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.month}}/{{meeting.day}}/{{meeting.year}}</p>
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.time}}</p>
-                            <div class="icons">
-                                <button class="btn-2" title="View" data-toggle="modal" data-target="#entry"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>                            </div>
+                           
+
+                                <button class="btn-2" title="View" data-toggle="modal" (click)="getMeeting(meeting)" data-target="#meeting" data-id="{{i}}"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>                         
                         </li>
                       </ul>
                 </div>
             </div>
-           
 
-                
-
-                <!-- Modal -->
-            <div class="modal" id="entry">
+            <!-- Modal -->
+            <div class="modal" id="meeting">
                 <div class="modal-sandbox"></div>
-                <div class="modal-box" *ngFor="let meeting of meetings"  [ngValue]="meeting">
+                <div class="modal-box">
                     <div class="modal-header">
-                        <h1 class="reg-font">Meeting Details:</h1>
+                        <h1 class="reg-font" style="color: white;">Meeting Details:</h1>
                     <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
                     </div>
                     <div class="modal-body">
-                        <div class="col-2">
-                            {{meeting.participants.length}}
+                                             
+                        Number of Participants:  {{currentMeeting.participants.length}}
+                        <br>
+                        <br>
+                        Participants:
+                        <div *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
+                            {{participant.firstName}}
                         </div>
-                        
-                        <div class="col-4">
-                            <div class="row" *ngFor="let participant of meeting.participants" [ngValue]="participant">
-                                {{participant.firstName}}
-                            </div>
-                        </div>
-                    <br />
+                        <br />
                     <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>

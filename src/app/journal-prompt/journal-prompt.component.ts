@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AuthenticationService, AlertService } from '../_services'
-import { ThrowStmt } from '@angular/compiler';
-import { HttpResponse } from '@angular/common/http';
-import { getLocaleDateFormat } from '@angular/common';
+import { AuthenticationService, AlertService } from '../_services';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -62,7 +59,7 @@ export class JournalPromptComponent implements OnInit {
     var year = d.getUTCFullYear();
     this.journalForm = this.formBuilder.group({
         username: [this.currentUser.username],
-        title: [this.title.text],
+        title: [this.title.title],
         day: [date],
         month: [month],
         year: [year],

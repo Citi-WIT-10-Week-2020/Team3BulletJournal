@@ -94,6 +94,7 @@
   .form-control {
     width: 67.08%;
     height: 15%;
+
     display: block;
     font-size: 13px;
     border: none;
@@ -205,15 +206,25 @@ div.searchable {
     overflow-x: hidden;
     padding: 0;
 }
-
+​
 .searchable ul li {
     padding: 7px 9px;
     border-bottom: 1px solid #e1e1e1;
     cursor: pointer;
     color: #6e6e6e;
 }
-
+​
 .searchable ul li.selected {
     background-color: #e8e8e8;
     color: #333;
+}
+
+/* ---------------------------------------------------
+    CHECKBOX STYLE
+----------------------------------------------------- */
+
+.user-select{
+  overflow-y: scroll;
+  height: 200px;
+
 }

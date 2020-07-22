@@ -12,10 +12,9 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
   currentUser: any;
   numberList;
   index;
-  friendIndex;
   indicesOfSelected = [];
   selectedPeopleList = [];
-  createRandomMeeting: FormGroup;
+  createMeeting: FormGroup;
   submitted = false;
   loading = false;
   numAvailableFriends;
@@ -56,7 +55,7 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
 
     var status = "pending";
 
-    this.createRandomMeeting = this.formBuilder.group({
+    this.createMeeting = this.formBuilder.group({
       numPeople: ['', Validators.required],
       date: ['', Validators.required],
       time: ['', Validators.required],
@@ -67,34 +66,36 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
   }
   
   // convenience getter for easy access to form fields
-  get f() { return this.createRandomMeeting.controls; }
+  get f() { return this.createMeeting.controls; }
 
   onSubmit() {
 
     //randomize people based on numPeople in group
-      for(var i = 0; i < this.f.numPeople.value; i++){
-        this.index = Math.floor(Math.random() * this.numAvailableFriends);
-        this.indicesOfSelected[i] = this.index;
+    var count = 0;
+    while(count < this.f.numPeople.value){
+      this.index = Math.floor(Math.random() * this.numAvailableFriends);
+      if(this.indicesOfSelected.length == 0){
+        this.indicesOfSelected[0] = this.index
       }
+      else{
+        for(var i = 0; i < this.indicesOfSelected.length; i++){
+          if(this.indicesOfSelected[i] == this.index){
+            this.goodIndex = false;
+            break;
+          }
+        }
+        if(this.goodIndex == true){
+          this.indicesOfSelected[count] = this.index;
+          count++;
+        }
+        this.goodIndex = true;
+      }
+    }
+
+      console.log(this.indicesOfSelected);
 
       for(var i = 0; i < this.indicesOfSelected.length; i++){
-        this.friendIndex = this.indicesOfSelected[i];
-        
-        if(this.selectedPeopleList.length >= 1){
-          for(var j = 0; j < this.selectedPeopleList.length; j++){
-            if(this.friendIndex == this.selectedPeopleList[j]){
-              this.goodIndex = false;
-            }
-          }
-          if(this.goodIndex == true){
-            this.selectedPeopleList[i] = this.currentUser.friends[this.friendIndex];
-          }
-          this.goodIndex = true;
-        }
-        else{
-          this.selectedPeopleList[i] = this.currentUser.friends[this.friendIndex];
-        }
-        
+        this.selectedPeopleList[i] = this.currentUser.friends[this.indicesOfSelected[i]];
       }
 
     this.submitted = true;
@@ -103,7 +104,7 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
     this.alertService.clear();
 
     // stop here if form is invalid
-    if (this.createRandomMeeting.invalid || this.numAvailableFriends <= 0) {
+    if (this.createMeeting.invalid || this.numAvailableFriends <= 0) {
         return;
     }
     this.loading = true;
