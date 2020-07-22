@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -119,6 +119,18 @@ export class AuthenticationService {
             //localStorage.removeItem('currentJournal');
             localStorage.removeItem('currentJournal')
         }));
+    }
+
+    deleteJournal(_id){
+        const options = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+              }),
+            body: {
+                _id: _id
+            },
+        };
+        return this.http.delete<any>(`http://localhost:8080/api/deleteJournal`, options)
     }
 
     updateFreeJournal(_id, title, textEntry){
