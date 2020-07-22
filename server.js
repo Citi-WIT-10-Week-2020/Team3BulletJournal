@@ -58,7 +58,8 @@ const JournalSchema = Schema({
     day: {type: String},
     month: {type: String},
     year: {type: String},
-    text: {type: String}
+    text: {type: String},
+    type: {type: String}
 
 },{versionKey: false});
 
@@ -209,6 +210,59 @@ app.put('/api/removeMood', function(req,res){
                 }
                 else{
                     console.log(req.body.username);
+                    res.send(data);
+                }
+            });
+
+    })    
+
+    app.put('/api/removeMood', function(req,res){
+        console.log(req.body.id)
+        console.log(req.body.mood);
+        MoodModel.findByIdAndUpdate({_id: req.body.id}, {$set: {mood: req.body.mood}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    //console.log(err);
+                    res.send(err);
+                }
+                else{
+                    console.log(req.body.username);
+                    res.send(data);
+                }
+            });
+    })   
+
+    app.put('/api/updatePromptJournal', function(req,res){
+        console.log('hit')
+        console.log(req.body._id);
+        console.log(req.body.textEntry);
+        JournalModel.findByIdAndUpdate({_id: req.body._id}, {$set: {text: req.body.textEntry}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    //console.log(err);
+                    res.send(err);
+                }
+                else{
+                    //console.log(req.body.username);
+                    res.send(data);
+                }
+            });
+
+    })    
+
+
+    app.put('/api/updateFreeJournal', function(req,res){
+        console.log('hit')
+        console.log(req.body._id);
+        console.log(req.body.textEntry);
+        JournalModel.findByIdAndUpdate({_id: req.body._id}, {$set: {text: req.body.textEntry, title: req.body.title}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    //console.log(err);
+                    res.send(err);
+                }
+                else{
+                    //console.log(req.body.username);
                     res.send(data);
                 }
             });
