@@ -131,6 +131,7 @@ export class MoodTrackerComponent implements OnInit {
               .subscribe(
                   data => {
                       console.log('inside remove user loop');
+                      this.moodExists = true;
                       this.router.navigate([this.returnUrl]);
                       //this.alertService.success("Added Friend to Contacts");
                       //add put request to update
@@ -139,25 +140,31 @@ export class MoodTrackerComponent implements OnInit {
                       this.alertService.error(error);
                       this.loading = false;
           });
-          }
+          this.moodExists = true;
+          console.log(this.moodExists);
+
         }
+        }
+
+        if(this.moodExists == false){
+          this.loading = true;
+          this.validJournal = [];
+          this.authenticationService.saveMood(this.f.username.value, this.f.mood.value, this.f.day.value, this.f.month.value, this.f.year.value)
+                .pipe(first())
+                    .subscribe(
+                      data => {
+                        console.log('inside subscribe')
+                        this.router.navigate([this.returnUrl]);          
+                      },
+                      error => {
+                           this.alertService.error(error);
+                           this.loading = false;
+             });
+            }  
+
       });
-    //console.log(this.f.username.value);
-    if(this.moodExists == false){
-    this.loading = true;
-    this.validJournal = [];
-    this.authenticationService.saveMood(this.f.username.value, this.f.mood.value, this.f.day.value, this.f.month.value, this.f.year.value)
-          .pipe(first())
-              .subscribe(
-                data => {
-                  console.log('inside subscribe')
-                  this.router.navigate([this.returnUrl]);          
-                },
-                error => {
-                     this.alertService.error(error);
-                     this.loading = false;
-       });
-      }  
+    console.log(this.moodExists);
+    
 }
 
 onSubmitExcited() {
@@ -190,24 +197,26 @@ onSubmitExcited() {
           });
           }
         }
+
+        if(this.moodExists == false){
+          this.loading = true;
+          this.validJournal = [];
+          this.authenticationService.saveMood(this.h.username.value, this.h.mood.value, this.h.day.value, this.h.month.value, this.h.year.value)
+                .pipe(first())
+                    .subscribe(
+                      data => {
+                        console.log('inside subscribe')
+                        this.router.navigate([this.returnUrl]);          
+                      },
+                      error => {
+                           this.alertService.error(error);
+                           this.loading = false;
+             });
+            }
       });
 
   //console.log(this.f.username.value);
-  if(this.moodExists == false){
-  this.loading = true;
-  this.validJournal = [];
-  this.authenticationService.saveMood(this.h.username.value, this.h.mood.value, this.h.day.value, this.h.month.value, this.h.year.value)
-        .pipe(first())
-            .subscribe(
-              data => {
-                console.log('inside subscribe')
-                this.router.navigate([this.returnUrl]);          
-              },
-              error => {
-                   this.alertService.error(error);
-                   this.loading = false;
-     });
-    }
+  
 }
 
 onSubmitConfused() {
@@ -240,24 +249,27 @@ onSubmitConfused() {
           });
           }
         }
+
+        if(this.moodExists == false){
+          this.loading = true;
+          this.validJournal = [];
+          this.authenticationService.saveMood(this.i.username.value, this.i.mood.value, this.i.day.value, this.i.month.value, this.i.year.value)
+                .pipe(first())
+                    .subscribe(
+                      data => {
+                        console.log('inside subscribe')
+                        this.router.navigate([this.returnUrl]);          
+                      },
+                      error => {
+                           this.alertService.error(error);
+                           this.loading = false;
+             });
+            }
+
       });
 
   //console.log(this.f.username.value);
-  if(this.moodExists == false){
-  this.loading = true;
-  this.validJournal = [];
-  this.authenticationService.saveMood(this.i.username.value, this.i.mood.value, this.i.day.value, this.i.month.value, this.i.year.value)
-        .pipe(first())
-            .subscribe(
-              data => {
-                console.log('inside subscribe')
-                this.router.navigate([this.returnUrl]);          
-              },
-              error => {
-                   this.alertService.error(error);
-                   this.loading = false;
-     });
-    }
+  
 }
 
 onSubmitHappy() {
@@ -291,26 +303,29 @@ onSubmitHappy() {
         });
         }
       }
+
+      if(this.moodExists == false){
+        this.loading = true;
+        this.validJournal = [];
+        this.moodExists = false;
+      
+        this.authenticationService.saveMood(this.j.username.value, this.j.mood.value, this.j.day.value, this.j.month.value, this.j.year.value)
+              .pipe(first())
+                  .subscribe(
+                    data => {
+                      console.log('inside subscribe')
+                      this.router.navigate([this.returnUrl]);          
+                    },
+                    error => {
+                         this.alertService.error(error);
+                         this.loading = false;
+           });
+          } 
+
     });
 
   //console.log(this.f.username.value);
-  if(this.moodExists == false){
-  this.loading = true;
-  this.validJournal = [];
-  this.moodExists = false;
-
-  this.authenticationService.saveMood(this.j.username.value, this.j.mood.value, this.j.day.value, this.j.month.value, this.j.year.value)
-        .pipe(first())
-            .subscribe(
-              data => {
-                console.log('inside subscribe')
-                this.router.navigate([this.returnUrl]);          
-              },
-              error => {
-                   this.alertService.error(error);
-                   this.loading = false;
-     });
-    } 
+  
 }
 
 onSubmitSad() {
@@ -343,23 +358,25 @@ onSubmitSad() {
           });
           }
         }
+
+        if(this.moodExists == false){
+          this.loading = true;
+          this.validJournal = [];
+          this.authenticationService.saveMood(this.k.username.value, this.k.mood.value, this.k.day.value, this.k.month.value, this.k.year.value)
+                .pipe(first())
+                    .subscribe(
+                      data => {
+                        console.log('inside subscribe')
+                        this.router.navigate([this.returnUrl]);          
+                      },
+                      error => {
+                           this.alertService.error(error);
+                           this.loading = false;
+             });
+            } 
       });
 
   //console.log(this.f.username.value);
-  if(this.moodExists == false){
-  this.loading = true;
-  this.validJournal = [];
-  this.authenticationService.saveMood(this.k.username.value, this.k.mood.value, this.k.day.value, this.k.month.value, this.k.year.value)
-        .pipe(first())
-            .subscribe(
-              data => {
-                console.log('inside subscribe')
-                this.router.navigate([this.returnUrl]);          
-              },
-              error => {
-                   this.alertService.error(error);
-                   this.loading = false;
-     });
-    } 
+  
 }
 }

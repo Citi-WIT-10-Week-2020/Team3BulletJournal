@@ -26,7 +26,6 @@ import { CoffeeChatUpcomingMeetingsComponent } from './coffee-chat-upcoming-meet
 import { CoffeeChatPendingMeetingsComponent } from './coffee-chat-pending-meetings/coffee-chat-pending-meetings.component';
 import { CoffeeChatSelectFriendsComponent } from './coffee-chat-select-friends/coffee-chat-select-friends.component';
 import { CoffeeChatRandomFriendsComponent } from './coffee-chat-random-friends/coffee-chat-random-friends.component';
-import { JournalDraftsComponent } from './journal-drafts/journal-drafts.component';
 import { JournalPublishedComponent } from './journal-published/journal-published.component';
 import { JournalFreeWriteComponent } from './journal-free-write/journal-free-write.component';
 import { JournalPromptComponent } from './journal-prompt/journal-prompt.component';
@@ -42,8 +41,10 @@ import { MoodTrackerNavbarComponent } from './mood-tracker-navbar/mood-tracker-n
 import { UserProfileNavbarComponent } from './user-profile-navbar/user-profile-navbar.component';
 import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
 
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-//import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { ChartsModule } from 'ng2-charts';
+import { JournalPromptEditComponent } from './journal-prompt-edit/journal-prompt-edit.component';
+import { JournalFreeEditComponent } from './journal-free-edit/journal-free-edit.component';
 
 @NgModule({
     imports: [
@@ -53,7 +54,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
         HttpClientModule,
         appRoutingModule,
         SidebarModule,
-        NgMultiSelectDropDownModule.forRoot()
+        NgMultiSelectDropDownModule.forRoot(),
+        ChartsModule
     ],
     declarations: [
         AppComponent,
@@ -72,7 +74,6 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
         CoffeeChatPendingMeetingsComponent,
         CoffeeChatSelectFriendsComponent,
         CoffeeChatRandomFriendsComponent,
-        JournalDraftsComponent,
         JournalPublishedComponent,
         JournalFreeWriteComponent,
         JournalPromptComponent,
@@ -88,7 +89,10 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
         MoodTrackerNavbarComponent,
         UserProfileNavbarComponent,
         MoodChosenComponent,
-        //PieChartComponent
+        PieChartComponent,
+        JournalPromptEditComponent,
+        JournalFreeEditComponent,
+
 
     ],
     providers: [

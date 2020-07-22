@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JournalDraftsComponent } from './journal-drafts.component';
+import { JournalPromptEditComponent } from './journal-prompt-edit.component';
 
-describe('JournalDraftsComponent', () => {
-  let component: JournalDraftsComponent;
-  let fixture: ComponentFixture<JournalDraftsComponent>;
+describe('JournalPromptEditComponent', () => {
+  let component: JournalPromptEditComponent;
+  let fixture: ComponentFixture<JournalPromptEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JournalDraftsComponent ]
+      declarations: [ JournalPromptEditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JournalDraftsComponent);
+    fixture = TestBed.createComponent(JournalPromptEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

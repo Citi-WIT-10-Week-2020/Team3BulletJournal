@@ -18,11 +18,8 @@ export class JournalNavbarComponent implements OnInit {
     if(this.href == '/journal-free-write'){
       this.currentPage = 'Free Write'
     }
-    if(this.href == '/journal-drafts'){
-      this.currentPage = 'Drafts'
-    }
     if(this.href == '/journal-published'){
-      this.currentPage = 'Published Entries'
+      this.currentPage = 'Previous Entries'
     }
     if(this.href == '/journal-prompt'){
       this.currentPage = 'Respond to a Prompt'

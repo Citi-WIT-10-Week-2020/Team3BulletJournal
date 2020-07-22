@@ -14,6 +14,11 @@ p {
     color: #999;
 }
 
+h4{
+    text-align: center;
+}
+
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -32,14 +37,16 @@ p {
 textarea {
     outline: none;
     resize: none !important;
-    margin: 20px;
     padding-left: 10px;
     padding-right: 10px;
 	box-shadow:  1px 1px 5px grey;
     border-color: #ced4da !important;
     width: 100%;
+    display:inline-block !important;
+    vertical-align:middle !important;
     margin: 10px;
     }
+
 textarea:hover {
 		resize: none !important;
 		overflow: auto !important;
@@ -50,6 +57,7 @@ textarea:hover {
 
 .title{
     font-size: 30px;
+    color: grey;
 }
     
 .notes {
@@ -64,13 +72,12 @@ textarea:hover {
     background-attachment: local;
 }
 
-
 .buttons{
     border: 2px solid #7CA5AF;
     background-color: whitesmoke;
     color: #7CA5AF;
-    height: 100% !important;
-    width: 10%;
+    height: 75%;
+    width: 90%;
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
@@ -82,6 +89,6 @@ textarea:hover {
     background-color:#7CA5AF;
     color: white; 
 }
-  
+
 
 
