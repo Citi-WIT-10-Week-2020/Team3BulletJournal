@@ -250,6 +250,21 @@ app.put('/api/removeMood', function(req,res){
 
     })    
 
+    app.delete('/api/deleteJournal', function(req,res){
+        //console.log(req.body._id)
+        JournalModel.findByIdAndDelete({_id: req.body._id},
+            function(err,data){
+                if(err) {
+                    //console.log(err);
+                    res.send(err);
+                }
+                else{
+                    //console.log(req.body.username);
+                    res.send(data);
+                }
+            }
+            );
+    })
 
     app.put('/api/updateFreeJournal', function(req,res){
         console.log('hit')
