@@ -50,7 +50,7 @@ export class MoodChosenComponent implements OnInit {
   ]
 
   ConfusedDo = [
-    {title: 'CDo1', link: 'https://www.huffpost.com/entry/4-ways-to-find-direction-when-you-are-feeling-confused_b_5798e0dde4b0e339c2400320,'},
+    {title: 'CDo1', link: 'https://www.huffpost.com/entry/4-ways-to-find-direction-when-you-are-feeling-confused_b_5798e0dde4b0e339c2400320'},
     {title: 'CDo2', link: 'https://lifehacks.io/lost-and-confused/'}
   ]
 
