@@ -16,17 +16,57 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 </head>
+<div>
+    <app-navbar style="z-index: 9999;"></app-navbar>
+</div>
+<div class="sticky-top">
+    <app-user-profile-navbar style="z-index: 1;"></app-user-profile-navbar>
+</div>
 <body>
-    <div class="sticky-top">
-        <app-navbar></app-navbar>
-        <app-user-profile-navbar></app-user-profile-navbar>
-    </div>
-        <!-- Page Content Holder -->
-        <div id="content">
-            <div class="col-md-10">
-            <!-- <app-pie-chart></app-pie-chart> -->
+    <div id="content">
+        
+        <div class="journal-container">
+            <h4 class="text-center">Recent Entries</h4>
+            <ul class="list-group">
+                <li>
+                    Random Entry
+                </li>
+            </ul>
+        </div>
+        <div class="mood-container">
+            <div class="container">
+                <a>Graphs go here</a>
             </div>
         </div>
+        <div class="coffee-container">
+            <h4>Upcoming Meetings</h4>
+            <div class="card">
+                <div class="card-title justify-content-end reg-font mb-0 mt-3 ml-3 mr-3">
+                    <a style=" font-size: 16px; font-weight: 500;">Sat, May 14</a>
+                    <a style=" font-size: 16px;">10:00 AM</a>
+                </div>
+                <div class="card-body mt-0">
+                    <hr class="divide mt-0 mb-2" />
+                    <div class="card-text ml-3 mr-3">
+                        <div class="row justify-content-end">
+                            <a class="p-1 flex-grow-1 left reg-font" style="font-weight: 500;"> Host:</a>
+                            <a class="p-1 reg-font"> Shannon</a>
+                        </div>
+                        <div class="row justify-content-end">
+                            <a class="p-1 flex-grow-1 left reg-font" style="font-weight: 500;">5 Attendees:</a>
+                            <a class="link" routerLink="/coffee-chat-profiles">View Profiles</a>
+                        </div>
+                        <div class="row justify-content-center mt-3">
+                            <button class="button mr-1">View</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                
+        </div>          
+    </div>
+            
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService, AlertService, AuthenticationService } from '../_services';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-coffee-chat-select-friends',
@@ -15,6 +16,9 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
   createMeeting: FormGroup;
   submitted = false;
   loading = false;
+  selectedPeople = [];
+  maxCapacity = false;
+
   
   constructor(
     private router: Router,
@@ -30,16 +34,31 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
     var status = "pending";
     this.peopleList = this.currentUser.friends;
     this.createMeeting = this.formBuilder.group({
-      people: ['', Validators.required],
+      //people: ['', Validators.required],
       date: ['', Validators.required],
       time: ['', Validators.required],
       status: [status]
     })
   }
 
+  userSelect(username){
+    if(this.selectedPeople.includes(username)){ //deselect
+      this.selectedPeople = this.selectedPeople.filter(p => p !== username)
+    }
+    else{
+      this.selectedPeople.push(username);
+    }
+    if(this.selectedPeople.length >= 5){
+      this.maxCapacity = true;
+    }
+    else{
+      this.maxCapacity = false;
+    }
+  }
+
   // convenience getter for easy access to form fields
   get f() { return this.createMeeting.controls; }
-
+  
   onSubmit() {
     this.submitted = true;
     console.log("in on SUBMIT")
@@ -51,7 +70,7 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.createMeeting(this.currentUser.username, this.f.people.value, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.f.status.value)
+    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeople, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.f.status.value)
         .subscribe(
             data => {
                 this.alertService.success('Meeting Scheduled', true);
