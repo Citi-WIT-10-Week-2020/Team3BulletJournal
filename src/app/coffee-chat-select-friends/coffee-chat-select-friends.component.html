@@ -3,19 +3,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- include the js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.jquery.min.js"></script>
-
-<!-- include the css and sprite -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.min.css">
-<link rel="image_src" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen-sprite.png">
-
-<!-- include angular -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
-
-<!-- include angular-chosen -->
-<script src="path/to/angular-chosen.js"></script>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
@@ -23,9 +10,8 @@
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-
 </head>
-<div>
+<div> 
     <app-navbar style="z-index: 9999;"></app-navbar>
 </div>
 <div class="sticky-top">
@@ -33,30 +19,23 @@
 </div>
 <body>
 <!--JS USED-->
-<script>
-    $(".chosen-select").chosen({
-  no_results_text: "Oops, nothing found!"
-})
-</script>
-
 
         <!-- Page Content Holder -->
         <div class="coffee-chat" id="content">
             <div class="wrapper">
                 <div class="inner">
-                <form [formGroup]="createMeeting" (ngSubmit)="onSubmit()">
+                    <form [formGroup]="createMeeting" (ngSubmit)="onSubmit()">
                     <h3>Start Connecting</h3>
-                    <div class="form-wrapper">
-                        <label for="people">People: </label>
-                            <select data-placeholder="Select Friends" multiple class="chosen-select" name="test">
-                                <option value=""></option>
-                                <option *ngFor="let person of peopleList"  [ngValue]="person">
-                                    {{person.firstName}} {{person.lastName}}
-                                </option>
-                            </select>
+                    <label for="people" style="color: black; font-weight: 600;">People:</label>
+                    <div class="user-select">
+                        <div *ngFor="let person of peopleList"  [ngValue]="person">
+                            <input type="checkbox" id="checkbox"(change)="userSelect(person)" [disabled]="maxCapacity && !this.selectedPeople.includes(person)">
+
+                            <label>{{person.firstName}} {{person.lastName}}</label>
+                        </div>
                     </div>
-                    <div class="form-wrapper">
-                        <label for="start">Date:</label>
+                    <div class="form-group">
+                        <label for="start" style="color: black; font-weight: 600;">Date:</label>
                             <input type="date" id="start" name="trip-start"  
                                 value="dateToday"
                                 min="yyyy-mm-dd" max="2100-12-31" 
@@ -65,27 +44,27 @@
                                     <div *ngIf="f.date.errors.required">Date is required</div>
                                 </div>
                     </div>
-                    <div class="form-wrapper">
-                            <label for="default-picker">Time:</label>
+                    <div class="form-group">
+                            <label for="default-picker" style="color: black; font-weight: 600;">Time:</label>
+
                             <input type="time" id="default-picker" placeholder="Select time" formControlName="time" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.time.errors }">
                             <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
                                 <div *ngIf="f.time.errors.required">Time is required</div>
                             </div>
                     </div>
                     <div class="form-wrapper justify-content-center">
-                        <button [disabled]="loading" class="button">
-                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1" routerLink="/coffee-chat-profiles"></span>
+                        <button [disabled]="loading">
+                            <a routerLink="/coffee-chat-profiles"></a>
                             Create Meeting
                         </button>
                     </div>
                 </form>
             <div class="image-holder">
-                <img src="../assets/images/coffee select friends.jpg" alt="">
+                <img src="../assets/images/coffee select friends.jpg" alt=""> 
             </div>
         </div>
     </div>   
         </div>
-        
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Popper.JS -->

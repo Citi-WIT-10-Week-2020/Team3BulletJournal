@@ -38,9 +38,9 @@
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.month}}/{{entry.day}}/{{entry.year}}</p>
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.title}} {{i}} </p>
                             <div class="icons">
-                                <button class="btn-2" title="Edit" (click) = "getValue(entry)"><span class="fa fa-pencil fa-sm" style="color: grey" ></span></button>
-                                <button class="btn-2" title="View" data-toggle="modal" data-target="#entry"><span class="fa fa-eye fa-sm"  style="color: grey" ></span></button>
-                                <button class="btn-2" title="Delete"><span class="fa fa-trash-o"  style="color: grey"></span></button>
+                                <button class="btn-2" title="Edit" (click)="getValue(entry)"><span class="fa fa-pencil fa-sm" style="color: grey"></span></button>
+                                <button class="btn-2" title="View" (click)="getEntry(entry)" data-toggle="modal" data-target="#entry"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>
+                                <button class="btn-2" title="Delete" (click)="getEntry(entry)" data-toggle="modal" data-target="#delete"><span class="fa fa-trash-o"  style="color: grey"></span></button>
                             </div>
                         </li>
                       </ul>
@@ -50,19 +50,36 @@
             <div class="modal" id="entry">
 
             <div class="modal-sandbox"></div>
-            <div class="modal-box" *ngFor="let entry of entries" [ngValue]="entry">
+            <div class="modal-box">
                 <div class="modal-header">
-                    <h1 class="reg-font">{{entry.title}}</h1>
+                    <h1 class="reg-font">{{currentEntry.title}}</h1>
                 <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
                 
                 </div>
                 <div class="modal-body">
-                    <p> {{entry.text}} </p>
+                    <p> {{currentEntry.text}} </p>
                 <br />
                 <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Close</button>
                 </div>
             </div>
             </div>
+
+            <div class="modal" id="delete">
+
+                <div class="modal-sandbox"></div>
+                <div class="modal-box">
+                    <div class="modal-header">
+                        <h1 class="reg-font">YEEE</h1>
+                    <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
+                    
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete entry: {{currentEntry.title}}</p>
+                    <br />
+                    <button type="button" class="modal-button" (click)="removeJournal(currentEntry)" data-dismiss="modal" aria-label="Delete">Delete</button>
+                    </div>
+                </div>
+                </div>
 
         </div>
     </div>

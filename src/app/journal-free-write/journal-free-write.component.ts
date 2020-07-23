@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AuthenticationService, AlertService } from '../_services'
-import { ThrowStmt } from '@angular/compiler';
-import { HttpResponse } from '@angular/common/http';
-import { getLocaleDateFormat } from '@angular/common';
+import { AuthenticationService, AlertService } from '../_services';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -50,10 +47,10 @@ export class JournalFreeWriteComponent implements OnInit {
         year: [year],
         title: ['', Validators.required],
         textEntry: ['', Validators.required],
+        type: ['free-write']
         
     });
 
-    console.log(this.journalForm.controls.day.value);
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/journal';
@@ -72,7 +69,7 @@ onSubmit() {
     console.log('valid')
     this.loading = true;
     
-      this.authenticationService.saveJournal(this.f.username.value, this.f.title.value, this.f.day.value, this.f.month.value, this.f.year.value, this.f.textEntry.value)
+      this.authenticationService.saveJournal(this.f.username.value, this.f.title.value, this.f.day.value, this.f.month.value, this.f.year.value, this.f.textEntry.value, this.f.type.value)
               .subscribe(
                 data => {
                   console.log('inside subscribe')

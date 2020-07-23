@@ -32,20 +32,21 @@
         <!---Pull from JSON for Participant names-->
         <div class="wrapper">
             <div class="inner">
-            <form [formGroup]="createRandomMeeting" (ngSubmit)="onSubmit()">
+            <form [formGroup]="createMeeting" (ngSubmit)="onSubmit()">
                  <h3>Start Connecting</h3>
                 <div class="form-wrapper">
-                    <label>Number of People:</label>
+                    <label style="font-weight: 600;">Number of People:</label>
+
                     <div class="form-holder">
                         <i class="fa fa-chevron-down fa-sm"></i>
                     <select formControlName="numPeople" class="form-control"> 
-                        <option *ngFor="let number of numberList" [ngValue]="number">{{number}}</option>
+                        <option *ngFor="let number of numberList" [ngValue]="number" class="justify-content-center">{{number}}</option>
                     </select>
                     
                 </div>
                 </div>
-                <div class="form-wrapper">
-                    <label for="start">Date:</label>
+                <div class="form-group">
+                    <label for="start" style="color: black; font-weight: 600;">Date:</label>
                         <input type="date" id="start" name="trip-start"  
                             value="dateToday"
                             min="yyyy-mm-dd" max="2100-12-31" 
@@ -54,8 +55,8 @@
                                 <div *ngIf="f.date.errors.required" style="font-size: 12px;">Date is required</div>
                             </div>
                 </div>
-                <div class="form-wrapper">
-                        <label for="default-picker">Time:</label>
+                <div class="form-group">
+                        <label for="default-picker" style="color: black; font-weight: 600;">Time:</label>
                         <input type="time" id="default-picker" placeholder="Select time" formControlName="time" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.time.errors }">
                         <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
                             <div *ngIf="f.time.errors.required">Time is required</div>

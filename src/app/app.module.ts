@@ -34,7 +34,6 @@ import { MoodTrackerMonthlyChartsComponent } from './mood-tracker-monthly-charts
 import { UserProfileDashboardComponent } from './user-profile-dashboard/user-profile-dashboard.component';
 import { UserProfileContactsComponent } from './user-profile-contacts/user-profile-contacts.component';
 import { ProfileComponent } from './profile/profile.component';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
 import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-profiles.component';
 import { CoffeeChatNavbarComponent } from './coffee-chat-navbar/coffee-chat-navbar.component';
 import { JournalNavbarComponent } from './journal-navbar/journal-navbar.component';
@@ -43,6 +42,9 @@ import { UserProfileNavbarComponent } from './user-profile-navbar/user-profile-n
 import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ChartsModule } from 'ng2-charts';
+import { JournalPromptEditComponent } from './journal-prompt-edit/journal-prompt-edit.component';
+import { JournalFreeEditComponent } from './journal-free-edit/journal-free-edit.component';
+
 
 @NgModule({
     imports: [
@@ -52,8 +54,7 @@ import { ChartsModule } from 'ng2-charts';
         HttpClientModule,
         appRoutingModule,
         SidebarModule,
-        NgMultiSelectDropDownModule.forRoot(),
-        ChartsModule
+        ChartsModule,
     ],
     declarations: [
         AppComponent,
@@ -88,6 +89,8 @@ import { ChartsModule } from 'ng2-charts';
         UserProfileNavbarComponent,
         MoodChosenComponent,
         PieChartComponent,
+        JournalPromptEditComponent,
+        JournalFreeEditComponent,
 
 
     ],

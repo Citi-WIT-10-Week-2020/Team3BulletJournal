@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService, AlertService } from '../_services';
+import { AuthenticationService, AlertService, UserService } from '../_services';
 import { FormBuilder } from '@angular/forms';
 
 
@@ -12,10 +12,11 @@ import { FormBuilder } from '@angular/forms';
 export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
   submitted: boolean;
   loading: boolean;
-  returnUrl: any;
   currentUser: any;
   meetings: any[];
-
+  currentMeeting: any;
+  userService:UserService;
+  
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -26,12 +27,20 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
     this.currentUser = this.authenticationService.currentUserValue[0];
     this.meetings = this.meetings;
     
-     }
+    }
+   
      
+    
   ngOnInit(): void {
+    this.currentMeeting = this.meetings[0];
     this.onSubmit();
+    this.currentMeeting = {participants: this.currentUser.friends};
   }
 
+  getMeeting(meeting){
+    this.currentMeeting = meeting;
+  }
+  
   onSubmit() {
     this.submitted = true;
     console.log('submitted');
@@ -45,6 +54,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
     var year = date.getFullYear();
     var hour = date.getHours();
     var minutes = date.getMinutes();
+
 
     this.loading = true;
     this.meetings = [];
@@ -117,5 +127,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
             console.log('outside');
           
   }
+
+  
 
 }

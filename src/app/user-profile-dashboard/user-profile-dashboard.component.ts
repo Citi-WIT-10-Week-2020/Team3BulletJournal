@@ -17,6 +17,7 @@ export class UserProfileDashboardComponent implements OnInit {
   returnUrl: any;
   currentUser: any;
   validJournal: Array<String>;
+  entries: any[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,6 +28,7 @@ export class UserProfileDashboardComponent implements OnInit {
   ) {
     this.currentUser = this.authenticationService.currentUserValue[0];
     this.validJournal = this.validJournal;
+    this.entries = this.entries;
 
 
      }

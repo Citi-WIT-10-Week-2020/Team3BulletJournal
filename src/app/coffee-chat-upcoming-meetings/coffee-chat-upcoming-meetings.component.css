@@ -1,3 +1,4 @@
+
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 
@@ -11,7 +12,7 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #999;
+    color: #8b593b;
 }
 
 .h2{
@@ -29,82 +30,23 @@ p {
 }
 
 .row{
-  padding-top: 50px;
+  margin-top: 20px;
 }
-
-
-/* ---------------------------------------------------
-    BUTTON STYLE
------------------------------------------------------ */
-  body{
-    text-align:center;
-  }
-  body:before{
-    content:'';
-    height:100%;
-    display:inline-block;
-    vertical-align:middle;
-  }
-  .button-choice{
-    background:#8b593b;
-    color:#fff;
-    border:none;
-    position:relative;
-    width: 420px;
-    height:180px;
-    font-size:1.6em;
-    padding:0 2em;
-    cursor:pointer;
-    transition:800ms ease all;
-    outline:none;
-    white-space: normal;
-    word-wrap: break-word;
-  }
-  
-  .button-choice:before,button-choice:after{
-    content:'';
-    position:absolute;
-    top:0;
-    right:0;
-    height:2px;
-    width:0;
-    background: #8b593b;
-    transition:400ms ease all;
-  }
-  .button-choice:after{
-    right:inherit;
-    top:inherit;
-    left:0;
-    bottom:0;
-  }
-  .button-choice:hover:before,button-choice:hover:after{
-    width:100%;
-    transition:800ms ease all;
-  }
-  
-/*-------------------------------------
-            BOX
---------------------------------------*/
-  .boxed {
-    border: 1px solid rgb(95, 48, 10) ;
-  }
-
-
 /* ---------------------------------------------------
     Regular CSS
 ----------------------------------------------------- */
 
 .list-group{
   background-color: ivory;
-  border-color: grey !important;
+  border-color: #8b593b !important;
 }
 .list-group-item{
-  outline: grey !important;
+  outline: #8b593b !important;
 }
 
 .heading{
   border-color: grey;
-  background-color: #D8E4E7;
+  background-color: #ffd59a;
 }
 
 .btn-2{
@@ -169,7 +111,7 @@ display: none;
 
 .modal-header {
   padding: 20px 40px;
-  background: #7CA5AF;
+  background: #8b593b;
   color: #ffffff;
 }
 
@@ -208,9 +150,9 @@ display: none;
 }
 
 .modal-button{
-    border: 2px solid #7CA5AF;
+    border: 2px solid #30190b;
     background-color: whitesmoke;
-    color: #7CA5AF;
+    color: #8b593b;
     padding: 10px 24px;
     font-size: 16px;
     cursor: pointer;
@@ -218,10 +160,6 @@ display: none;
 }
 
 .modal-button:hover{
-    background-color:#7CA5AF;
+    background-color:#8b593b;
     color: white; 
 }
-
-
-
-

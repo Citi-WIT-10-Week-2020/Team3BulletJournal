@@ -12,15 +12,14 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
   currentUser: any;
   numberList;
   index;
-  friendIndex;
   indicesOfSelected = [];
   selectedPeopleList = [];
-  createRandomMeeting: FormGroup;
+  createMeeting: FormGroup;
   submitted = false;
   loading = false;
   numAvailableFriends;
   goodIndex = true;
-
+  host: any;
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -30,6 +29,7 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
   {
     this.currentUser = this.authenticationService.currentUserValue[0];
     this.numAvailableFriends = this.currentUser.friends.length;
+    this.host = this.currentUser.username;
 
     switch(this.numAvailableFriends){
       case 0:
@@ -53,48 +53,48 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
    }
   
    ngOnInit(){
-
-    var status = "pending";
-
-    this.createRandomMeeting = this.formBuilder.group({
+    this.createMeeting = this.formBuilder.group({
       numPeople: ['', Validators.required],
       date: ['', Validators.required],
       time: ['', Validators.required],
-      status: [status]
     })
 
      
   }
   
   // convenience getter for easy access to form fields
-  get f() { return this.createRandomMeeting.controls; }
+  get f() { return this.createMeeting.controls; }
 
   onSubmit() {
 
     //randomize people based on numPeople in group
-      for(var i = 0; i < this.f.numPeople.value; i++){
-        this.index = Math.floor(Math.random() * this.numAvailableFriends);
-        this.indicesOfSelected[i] = this.index;
+    var count = 0;
+    while(count < this.f.numPeople.value){
+      console.log('running');
+      this.index = Math.floor(Math.random() * this.numAvailableFriends);
+      if(this.indicesOfSelected.length == 0){
+        this.indicesOfSelected[0] = this.index
+        count++;
       }
+      else{
+        for(var i = 0; i < this.indicesOfSelected.length; i++){
+          if(this.indicesOfSelected[i] == this.index){
+            this.goodIndex = false;
+            break;
+          }
+        }
+        if(this.goodIndex == true){
+          this.indicesOfSelected[count] = this.index;
+          count++;
+        }
+        this.goodIndex = true;
+      }
+    }
+
+      console.log(this.indicesOfSelected);
 
       for(var i = 0; i < this.indicesOfSelected.length; i++){
-        this.friendIndex = this.indicesOfSelected[i];
-        
-        if(this.selectedPeopleList.length >= 1){
-          for(var j = 0; j < this.selectedPeopleList.length; j++){
-            if(this.friendIndex == this.selectedPeopleList[j]){
-              this.goodIndex = false;
-            }
-          }
-          if(this.goodIndex == true){
-            this.selectedPeopleList[i] = this.currentUser.friends[this.friendIndex];
-          }
-          this.goodIndex = true;
-        }
-        else{
-          this.selectedPeopleList[i] = this.currentUser.friends[this.friendIndex];
-        }
-        
+        this.selectedPeopleList[i] = this.currentUser.friends[this.indicesOfSelected[i]];
       }
 
     this.submitted = true;
@@ -103,13 +103,14 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
     this.alertService.clear();
 
     // stop here if form is invalid
-    if (this.createRandomMeeting.invalid || this.numAvailableFriends <= 0) {
+    if (this.createMeeting.invalid || this.numAvailableFriends <= 0) {
         return;
     }
     this.loading = true;
-    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeopleList, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.f.status.value) 
+    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeopleList, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.host) 
     .subscribe(
             data => {
+             
               this.alertService.success('Random Meeting Scheduled', true);
               this.router.navigate(['/coffee-chat-profiles'], { queryParams: { scheduled: true }});
               console.log(data);
