@@ -40,7 +40,6 @@ import { JournalNavbarComponent } from './journal-navbar/journal-navbar.componen
 import { MoodTrackerNavbarComponent } from './mood-tracker-navbar/mood-tracker-navbar.component';
 import { UserProfileNavbarComponent } from './user-profile-navbar/user-profile-navbar.component';
 import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
-
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { JournalPromptEditComponent } from './journal-prompt-edit/journal-prompt-edit.component';
@@ -55,7 +54,7 @@ import { JournalFreeEditComponent } from './journal-free-edit/journal-free-edit.
         HttpClientModule,
         appRoutingModule,
         SidebarModule,
-        ChartsModule
+        ChartsModule,
     ],
     declarations: [
         AppComponent,
