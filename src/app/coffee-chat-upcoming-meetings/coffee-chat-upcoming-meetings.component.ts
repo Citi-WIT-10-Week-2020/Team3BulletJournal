@@ -32,6 +32,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
      
   ngOnInit(): void {
     this.onSubmit();
+    this.currentMeeting = {participants: this.currentUser.friends};
   }
 
   getMeeting(meeting){

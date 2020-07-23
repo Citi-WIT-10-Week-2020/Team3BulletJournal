@@ -54,7 +54,6 @@ import { JournalFreeEditComponent } from './journal-free-edit/journal-free-edit.
         HttpClientModule,
         appRoutingModule,
         SidebarModule,
-        NgMultiSelectDropDownModule.forRoot(),
         ChartsModule
     ],
     declarations: [
