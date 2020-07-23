@@ -17,8 +17,8 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
   loading = false;
   selectedPeople = [];
   maxCapacity = false;
-  host = this.currentUser.username;
-  
+  host;
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -30,6 +30,7 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
    }
 ​
    ngOnInit(){
+    this.host = this.currentUser.username;
     this.peopleList = this.currentUser.friends;
     this.createMeeting = this.formBuilder.group({
       date: ['', Validators.required],
