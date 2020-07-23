@@ -31,7 +31,7 @@ export class JournalPublishedComponent implements OnInit {
    ngOnInit(): void {
      
    this.onSubmit();
-
+   this.currentEntry = {title: "blank"};
    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
   }
