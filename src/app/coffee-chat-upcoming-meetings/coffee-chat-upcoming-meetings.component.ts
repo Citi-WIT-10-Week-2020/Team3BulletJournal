@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService, AlertService } from '../_services';
+import { AuthenticationService, AlertService, UserService } from '../_services';
 import { FormBuilder } from '@angular/forms';
 
 
@@ -15,7 +15,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
   currentUser: any;
   meetings: any[];
   currentMeeting: any;
-
+  userService:UserService;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -30,7 +30,9 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
     }
    
      
+    
   ngOnInit(): void {
+    this.currentMeeting = this.meetings[0];
     this.onSubmit();
     this.currentMeeting = {participants: this.currentUser.friends};
   }
@@ -38,6 +40,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
   getMeeting(meeting){
     this.currentMeeting = meeting;
   }
+  
   onSubmit() {
     this.submitted = true;
     console.log('submitted');

@@ -48,7 +48,7 @@ const MeetingSchema = Schema({
     month: {type: String},
     year: {type: String},
     time: {type: String},
-    status: {type: String}
+    host: {type: String}
     
 },{versionKey: false});
 
@@ -73,7 +73,9 @@ const UsersSchema = Schema({
     friends: {type: Array},
     bio: {type: String},
     hobbies: {type:String},
-    role: {type:String}
+    role: {type:String}, 
+    status: {type:String},
+    hostBool: {type: Boolean}
 
 },{versionKey: false});
 

@@ -33,36 +33,30 @@
                     <div id="accordian">
                         <h2 class="type-font text-center mt-3" style="color: white;">Meetings I Scheduled</h2>
                         <!--card 1-->
+                        <div *ngFor="let meeting of meetings"  [ngValue]="meeting">
                         <div class="card">
                         <div class="card-title justify-content-end reg-font m-3">
-                            <a style="font-size: 18px; font-weight: 600;">Saturday, May 14</a>
-                            <a style="font-size: 18px;">8:00 AM</a>
-                            <button class="btn-2 collapsed justify-content-end" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse">
-                                <a style="font-size: 15px;">3 Atendees </a><span class="fa fa-chevron-down fa-sm"></span>
+                            <a style="font-size: 18px; font-weight: 600;">{{meeting.month}}/{{meeting.day}}/{{meeting.year}}</a>
+                            <a style="font-size: 18px;">{{meeting.time}}</a>
+                            <button class="btn-2 collapsed justify-content-end" data-toggle="collapse" (click)="getMeeting(meeting)" data-target="#collapse1" aria-expanded="false" aria-controls="collapse">
+                                <a style="font-size: 15px;">{{meeting.participants.length}} Attendee(s)</a><span class="fa fa-chevron-down fa-sm"></span>
                             </button>
                         </div>
-                        
-                            <div class="card-body collapse" id="collapse1">
-                            <hr class="divide" style="color: grey" />
-                            <div class="card-text ml-3 mr-3">
-                                <div class="row justify-content-end">
-                                    <a class="p-1 flex-grow-1 reg-font"> Emily</a>
-                                    <a class="p-1 reg-font"> Pending</a>
-                                </div>
-                                <div class="row justify-content-end">
-                                    <a class="p-1 flex-grow-1 reg-font"> Shannon</a>
-                                    <a class="p-1 reg-font"> Pending</a>
-                                </div>
-                                <div class="row justify-content-end">
-                                    <a class="p-1 flex-grow-1 reg-font"> Katie</a>
-                                    <a class="p-1 reg-font"> Accepted</a>
-                                </div>
-                                <div class="row justify-content-center">
-                                    <button class="button" routerLink="/coffee-chat-profiles">View Participant Profiles</button>
-                                </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body collapse" id="collapse1">
+                        <hr class="divide" style="color: grey" />
+                        <div class="card-text ml-3 mr-3" >
+                            <div class="row justify-content-end" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
+                                <a class="p-1 flex-grow-1 reg-font"> {{participant.firstName}}</a>
+                                <a class="p-1 reg-font"> {{participant.status}}</a>
                             </div>
+                            <div class="row justify-content-center">
+                                <button class="button" routerLink="/coffee-chat-profiles">View Participant Profiles</button>
                             </div>
                         </div>
+                    </div>
 
                         <!--Card 2-->
                         <div class="card">

@@ -19,6 +19,7 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
   loading = false;
   numAvailableFriends;
   goodIndex = true;
+  host = this.currentUser.username;
 
   constructor(
     private router: Router,
@@ -52,14 +53,10 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
    }
   
    ngOnInit(){
-
-    var status = "pending";
-
     this.createMeeting = this.formBuilder.group({
       numPeople: ['', Validators.required],
       date: ['', Validators.required],
       time: ['', Validators.required],
-      status: [status]
     })
 
      
@@ -108,9 +105,10 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
         return;
     }
     this.loading = true;
-    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeopleList, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.f.status.value) 
+    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeopleList, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.host) 
     .subscribe(
             data => {
+             
               this.alertService.success('Random Meeting Scheduled', true);
               this.router.navigate(['/coffee-chat-profiles'], { queryParams: { scheduled: true }});
               console.log(data);
