@@ -19,7 +19,7 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
   loading = false;
   numAvailableFriends;
   goodIndex = true;
-  host = this.currentUser.username;
+  host;
 
   constructor(
     private router: Router,
@@ -53,6 +53,7 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
    }
   
    ngOnInit(){
+    this.host = this.currentUser.username
     this.createMeeting = this.formBuilder.group({
       numPeople: ['', Validators.required],
       date: ['', Validators.required],
