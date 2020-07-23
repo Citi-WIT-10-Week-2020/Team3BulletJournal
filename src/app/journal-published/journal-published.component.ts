@@ -29,6 +29,7 @@ export class JournalPublishedComponent implements OnInit {
 
      }
    ngOnInit(): void {
+     
    this.onSubmit();
 
    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -63,7 +64,8 @@ export class JournalPublishedComponent implements OnInit {
   }
 
   getEntry(entry){
-    this.currentEntry= entry;
+    console.log(entry.title)
+    this.currentEntry = entry;
   }
 
   onSubmit() {

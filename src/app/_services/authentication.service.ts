@@ -23,7 +23,6 @@ export class AuthenticationService {
         
         this.currentJournalSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentJournal')));
         this.currentJournal = this.currentJournalSubject.value;
-        console.log(this.currentJournalValue)
     }
 
     public get currentUserValue() {

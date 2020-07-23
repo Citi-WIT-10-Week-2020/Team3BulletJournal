@@ -13,6 +13,12 @@ export class JournalNavbarComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(){
+    if (!localStorage.getItem('autoLoad')) { 
+      localStorage.setItem('autoLoad', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('autoLoad') 
+    }
     this.href = this.router.url;
     console.log(this.router.url);
     if(this.href == '/journal-free-write'){
