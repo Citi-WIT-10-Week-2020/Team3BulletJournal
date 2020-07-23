@@ -42,8 +42,7 @@
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.month}}/{{meeting.day}}/{{meeting.year}}</p>
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.time}}</p>
                            
-
-                                <button class="btn-2" title="View" data-toggle="modal" (click)="getMeeting(meeting)" data-target="#meeting" data-id="{{i}}"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>                         
+                                <button class="btn-2" title="View" data-toggle="modal" (click)="getMeeting(meeting)" data-target="#meeting"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>                         
                         </li>
                       </ul>
                 </div>
@@ -51,29 +50,27 @@
 
             <!-- Modal -->
             <div class="modal" id="meeting">
-                <div class="modal-sandbox"></div>
+                <div class="modal-sandbox">
                 <div class="modal-box">
                     <div class="modal-header">
                         <h1 class="reg-font" style="color: white;">Meeting Details:</h1>
                     <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
                     </div>
-                    <div class="modal-body">
-                                             
+                    <div class="modal-body">         
                         Number of Participants:  {{currentMeeting.participants.length}}
                         <br>
                         <br>
                         Participants:
                         <div *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
-                            {{participant.firstName}}
+                            {{participant.firstName}} {{participant.status}}
                         </div>
                         <br />
                     <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Close</button>
                     </div>
+                    </div>
                 </div>
-                </div>
-            </div>
-
-
+            </div> 
+        </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

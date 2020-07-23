@@ -46,6 +46,7 @@ import { ChartsModule } from 'ng2-charts';
 import { JournalPromptEditComponent } from './journal-prompt-edit/journal-prompt-edit.component';
 import { JournalFreeEditComponent } from './journal-free-edit/journal-free-edit.component';
 
+
 @NgModule({
     imports: [
         BrowserModule,
