@@ -1,3 +1,4 @@
+
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 
@@ -29,67 +30,8 @@ p {
 }
 
 .row{
-  padding-top: 50px;
+  margin-top: 20px;
 }
-
-
-/* ---------------------------------------------------
-    BUTTON STYLE
------------------------------------------------------ */
-  body{
-    text-align:center;
-  }
-  body:before{
-    content:'';
-    height:100%;
-    display:inline-block;
-    vertical-align:middle;
-  }
-  .button-choice{
-    background:#8b593b;
-    color:#fff;
-    border:none;
-    position:relative;
-    width: 420px;
-    height:180px;
-    font-size:1.6em;
-    padding:0 2em;
-    cursor:pointer;
-    transition:800ms ease all;
-    outline:none;
-    white-space: normal;
-    word-wrap: break-word;
-  }
-  
-  .button-choice:before,button-choice:after{
-    content:'';
-    position:absolute;
-    top:0;
-    right:0;
-    height:2px;
-    width:0;
-    background: #8b593b;
-    transition:400ms ease all;
-  }
-  .button-choice:after{
-    right:inherit;
-    top:inherit;
-    left:0;
-    bottom:0;
-  }
-  .button-choice:hover:before,button-choice:hover:after{
-    width:100%;
-    transition:800ms ease all;
-  }
-  
-/*-------------------------------------
-            BOX
---------------------------------------*/
-  .boxed {
-    border: 1px solid rgb(95, 48, 10) ;
-  }
-
-
 /* ---------------------------------------------------
     Regular CSS
 ----------------------------------------------------- */
@@ -103,9 +45,8 @@ p {
 }
 
 .heading{
-  border-color: #8b593b;
-  background-color: #8b593b;
-  
+  border-color: grey;
+  background-color: #ffd59a;
 }
 
 .btn-2{
@@ -222,7 +163,3 @@ display: none;
     background-color:#8b593b;
     color: white; 
 }
-
-
-
-
