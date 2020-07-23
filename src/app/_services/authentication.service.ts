@@ -23,7 +23,6 @@ export class AuthenticationService {
         
         this.currentJournalSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentJournal')));
         this.currentJournal = this.currentJournalSubject.value;
-        console.log(this.currentJournalValue)
     }
 
     public get currentUserValue() {
@@ -77,8 +76,8 @@ export class AuthenticationService {
         return this.http.get<any>(`http://localhost:8080/api/getAllMeetings`);
     }
 
-    createMeeting(username, participants, day, month, year, time, status){
-        return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, time, status});
+    createMeeting(username, participants, day, month, year, time, host){
+        return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, time, host});
     }
     
     saveMood(username, mood, day, month, year){

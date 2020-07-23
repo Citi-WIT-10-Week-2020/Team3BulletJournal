@@ -17,6 +17,7 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
   loading = false;
   selectedPeople = [];
   maxCapacity = false;
+  host = this.currentUser.username;
   
   constructor(
     private router: Router,
@@ -29,21 +30,19 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
    }
 ​
    ngOnInit(){
-    var status = "pending";
     this.peopleList = this.currentUser.friends;
     this.createMeeting = this.formBuilder.group({
       date: ['', Validators.required],
       time: ['', Validators.required],
-      status: [status]
     })
   }
 
-  userSelect(username){
-    if(this.selectedPeople.includes(username)){ //deselect
-      this.selectedPeople = this.selectedPeople.filter(p => p !== username)
+  userSelect(person){
+    if(this.selectedPeople.includes(person.username)){ //deselect
+      this.selectedPeople = this.selectedPeople.filter(p => p !== person.username)
     }
     else{
-      this.selectedPeople.push(username);
+      this.selectedPeople.push(person);
     }
 
     if(this.selectedPeople.length >= 5){
@@ -73,7 +72,7 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
     }
 ​
     this.loading = true;
-    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeople, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.f.status.value)
+    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeople, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.host)
         .subscribe(
             data => {
                 this.alertService.success('Meeting Scheduled', true);
