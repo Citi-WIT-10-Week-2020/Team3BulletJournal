@@ -19,7 +19,8 @@
     <div class="container">
         <div class="login-form">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            Meaningful Minutes
+            <img src="assets/images/logo.jpg" alt="" width="100" height="80"><br>
+           <div class="reg-font"> Meaningful Minutes </div>
             <hr>
             <div class="form-group">
                 <input type="text" placeholder="username" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />

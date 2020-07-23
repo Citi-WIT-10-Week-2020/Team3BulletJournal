@@ -1,4 +1,24 @@
 
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #8b593b;
+}
+
+.h2{
+    padding-top: 500px;
+}
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -18,10 +38,10 @@
 
 .list-group{
   background-color: ivory;
-  border-color: grey !important;
+  border-color: #8b593b !important;
 }
 .list-group-item{
-  outline: grey !important;
+  outline: #8b593b !important;
 }
 
 .heading{
@@ -91,7 +111,7 @@ display: none;
 
 .modal-header {
   padding: 20px 40px;
-  background: #7CA5AF;
+  background: #8b593b;
   color: #ffffff;
 }
 
@@ -130,9 +150,9 @@ display: none;
 }
 
 .modal-button{
-    border: 2px solid #7CA5AF;
+    border: 2px solid #30190b;
     background-color: whitesmoke;
-    color: #7CA5AF;
+    color: #8b593b;
     padding: 10px 24px;
     font-size: 16px;
     cursor: pointer;
@@ -140,6 +160,6 @@ display: none;
 }
 
 .modal-button:hover{
-    background-color:#7CA5AF;
+    background-color:#8b593b;
     color: white; 
 }

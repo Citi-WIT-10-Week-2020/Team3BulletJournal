@@ -1,71 +1,78 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-<h2>Register</h2>
-<alert></alert>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-            <div *ngIf="f.firstName.errors.required">First Name is required</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="zoomLink">Personal Zoom Meeting ID</label>
-        <input type="tel" formControlName="zoomLink" class="form-control" placeholder="123 456 7890" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" [ngClass]="{ 'is-invalid': submitted && f.zoomLink.errors }" />
-        <div *ngIf="submitted && f.zoomLink.errors" class="invalid-feedback">
-            Zoom Meeting ID required in correct format
-            <p>If you don't have a Zoom Account, create an account here: https://zoom.us/freesignup/</p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="role">Role/Title</label>
-        <input type="text" formControlName="role" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.role.errors }" />
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            
+        <title>Login</title>
+            
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="register.component.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+            
+        <!-- Font Awesome JS -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    </head>
+<body>
+    <div class="bg-image"></div>
+    <div class="login-page">
+        <div class="container">
+            <div class="login-form">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                   <div class="reg-font">Register</div> 
+                    <hr>
+                <div class="form-group">
+                    <input type="text" placeholder="First Name" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Last Name" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                        </div>
+                </div>
+                <div class="form-group">
+                <input type="text" placeholder="Username" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">Username is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                <input type="tel" formControlName="zoomLink" class="form-control" placeholder="Zoom Meeting ID: 123 456 7890" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" [ngClass]="{ 'is-invalid': submitted && f.zoomLink.errors }" />
+                    <div *ngIf="submitted && f.zoomLink.errors" class="invalid-feedback">
+                    Zoom Meeting ID required in correct format
+                    <p>If you don't have a Zoom Account, create an account here: https://zoom.us/freesignup/</p>
+                    </div>
+                    </div>
+                <div class="form-group">
+        <input type="text" placeholder="Role/Title" formControlName="role" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.role.errors }" />
         <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
             <div *ngIf="f.role.errors.required">Role/Title is required</div>
         </div>
     </div>
     <div class="form-group">
-        <label for="bio">Brief Bio (max. 250 characters)</label>
-        <textarea ROWS="2" COLS="20" formControlName="bio" maxLength="250" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.hobbies.errors }"></textarea>
+        <textarea ROWS="2" COLS="20" placeholder= "Brief Bio (max. 250 characters)" formControlName="bio" maxLength="250" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.hobbies.errors }"></textarea>
         <div *ngIf="submitted && f.bio.errors" class="invalid-feedback">
             <div *ngIf="f.bio.errors.required">Bio is required</div>
         </div>
     </div>
     <div class="form-group">
-        <label for="Hobbies">Hobbies (separate by commas)</label>
-        <textarea ROWS="2" COLS="20" formControlName="hobbies" maxLength="100" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.hobbies.errors }"></textarea>
+        <textarea ROWS="2" COLS="20" placeholder="Hobbies (separate by commas)" formControlName="hobbies" maxLength="100" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.hobbies.errors }"></textarea>
         <div *ngIf="submitted && f.hobbies.errors" class="invalid-feedback">
             <div *ngIf="f.hobbies.errors.required">Hobbies are required</div>
         </div>
     </div>
     <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <input type="password" placeholder="Password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
             <div *ngIf="f.password.errors.required">Password is required</div>
         </div>
     </div>
     <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <input type="email" placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
             <div *ngIf="f.email.errors.required">Email is required</div>
             <div *ngIf="f.email.errors.email">Must be a valid email</div>
@@ -76,10 +83,11 @@
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             Register
         </button>
-        <a routerLink="/login" class="btn btn-link">Cancel</a>
+        <p class="message"><a routerLink="/login" class="btn btn-link">Cancel</a></p>
     </div>
 </form>
 </div>
 </div>
 </div>
-</div>
+</body>
+</html>

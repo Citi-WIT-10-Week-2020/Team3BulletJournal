@@ -34,16 +34,17 @@ import { MoodTrackerMonthlyChartsComponent } from './mood-tracker-monthly-charts
 import { UserProfileDashboardComponent } from './user-profile-dashboard/user-profile-dashboard.component';
 import { UserProfileContactsComponent } from './user-profile-contacts/user-profile-contacts.component';
 import { ProfileComponent } from './profile/profile.component';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
 import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-profiles.component';
 import { CoffeeChatNavbarComponent } from './coffee-chat-navbar/coffee-chat-navbar.component';
 import { JournalNavbarComponent } from './journal-navbar/journal-navbar.component';
 import { MoodTrackerNavbarComponent } from './mood-tracker-navbar/mood-tracker-navbar.component';
 import { UserProfileNavbarComponent } from './user-profile-navbar/user-profile-navbar.component';
 import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
-//import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { ChartsModule } from 'ng2-charts';
+import { JournalPromptEditComponent } from './journal-prompt-edit/journal-prompt-edit.component';
+import { JournalFreeEditComponent } from './journal-free-edit/journal-free-edit.component';
 
-import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
     imports: [
@@ -53,8 +54,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
         HttpClientModule,
         appRoutingModule,
         SidebarModule,
-        NgMultiSelectDropDownModule.forRoot(),
-        NgSelectModule
+        ChartsModule,
     ],
     declarations: [
         AppComponent,
@@ -88,7 +88,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
         MoodTrackerNavbarComponent,
         UserProfileNavbarComponent,
         MoodChosenComponent,
-        //PieChartComponent
+        PieChartComponent,
+        JournalPromptEditComponent,
+        JournalFreeEditComponent,
+
 
     ],
     providers: [

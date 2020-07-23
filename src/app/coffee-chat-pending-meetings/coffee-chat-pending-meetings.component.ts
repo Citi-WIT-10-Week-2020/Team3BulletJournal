@@ -15,6 +15,7 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
   returnUrl: any;
   currentUser: any;
   meetings: any[];
+  currentMeeting: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,7 +30,12 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
      }
      
   ngOnInit(): void {
+    this.currentMeeting = {participants: this.currentUser.friends}
     this.onSubmit();
+  }
+
+  getMeeting(meeting){
+    this.currentMeeting = meeting;
   }
 
   onSubmit() {

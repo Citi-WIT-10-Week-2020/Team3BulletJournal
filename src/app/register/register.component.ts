@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 
 import { UserService, AuthenticationService, AlertService } from '../_services';
 
-@Component({ templateUrl: 'register.component.html' })
+@Component({ templateUrl: 'register.component.html',
+            styleUrls: ['register.component.css'] })
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
@@ -26,6 +26,8 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnInit() {
+        var status = "Pending";
+        var host = 'false';
         this.registerForm = this.formBuilder.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
@@ -36,6 +38,8 @@ export class RegisterComponent implements OnInit {
             hobbies: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]],
             email: ['', [Validators.required, Validators.email]],
+            status: [status],
+            hostBool: [host]
         });
     }
 
