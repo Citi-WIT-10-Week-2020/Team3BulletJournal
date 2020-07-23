@@ -10,8 +10,6 @@ body {
 }
 
 .card-container {
-    width: 1440px;
-    height: 600px;
     overflow-x: scroll;
     display: flex;
     background-color: #edf6fb;
