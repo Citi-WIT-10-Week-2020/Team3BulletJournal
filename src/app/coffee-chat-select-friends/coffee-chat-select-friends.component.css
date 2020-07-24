@@ -173,7 +173,7 @@
 .user-select{
   overflow: hidden;
   overflow-y: scroll;
-  height: 100px;
+  max-height: 100px;
 }
 #checkbox {
   margin-right: 15px;
