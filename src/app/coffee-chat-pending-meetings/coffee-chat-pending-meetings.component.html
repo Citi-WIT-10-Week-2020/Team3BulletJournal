@@ -43,20 +43,21 @@
                             </button>
                         </div>
                         </div>
-                    </div>
-
-                    <div class="card-body collapse" id="collapse1">
-                        <hr class="divide" style="color: grey" />
-                        <div class="card-text ml-3 mr-3" >
-                            <div class="row justify-content-end" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
-                                <a class="p-1 flex-grow-1 reg-font"> {{participant.firstName}}</a>
-                                <a class="p-1 reg-font"> {{participant.status}}</a>
-                            </div>
-                            <div class="row justify-content-center">
-                                <button class="button" routerLink="/coffee-chat-profiles">View Participant Profiles</button>
+                        <div class="card-body collapse" id="collapse1">
+                            <hr class="divide" style="color: grey" />
+                            <div class="card-text ml-3 mr-3" >
+                                <div class="row justify-content-end" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
+                                    <a class="p-1 flex-grow-1 reg-font"> {{participant.firstName}}</a>
+                                    <a class="p-1 reg-font"> {{participant.status}}</a>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <button class="button" routerLink="/coffee-chat-profiles">View Participant Profiles</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    
 
                         <!--Card 2-->
                         <div class="card">
