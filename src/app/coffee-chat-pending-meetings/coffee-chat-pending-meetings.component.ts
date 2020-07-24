@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService, AlertService } from '../_services';
 import { Validators, FormBuilder } from '@angular/forms';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-coffee-chat-pending-meetings',
@@ -59,7 +60,17 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
       }
 
     console.log("index:" + index);
-    this.authenticationService.acceptMeeting(meeting, index);
+    this.authenticationService.acceptMeeting(meeting, index)
+    .pipe(first())
+    .subscribe(
+      data => {
+          //this.router.navigate([this.returnUrl]);
+          
+       },
+      error => {
+          this.alertService.error(error);
+          this.loading = false;
+});
 
   }
 

@@ -75,6 +75,7 @@ export class AuthenticationService {
 
         return this.http.put<any>(`http://localhost:8080/api/acceptMeeting`, {_id, index})
         .pipe(map(user => {
+            console.log("inside the pipe")
             return user;
         }));
     }
