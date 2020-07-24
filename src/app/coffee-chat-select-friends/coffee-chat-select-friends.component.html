@@ -30,6 +30,7 @@
                     <div class="user-select">
                         <div *ngFor="let person of peopleList"  [ngValue]="person">
                             <input type="checkbox" id="checkbox"(change)="userSelect(person)" [disabled]="maxCapacity && !this.selectedPeople.includes(person)">
+
                             <label>{{person.firstName}} {{person.lastName}}</label>
                         </div>
                     </div>
