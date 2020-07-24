@@ -60,6 +60,16 @@ export class AuthenticationService {
         // }));
     }
 
+    acceptMeeting(meeting, index){
+        var _id = meeting._id;
+        console.log("_id: " + _id);
+
+        return this.http.put<any>(`http://localhost:8080/api/acceptMeeting`, {_id, index})
+        .pipe(map(user => {
+            return user;
+        }));
+    }
+
     getAllUsers(){
         return this.http.get<any>(`http://localhost:8080/api/getAllUsers`);
     }
