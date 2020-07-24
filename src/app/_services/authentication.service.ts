@@ -13,6 +13,8 @@ export class AuthenticationService {
     public currentMood: Observable<any>;
     public currentJournalSubject: BehaviorSubject<any>;
     public currentJournal: any;
+    public currentMeetingSubject: BehaviorSubject<any>;
+    public currentMeeting: any;
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
@@ -23,10 +25,17 @@ export class AuthenticationService {
         
         this.currentJournalSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentJournal')));
         this.currentJournal = this.currentJournalSubject.value;
+
+        this.currentMeetingSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentMeeting')));
+        this.currentMeeting = this.currentMeetingSubject.value;
     }
 
     public get currentUserValue() {
         return this.currentUserSubject.value;
+    }
+
+    public get currentMeetingValue() {
+        return this.currentMeetingSubject.value;
     }
 
     public get currentMoodValue() {
