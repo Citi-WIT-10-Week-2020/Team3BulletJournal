@@ -16,29 +16,47 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 </head>
+<div>
+    <app-navbar style="z-index: 9999;"></app-navbar>
+</div>
+<div class="sticky-top">
+    <app-user-profile-navbar style="z-index: 1;"></app-user-profile-navbar>
+</div>
 <body>
-    <div class="sticky-top">
-        <app-navbar></app-navbar>
-        <app-user-profile-navbar></app-user-profile-navbar>
-    </div>
         <!-- Page Content Holder -->
-        <div id="content">
+        <div class="user" id="content">
             <div class="container">
                 <div class="row">
-                    <div class="bg-image"></div>
                     <div class="login-page">
                     <div class="login-form">
                     <div class="col-md-12">
                         <img src="assets/images/logo.jpg" alt="" width="100" height="80"><br>
-                    <h2>User Profile</h2>
-                    <p>Username: {{currentUser.username}}</p>
+                    <h2 class="bold">{{currentUser.firstName}}'s Profile</h2>
+                    <hr class="new-divide">
+                    <p class="bold">Username: <a style="font-weight: 400;">{{currentUser.username}}</a></p>
                     <div class="line"></div>
 
-                    <p>First Name: {{currentUser.firstName}}</p>
+                    <p class="bold">First Name: <a style="font-weight: 400;">{{currentUser.firstName}}</a></p>
                     <div class="line"></div>
 
-                    <p>Last Name: {{currentUser.lastName}}</p>
+                    <p class="bold">Last Name: <a style="font-weight: 400;">{{currentUser.lastName}}</a></p>
                     <div class="line"></div>
+
+                    <p class="bold">Role/Title: <a style="font-weight: 400;">{{currentUser.role}}</a></p>
+                    <div class="line"></div>
+
+                    <p class="bold">Bio: <a style="font-weight: 400;">{{currentUser.bio}}</a></p>
+                    <div class="line"></div>
+
+                    <p class="bold">Hobbies: <a style="font-weight: 400;">{{currentUser.hobbies}}</a></p>
+                    <div class="line"></div>
+
+                    <p class="bold">Email: <a style="font-weight: 400;">{{currentUser.email}}</a></p>
+                    <div class="line"></div>
+
+                    <p class="bold">Zoom ID: <a style="font-weight: 400;">{{currentUser.zoomLink}}</a></p>
+                    <div class="line"></div>
+
                     </div>
                 </div>
                 </div>

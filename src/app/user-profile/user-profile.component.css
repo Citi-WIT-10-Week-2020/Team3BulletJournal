@@ -1,18 +1,22 @@
+#content {
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+  font-family: 'Montserrat';
+}
 
+h2{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 
-body{
-    background: url('/assets/images/login2.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;  
-    height: 90vh;
-  }
-  
+.bold{
+  font-weight: 600;
+}
+
   .login-page{
-    width: auto;
+    width: 50%;
     height: auto;
     padding: 8% 0 0;
     margin: auto;
@@ -22,8 +26,8 @@ body{
   .login-form {
     position: relative;
     z-index: 1;
-    background: #FFFFFF;
-    max-width: 360px;
+    background: whitesmoke;
+    max-width: 500px;
     margin: 0 auto 100px;
     padding: 25px;
     text-align: center;
@@ -69,4 +73,13 @@ body{
   
   .login-form .message a {
     text-decoration: none;
+  }
+
+
+  hr.new-divide {
+    border: 0;
+    height: 1px;
+    width: 30%;
+    background-image: linear-gradient(to right, rgb(216, 213, 213), black, rgb(216, 213, 213));
+    margin-bottom: 30px;
   }
