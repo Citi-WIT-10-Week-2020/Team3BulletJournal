@@ -6,23 +6,17 @@
 </div>
  <!-- Page Content Holder -->
  <div id="content">
-
-
 <h3>Profiles</h3>
 <!--Have each participants profile with pic/avatar, Name, profession, bio-->
-
-
 <div class="card-container">
-    <div class="card">
+    <div class="card" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
         <header class="article-header">
             <div>
                 <h2 class="article-title">
-                    John  
-                    <!--{{participants.firstName}}-->
+                    {{participant.firstName}}
                 </h2>
                 <div class="category-title">
-                    Data Scientist
-                    <!-- {{user.role}} -->
+                    {{participant.role}}
                 </div>
             </div>
 
@@ -34,23 +28,24 @@
             <div class="info">
                 <div class="caption">
                     <p>
-                        A little bit about me.....
-                        <!-- {{user.bio}} -->
+                        {{participant.bio}}
                     </p>
                 </div>
                 <div class="name">
                     <h6>Hobbies:</h6>
-                    <p>Puzzles, Studying Hurricane Patterns, etc...</p>
-                    <!-- <p>{{user.hobbies}}</p> -->
+                    <p>
+                        {{participant.hobbies}}
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
 <!--Zoom Embed-->
-<!-- <div class="iframe-container" style="overflow: hidden; padding-top: 56.25%; position: relative;">
-        <iframe allow="microphone; camera" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;" src="https://success.zoom.us/wc/join/2576842504" frameborder="0"></iframe>
-</div> -->
+<div class="iframe-container" style="overflow: hidden; padding-top: 56.25%; position: relative;">
+    <iframe allow="microphone; camera" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;" [src]="zoomUrl | safe" frameborder="0"></iframe>
+</div>
+
+
 
