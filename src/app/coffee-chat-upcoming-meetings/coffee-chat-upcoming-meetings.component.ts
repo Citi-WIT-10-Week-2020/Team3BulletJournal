@@ -71,7 +71,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                 for (let user of data){
                   for(var i = 0; i < user.participants.length; i++){
                     if(user.participants[i].username == this.currentUser.username){
-                      if(user.participants[i].status == "Pending"){
+                      if(user.participants[i].status == "Accepted"){
                         console.log("status:" + user.participants[i].status);
                         this.selectedMeetings.push(user);
                         break;
