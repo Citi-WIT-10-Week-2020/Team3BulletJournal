@@ -69,17 +69,6 @@ export class AuthenticationService {
         // }));
     }
 
-    acceptMeeting(meeting, index){
-        var _id = meeting._id;
-        console.log("_id: " + _id);
-
-        return this.http.put<any>(`http://localhost:8080/api/acceptMeeting`, {_id, index})
-        .pipe(map(user => {
-            console.log("inside the pipe")
-            return user;
-        }));
-    }
-
     getAllUsers(){
         return this.http.get<any>(`http://localhost:8080/api/getAllUsers`);
     }
@@ -98,6 +87,30 @@ export class AuthenticationService {
 
     createMeeting(username, participants, day, month, year, time, host){
         return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, time, host});
+    }
+
+    acceptMeeting(meeting, index){
+        console.log("in the authentication for accepted");
+        var _id = meeting._id;
+        console.log("_id: " + _id);
+
+        return this.http.put<any>(`http://localhost:8080/api/acceptMeeting`, {_id, index})
+        .pipe(map(user => {
+            console.log("inside the pipe")
+            return user;
+        }));
+    }
+
+    declineMeeting(meeting, index) {
+        console.log('inside new declineMeeting in auth');
+        var _id = meeting._id;
+        console.log("_id: " + _id);
+
+        return this.http.put<any>(`http://localhost:8080/api/declineMeeting`, {_id, index})
+        .pipe(map(user => {
+            console.log("inside the pipe")
+            return user;
+        }));
     }
     
     saveMood(username, mood, day, month, year){
