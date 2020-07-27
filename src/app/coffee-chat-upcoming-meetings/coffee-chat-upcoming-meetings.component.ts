@@ -71,11 +71,14 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                 for (let user of data){
                   for(var i = 0; i < user.participants.length; i++){
                     if(user.participants[i].username == this.currentUser.username){
-                      this.selectedMeetings.push(user);
-                      break;
+                      if(user.participants[i].status == "Pending"){
+                        console.log("status:" + user.participants[i].status);
+                        this.selectedMeetings.push(user);
+                        break;
                     }
                   }
                 }
+              }
 
 
                 //look into querying data

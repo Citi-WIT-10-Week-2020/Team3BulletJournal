@@ -34,7 +34,8 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
      }
      
   ngOnInit(): void {
-    this.currentMeeting = {participants: this.currentUser.friends}
+    this.currentMeeting = {participants: this.currentUser.friends};
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/coffee-chat-pending-meetings';
     this.onSubmit();
   }
 
@@ -51,6 +52,7 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
   }
 
   acceptMeeting(meeting){
+    console.log ("accepted");
     var index;
       for(var i = 0; i < meeting.participants.length; i++){
         if(meeting.participants[i].username == this.currentUser.username){
@@ -64,7 +66,29 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
     .pipe(first())
     .subscribe(
       data => {
-          //this.router.navigate([this.returnUrl]);
+          this.router.navigate([this.returnUrl]);
+          
+       },
+      error => {
+          this.alertService.error(error);
+          this.loading = false;
+});
+  }
+  declineMeeting(meeting){
+    var index;
+      for(var i = 0; i < meeting.participants.length; i++){
+        if(meeting.participants[i].username == this.currentUser.username){
+          index = i;
+          break;
+        }
+      }
+
+    console.log("index:" + index);
+    this.authenticationService.declineMeeting(meeting, index)
+    .pipe(first())
+    .subscribe(
+      data => {
+          this.router.navigate([this.returnUrl]);
           
        },
       error => {
@@ -102,8 +126,11 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
                 for (let user of data){
                   for(var i = 0; i < user.participants.length; i++){
                     if(user.participants[i].username == this.currentUser.username){
-                      this.selectedMeetings.push(user);
-                      break;
+                      if(user.participants[i].status == "Pending"){
+                        console.log("status:" + user.participants[i].status);
+                        this.selectedMeetings.push(user);
+                        break;
+                      } 
                     }
                   }
                 }
