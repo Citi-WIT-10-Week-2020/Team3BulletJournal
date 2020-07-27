@@ -45,9 +45,10 @@ h4{
    align-items: center !important;
    justify-content: end;
    width: 30%;
-   height: 100%;
+   min-height: 800px;
    border-right: 1px solid grey;
    overflow: hidden;
+   background-color: rgba(255, 255, 255, 0.459);
 }
 
 .journal-container{
@@ -55,9 +56,10 @@ h4{
    flex-direction: column;
    flex-shrink: 3;
    align-items: stretch;
-   justify-content: flex-end;
+   justify-content: flex-start;
    width: 30%;
-   height: 100%;
+   min-height: 800px;
+   background-color: rgba(255, 255, 255, 0.459);
 }
 
 .mood-container{
@@ -65,10 +67,12 @@ h4{
    flex-direction: column;
    flex-shrink: 3;
    align-items: center;
-   justify-content: center;
+   justify-content: flex-start;
    width: 40%;
-   height: 100%;
+   min-height: 800px;
    border-right: 1px solid grey;
+   background-color: rgba(255, 255, 255, 0.459);
+   padding: none;
 }
 
 .card{

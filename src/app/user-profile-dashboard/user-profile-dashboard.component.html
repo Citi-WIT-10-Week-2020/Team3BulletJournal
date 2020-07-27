@@ -25,7 +25,7 @@
 <body>
     <div class="user" id="content">
         <div class="coffee-container">
-            <h4>Upcoming Coffee Chats</h4>
+            <h4 class="text-center">Upcoming Coffee Chats</h4>
             <div class="card">
                 <div class="card-title justify-content-end reg-font mb-0 mt-3 ml-3 mr-3">
                     <a style=" font-size: 14px; font-weight: 500;">Sat, May 14</a>
@@ -71,9 +71,10 @@
                         </div>
                         </div>
                     </div>
+                    <a class="link mt-3" routerLink="/coffee-chat-upcoming-meetings">View All Upcoming Meetings</a>
             </div> 
         <div class="mood-container">
-                <h4>Mood Tracker Data</h4>
+                <h4 class="text-center">Mood Tracker Data</h4>
                 <app-pie-chart></app-pie-chart>
         </div>
         <div class="journal-container">
@@ -93,8 +94,9 @@
                             <button class="btn-2" title="Delete" (click)="getEntry(entry)" data-toggle="modal" data-target="#delete"><span class="fa fa-trash-o"  style="color: grey"></span></button>
                         </div>
                     </li>
-                  </ul>
+                  </ul> 
             </div>
+            <a class="link mt-3 text-center" routerLink="/journal-published">View All Previous Entries</a>
         </div>
                  
     </div>
