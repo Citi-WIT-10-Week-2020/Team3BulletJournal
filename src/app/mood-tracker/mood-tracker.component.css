@@ -5,20 +5,20 @@
 /* ---------------------------------------------------
     BUTTONS
 ----------------------------------------------------- */
-button {
+.moodButton {
     width:125px;
     height:125px;
     border-radius: 50%;
     border: none;
 }
 
-button#anxious{
+.moodButton#anxious{
     background-image: url(/assets/images/anxious.png);
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-button#excited{
+.moodButton#excited{
     background-image: url(/assets/images/excited.png);
     background-repeat: no-repeat;
     background-size: contain;
@@ -65,7 +65,7 @@ p {
     color: #999;
 }
 
-#first {
+#first.pink {
     color:black;
     font-size: 28px;
     margin:auto;
@@ -74,12 +74,23 @@ p {
     background: #f9f0ef;
     overflow: hidden;
     border-radius:3px;
-    border:1px solid black;
+    border:1px solid rgb(117, 116, 116);
 }
 
-#second{
+#first.blue {
+    color:black;
+    font-size: 28px;
+    margin:auto;
+    width: 700px;
+    height: 350px;
+    background: #D8E4E7;
+    overflow: hidden;
     border-radius:3px;
-    border:1px solid black;
+    border:1px solid rgb(117, 116, 116);}
+
+.second{
+    border-radius:3px;
+    border: 1px solid rgb(117, 116, 116);
     width: 75%;
     height: 25%;
     margin: auto;
@@ -88,11 +99,24 @@ p {
     display: flex;
     justify-content: center;
     align-content: center;
-
 }
+
+.second1{
+    border-radius:3px;
+    border: 1px solid rgb(117, 116, 116);
+    width: 75%;
+    height: 25%;
+    margin: auto;
+    margin-top: 10px;
+    background: #C4A2A7;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
 #title{
     margin-top: 20px;
-    font-family: 'Big Caslon', sans-serif;
+    font-family: 'Playfair Display', serif;
 }
 
 .mood-container{
@@ -107,7 +131,7 @@ p {
     margin-top: 30px;
     text-align: center;
     font-size: 20px;
-    font-family: 'Big Caslon', sans-serif;
+    font-family: 'Playfair Display', serif;
 }
 
 

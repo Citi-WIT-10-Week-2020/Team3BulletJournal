@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService, AlertService } from '../_services';
 import { Validators, FormBuilder } from '@angular/forms';
@@ -10,7 +10,6 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./coffee-chat-pending-meetings.component.css']
 })
 export class CoffeeChatPendingMeetingsComponent implements OnInit {
-
   submitted: boolean;
   loading: boolean;
   returnUrl: any;
@@ -19,6 +18,9 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
   attendingMeetings: any[];
   selectedMeetings: any[]; //before filtering for attending meetings upcoming dates
   currentMeeting: any;
+  meetingID: string;
+
+  //@Output() meetingEvent = new EventEmitter<string>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,11 +41,18 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
   }
 
   getMeeting(meeting){
+    console.log("got meeting");
     this.currentMeeting = meeting;
   }
 
+  sendMeeting(meeting){
+    this.meetingID = meeting._id;
+    localStorage.setItem('currentMeeting', JSON.stringify(this.meetingID));
+    //console.log("emitted");
+    //this.meetingEvent.emit(this.meetingID);
+  }
+
   acceptMeeting(meeting){
-    console.log("inside acceptMeeting");
     var index;
       for(var i = 0; i < meeting.participants.length; i++){
         if(meeting.participants[i].username == this.currentUser.username){
