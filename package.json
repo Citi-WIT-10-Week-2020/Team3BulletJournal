@@ -1,4 +1,5 @@
 {
+  "homepage": "http://emkelsey.github.io/Team3BulletJournal",
   "name": "bullet-journal",
   "version": "0.0.0",
   "scripts": {
@@ -10,7 +11,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ngcc"
+    "postinstall": "ngcc",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "private": true,
   "dependencies": {

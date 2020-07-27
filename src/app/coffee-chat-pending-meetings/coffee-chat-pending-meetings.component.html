@@ -43,7 +43,7 @@
                             </button>
                         </div>
                         </div>
-                        <div class="card-body collapse" id="collapse1">
+                        <div class="card-body collapse" *ngIf = "meeting._id == currentMeeting._id" id="collapse1">
                             <hr class="divide" style="color: grey" />
                             <div class="card-text ml-3 mr-3" >
                                 <div class="row justify-content-end" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
