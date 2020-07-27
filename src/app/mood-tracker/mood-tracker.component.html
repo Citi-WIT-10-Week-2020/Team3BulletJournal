@@ -25,42 +25,49 @@
     </div>
 
 <div class="background-mood" id="content">
-    <div id="first">
-        <div id="second">
-            <div id="title"> How are you feeling today? </div>
+    <div id="first" class= "pink" >
+        <div id="second" class="second">
+            <div id="title">How are you feeling today?</div>
+            <button type="button" (click)="colorPaletteBlue()">blue</button>
         </div>
         
     <div class="mood-container">
         <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitAnxiety()">
         <div class="form-group">
         <div class="mood-item">
-            <button id="anxious" value="false" name="button"></button><hr>Anxious </div>
+            <button class = "moodButton" id="anxious" value="false" name="button"></button><hr>Anxious </div>
             </div>
         </form>
         <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitExcited()">
             <div class="form-group"> 
         <div class="mood-item">
-            <button id="excited" value="excited" name="button"></button> <hr>Excited </div>
+            <button id="excited" class = "moodButton" nvalue="excited" name="button"></button> <hr>Excited </div>
         </div>
         </form>
         <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitConfused()">
         <div class="form-group">
         <div class="mood-item">
-            <button id="confused" value="confused" name="button"></button><hr>Confused </div>
+            <button id="confused" class = "moodButton" value="confused" name="button"></button><hr>Confused </div>
         </div>
         </form>
         <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitHappy()">
         <div class="form-group">
         <div class="mood-item">
-            <button id="happy" value="happy" name="button"></button> <hr>Happy </div>
+            <button id="happy" value="happy" class = "moodButton" name="button"></button> <hr>Happy </div>
         </div>
         </form>
         <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitSad()">
         <div class="form-group">
         <div class="mood-item">
-            <button id="sad" value="sad" name="button"></button><hr> Sad </div>
+            <button id="sad" value="sad" class = "moodButton" name="button"></button><hr> Sad </div>
         </div>
         </form>
         </div>
     </div>
  </div>
+
+ <script>
+ var color = "pink"
+ </script>
+</body>
+</html>

@@ -23,6 +23,7 @@ export class MoodTrackerComponent implements OnInit {
   happyForm: any;
   sadForm: any;
   currentMood: any;
+  color: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,6 +36,11 @@ export class MoodTrackerComponent implements OnInit {
     this.validJournal = this.validJournal;
    
    }
+  
+  
+
+
+
   ngOnInit(): void {
 
     if (!localStorage.getItem('autoLoad')) { 
@@ -43,9 +49,12 @@ export class MoodTrackerComponent implements OnInit {
     } else {
       localStorage.removeItem('autoLoad') 
     }
-    
-    var d = new Date();
 
+    localStorage.setItem('colorP', "pink");
+
+
+    /*var color = localStorage.getItem()*/
+    var d = new Date();
     var date = d.getUTCDate();
     var month = d.getUTCMonth() + 1;
     var year = d.getUTCFullYear();
@@ -106,10 +115,21 @@ export class MoodTrackerComponent implements OnInit {
   get j() { return this.happyForm.controls; }
   get k() { return this.sadForm.controls; }
 
+ 
+
+  colorPaletteBlue() { 
+    localStorage.setItem("colorP", "blue");
+    var color = localStorage.getItem("colorP");
+    document.getElementById('first').className = color;
+    localStorage.setItem("colorP", color);
+    }
+
+
 
   onSubmit(){
 
   }
+ 
 
   onSubmitAnxiety() {
     this.submitted = true;
