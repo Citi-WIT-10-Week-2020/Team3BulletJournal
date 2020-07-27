@@ -11,19 +11,19 @@ button {
 }
 
 button#read{
-    background:transparent url(/assets/images/read.png);
+    background:transparent url(/assets/images/study.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center bottom;
 }
 
 button#watch{
-    background:transparent url(/assets/images/television.png);
+    background:transparent url(/assets/images/tv.png);
     background-repeat: no-repeat;
     background-size: contain;
 }
 #do{
-    background:transparent url(/assets/images/pencil.png);
+    background:transparent url(/assets/images/pencil1.png);
     background-repeat: no-repeat;
     background-size: 90%;
     background-position: center bottom;
