@@ -23,14 +23,58 @@
     <app-user-profile-navbar style="z-index: 1;"></app-user-profile-navbar>
 </div>
 <body>
-    <div id="content">
-        <div class="row">
+    <div class="user" id="content">
+        <div class="coffee-container">
+            <h4>Upcoming Coffee Chats</h4>
+            <div class="card">
+                <div class="card-title justify-content-end reg-font mb-0 mt-3 ml-3 mr-3">
+                    <a style=" font-size: 14px; font-weight: 500;">Sat, May 14</a>
+                    <a style=" font-size: 14px;">10:00 AM</a>
+                </div>
+                <div class="card-body mt-0">
+                    <hr class="divide mt-0 mb-2" />
+                    <div class="card-text ml-3 mr-3">
+                        <div class="row justify-content-end">
+                            <a class="p-1 flex-grow-1 left reg-font" style="font-weight: 500;"> Host:</a>
+                            <a class="p-1 reg-font"> Shannon</a>
+                        </div>
+                        <div class="row justify-content-end">
+                            <a class="p-1 flex-grow-1 left reg-font" style="font-weight: 500;">5 Attendees:</a>
+                            <a class="link" routerLink="/coffee-chat-profiles">View Profiles</a>
+                        </div>
+                        <div class="row justify-content-center mt-3">
+                            <button class="button mr-1">Details</button>
+                        </div>
+                    </div>
+                    </div>
+                </div> 
+                
+                <div class="card">
+                    <div class="card-title justify-content-end reg-font mb-0 mt-3 ml-3 mr-3">
+                        <a style=" font-size: 14px; font-weight: 500;">Sat, May 14</a>
+                        <a style=" font-size: 14px;">10:00 AM</a>
+                    </div>
+                    <div class="card-body mt-0">
+                        <hr class="divide mt-0 mb-2" />
+                        <div class="card-text ml-3 mr-3">
+                            <div class="row justify-content-end">
+                                <a class="p-1 flex-grow-1 left reg-font" style="font-weight: 500;"> Host:</a>
+                                <a class="p-1 reg-font"> Shannon</a>
+                            </div>
+                            <div class="row justify-content-end">
+                                <a class="p-1 flex-grow-1 left reg-font" style="font-weight: 500;">5 Attendees:</a>
+                                <a class="link" routerLink="/coffee-chat-profiles">View Profiles</a>
+                            </div>
+                            <div class="row justify-content-center mt-3">
+                                <button class="button mr-1">Details</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+            </div> 
         <div class="mood-container">
-            <div class="container">
                 <h4>Mood Tracker Data</h4>
                 <app-pie-chart></app-pie-chart>
-
-            </div>
         </div>
         <div class="journal-container">
             <h4 class="text-center">Recent Journal Entries</h4>
@@ -52,36 +96,7 @@
                   </ul>
             </div>
         </div>
-        </div>
-        <div class="row">
-        <div class="coffee-container">
-            <h4>Upcoming Coffee Chat Meetings</h4>
-            <div class="card">
-                <div class="card-title justify-content-end reg-font mb-0 mt-3 ml-3 mr-3">
-                    <a style=" font-size: 14px; font-weight: 500;">Sat, May 14</a>
-                    <a style=" font-size: 14px;">10:00 AM</a>
-                </div>
-                <div class="card-body mt-0">
-                    <hr class="divide mt-0 mb-2" />
-                    <div class="card-text ml-3 mr-3">
-                        <div class="row justify-content-end">
-                            <a class="p-1 flex-grow-1 left reg-font" style="font-weight: 500;"> Host:</a>
-                            <a class="p-1 reg-font"> Shannon</a>
-                        </div>
-                        <div class="row justify-content-end">
-                            <a class="p-1 flex-grow-1 left reg-font" style="font-weight: 500;">5 Attendees:</a>
-                            <a class="link" routerLink="/coffee-chat-profiles">View Profiles</a>
-                        </div>
-                        <div class="row justify-content-center mt-3">
-                            <button class="button mr-1">View</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>  
-
-                
-        </div>          
+                 
     </div>
             
 

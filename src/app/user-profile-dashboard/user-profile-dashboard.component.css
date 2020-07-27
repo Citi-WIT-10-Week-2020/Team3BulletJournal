@@ -20,51 +20,61 @@
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
+    background-color: whitesmoke;
+}
+
+.container{
+    background-color: whitesmoke;
+    border: 1px solid grey;
+    border-radius: 3;
+    padding: 0;
 }
 
 h4{
     font-family: 'Playfair Display';
-    justify-content: center;
-}
-
-.row{
-    margin-top: 5;
+    justify-content: center !important;
+    margin-bottom: 2em;
+    margin-top: 2em;
 }
 
     
 .coffee-container{
    display: inline-flex;
-   flex-direction: row;
+   flex-direction: column;
+   flex-shrink: 3;
    align-items: center !important;
    justify-content: end;
-   width: 33%;
+   width: 30%;
    height: 100%;
+   border-right: 1px solid grey;
+   overflow: hidden;
 }
 
 .journal-container{
    display: inline-flex;
    flex-direction: column;
+   flex-shrink: 3;
    align-items: stretch;
    justify-content: flex-end;
-   width: 33%;
+   width: 30%;
    height: 100%;
 }
 
 .mood-container{
-    display: inline-flex;
-   flex-direction: row;
-   align-items: flex-start;
-   width: 33%;
+   display: inline-flex;
+   flex-direction: column;
+   flex-shrink: 3;
+   align-items: center;
+   justify-content: center;
+   width: 40%;
    height: 100%;
+   border-right: 1px solid grey;
 }
 
 .card{
     margin: 5px;
-    width: 500px;
-    min-width: 200px;
-    max-width: 600px;
-    min-height: 100px;
-    max-height: 300px;
+    width: 300px;
+    height: 200px;
     border-radius: 0;
     box-shadow: 1px 1px 5px grey;
 }
@@ -80,7 +90,7 @@ h4{
 
 .card, .card-body, .card-text{
     max-width: 100%;
-    background-color: lavender;
+    background-color: whitesmoke;
     font-size: 14px;
 }
 
@@ -97,9 +107,9 @@ h4{
 }
 
 .button{
-    border: 1px solid #e4955e;
-    background-color: ivory;
-    color: #e4955e;
+    border: 1px solid grey;
+    background-color: whitesmoke;
+    color: grey;
     padding: 5px 12px;
     font-size: 12px;
     cursor: pointer;
@@ -108,7 +118,7 @@ h4{
 }
 
 .button:hover{
-    background-color:#e4955e;
+    background-color:grey;
     color: white; 
 }
 
