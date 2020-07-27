@@ -45,6 +45,7 @@ import { ChartsModule } from 'ng2-charts';
 import { JournalPromptEditComponent } from './journal-prompt-edit/journal-prompt-edit.component';
 import { JournalFreeEditComponent } from './journal-free-edit/journal-free-edit.component';
 import { SafePipe } from 'src/safe.pipe';
+import { JournalMoodDoRerouteComponent } from './journal-mood-do-reroute/journal-mood-do-reroute.component';
 
 
 @NgModule({
@@ -92,7 +93,8 @@ import { SafePipe } from 'src/safe.pipe';
         PieChartComponent,
         JournalPromptEditComponent,
         JournalFreeEditComponent,
-        SafePipe
+        SafePipe,
+        JournalMoodDoRerouteComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
