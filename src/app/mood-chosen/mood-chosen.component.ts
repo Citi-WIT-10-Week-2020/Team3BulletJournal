@@ -102,7 +102,7 @@ export class MoodChosenComponent implements OnInit {
     } else {
       localStorage.removeItem('autoLoad') 
     }
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/journal';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/journal-mood-do-reroute';
  
   }
 
@@ -163,7 +163,7 @@ export class MoodChosenComponent implements OnInit {
     var linkToAdd = '';
     console.log(this.currentMood.mood)
     if(this.currentMood.mood == 'anxious'){
-      var promptIndexSelected = Math.random() * (this.AnxiousDo.length);
+      var promptIndexSelected = Math.random() * (this.AnxiousDo.length+1);
       console.log(Math.round(promptIndexSelected))
       if(Math.round(promptIndexSelected) >= this.AnxiousDo.length){
         this.router.navigate([this.returnUrl]);  
@@ -172,7 +172,7 @@ export class MoodChosenComponent implements OnInit {
       window.open(linkToAdd);
     }
     }else if(this.currentMood.mood == 'excited'){
-      var promptIndexSelected = Math.random() * (this.ExcitedDo.length);
+      var promptIndexSelected = Math.random() * (this.ExcitedDo.length+1);
       if(promptIndexSelected >= this.ExcitedDo.length){
         this.router.navigate([this.returnUrl]);  
       }else{
@@ -180,7 +180,7 @@ export class MoodChosenComponent implements OnInit {
       window.open(linkToAdd);
     }
     }else if(this.currentMood.mood == 'confused'){
-      var promptIndexSelected = Math.random() * (this.ConfusedDo.length);
+      var promptIndexSelected = Math.random() * (this.ConfusedDo.length+1);
       if(promptIndexSelected >= this.ConfusedDo.length){
         this.router.navigate([this.returnUrl]);  
       }else{
@@ -188,7 +188,7 @@ export class MoodChosenComponent implements OnInit {
       window.open(linkToAdd);
     }
     }else if(this.currentMood.mood == 'sad'){
-      var promptIndexSelected = Math.random() * (this.SadDo.length);
+      var promptIndexSelected = Math.random() * (this.SadDo.length+1);
       if(promptIndexSelected >= this.SadDo.length){
         this.router.navigate([this.returnUrl]);  
       }else{
@@ -196,7 +196,7 @@ export class MoodChosenComponent implements OnInit {
       window.open(linkToAdd);
     }
     }else if(this.currentMood.mood == 'happy'){
-      var promptIndexSelected = Math.random() * (this.HappyDo.length);
+      var promptIndexSelected = Math.random() * (this.HappyDo.length+1);
       if(promptIndexSelected >= this.HappyDo.length){
         this.router.navigate([this.returnUrl]);  
       }else{
