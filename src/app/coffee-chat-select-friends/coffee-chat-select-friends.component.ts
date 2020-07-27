@@ -80,7 +80,7 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
         .subscribe(
             data => {
                 this.alertService.success('Meeting Scheduled', true);
-                this.router.navigate(['/coffee-chat-profiles'], { queryParams: { scheduled: true }});
+                this.router.navigate(['/coffee-chat-pending-meetings'], { queryParams: { scheduled: true }});
             },
             error => {
                 this.alertService.error(error);
