@@ -19,6 +19,7 @@ export class UserProfileDashboardComponent implements OnInit {
   prelimMeetings: any[]; //filtered attending meetings
   meetingID = "";
   currentEntry: any;
+  journalDataSize: any;
   size: any;
 
   constructor(
@@ -72,11 +73,19 @@ export class UserProfileDashboardComponent implements OnInit {
             for (let user of data){
                 console.log("user:" + user.username);
                 console.log("currentUser:" + this.currentUser.username);
-                if(user.username == this.currentUser.username){
+                if(data.length < 5){
+                  this.journalDataSize = data.length;
+                }
+                else{
+                  this.journalDataSize = 5;
+                }
+                for(var i = 0; i < this.journalDataSize; i++){
+                  if(user.username == this.currentUser.username){
                     console.log('Yay we found it');
                     this.loading = false;
                     this.entries.push(user);
                     found = true;
+                  }
                 }
             }
                   
