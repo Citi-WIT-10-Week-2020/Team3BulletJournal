@@ -13,6 +13,7 @@ export class UserProfileDashboardComponent implements OnInit {
   loading: boolean;
   returnUrl: any;
   currentUser: any;
+  allEntries: any[];
   entries: any[];
   selectedMeetings: any[]; //top 3 most upcoming meetings
   upcomingMeetings: any[]; //all relevant upcoming meetings
@@ -61,6 +62,7 @@ export class UserProfileDashboardComponent implements OnInit {
 
     this.loading = true;
     this.entries = [];
+    this.allEntries = [];
     this.authenticationService.getAllJournals()
         //.pipe(first())
         .subscribe(
@@ -79,14 +81,17 @@ export class UserProfileDashboardComponent implements OnInit {
                 else{
                   this.journalDataSize = 5;
                 }
-                for(var i = 0; i < this.journalDataSize; i++){
-                  if(user.username == this.currentUser.username){
-                    console.log('Yay we found it');
-                    this.loading = false;
-                    this.entries.push(user);
-                    found = true;
-                  }
+                if(user.username == this.currentUser.username){
+                  console.log('Yay we found it');
+                  this.loading = false;
+                  this.allEntries.push(user);
+                  found = true;
                 }
+
+              for(var i = 0; i < this.journalDataSize; i++){
+                this.entries[i] = this.allEntries[i];
+              }
+   
             }
                   
                 this.loading = true;
