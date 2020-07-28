@@ -8,6 +8,14 @@
  
  <div class="coffee-chat" id="content">
     <h2>Meeting Participant Profiles</h2>
+    <div class="container mt-0">
+        <div class="chevron"></div>
+        <div class="chevron"></div>
+        <div class="chevron"></div>
+        <span class="text">Zoom Access Below</span>
+      </div>
+      <br>
+      <br>
 <!--Have each participants profile with pic/avatar, Name, profession, bio-->
 <div class="card-container">
     <div class="card" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
@@ -41,12 +49,11 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="chevron"></div>
-        <div class="chevron"></div>
-        <div class="chevron"></div>
-        <span class="text">Zoom Access Below</span>
-      </div>
+    
+</div>
+<div class="new-container">
+    <a>*Warning* Only input credentials required, do not select other icons. </a>
+    <a>If a redirect error occurs or if you have joined an uninitiated meeting, reload the page.</a> 
 </div>
 
 
