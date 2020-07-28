@@ -15,6 +15,9 @@ var db = mongoose.connect("mongodb+srv://ekelsey:Gogators123@cluster0-rglxo.mong
     }
 });
 
+//try creating another app that runs the server and then call that url instead of localhost
+
+
 const app = express();
 app.use(bodyParser());
 app.use(bodyParser.json({linit:'5mb'}));
@@ -29,6 +32,7 @@ app.set('port', (process.env.PORT || 8080));
      res.setHeader('Access-Control-Allow-Credentials', true);
      next();
 });
+
 
 const Schema = mongoose.Schema;
 
@@ -334,6 +338,22 @@ app.put('/api/removeMood', function(req,res){
     app.delete('/api/deleteJournal', function(req,res){
         //console.log(req.body._id)
         JournalModel.findByIdAndDelete({_id: req.body._id},
+            function(err,data){
+                if(err) {
+                    //console.log(err);
+                    res.send(err);
+                }
+                else{
+                    //console.log(req.body.username);
+                    res.send(data);
+                }
+            }
+            );
+    })
+
+    app.delete('/api/deleteUser', function(req,res){
+        //console.log(req.body._id)
+        model.findByIdAndDelete({_id: req.body._id},
             function(err,data){
                 if(err) {
                     //console.log(err);

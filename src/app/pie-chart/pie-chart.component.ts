@@ -15,11 +15,11 @@ import { ThemeService } from 'ng2-charts';
 export class PieChartComponent implements OnInit {
   pieChartColor: { backgroundColor: string[]; }[];
   pieChartData: any[];
-  anxietyCount: number;
-  excitedCount: number;
-  confusedCount: number;
-  sadCount: number;
-  happyCount: number;
+  anxietyCount: number = 0;
+  excitedCount: number = 0;
+  confusedCount: number = 0;
+  sadCount: number = 0;
+  happyCount: number = 0;
   pieChartLabels: string[];
   currentUser: any;
 
@@ -34,7 +34,7 @@ export class PieChartComponent implements OnInit {
     this.currentUser = this.authenticationService.currentUserValue[0];  
 
 
-    this.pieChartLabels =  ['Anxious', 'Excited', 'Confused', 'Sad', 'Happy'];
+    this.pieChartLabels =  ['Anxious', 'Excited', 'Tired', 'Sad', 'Content'];
 
 
     // CHART COLOR.
@@ -50,33 +50,7 @@ export class PieChartComponent implements OnInit {
     ]
 
     
-    this.anxietyCount = 0;
-    this.excitedCount = 0;
-    this.confusedCount = 0;
-    this.sadCount = 0;
-    this.happyCount = 0;
-    this.authenticationService.getAllMoods()
-    .subscribe(
-      data => {
-        for (let user of data){
-          console.log(user.mood)
-            if(user.mood == "anxious"){
-              this.anxietyCount = this.anxietyCount + 1;
-            }else if(user.mood == 'excited'){
-              this.excitedCount++;
-            }else if(user.mood == 'confused'){
-              this.confusedCount++;
-            }else if(user.mood == 'sad'){
-              this.sadCount++;
-            }else if(user.mood == 'happy'){
-                this.happyCount++;
-            }
-        }
-
-        
-      }
-      
-      );
+    
       console.log(this.anxietyCount)
       this.pieChartData = [
         { 
