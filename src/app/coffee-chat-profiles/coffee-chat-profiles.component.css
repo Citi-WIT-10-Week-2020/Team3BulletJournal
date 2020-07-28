@@ -5,22 +5,27 @@
 body {
     padding: 0;
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #fff;
+}
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
 }
 
 .card-container {
     overflow-x: scroll;
     display: flex;
-    background-color: #edf6fb;
     padding: 3rem;
 }
 
 .card {
-    min-width: 200px;
-    height: 500px;
+    min-width: 300px;
+    height: fit-content;
     border-radius: 16px;
-    background-color: #d3ac89;
+    background-color: #ffd59a;
     box-shadow: -1rem 0 3rem rgb(146, 142, 142);
     display: flex;
     flex-direction: column;
@@ -50,11 +55,14 @@ body {
     font-size: 14px;
     color: #fff;
     margin-bottom: 1rem;
+    font-family: 'Montserrat'
 }
 
 .card .article-title {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 700;
+    font-family: 'Playfair Display';
+    color: rgb(75, 74, 74);
 }
 
 .card .article-header {
@@ -91,4 +99,102 @@ img{
     height: 150px;
     float: left;
     vertical-align: top;
+    border: 1px solid grey;
 }
+
+h6{
+    color: rgb(75, 74, 74);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+h2{
+    font-family: 'Playfair Display';
+    color: white;
+    text-align: center;
+    margin: 2rem;
+}
+
+p{
+    color: rgb(75, 74, 74);
+    font-size: 14px;
+}
+
+
+
+.container {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    vertical-align: bottom;
+  }
+  
+  .chevron {
+    position: absolute;
+    width: 28px;
+    height: 8px;
+    opacity: 0;
+    transform: scale3d(0.5, 0.5, 0.5);
+    animation: move 3s ease-out infinite;
+  }
+  
+  .chevron:first-child {
+    animation: move 3s ease-out 1s infinite;
+  }
+  
+  .chevron:nth-child(2) {
+    animation: move 3s ease-out 2s infinite;
+  }
+  
+  .chevron:before,
+  .chevron:after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 51%;
+    background: #fff;
+  }
+  
+  .chevron:before {
+    left: 0;
+    transform: skew(0deg, 30deg);
+  }
+  
+  .chevron:after {
+    right: 0;
+    width: 50%;
+    transform: skew(0deg, -30deg);
+  }
+  
+  @keyframes move {
+    25% {
+      opacity: 1;
+  
+    }
+    33% {
+      opacity: 1;
+      transform: translateY(30px);
+    }
+    67% {
+      opacity: 1;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+    }
+  }
+  
+  .text {
+    display: inline-block;
+    text-align: center;
+    margin-top: 75px;
+    margin-left: -85px;
+    font-family: 'Montserrat';
+    font-size: 20px;
+    color: #fff;
+    white-space: nowrap;
+    opacity: .9;
+  }
+  

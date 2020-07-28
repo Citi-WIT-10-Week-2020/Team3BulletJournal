@@ -5,16 +5,17 @@
     <app-coffee-chat-navbar style="z-index: 1;"></app-coffee-chat-navbar>
 </div>
  <!-- Page Content Holder -->
- <div id="content">
-<h3>Profiles</h3>
+ 
+ <div class="coffee-chat" id="content">
+    <h2>Meeting Participant Profiles</h2>
 <!--Have each participants profile with pic/avatar, Name, profession, bio-->
 <div class="card-container">
     <div class="card" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
         <header class="article-header">
             <div>
-                <h2 class="article-title">
-                    {{participant.firstName}}
-                </h2>
+                <h3 class="article-title">
+                    {{participant.firstName}} {{participant.lastName}}
+                </h3>
                 <div class="category-title">
                     {{participant.role}}
                 </div>
@@ -23,10 +24,10 @@
             <img src="assets\images\brooke-cagle-Nm70URdtf3c-unsplash.jpg"/>
 
         </header>
-        <div class="Bio">
-            <div class="profile"></div>
+        <div>
             <div class="info">
                 <div class="caption">
+                    <h6>Bio:</h6>
                     <p>
                         {{participant.bio}}
                     </p>
@@ -40,7 +41,15 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="chevron"></div>
+        <div class="chevron"></div>
+        <div class="chevron"></div>
+        <span class="text">Zoom Access Below</span>
+      </div>
 </div>
+
+
 
 <!--Zoom Embed-->
 <div class="iframe-container" style="overflow: hidden; padding-top: 56.25%; position: relative;">
