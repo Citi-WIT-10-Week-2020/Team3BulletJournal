@@ -16,56 +16,76 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 </head>
-<div>
-    <app-navbar style="z-index: 9999;"></app-navbar>
-</div>
 <div class="sticky-top">
-    <app-user-profile-navbar style="z-index: 1;"></app-user-profile-navbar>
+    <app-navbar></app-navbar>
 </div>
 <body>
-    <div id="content">
-        
-        <div class="journal-container">
-            <h4 class="text-center">Recent Entries</h4>
-            <ul class="list-group">
-                <li>
-                    Random Entry
-                </li>
-            </ul>
-        </div>
-        <div class="mood-container">
-            <div class="container">
-                <a>Graphs go here</a>
-
-            </div>
-        </div>
+    <div class="user" id="content">
         <div class="coffee-container">
-            <h4>Upcoming Meetings</h4>
-            <div class="card">
+            <h4 class="text-center">Upcoming Coffee Chats</h4>
+            <div class="card" *ngFor="let meeting of selectedMeetings"  [ngValue]="meeting">
                 <div class="card-title justify-content-end reg-font mb-0 mt-3 ml-3 mr-3">
-                    <a style=" font-size: 16px; font-weight: 500;">Sat, May 14</a>
-                    <a style=" font-size: 16px;">10:00 AM</a>
+                    <a style=" font-size: 14px; font-weight: 500;">{{meeting.month}}/{{meeting.day}}/{{meeting.year}}</a>
+                    <a style=" font-size: 14px;">{{meeting.time}}</a>
                 </div>
                 <div class="card-body mt-0">
                     <hr class="divide mt-0 mb-2" />
                     <div class="card-text ml-3 mr-3">
                         <div class="row justify-content-end">
                             <a class="p-1 flex-grow-1 left reg-font" style="font-weight: 500;"> Host:</a>
-                            <a class="p-1 reg-font"> Shannon</a>
+                            <a class="p-1 reg-font"> {{meeting.host}}</a>
                         </div>
                         <div class="row justify-content-end">
-                            <a class="p-1 flex-grow-1 left reg-font" style="font-weight: 500;">5 Attendees:</a>
-                            <a class="link" routerLink="/coffee-chat-profiles">View Profiles</a>
-                        </div>
-                        <div class="row justify-content-center mt-3">
-                            <button class="button mr-1">View</button>
+                            <a class="p-1 flex-grow-1 left reg-font" style="font-weight: 500;">{{meeting.participants.length}} Attendees:</a>
+                            <a class="link" routerLink="/coffee-chat-profiles" (click)="sendMeeting(meeting)">View Details</a>
                         </div>
                     </div>
                     </div>
-                </div>
-
+                </div> 
+                <a class="link mt-3" routerLink="/coffee-chat-upcoming-meetings">View All Upcoming Meetings</a>
+            </div> 
+        <div class="mood-container">
+                <h4 class="text-center">Mood Tracker Data</h4>
+                <app-pie-chart></app-pie-chart>
+        </div>
+        <div class="journal-container">
+            <h4 class="text-center">Recent Journal Entries</h4>
+            <div class="col-sm-10 offset-sm-1">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between heading">
+                        <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Date:</p>
+                        <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Title:</p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between" *ngFor="let entry of entries" [ngValue]="entry">
+                        <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.month}}/{{entry.day}}</p>
+                        <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.title}}</p>
+                        <div class="icons">
+                            <button class="btn-2" title="View" (click)="getEntry(entry)" data-toggle="modal" data-target="#entry"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>
+                        </div>
+                    </li>
+                  </ul> 
+            </div>
+            <a class="link mt-3 text-center" routerLink="/journal-published">View All Previous Entries</a>
+        </div>
                 
-        </div>          
+        
+        <!-- Modal -->
+        <div class="modal" id="entry">
+
+            <div class="modal-sandbox"></div>
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h1 class="reg-font">{{currentEntry.title}}</h1>
+                <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
+                
+                </div>
+                <div class="modal-body">
+                    <p> {{currentEntry.text}} </p>
+                <br />
+                <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
             
 

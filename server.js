@@ -15,6 +15,9 @@ var db = mongoose.connect("mongodb+srv://ekelsey:Gogators123@cluster0-rglxo.mong
     }
 });
 
+//try creating another app that runs the server and then call that url instead of localhost
+
+
 const app = express();
 app.use(bodyParser());
 app.use(bodyParser.json({linit:'5mb'}));
@@ -23,12 +26,13 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set('port', (process.env.PORT || 8080));
 
  app.use(function (req, res, next) {
-     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+     res.setHeader('Access-Control-Allow-Origin', '*');
      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
      res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,origin,authorization,accept,client-security-token');
      res.setHeader('Access-Control-Allow-Credentials', true);
      next();
 });
+
 
 const Schema = mongoose.Schema;
 
@@ -47,9 +51,10 @@ const MeetingSchema = Schema({
     day: {type: String},
     month: {type: String},
     year: {type: String},
-    time: {type: String},
-    host: {type: String}
-    
+    startTime: {type: String},
+    endTime: {type: String},
+    title: {type: String},
+    host: {type: String},
 },{versionKey: false});
 
 const JournalSchema = Schema({
@@ -232,7 +237,87 @@ app.put('/api/removeMood', function(req,res){
                     res.send(data);
                 }
             });
-    })   
+    })
+    
+    app.put('/api/acceptMeeting', function(req,res){
+        console.log("req.body: " + req.body);
+        console.log("_id:" + req.body._id);
+        console.log("index:" + req.body.index);
+        index = req.body.index;
+        
+        if(index == 0){
+            MeetingModel.findByIdAndUpdate({_id: req.body._id}, {$set: {"participants.0.status": "Accepted"}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    res.send(err);
+                }
+                else{
+                    console.log(req.body.username);
+                    res.send(data);
+                }
+            });
+        }
+        else if(index == 1){
+            MeetingModel.findByIdAndUpdate({_id: req.body._id}, {$set: {"participants.1.status": "Accepted"}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    res.send(err);
+                }
+                else{
+                    console.log(req.body.username);
+                    res.send(data);
+                }
+            });
+        }
+        else if(index == 2){
+            MeetingModel.findByIdAndUpdate({_id: req.body._id}, {$set: {"participants.2.status": "Accepted"}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    res.send(err);
+                }
+                else{
+                    console.log(req.body.username);
+                    res.send(data);
+                }
+            });  
+        }
+        else if(index == 3){
+            MeetingModel.findByIdAndUpdate({_id: req.body._id}, {$set: {"participants.3.status": "Accepted"}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    res.send(err);
+                }
+                else{
+                    console.log(req.body.username);
+                    res.send(data);
+                }
+            });
+        }
+        else if(index == 4){
+            MeetingModel.findByIdAndUpdate({_id: req.body._id}, {$set: {"participants.4.status": "Accepted"}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    res.send(err);
+                }
+                else{
+                    console.log(req.body.username);
+                    res.send(data);
+                }
+            });
+        }
+        else{
+            MeetingModel.findByIdAndUpdate({_id: req.body._id}, {$set: {"participants.5.status": "Accepted"}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    res.send(err);
+                }
+                else{
+                    console.log(req.body.username);
+                    res.send(data);
+                }
+            });
+        }
+    })
 
     app.put('/api/updatePromptJournal', function(req,res){
         console.log('hit')
@@ -255,6 +340,38 @@ app.put('/api/removeMood', function(req,res){
     app.delete('/api/deleteJournal', function(req,res){
         //console.log(req.body._id)
         JournalModel.findByIdAndDelete({_id: req.body._id},
+            function(err,data){
+                if(err) {
+                    //console.log(err);
+                    res.send(err);
+                }
+                else{
+                    //console.log(req.body.username);
+                    res.send(data);
+                }
+            }
+            );
+    })
+
+    app.delete('/api/deleteUser', function(req,res){
+        //console.log(req.body._id)
+        model.findByIdAndDelete({_id: req.body._id},
+            function(err,data){
+                if(err) {
+                    //console.log(err);
+                    res.send(err);
+                }
+                else{
+                    //console.log(req.body.username);
+                    res.send(data);
+                }
+            }
+            );
+    })
+
+    app.delete('/api/deleteMeeting', function(req,res){
+        //console.log(req.body._id)
+        MeetingModel.findByIdAndDelete({_id: req.body._id},
             function(err,data){
                 if(err) {
                     //console.log(err);
@@ -303,6 +420,87 @@ app.put('/api/removeMood', function(req,res){
                 res.send(data);
             }
         });
+    })
+
+    app.put('/api/declineMeeting', function(req,res){
+        console.log("req.body: " + req.body);
+        console.log("_id:" + req.body._id);
+        console.log("index:" + req.body.index);
+        index = req.body.index;
+        
+        if(index == 0){
+            MeetingModel.findByIdAndUpdate({_id: req.body._id}, {$set: {"participants.0.status": "Declined"}}, {new: true},
+
+            function(err,data) {
+                if(err) {
+                    res.send(err);
+                }
+                else{
+                    console.log(req.body.username);
+                    res.send(data);
+                }
+            });
+        }
+        else if(index == 1){
+            MeetingModel.findByIdAndUpdate({_id: req.body._id}, {$set: {"participants.1.status": "Declined"}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    res.send(err);
+                }
+                else{
+                    console.log(req.body.username);
+                    res.send(data);
+                }
+            });
+        }
+        else if(index == 2){
+            MeetingModel.findByIdAndUpdate({_id: req.body._id}, {$set: {"participants.2.status": "Declined"}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    res.send(err);
+                }
+                else{
+                    console.log(req.body.username);
+                    res.send(data);
+                }
+            });  
+        }
+        else if(index == 3){
+            MeetingModel.findByIdAndUpdate({_id: req.body._id}, {$set: {"participants.3.status": "Declined"}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    res.send(err);
+                }
+                else{
+                    console.log(req.body.username);
+                    res.send(data);
+                }
+            });
+        }
+        else if(index == 4){
+            MeetingModel.findByIdAndUpdate({_id: req.body._id}, {$set: {"participants.4.status": "Declined"}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    res.send(err);
+                }
+                else{
+                    console.log(req.body.username);
+                    res.send(data);
+                }
+            });
+        }
+        else{
+            MeetingModel.findByIdAndUpdate({_id: req.body._id}, {$set: {"participants.5.status": "Declined"}}, {new: true},
+            function(err,data) {
+                if(err) {
+                    res.send(err);
+                }
+                else{
+                    console.log(req.body.username);
+                    res.send(data);
+                }
+            });
+        }
     })
 
     app.post('/api/saveJournalEntry', function(req,res){
