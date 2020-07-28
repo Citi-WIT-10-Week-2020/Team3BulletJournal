@@ -43,12 +43,7 @@ export class JournalFreeEditComponent implements OnInit {
     this.currentJournal = this.authenticationService.currentJournalValue;
   }
   ngOnInit(): void {
-    if (!localStorage.getItem('autoLoad')) { 
-      localStorage.setItem('autoLoad', 'no reload') 
-      location.reload() 
-    } else {
-      localStorage.removeItem('autoLoad') 
-    }
+    
     var d = new Date();
     var date = d.getUTCDate();
     var month = d.getUTCMonth() + 1;
