@@ -176,6 +176,18 @@ export class AuthenticationService {
         return this.http.delete<any>(`http://localhost:8080/api/deleteUser`, options)
     }
 
+    deleteMeeting(_id){
+        const options = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+              }),
+            body: {
+                _id: _id
+            },
+        };
+        return this.http.delete<any>(`http://localhost:8080/api/deleteMeeting`, options)
+    }
+
 
     updateFreeJournal(_id, title, textEntry){
         console.log('hi')
