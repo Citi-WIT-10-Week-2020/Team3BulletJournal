@@ -112,7 +112,7 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
             data => {
              
               this.alertService.success('Random Meeting Scheduled', true);
-              this.router.navigate(['/coffee-chat-profiles'], { queryParams: { scheduled: true }});
+              this.router.navigate(['/coffee-chat-pending-meetings'], { queryParams: { scheduled: true }});
               console.log(data);
               this.loading = false;
               //look into querying data
