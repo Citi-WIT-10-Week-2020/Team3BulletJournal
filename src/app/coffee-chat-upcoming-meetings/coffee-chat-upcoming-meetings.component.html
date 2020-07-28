@@ -40,7 +40,7 @@
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.time}}</p>
                             <div class="icons">
                                 <button class="btn-2" title="View" data-toggle="modal" data-target="#meeting"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>
-                                <button class="btn-2" title="Delete"><span class="fa fa-times fa-sm"  style="color: grey"></span></button>                            
+                                                         
                             </div>
                         </li>
                       </ul>
@@ -58,7 +58,7 @@
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.time}}</p>
                             <div class="icons">
                                 <button class="btn-2" title="View" data-toggle="modal" (click)="getMeeting(meeting)" data-target="#meeting"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button> 
-                                <button class="btn-2" title="Decline"><span class="fa fa-times fa-sm"  style="color: grey"></span></button> 
+                                <button class="btn-2" title="Decline" data-toggle="modal" (click)="getMeeting(meeting)" data-target="#delete"><span class="fa fa-times fa-sm"  style="color: grey"></span></button> 
                             </div>                       
                         </li>
                       </ul>
@@ -87,6 +87,25 @@
                     </div>
                 </div>
             </div> 
+
+            <div class="modal" id="delete">
+
+                <div class="modal-sandbox"></div>
+                <div class="modal-box">
+                    <div class="modal-header">
+                        <h1 class="reg-font">Decline Meeting</h1>
+                    <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
+                    
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to decline this meeting? </p>
+                    <br />
+                    <button type="button" class="modal-button" (click)="declineMeeting(currentMeeting)" data-dismiss="modal" aria-label="Delete">Delete</button>
+                    <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Cancel</button> 
+                    </div>
+                </div>
+                </div>
+
         </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
