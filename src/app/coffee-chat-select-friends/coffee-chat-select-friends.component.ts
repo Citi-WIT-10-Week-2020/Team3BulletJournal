@@ -37,7 +37,8 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
     this.createMeeting = this.formBuilder.group({
 
       date: ['', Validators.required],
-      time: ['', Validators.required],
+      startTime: ['', Validators.required],
+      endTime: ['', Validators.required]
     })
   }
 
@@ -76,7 +77,7 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
     // }
 ​
     this.loading = true;
-    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeople, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.host)
+    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeople, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.startTime.value, this.f.endTime.value, this.host)
         .subscribe(
             data => {
                 this.alertService.success('Meeting Scheduled', true);

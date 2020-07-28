@@ -51,7 +51,8 @@ const MeetingSchema = Schema({
     day: {type: String},
     month: {type: String},
     year: {type: String},
-    time: {type: String},
+    startTime: {type: String},
+    endTime: {type: String},
     host: {type: String},
 },{versionKey: false});
 

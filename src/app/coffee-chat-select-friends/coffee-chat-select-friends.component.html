@@ -45,12 +45,20 @@
                                 </div>
                     </div>
                     <div class="form-group">
-                            <label for="default-picker" style="color: black; font-weight: 600;">Time:</label>
+                            <label for="default-picker" style="color: black; font-weight: 600;">Start Time:</label>
 
-                            <input type="time" id="default-picker" placeholder="Select time" formControlName="time" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.time.errors }">
-                            <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
-                                <div *ngIf="f.time.errors.required">Time is required</div>
+                            <input type="time" id="default-picker" placeholder="Select time" formControlName="startTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.startTime.errors }">
+                            <div *ngIf="submitted && f.startTime.errors" class="invalid-feedback">
+                                <div *ngIf="f.startTime.errors.required">Time is required</div>
                             </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="default-picker" style="color: black; font-weight: 600;">End Time:</label>
+
+                        <input type="time" id="default-picker" placeholder="Select time" formControlName="endTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.endTime.errors }">
+                        <div *ngIf="submitted && f.endTime.errors" class="invalid-feedback">
+                            <div *ngIf="f.endTime.errors.required">Time is required</div>
+                        </div>
                     </div>
                     <div class="form-wrapper justify-content-center">
                         <button [disabled]="loading">
