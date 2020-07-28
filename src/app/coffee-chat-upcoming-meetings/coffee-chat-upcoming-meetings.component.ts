@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService, AlertService, UserService } from '../_services';
 import { FormBuilder } from '@angular/forms';
 import { count } from 'console';
+import { first } from 'rxjs/operators';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
   selectedMeetings: any[]; //before filtering for attending meetings upcoming dates
   currentMeeting: any;
   userService:UserService;
+  returnUrl: any;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -37,10 +39,37 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
   ngOnInit(): void {
     this.currentMeeting = {participants: this.currentUser.friends}; 
     this.onSubmit();
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/coffee-chat-pending-meetings';
+
   }
 
   getMeeting(meeting){
     this.currentMeeting = meeting;
+  }
+
+  declineMeeting(meeting){
+    var index;
+    console.log(this.currentMeeting)
+      for(var i = 0; i < this.currentMeeting.participants.length; i++){
+        if(this.currentMeeting.participants[i].username == this.currentUser.username){
+          index = i;
+          break;
+        }
+      }
+
+    console.log("index:" + index);
+    this.authenticationService.declineMeeting(this.currentMeeting, index)
+    .pipe(first())
+    .subscribe(
+      data => {
+          //this.router.navigate([this.returnUrl]);
+          
+       },
+      error => {
+          this.alertService.error(error);
+          this.loading = false;
+});
+
   }
   
   onSubmit() {
