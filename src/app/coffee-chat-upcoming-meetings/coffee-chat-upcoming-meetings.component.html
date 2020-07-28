@@ -37,7 +37,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between" *ngFor="let meeting of hostingMeetings"  [ngValue]="meeting">
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.month}}/{{meeting.day}}/{{meeting.year}}</p>
-                            <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.time}}</p>
+                            <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.startTime}} — {{meeting.endTime}}</p>
                             <div class="icons">
                                 <button class="btn-2" title="View" data-toggle="modal" data-target="#meeting"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>
                                                          
@@ -52,10 +52,11 @@
                             <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Date:</p>
                             <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Time:</p>
 
+
                         </li>
                         <li class="list-group-item d-flex justify-content-between" *ngFor="let meeting of attendingMeetings"  [ngValue]="meeting">
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.month}}/{{meeting.day}}/{{meeting.year}}</p>
-                            <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.time}}</p>
+                            <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.startTime}} — {{meeting.endTime}}</p>
                             <div class="icons">
                                 <button class="btn-2" title="View" data-toggle="modal" (click)="getMeeting(meeting)" data-target="#meeting"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button> 
                                 <button class="btn-2" title="Decline" data-toggle="modal" (click)="getMeeting(meeting)" data-target="#delete"><span class="fa fa-times fa-sm"  style="color: grey"></span></button> 

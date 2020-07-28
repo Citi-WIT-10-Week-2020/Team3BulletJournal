@@ -173,14 +173,14 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
                       if (user.year == year){
                         if(user.month == month){
                           if(user.day == day){
-                            if(user.time == hour){
-                              if(user.time >= minutes){
+                            if(user.endTime == hour){
+                              if(user.endTime >= minutes){
                                 this.loading = false;
                                 this.hostingMeetings.push(user);
                                 found = true;
                               }
                             }
-                            if(user.time > hour){
+                            if(user.endTime > hour){
                               this.loading = false;
                               this.hostingMeetings.push(user);
                               found = true;
@@ -215,14 +215,14 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
                       if (this.selectedMeetings[i].year == year){
                         if(this.selectedMeetings[i].month == month){
                           if(this.selectedMeetings[i].day == day){
-                            if(this.selectedMeetings[i].time == hour){
-                              if(this.selectedMeetings[i].time >= minutes){
+                            if(this.selectedMeetings[i].endTime == hour){
+                              if(this.selectedMeetings[i].endTime >= minutes){
                                 this.loading = false;
                                 this.attendingMeetings.push(this.selectedMeetings[i]);
                                 found = true;
                               }
                             }
-                            if(this.selectedMeetings[i].time > hour){
+                            if(this.selectedMeetings[i].endTime > hour){
                               this.loading = false;
                               this.attendingMeetings.push(this.selectedMeetings[i]);
                               found = true;
