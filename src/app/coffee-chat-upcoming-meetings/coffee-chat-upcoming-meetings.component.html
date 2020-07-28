@@ -39,7 +39,9 @@
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.month}}/{{meeting.day}}/{{meeting.year}}</p>
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.time}}</p>
                             <div class="icons">
-                                <button class="btn-2" title="View" data-toggle="modal" data-target="#meeting"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>                            </div>
+                                <button class="btn-2" title="View" data-toggle="modal" data-target="#meeting"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>
+                                <button class="btn-2" title="Delete"><span class="fa fa-times fa-sm"  style="color: grey"></span></button>                            
+                            </div>
                         </li>
                       </ul>
                 </div>
@@ -54,8 +56,10 @@
                         <li class="list-group-item d-flex justify-content-between" *ngFor="let meeting of attendingMeetings"  [ngValue]="meeting">
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.month}}/{{meeting.day}}/{{meeting.year}}</p>
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{meeting.time}}</p>
-                           
-                                <button class="btn-2" title="View" data-toggle="modal" (click)="getMeeting(meeting)" data-target="#meeting"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>                         
+                            <div class="icons">
+                                <button class="btn-2" title="View" data-toggle="modal" (click)="getMeeting(meeting)" data-target="#meeting"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button> 
+                                <button class="btn-2" title="Decline"><span class="fa fa-times fa-sm"  style="color: grey"></span></button> 
+                            </div>                       
                         </li>
                       </ul>
                 </div>
@@ -66,18 +70,18 @@
                 <div class="modal-sandbox">
                 <div class="modal-box">
                     <div class="modal-header">
-                        <h1 class="reg-font" style="color: white;">Meeting Details:</h1>
+                        <h1 class="type-font" style="color: white;">Meeting Details:</h1>
                     <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
                     </div>
-                    <div class="modal-body">         
-                        Number of Participants:  {{currentMeeting.participants.length}}
+                    <div class="modal-body">      
+                        <p><a>Number of Participants:    </a>{{currentMeeting.participants.length}}</p>
+                        <a>Participants: </a>
+                        <ol>
+                           <li *ngFor="let participant of currentMeeting.participants" [ngValue]="participant"> {{participant.firstName}} {{participant.lastName}} </li>
+                        </ol>
+                        <a class="link" routerLink="/">Click to Access Zoom Meeting and View Profiles <span class="fa fa-arrow"></span></a>
                         <br>
                         <br>
-                        Participants:
-                        <div *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
-                            {{participant.firstName}} 
-                        </div>
-                        <br />
                     <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                     </div>
