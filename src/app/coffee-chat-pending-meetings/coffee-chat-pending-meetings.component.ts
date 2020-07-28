@@ -55,6 +55,19 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
     //this.meetingEvent.emit(this.meetingID);
   }
 
+  deleteMeeting(meeting){
+    this.authenticationService.deleteMeeting(meeting._id)
+    .subscribe(
+      data => {
+        console.log(data);
+        this.returnUrl = '/coffee-chat';
+        this.router.navigate([this.returnUrl]);          
+
+      }
+      );
+
+  }
+
   acceptMeeting(meeting){
     console.log ("accepted");
     var index;
