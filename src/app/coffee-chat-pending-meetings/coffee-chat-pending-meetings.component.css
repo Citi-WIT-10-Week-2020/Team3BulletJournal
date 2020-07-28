@@ -46,10 +46,6 @@
     display:inline-block;
 }
 
-.link:hover{
-    background-color:#e4955e;
-    color: white; 
-}
 
 .button{
     border: 1px solid #e4955e;
@@ -95,6 +91,19 @@
 .decline-button:hover{
     background-color: rgb(240, 88, 88);
     color: white; 
+}
+
+.delete-button{
+  background: unset;
+  border: unset;
+  outline: unset;
+  color: red;
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+.delete-button:hover{
+  text-decoration: underline;
 }
     
 
