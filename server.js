@@ -15,6 +15,9 @@ var db = mongoose.connect("mongodb+srv://ekelsey:Gogators123@cluster0-rglxo.mong
     }
 });
 
+//try creating another app that runs the server and then call that url instead of localhost
+
+
 const app = express();
 app.use(bodyParser());
 app.use(bodyParser.json({linit:'5mb'}));
@@ -29,6 +32,7 @@ app.set('port', (process.env.PORT || 8080));
      res.setHeader('Access-Control-Allow-Credentials', true);
      next();
 });
+
 
 const Schema = mongoose.Schema;
 
