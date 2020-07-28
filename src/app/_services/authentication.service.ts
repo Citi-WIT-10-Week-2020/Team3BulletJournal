@@ -164,6 +164,19 @@ export class AuthenticationService {
         return this.http.delete<any>(`http://localhost:8080/api/deleteJournal`, options)
     }
 
+    deleteUser(_id){
+        const options = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+              }),
+            body: {
+                _id: _id
+            },
+        };
+        return this.http.delete<any>(`http://localhost:8080/api/deleteUser`, options)
+    }
+
+
     updateFreeJournal(_id, title, textEntry){
         console.log('hi')
         return this.http.put<any>(`http://localhost:8080/api/updateFreeJournal`, {_id, title, textEntry})
