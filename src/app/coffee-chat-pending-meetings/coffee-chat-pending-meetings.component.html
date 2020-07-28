@@ -31,7 +31,7 @@
                 <div class="row">
                 <div class="col-6">
                     <div id="accordian">
-                        <h2 class="type-font text-center mt-3" style="color: white;">Meetings I Scheduled</h2>
+                        <h2 class="type-font text-center mt-3 mb-3" style="color: white;">Meetings I Scheduled</h2>
                         <!--card 1-->
                         <div *ngFor="let meeting of hostingMeetings"  [ngValue]="meeting">
                         <div class="card">
@@ -53,7 +53,7 @@
                                 <div class="row justify-content-center">
                                     <button class="button" (click)="sendMeeting(meeting)" routerLink="/coffee-chat-profiles">View Participant Profiles</button>
                                     <div class="divider"></div>
-                                  
+
                                     <a class="button" (click)="updateTimeVariables(meeting); getParticipantEmails(meeting)"
                                     href="http://www.google.com/calendar/event?action=TEMPLATE&text={{meeting.title}}&dates={{meeting.year}}{{meeting.month}}{{meeting.day}}T{{sTime}}00/{{meeting.year}}{{meeting.month}}{{meeting.day}}T{{eTime}}00&attendees[{{participantsEmailList}}&trp=false&sprop=&sprop=name:" target="_blank" rel="nofollow">Add to Google Calendar</a>
                                 </div>
@@ -68,7 +68,7 @@
                 
                 <!--Meetings Schedules With ME-->
                 <div class="col-6">
-                        <h2 class="type-font text-center mt-3" style="color: white;">Meetings Scheduled with Me</h2>
+                        <h2 class="type-font text-center mt-3 mb-3" style="color: white;">Meetings Scheduled with Me</h2>
                         <!--card 1-->
                         <div *ngFor="let meeting of attendingMeetings"  [ngValue]="meeting">
                         <div class="card">
@@ -88,7 +88,7 @@
                                     <a class="link" (click)="sendMeeting(meeting)" routerLink="/coffee-chat-profiles">View Participant Profiles</a>
                                 </div>
                                 <div class="row justify-content-center mt-3">
-                                    <button class="accept-button mr-1" (click)="acceptMeeting(meeting)">Accept</button>
+                                    <button class="accept-button mr-1" data-toggle="modal" data-target="#accept-calendar" (click)="acceptMeeting(meeting)">Accept</button>
                                     <button class="decline-button ml-1" (click)="declineMeeting(meeting)">Decline</button>
                                 </div>
                             </div>
@@ -98,8 +98,25 @@
                 </div>
                 </div>
             </div>
-            <div class="modal" id="delete">
 
+            <!--Accept and Add to Calendar Modal-->
+            <div class="modal" id="accept-calendar">
+                <div class="modal-sandbox"></div>
+                <div class="modal-box">
+                    <div class="modal-header">
+                        <h1 class="reg-font">Add to Calendar</h1>                    
+                    </div>
+                    <div class="modal-body">
+                        <p>Would you like to add this meeting to your Google Calendar? </p>
+                    <br />
+                    <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Yes, Add to my Calendar</button>
+                    <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">No</button> 
+                    </div>
+                </div>
+                </div>
+
+            <!--Delete Meeting Modal-->
+            <div class="modal" id="delete">
                 <div class="modal-sandbox"></div>
                 <div class="modal-box">
                     <div class="modal-header">

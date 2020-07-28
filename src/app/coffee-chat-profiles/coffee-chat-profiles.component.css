@@ -112,7 +112,7 @@ h2{
     font-family: 'Playfair Display';
     color: white;
     text-align: center;
-    margin: 2rem;
+    margin-top: 2rem;
 }
 
 p{
@@ -189,12 +189,24 @@ p{
   .text {
     display: inline-block;
     text-align: center;
-    margin-top: 75px;
+    margin-top: 50px;
     margin-left: -85px;
     font-family: 'Montserrat';
     font-size: 20px;
     color: #fff;
     white-space: nowrap;
     opacity: .9;
+  }
+
+  .new-container{
+    background-color: rgb(221, 159, 159);
+    border: 1px solid rgb(231, 93, 93);
+    border-radius: 3 !important;
+    margin: 1em;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    color: white;
+    padding: 10px;
+    text-align: center;
   }
   
