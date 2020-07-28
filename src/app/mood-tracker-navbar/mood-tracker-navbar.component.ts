@@ -18,9 +18,6 @@ export class MoodTrackerNavbarComponent implements OnInit {
     if(this.href == '/mood-tracker-weekly-charts'){
       this.currentPage = 'Weekly Graph'
     }
-    if(this.href == '/mood-tracker-monthly-charts'){
-      this.currentPage = 'Monthly Graph'
-    }
     if(this.href == '/mood-tracker'){
       this.currentPage == 'Home'
     }
