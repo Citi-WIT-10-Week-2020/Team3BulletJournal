@@ -53,14 +53,13 @@
                                 <div class="row justify-content-center">
                                     <button class="button" (click)="sendMeeting(meeting)" routerLink="/coffee-chat-profiles">View Participant Profiles</button>
                                     <div class="divider"></div>
-                                    <a class="button" href="http://www.google.com/calendar/event?action=TEMPLATE&text=Coffee-Chat with {{meeting.host}}&dates=[start-custom format='{{meeting.time}}']/[end-custom format='{{meeting.time + 1}}']&details=[random]&location=[{{meeting.zoomLink}}]&trp=false&sprop=&sprop=name:" target="_blank" rel="nofollow">Add to my calendar</a>
-
+                                  
+                                    <a class="button" (click)="updateTimeVariables(meeting); getParticipantEmails(meeting)"
+                                    href="http://www.google.com/calendar/event?action=TEMPLATE&text={{meeting.title}}&dates={{meeting.year}}{{meeting.month}}{{meeting.day}}T{{sTime}}00/{{meeting.year}}{{meeting.month}}{{meeting.day}}T{{eTime}}00&attendees[{{participantsEmailList}}&trp=false&sprop=&sprop=name:" target="_blank" rel="nofollow">Add to Google Calendar</a>
                                 </div>
                                 <div class="row justify-content-center">
                                     <button class="button" (click)="deleteMeeting(meeting)" data-toggle="modal" data-target="#delete">Delete Meeting</button>
                                 </div>
-
-                  
                             </div>
                         </div>
                     </div>

@@ -57,7 +57,8 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
       numPeople: ['', Validators.required],
       date: ['', Validators.required],
       startTime: ['', Validators.required],
-      endTime: ['', Validators.required]
+      endTime: ['', Validators.required],
+      title: ['', Validators.required]
     })
 
      
@@ -108,7 +109,7 @@ export class CoffeeChatRandomFriendsComponent implements OnInit {
         return;
     }
     this.loading = true;
-    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeopleList, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.startTime.value, this.f.endTime.value, this.host) 
+    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeopleList, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.startTime.value, this.f.endTime.value, this.f.title.value, this.host) 
     .subscribe(
             data => {
              

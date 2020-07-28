@@ -85,8 +85,8 @@ export class AuthenticationService {
         return this.http.get<any>(`http://localhost:8080/api/getAllMeetings`);
     }
 
-    createMeeting(username, participants, day, month, year, startTime, endTime, host){
-        return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, startTime, endTime, host});
+    createMeeting(username, participants, day, month, year, startTime, endTime, title, host){
+        return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, startTime, endTime, title, host});
     }
 
     acceptMeeting(meeting, index){
