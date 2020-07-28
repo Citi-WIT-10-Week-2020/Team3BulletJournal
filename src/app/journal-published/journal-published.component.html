@@ -34,7 +34,7 @@
                             <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Date:</p>
                             <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Title:</p>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between" *ngFor="let entry of entries; index as i" [ngValue]="entry">
+                        <li class="list-group-item d-flex justify-content-between" *ngFor="let entry of entries.reverse(); index as i" [ngValue]="entry">
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.month}}/{{entry.day}}/{{entry.year}}</p>
                             <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.title}}</p>
                             <div class="icons">
@@ -53,7 +53,7 @@
             <div class="modal-box">
                 <div class="modal-header">
                     <h1 class="reg-font">{{currentEntry.title}}</h1>
-                <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
+                <div class="close-modal justify-content-end" style="margin-top: 1em; color: black" data-dismiss="modal" aria-label="Close">&#10006;</div> 
                 
                 </div>
                 <div class="modal-body">
