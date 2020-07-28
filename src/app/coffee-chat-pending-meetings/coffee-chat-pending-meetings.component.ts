@@ -39,6 +39,10 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
     this.onSubmit();
   }
 
+  routeToCalendar(){
+    
+  }
+
   getMeeting(meeting){
     console.log("got meeting");
     this.currentMeeting = meeting;
