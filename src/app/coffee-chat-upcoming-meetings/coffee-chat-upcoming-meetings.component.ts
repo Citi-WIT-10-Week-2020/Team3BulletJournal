@@ -62,7 +62,8 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
     .pipe(first())
     .subscribe(
       data => {
-          //this.router.navigate([this.returnUrl]);
+        this.returnUrl = '/coffee-chat'
+          this.router.navigate([this.returnUrl]);
           
        },
       error => {

@@ -19,6 +19,10 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
   selectedMeetings: any[]; //before filtering for attending meetings upcoming dates
   currentMeeting: any;
   meetingID: string;
+  participantsEmailList: any[];
+  timeZoneOffset = ((new Date().getTimezoneOffset()) / 60);
+  sTime; //startTime without delimiter (:)
+  eTime; //endTime without delimiter (:)
 
   //@Output() meetingEvent = new EventEmitter<string>();
 
@@ -35,12 +39,22 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
      
   ngOnInit(): void {
     this.currentMeeting = {participants: this.currentUser.friends};
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/coffee-chat-pending-meetings';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/coffee-chat';
     this.onSubmit();
   }
 
-  routeToCalendar(){
-    
+  updateTimeVariables(meeting){
+    this.sTime = meeting.startTime.replace(":","");
+    this.eTime = meeting.endTime.replace(":",""); 
+  }
+
+  getParticipantEmails(meeting){
+    this.participantsEmailList = [];
+    for(var i = 0; i < meeting.participants.length; i++){
+      this.participantsEmailList[i] = {'email': meeting.participants[i].email};
+    }
+    console.log("email list");
+    console.log(this.participantsEmailList);
   }
 
   getMeeting(meeting){
@@ -48,8 +62,8 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
     this.currentMeeting = meeting;
   }
 
-  sendMeeting(meeting){
-    this.meetingID = meeting._id;
+  sendMeeting(currentMeeting){
+    this.meetingID = currentMeeting._id;
     localStorage.setItem('currentMeeting', JSON.stringify(this.meetingID));
     //console.log("emitted");
     //this.meetingEvent.emit(this.meetingID);
@@ -243,11 +257,13 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
                 }
 
             },
+
             error => {
                 this.alertService.error(error);
                 this.loading = false;
             });
             console.log('outside');
+          
   }
 
 }
