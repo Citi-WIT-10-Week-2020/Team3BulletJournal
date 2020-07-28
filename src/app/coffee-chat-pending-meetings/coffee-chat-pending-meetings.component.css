@@ -32,12 +32,18 @@
     color: grey;
 }
 
-
 .btn-2{
     background: unset;
     border: unset;
     outline: unset;
-    color: black;
+}
+
+.icons {
+	padding-top: 12px;	
+	padding-left: 7px;
+	position: absolute;
+	right: 0;
+	top: 0;
 }
 
 .divider{
@@ -154,7 +160,7 @@ Modal CSS
 }
 
 .modal-body {
-  background: whitesmoke;
+  background: ivory;
   padding: 60px 40px;
 }
 
@@ -191,17 +197,18 @@ Modal CSS
 }
 
 .modal-button{
-    border: 2px solid #7CA5AF;
-    background-color: whitesmoke;
-    color: #7CA5AF;
+    border: 2px solid #e4955e;
+    background-color: ivory;
+    color: #e4955e;
     padding: 10px 24px;
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
+    margin: 10px;
 }
 
 .modal-button:hover{
-    background-color:#7CA5AF;
+    background-color:#e4955e;
     color: white; 
 }
 
