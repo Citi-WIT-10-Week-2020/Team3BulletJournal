@@ -111,7 +111,7 @@
                     <div class="modal-body">
                         <p>Would you like to add this meeting to your Google Calendar? </p>
                     <br />
-                    <a class="modal-button" (click)="updateTimeVariables(currentMeeting); getParticipantEmails(currentMeeting); acceptMeeting(currentMeeting)"
+                    <a class="modal-button" data-dismiss="modal" (click)="updateTimeVariables(currentMeeting); getParticipantEmails(currentMeeting); acceptMeeting(currentMeeting)"
                     href="http://www.google.com/calendar/event?action=TEMPLATE&text={{currentMeeting.title}}&dates={{currentMeeting.year}}{{currentMeeting.month}}{{currentMeeting.day}}T{{sTime}}00/{{currentMeeting.year}}{{currentMeeting.month}}{{currentMeeting.day}}T{{eTime}}00&trp=false&sprop=&sprop=name:" target="_blank" rel="nofollow">Yes, Add to my Google Calendar</a>
                     <button type="button" class="modal-button" data-dismiss="modal"  (click)="acceptMeeting(currentMeeting)" aria-label="Close">No, Don't Add to my Google Calendar</button> 
                     </div>
