@@ -80,12 +80,14 @@
                         <form [formGroup]="registerForm" aria-label="Close" (ngSubmit)="onSubmit()" >
                            <hr>
                             <div class="form-group">
+                                <label>First Name: </label>
                                 <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
                                     <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                                     <div *ngIf="f.firstName.errors.required">First Name is required</div>
                                     </div>
                             </div>
                             <div class="form-group">
+                                <label>Last Name: </label>
                                 <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
                                     <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                                     <div *ngIf="f.lastName.errors.required">Last Name is required</div>
@@ -93,6 +95,7 @@
                             </div>
                         
                             <div class="form-group">
+                                <label>Zoom ID: </label>
                             <input type="tel" class="form-control" formControlName="zoomLink" [ngClass]="{ 'is-invalid': submitted && f.zoomLink.errors }" />
                                 <div *ngIf="submitted && f.zoomLink.errors" class="invalid-feedback">
                                 Zoom Meeting ID required in correct format
@@ -100,18 +103,21 @@
                                 </div>
                                 </div>
                             <div class="form-group">
+                                <label>Role/Title: </label>
                             <input type="text" formControlName="role" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.role.errors }" />
                             <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
                                 <div *ngIf="f.role.errors.required">Role/Title is required</div>
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Brief Bio (max. 250 characters): </label>
                             <textarea ROWS="2" COLS="20" formControlName="bio" maxLength="250" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.hobbies.errors }"></textarea>
                             <div *ngIf="submitted && f.bio.errors" class="invalid-feedback">
                                 <div *ngIf="f.bio.errors.required">Bio is required</div>
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Hobbies (separate by commas): </label>
                             <textarea ROWS="2" COLS="20" formControlName="hobbies" maxLength="100" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.hobbies.errors }"></textarea>
                             <div *ngIf="submitted && f.hobbies.errors" class="invalid-feedback">
                                 <div *ngIf="f.hobbies.errors.required">Hobbies are required</div>
@@ -119,6 +125,7 @@
                         </div>
                         
                         <div class="form-group">
+                            <label>Email: </label>
                             <input type="email" placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                 <div *ngIf="f.email.errors.required">Email is required</div>
@@ -126,7 +133,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button [disabled]="loading" class="btn btn-primary" >
+                            <button [disabled]="loading" class="modal-button" data-dismiss="modal" aria-label="Close">
                                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                 Update Account
                             </button>
