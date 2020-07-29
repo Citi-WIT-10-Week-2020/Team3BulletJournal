@@ -15,7 +15,8 @@
   
   img {
     max-width: 100%;
-    max-height: 600px; }
+    max-height: 780px;
+    min-height: 575px; }
   
   ul {
     padding-left: 0;
@@ -54,6 +55,7 @@
   
     form {
         width: 50%;
+        height: fit-content;
         background: ivory;
         background-size: 100%;
         padding-top: 35px;
