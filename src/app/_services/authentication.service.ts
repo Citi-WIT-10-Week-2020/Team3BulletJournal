@@ -152,6 +152,22 @@ export class AuthenticationService {
         }));
     }
 
+    updateUser(_id, userData){
+        console.log('hi')
+        console.log(userData)
+        return this.http.put<any>(`http://localhost:8080/api/updateUser`, {_id, userData})
+        .pipe(map(user => {
+            console.log('in update')
+            //console.log(user)
+            //this.currentUser = user;
+            //localStorage.setItem('currentUser', JSON.parse(user).asObservable())
+            return user;
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            //localStorage.removeItem('currentJournal');
+            //localStorage.removeItem('currentJournal')
+        }));
+    }
+
     deleteJournal(_id){
         const options = {
             headers: new HttpHeaders({

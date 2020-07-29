@@ -30,11 +30,12 @@ export class CoffeeChatProfilesComponent implements OnInit {
   {
     this.currentUser = this.authenticationService.currentUserValue[0];
     this.meetingID = this.authenticationService.currentMeetingValue;
+    
    }
 
    ngOnInit(){
     this.peopleList = this.currentUser.friends;
-    this.currentMeeting = {participants: this.currentUser.friends}; 
+    //this.currentMeeting = {participants: this.currentUser.friends}; 
     this.onSubmit();
   }
 

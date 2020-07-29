@@ -105,6 +105,22 @@ app.put('/api/removeMood', function(req,res){
         });
 })   
 
+app.put('/api/updateUser', function(req,res){
+    console.log(req.body.userData)
+    model.findByIdAndUpdate({_id: req.body._id}, {$set: {firstName: req.body.userData.firstName, lastName: req.body.userData.lastName, zoomLink: req.body.userData.zoomLink, role: req.body.userData.role, bio: req.body.userData.bio, hobbies: req.body.userData.hobbies, email: req.body.userData.email}}, {new: true},
+        function(err,data) {
+            if(err) {
+                //console.log(err);
+                res.send(err);
+            }
+            else{
+                //console.log(req.body.username);
+                //console.log(res)
+                res.send(data);
+            }
+        });
+})   
+
     app.post("/api/login", function(req,res){
         console.log('login reached');
         model.find({username: req.body.username}, function(err, data) {
