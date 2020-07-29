@@ -30,6 +30,7 @@ textarea {
     display:inline-block !important;
     vertical-align:middle !important;
     margin: 10px;
+    font-family: 'Montserrat';
     }
 
 textarea:hover {

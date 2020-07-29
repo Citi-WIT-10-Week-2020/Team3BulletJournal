@@ -32,13 +32,15 @@ p {
 textarea {
     outline: none;
     resize: none !important;
-    margin: 20px;
     padding-left: 10px;
     padding-right: 10px;
 	box-shadow:  1px 1px 5px grey;
     border-color: #ced4da !important;
     width: 100%;
+    display:inline-block !important;
+    vertical-align:middle !important;
     margin: 10px;
+    font-family: 'Montserrat';
     }
 textarea:hover {
 		resize: none !important;

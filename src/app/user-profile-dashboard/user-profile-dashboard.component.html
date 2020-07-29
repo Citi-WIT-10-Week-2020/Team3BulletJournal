@@ -56,7 +56,7 @@
                         <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Date:</p>
                         <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Title:</p>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between" *ngFor="let entry of entries" [ngValue]="entry">
+                    <li class="list-group-item d-flex justify-content-between" *ngFor="let entry of entries.reverse()" [ngValue]="entry">
                         <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.month}}/{{entry.day}}</p>
                         <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.title}}</p>
                         <div class="icons">

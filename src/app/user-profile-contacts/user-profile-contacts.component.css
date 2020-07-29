@@ -139,4 +139,13 @@ hr.divider {
     background-image: linear-gradient(to right, rgb(216, 213, 213), grey, rgb(216, 213, 213));
     margin: 20px;
   }
+
+  h2{
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .bold{
+    font-weight: 600;
+  }
     
