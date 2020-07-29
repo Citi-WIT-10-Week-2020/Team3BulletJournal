@@ -1,0 +1,16 @@
+<h1>
+    Weekly Graph
+  </h1>
+  
+  <div>
+    <canvas
+        baseChart
+        [chartType]="'bar'"
+        [datasets]="barGraphData"
+        [labels]="barGraphLabels"
+        [options]="chartOptions"
+        [legend]="false"
+        [colors]="barGraphColor"
+        (chartClick)="onChartClick($event)">
+    </canvas>
+  </div>

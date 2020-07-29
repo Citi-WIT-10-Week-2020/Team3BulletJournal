@@ -44,6 +44,13 @@ ul.CTAs a {
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
+    justify-content: center;
+}
+
+#barGraph {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
     
