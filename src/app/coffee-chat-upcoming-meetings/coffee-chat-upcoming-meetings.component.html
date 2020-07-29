@@ -80,7 +80,7 @@
                         <ol>
                            <li *ngFor="let participant of currentMeeting.participants" [ngValue]="participant"> {{participant.firstName}} {{participant.lastName}} </li>
                         </ol>
-                        <a class="link" routerLink="/coffee-chat-profiles">Click to Access Zoom Meeting and View Profiles <span class="fa fa-arrow"></span></a>
+                        <a class="link" routerLink="/coffee-chat-profiles" data-dismiss="modal" aria-label="Close">Click to Access Zoom Meeting and View Profiles <span class="fa fa-arrow"></span></a>
                         <br>
                         <br>
                     <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Close</button>
