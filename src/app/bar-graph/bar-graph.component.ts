@@ -8,20 +8,21 @@ import { Router } from '@angular/router';
 import { ThemeService } from 'ng2-charts';
 
 @Component({
-  selector: 'app-pie-chart',
-  templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.css']
+  selector: 'app-bar-graph',
+  templateUrl: './bar-graph.component.html',
+  styleUrls: ['./bar-graph.component.css']
 })
-export class PieChartComponent implements OnInit {
-  pieChartColor: { backgroundColor: string[]; }[];
-  pieChartData: any[];
-  anxietyCount: number = 0;
-  excitedCount: number = 0;
-  confusedCount: number = 0;
-  sadCount: number = 0;
-  happyCount: number = 0;
-  pieChartLabels: string[];
+export class BarGraphComponent implements OnInit {
+  barGraphColor: { backgroundColor: string[]; }[];
+  barGraphData: any[];
+  anxietyCount: number;
+  excitedCount: number;
+  confusedCount: number;
+  sadCount: number;
+  happyCount: number;
+  barGraphLabels: string[];
   currentUser: any;
+  chartOptions: any;
 
   constructor (private httpService: HttpClient,
     private authenticationService: AuthenticationService,
@@ -33,24 +34,56 @@ export class PieChartComponent implements OnInit {
     // ADD CHART OPTIONS. 
     this.currentUser = this.authenticationService.currentUserValue[0];  
 
-    this.pieChartLabels =  ['Anxious', 'Excited', 'Tired', 'Sad', 'Happy'];
+    this.chartOptions = {
+      responsive: true    // THIS WILL MAKE THE CHART RESPONSIVE (VISIBLE IN ANY DEVICE).
+    }
+
+    this.barGraphLabels =  ['Anxious', 'Excited', 'Tired', 'Sad', 'Happy'];
+
 
     // CHART COLOR.
-    this.pieChartColor = [
+    this.barGraphColor = [
         {
-            backgroundColor: ['rgba(30, 169, 224, 0.8)',
-            'rgba(255,165,0,0.9)',
-            'rgba(139, 136, 136, 0.9)',
-            'rgba(255, 161, 181, 0.9)',
-            'rgba(255, 102, 0, 0.9)'
+            backgroundColor: ['rgba(189, 218, 255, 0.9)',
+            'rgba(244, 195, 137, 0.9)',
+            'rgba(183, 158, 177, 0.9)',
+            'rgba(226, 184, 175, 0.9)',
+            'rgba(200, 226, 199, 0.9)'
             ]
         }
     ]
 
   
+    
+    this.anxietyCount = 0;
+    this.excitedCount = 0;
+    this.confusedCount = 0;
+    this.sadCount = 0;
+    this.happyCount = 0;
+    this.authenticationService.getAllMoods()
+    .subscribe(
+      data => {
+        for (let user of data){
+          console.log(user.mood)
+            if(user.mood == "anxious"){
+              this.anxietyCount = this.anxietyCount + 1;
+            }else if(user.mood == 'excited'){
+              this.excitedCount++;
+            }else if(user.mood == 'tired'){
+              this.confusedCount++;
+            }else if(user.mood == 'sad'){
+              this.sadCount++;
+            }else if(user.mood == 'happy'){
+                this.happyCount++;
+            }
+        }
 
+        
+      }
+      
+      );
       console.log(this.anxietyCount)
-      this.pieChartData = [
+      this.barGraphData = [
         { 
             data: [Number(this.anxietyCount), this.excitedCount, this.confusedCount, this.sadCount, this.happyCount]
         }
@@ -95,7 +128,7 @@ export class PieChartComponent implements OnInit {
       }
       
       console.log(this.anxietyCount);
-      this.pieChartData = [
+      this.barGraphData = [
         { 
             data: [Number(this.anxietyCount), this.excitedCount, this.confusedCount, this.sadCount, this.happyCount]
         }

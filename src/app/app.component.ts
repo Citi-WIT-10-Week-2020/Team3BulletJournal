@@ -11,6 +11,8 @@ export class AppComponent {
     currentUser: any;
     currentMood: any;
 
+    
+
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService,

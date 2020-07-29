@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="html">
 
 <head>
     <meta charset="utf-8">
@@ -25,11 +25,13 @@
     </div>
 
 <div class="background-mood" id="content">
-    <div id="first" class= "pink" >
+    <div id="first" class= "first" >
         <div id="second" class="second">
             <div id="title">How are you feeling today?</div>
-            <button type="button" (click)="colorPaletteBlue()">blue</button>
-        </div>
+            <button type="button" id="colorButton" (click)="colorBlue()">blue</button>
+            <button type="button" id="colorButton" (click)="colorPink()">pink</button>
+            <button type="button" id="colorButton" (click)="colorGreen()">green</button>
+         </div>
         
     <div class="mood-container">
         <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitAnxiety()">
@@ -47,7 +49,7 @@
         <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitConfused()">
         <div class="form-group">
         <div class="mood-item">
-            <button id="confused" class = "moodButton" value="confused" name="button"></button><hr>Confused </div>
+            <button id="confused" class = "moodButton" value="confused" name="button"></button><hr>Tired </div>
         </div>
         </form>
         <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitHappy()">
@@ -66,8 +68,6 @@
     </div>
  </div>
 
- <script>
- var color = "pink"
- </script>
+
 </body>
 </html>

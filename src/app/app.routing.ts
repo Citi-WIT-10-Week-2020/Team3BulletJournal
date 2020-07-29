@@ -15,7 +15,6 @@ import { CoffeeChatUpcomingMeetingsComponent } from './coffee-chat-upcoming-meet
 import { JournalFreeWriteComponent } from './journal-free-write/journal-free-write.component';
 import { JournalPromptComponent } from './journal-prompt/journal-prompt.component';
 import { JournalPublishedComponent } from './journal-published/journal-published.component';
-import { MoodTrackerMonthlyChartsComponent } from './mood-tracker-monthly-charts/mood-tracker-monthly-charts.component';
 import { MoodTrackerWeeklyChartsComponent } from './mood-tracker-weekly-charts/mood-tracker-weekly-charts.component';
 import { UserProfileContactsComponent } from './user-profile-contacts/user-profile-contacts.component';
 import { UserProfileDashboardComponent } from './user-profile-dashboard/user-profile-dashboard.component';
@@ -57,7 +56,6 @@ const routes: Routes = [
 
     /*Mood-tracker*/
 
-    { path: 'mood-tracker-monthly-charts', component: MoodTrackerMonthlyChartsComponent},
     { path: 'mood-tracker-weekly-charts', component: MoodTrackerWeeklyChartsComponent},
     { path: 'mood-chosen', component: MoodChosenComponent},
 

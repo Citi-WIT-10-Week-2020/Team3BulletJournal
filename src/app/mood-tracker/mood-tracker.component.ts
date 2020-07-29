@@ -23,7 +23,7 @@ export class MoodTrackerComponent implements OnInit {
   happyForm: any;
   sadForm: any;
   currentMood: any;
-  color: any;
+  themeSelected: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,10 +36,7 @@ export class MoodTrackerComponent implements OnInit {
     this.validJournal = this.validJournal;
    
    }
-  
-  
-
-
+ 
 
   ngOnInit(): void {
 
@@ -49,11 +46,17 @@ export class MoodTrackerComponent implements OnInit {
     } else {
       localStorage.removeItem('autoLoad') 
     }
+    this.themeSelected = localStorage.getItem("site-theme");
+    if(this.themeSelected=="blue") {
+      this.colorBlue()
+    }
+    if(this.themeSelected=="pink") {
+      this.colorPink()
+    }
+    if(this.themeSelected=="green") {
+      this.colorGreen()
+    }
 
-    localStorage.setItem('colorP', "pink");
-
-
-    /*var color = localStorage.getItem()*/
     var d = new Date();
     var date = d.getUTCDate();
     var month = d.getUTCMonth() + 1;
@@ -79,7 +82,7 @@ export class MoodTrackerComponent implements OnInit {
 
     this.confusedForm = this.formBuilder.group({
       username: [this.currentUser.username],
-      mood: ["confused"],
+      mood: ["tired"],
       day: [date],
       month: [month],
       year: [year]
@@ -115,21 +118,62 @@ export class MoodTrackerComponent implements OnInit {
   get j() { return this.happyForm.controls; }
   get k() { return this.sadForm.controls; }
 
- 
-
-  colorPaletteBlue() { 
-    localStorage.setItem("colorP", "blue");
-    var color = localStorage.getItem("colorP");
-    document.getElementById('first').className = color;
-    localStorage.setItem("colorP", color);
-    }
-
-
-
-  onSubmit(){
-
+  colorPink(){
+    console.log("pink")
+    const htmlTag = document.getElementById("html")
+      htmlTag.setAttribute('data-theme', 'pink');
+      localStorage.setItem('site-theme', 'pink');
   }
- 
+
+  colorBlue(){
+    console.log("blue")
+    const htmlTag = document.getElementById("html")
+      htmlTag.setAttribute('data-theme', 'blue');
+      localStorage.setItem('site-theme', 'blue');
+  }
+
+  colorGreen(){
+    const htmlTag = document.getElementById("html")
+      htmlTag.setAttribute('data-theme', 'green');
+      localStorage.setItem('site-theme', 'green');
+  }
+
+  /*initTheme() {
+    var darkThemeSelected = localStorage.getItem("site-theme")
+    if(darkThemeSelected=="blue"){
+      document.body.setAttribute('data-theme', 'blue')
+      /*this.resetTheme();
+    }
+    else {
+      document.body.removeAttribute('data-theme')
+    } 
+  }
+
+  resetTheme() {
+
+    /*if(this.themeSwitch.click) { // dark theme has been selected
+        document.body.setAttribute('data-theme', 'blue');
+        localStorage.setItem('site-theme', 'blue'); // save theme selection 
+      } else {
+        document.body.removeAttribute('data-theme');
+        localStorage.removeItem('site-theme');
+         // reset theme selection 
+      } 
+      
+    const htmlTag = document.getElementById("html")
+    console.log(htmlTag.hasAttribute('data-theme'))
+    if (htmlTag.hasAttribute('data-theme')) {
+      console.log("reset theme")
+      htmlTag.removeAttribute('data-theme')
+      localStorage.removeItem("site-theme")
+    }
+    else{
+      console.log("else")
+        htmlTag.setAttribute('data-theme', 'blue')
+        localStorage.setItem("site-theme", "blue")
+    }
+  }*/
+  
 
   onSubmitAnxiety() {
     this.submitted = true;
@@ -186,6 +230,7 @@ export class MoodTrackerComponent implements OnInit {
     console.log(this.moodExists);
     
 }
+
 
 onSubmitExcited() {
   this.submitted = true;
