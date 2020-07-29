@@ -23,6 +23,7 @@ body {
 
 .card {
     min-width: 300px;
+    max-width: 300px;
     height: fit-content;
     border-radius: 16px;
     background-color: #ffd59a;
