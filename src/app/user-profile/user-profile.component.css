@@ -185,3 +185,8 @@ h2{
   text-decoration: underline !important;
   color: lightgray !important;
 }
+
+label{
+  font-family: 'Montserrat';
+  font-weight: 600;
+}

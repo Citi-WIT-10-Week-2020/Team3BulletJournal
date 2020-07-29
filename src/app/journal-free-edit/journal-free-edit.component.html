@@ -31,8 +31,8 @@
         <form [formGroup]="journalForm" (ngSubmit)="onSubmit()">
             <div class="container">
                 <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-8">
+                    <div class="col-1"></div>
+                    <div class="col-10">
 
                         <div class="form-group" style="align-content: center;">
                         <textarea rows="1" class="title text-center" formControlName="title" style="margin-top: 50px;" placeholder="Title"></textarea>
@@ -43,7 +43,7 @@
                             <textarea rows="20" formControlName="textEntry" class="notes"></textarea>
                         </div>
                     </div>
-                    <div class="col-2"></div>                    
+                    <div class="col-1"></div>                    
                 </div>
                 <div class="row justify-content-center">
                         <button [disabled]="loading" class="buttons">
