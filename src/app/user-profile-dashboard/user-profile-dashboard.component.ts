@@ -75,12 +75,7 @@ export class UserProfileDashboardComponent implements OnInit {
             for (let user of data){
                 console.log("user:" + user.username);
                 console.log("currentUser:" + this.currentUser.username);
-                if(data.length < 5){
-                  this.journalDataSize = data.length;
-                }
-                else{
-                  this.journalDataSize = 5;
-                }
+      
                 if(user.username == this.currentUser.username){
                   console.log('Yay we found it');
                   this.loading = false;
@@ -88,6 +83,14 @@ export class UserProfileDashboardComponent implements OnInit {
                   found = true;
                 }
 
+                if(this.allEntries.length < 5){
+                  this.journalDataSize = this.allEntries.length;
+                }
+                else{
+                  this.journalDataSize = 5;
+                }
+
+              console.log("dataSize" + this.journalDataSize);
               for(var i = 0; i < this.journalDataSize; i++){
                 this.entries[i] = this.allEntries[i];
               }

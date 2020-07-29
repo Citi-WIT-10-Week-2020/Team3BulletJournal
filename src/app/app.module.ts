@@ -30,7 +30,6 @@ import { JournalPublishedComponent } from './journal-published/journal-published
 import { JournalFreeWriteComponent } from './journal-free-write/journal-free-write.component';
 import { JournalPromptComponent } from './journal-prompt/journal-prompt.component';
 import { MoodTrackerWeeklyChartsComponent } from './mood-tracker-weekly-charts/mood-tracker-weekly-charts.component';
-import { MoodTrackerMonthlyChartsComponent } from './mood-tracker-monthly-charts/mood-tracker-monthly-charts.component';
 import { UserProfileDashboardComponent } from './user-profile-dashboard/user-profile-dashboard.component';
 import { UserProfileContactsComponent } from './user-profile-contacts/user-profile-contacts.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -44,9 +43,9 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { JournalPromptEditComponent } from './journal-prompt-edit/journal-prompt-edit.component';
 import { JournalFreeEditComponent } from './journal-free-edit/journal-free-edit.component';
+import { BarGraphComponent } from './bar-graph/bar-graph.component';
 import { SafePipe } from 'src/safe.pipe';
 import { JournalMoodDoRerouteComponent } from './journal-mood-do-reroute/journal-mood-do-reroute.component';
-
 
 @NgModule({
     imports: [
@@ -79,7 +78,6 @@ import { JournalMoodDoRerouteComponent } from './journal-mood-do-reroute/journal
         JournalFreeWriteComponent,
         JournalPromptComponent,
         MoodTrackerWeeklyChartsComponent,
-        MoodTrackerMonthlyChartsComponent,
         UserProfileDashboardComponent,
         UserProfileContactsComponent,
         ProfileComponent,
@@ -93,8 +91,10 @@ import { JournalMoodDoRerouteComponent } from './journal-mood-do-reroute/journal
         PieChartComponent,
         JournalPromptEditComponent,
         JournalFreeEditComponent,
+        BarGraphComponent,
         SafePipe,
         JournalMoodDoRerouteComponent
+
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

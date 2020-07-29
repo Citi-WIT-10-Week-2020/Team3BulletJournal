@@ -22,6 +22,7 @@ export class UserProfileComponent implements OnInit {
     this.currentUser = this.authenticationService.currentUserValue[0];
     console.log(this.currentUser.firstName);
      }
+
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 

@@ -37,13 +37,14 @@
                         <div class="card">
                         <div class="card-title justify-content-end reg-font m-3">
                             <a style="font-size: 18px; font-weight: 600;">{{meeting.month}}/{{meeting.day}}/{{meeting.year}}</a>
-                            <a style="font-size: 18px;">{{meeting.time}}</a>
+                            <a style="font-size: 18px;">{{meeting.startTime}} — {{meeting.endTime}}</a>
                             <button class="btn-2 collapsed justify-content-end" data-toggle="collapse" (click)="getMeeting(meeting)" data-target="#collapse1" aria-expanded="false" aria-controls="collapse">
                                 <a style="font-size: 15px;">{{meeting.participants.length}} Attendee(s)</a><span class="fa fa-chevron-down fa-sm"></span>
                             </button>
                         </div>
                         </div>
                         <div class="card-body collapse" *ngIf = "meeting._id == currentMeeting._id" id="collapse1">
+                            <a style="font-size: 18px;">{{meeting.title}}</a>
                             <hr class="divide" style="color: grey" />
                             <div class="card-text ml-3 mr-3" >
                                 <div class="row justify-content-end" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
@@ -74,10 +75,11 @@
                         <div class="card">
                         <div class="card-title justify-content-end reg-font m-3">
                             <a style=" font-size: 18px; font-weight: 600;">{{meeting.month}}/{{meeting.day}}/{{meeting.year}}</a>
-                            <a style=" font-size: 18px;">{{meeting.time}}</a>
+                            <a style=" font-size: 18px;">{{meeting.startTime}} — {{meeting.endTime}}</a>
                         </div>
                         <div class="card-body mt-0">
-                            <hr class="divide mt-0 mb-2" />
+                            <a style="font-size: 18px;">{{meeting.title}}</a>
+                            <hr class="divide" style="color: grey" />
                             <div class="card-text ml-3 mr-3">
                                 <div class="row justify-content-end">
                                     <a class="p-1 flex-grow-1 left reg-font" style="font-weight: 600;">Host:</a>
@@ -88,7 +90,7 @@
                                     <a class="link" (click)="sendMeeting(meeting)" routerLink="/coffee-chat-profiles">View Participant Profiles</a>
                                 </div>
                                 <div class="row justify-content-center mt-3">
-                                    <button class="accept-button mr-1" data-toggle="modal" data-target="#accept-calendar" (click)="acceptMeeting(meeting)">Accept</button>
+                                    <button class="accept-button mr-1" data-toggle="modal" (click)="getMeeting(meeting)" data-target="#accept-calendar">Accept</button>
                                     <button class="decline-button ml-1" (click)="declineMeeting(meeting)">Decline</button>
                                 </div>
                             </div>
@@ -109,8 +111,9 @@
                     <div class="modal-body">
                         <p>Would you like to add this meeting to your Google Calendar? </p>
                     <br />
-                    <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Yes, Add to my Calendar</button>
-                    <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">No</button> 
+                    <a class="modal-button" data-dismiss="modal" (click)="updateTimeVariables(currentMeeting); getParticipantEmails(currentMeeting); acceptMeeting(currentMeeting)"
+                    href="http://www.google.com/calendar/event?action=TEMPLATE&text={{currentMeeting.title}}&dates={{currentMeeting.year}}{{currentMeeting.month}}{{currentMeeting.day}}T{{sTime}}00/{{currentMeeting.year}}{{currentMeeting.month}}{{currentMeeting.day}}T{{eTime}}00&trp=false&sprop=&sprop=name:" target="_blank" rel="nofollow">Yes, Add to my Google Calendar</a>
+                    <button type="button" class="modal-button" data-dismiss="modal"  (click)="acceptMeeting(currentMeeting)" aria-label="Close">No, Don't Add to my Google Calendar</button> 
                     </div>
                 </div>
                 </div>
@@ -126,7 +129,7 @@
                     </div>
                     <div class="modal-body">
                         <p>Are you sure you want to delete this meeting? </p>
-                    <br />
+                    <br />         
                     <button type="button" class="modal-button" (click)="deleteMeeting(currentMeeting)" data-dismiss="modal" aria-label="Delete">Delete</button>
                     <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Cancel</button> 
                     </div>
