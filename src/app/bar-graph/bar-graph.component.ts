@@ -52,36 +52,7 @@ export class BarGraphComponent implements OnInit {
             ]
         }
     ]
-
-  
-    
-    this.anxietyCount = 0;
-    this.excitedCount = 0;
-    this.confusedCount = 0;
-    this.sadCount = 0;
-    this.happyCount = 0;
-    this.authenticationService.getAllMoods()
-    .subscribe(
-      data => {
-        for (let user of data){
-          console.log(user.mood)
-            if(user.mood == "anxious"){
-              this.anxietyCount = this.anxietyCount + 1;
-            }else if(user.mood == 'excited'){
-              this.excitedCount++;
-            }else if(user.mood == 'tired'){
-              this.confusedCount++;
-            }else if(user.mood == 'sad'){
-              this.sadCount++;
-            }else if(user.mood == 'happy'){
-                this.happyCount++;
-            }
-        }
-
-        
-      }
       
-      );
       console.log(this.anxietyCount)
       this.barGraphData = [
         { 
