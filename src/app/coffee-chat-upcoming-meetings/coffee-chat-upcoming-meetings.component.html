@@ -77,9 +77,13 @@
                     <div class="modal-body">      
                         <p><a>Number of Participants:    </a>{{currentMeeting.participants.length}}</p>
                         <a>Participants: </a>
-                        <ol>
-                           <li *ngFor="let participant of currentMeeting.participants" [ngValue]="participant"> {{participant.firstName}} {{participant.lastName}} </li>
-                        </ol>
+                        <div *ngFor="let participant of currentMeeting.participants" [ngValue]="participant"> 
+                            <ol *ngIf="participant.status === 'Accepted'">
+                                <li>
+                                    {{participant.firstName}} {{participant.lastName}} 
+                                </li>
+                            </ol>
+                        </div>
                         <a class="link" routerLink="/coffee-chat-profiles" data-dismiss="modal" aria-label="Close">Click to Access Zoom Meeting and View Profiles <span class="fa fa-arrow"></span></a>
                         <br>
                         <br>

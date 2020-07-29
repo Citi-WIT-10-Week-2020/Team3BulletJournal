@@ -5,8 +5,6 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-coffee-chat-profiles',
-  // template:`
-  // <app-coffee-chat-pending-meetings>(meetingEvent)="receiveMeeting($event)"</app-coffee-chat-pending-meetings>`,
   templateUrl: './coffee-chat-profiles.component.html',
   styleUrls: ['./coffee-chat-profiles.component.css']
 })
