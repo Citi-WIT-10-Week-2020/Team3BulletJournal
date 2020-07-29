@@ -45,6 +45,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
 
   getMeeting(meeting){
     this.currentMeeting = meeting;
+    console.log("Meeting to look at" + this.currentMeeting)
   }
 
   declineMeeting(meeting){
