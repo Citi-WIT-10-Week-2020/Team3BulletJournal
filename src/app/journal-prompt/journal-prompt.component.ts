@@ -60,6 +60,7 @@ export class JournalPromptComponent implements OnInit {
     this.journalForm = this.formBuilder.group({
         username: [this.currentUser.username],
         title: [this.title.title],
+        prompt: [this.title.text],
         day: [date],
         month: [month],
         year: [year],
@@ -83,7 +84,7 @@ export class JournalPromptComponent implements OnInit {
       console.log('valid')
       this.loading = true;
       
-        this.authenticationService.saveJournal(this.f.username.value, this.f.title.value, this.f.day.value, this.f.month.value, this.f.year.value, this.f.textEntry.value, this.f.type.value)
+        this.authenticationService.saveJournal(this.f.username.value, this.f.title.value, this.f.prompt.value, this.f.day.value, this.f.month.value, this.f.year.value, this.f.textEntry.value, this.f.type.value)
         .subscribe(
                   data => {
                     console.log('inside subscribe')
