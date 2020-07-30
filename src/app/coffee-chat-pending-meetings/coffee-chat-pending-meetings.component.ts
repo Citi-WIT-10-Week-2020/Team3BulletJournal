@@ -65,8 +65,7 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
   sendMeeting(currentMeeting){
     this.meetingID = currentMeeting._id;
     localStorage.setItem('currentMeeting', JSON.stringify(this.meetingID));
-    //console.log("emitted");
-    //this.meetingEvent.emit(this.meetingID);
+  
   }
 
   deleteMeeting(meeting){
