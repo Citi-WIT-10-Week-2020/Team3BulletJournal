@@ -16,38 +16,65 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 </head>
+<div>
+    <app-navbar style="z-index: 9999;"></app-navbar>
+</div>
+<div class="sticky-top">
+    <app-user-profile-navbar style="z-index: 1;"></app-user-profile-navbar>
+</div>
 <body>
-    <div class="sticky-top">
-        <app-navbar></app-navbar>
-        <app-user-profile-navbar></app-user-profile-navbar>
-    </div>
-
         <!-- Page Content Holder -->
-        <div id="content">
-            <alert></alert>
+        <div class="user" id="content">
+            <div class="col-sm-10 offset-1" style="background-color: rgba(245, 245, 245, 0.774); padding: 1rem; box-shadow: 1px 1px 5px grey;">
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label for="friendToAdd">Enter the Friend's Username</label>
-                    <input type="text" formControlName="friendToAdd" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.friendToAdd.errors }" />
+                <div class="form-group" style="max-width: 100%;">
+                    <h2>{{currentUser.firstName}}'s Contacts</h2>
+                    <input type="text" formControlName="friendToAdd" placeholder="Enter a username..." class="form-control" [ngClass]="{ 'is-invalid': submitted && f.friendToAdd.errors }" />
                     <div *ngIf="submitted && f.friendToAdd.errors" class="invalid-feedback">
                         <div *ngIf="f.friendToAdd.errors.required">Username is required</div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <button [disabled]="loading" class="btn btn-primary" routerLink="/user-profile-contacts">
+                    <button [disabled]="loading" class="button" routerLink="/user-profile-contacts">
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                        Add Friend
+                        Add Contact
                     </button>
                     <a routerLink="/" class="btn btn-link">Cancel</a>
                 </div>
+                <alert></alert>
             </form>
-            <label>Friends: </label>
-            <div class="" *ngFor="let friend of currentUser.friends"  [ngValue]="friend">
-                
-                <p>
-                    {{friend.username}}
-                </p>
+
+            <!--Current Friends-->
+            <div class="card-deck">
+                <div class="flip-card" *ngFor="let friend of currentUser.friends"  [ngValue]="friend">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                          <h3>{{friend.firstName}} {{friend.lastName}}</h3>
+                          <img src="assets\images\kal-visuals-b1Hg7QI-zcc-unsplash.jpg"/>
+                          <p>{{friend.role}}</p>
+                        </div>
+                        <div class="flip-card-back">
+                          <h5 class="card-title">{{friend.firstName}} {{friend.lastName}}</h5>
+                          <p>({{friend.username}})</p>
+                          <p><a>Bio: </a>{{friend.bio}}</p>
+                          <p><a>Hobbies: </a>{{friend.hobbies}}</p>
+                          <p><a>Zoom ID: </a>{{friend.zoomLink}}</p>
+                        </div>
+                      </div>
+                </div>
             </div>
+            <!--<ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between heading">
+                    <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Name:</p>
+                    <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Username:</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between" *ngFor="let friend of currentUser.friends"  [ngValue]="friend">
+                    <p class="p-0 m-0 flex-grow-1" style="color: black">{{friend.firstName}} {{friend.lastName}}</p>
+                    <p class="p-0 m-0 flex-grow-1" style="color: black">{{friend.username}}</p>
+                    <button class="buttons" title="View"><span style="color: grey; font-size: 14px;">View Profile</span></button>
+                </li>
+              </ul>-->
+        </div>
         </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->

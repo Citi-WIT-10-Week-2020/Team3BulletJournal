@@ -36,7 +36,6 @@ export class PieChartComponent implements OnInit {
 
     this.pieChartLabels =  ['Anxious', 'Excited', 'Tired', 'Sad', 'Content'];
 
-
     // CHART COLOR.
     this.pieChartColor = [
         {
@@ -51,33 +50,6 @@ export class PieChartComponent implements OnInit {
 
   
 
-    this.anxietyCount = 0;
-    this.excitedCount = 0;
-    this.tiredCount = 0;
-    this.sadCount = 0;
-    this.contentCount = 0;
-    this.authenticationService.getAllMoods()
-    .subscribe(
-      data => {
-        for (let user of data){
-          console.log(user.mood)
-            if(user.mood == "anxious"){
-              this.anxietyCount = this.anxietyCount + 1;
-            }else if(user.mood == 'excited'){
-              this.excitedCount++;
-            }else if(user.mood == 'tired'){
-              this.tiredCount++;
-            }else if(user.mood == 'sad'){
-              this.sadCount++;
-            }else if(user.mood == 'content'){
-                this.contentCount++;
-            }
-        }
-
-        
-      }
-      
-      );
       console.log(this.anxietyCount)
       this.pieChartData = [
         { 

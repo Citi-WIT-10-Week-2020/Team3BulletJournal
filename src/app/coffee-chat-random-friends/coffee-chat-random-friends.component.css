@@ -14,7 +14,9 @@ p, h1, h2, h3, h4, h5, h6, ul {
   
   img {
     max-width: 100%;
-    max-height: 600px; }
+    min-width: 300px;
+    max-height: 780px;
+    min-height: 575px;  }
   
   ul {
     padding-left: 0;
@@ -139,7 +141,7 @@ p, h1, h2, h3, h4, h5, h6, ul {
       color: #fff;
      }
   
-  @media (max-width: 600px) {
+  @media (max-width: 100%) {
     .inner {
       min-width: auto; }
   

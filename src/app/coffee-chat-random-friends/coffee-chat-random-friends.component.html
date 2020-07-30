@@ -42,8 +42,14 @@
                     <select formControlName="numPeople" class="form-control"> 
                         <option *ngFor="let number of numberList" [ngValue]="number" class="justify-content-center">{{number}}</option>
                     </select>
-                    
                 </div>
+                </div>
+                <div class="form-group">
+                    <label style="color: black; font-weight: 600;">Meeting Title</label>
+                    <input type="text" placeholder="type title here" formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+                        <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                        <div *ngIf="f.title.errors.required">Meeting Title is required</div>
+                        </div>
                 </div>
                 <div class="form-group">
                     <label for="start" style="color: black; font-weight: 600;">Date:</label>
@@ -56,15 +62,24 @@
                             </div>
                 </div>
                 <div class="form-group">
-                        <label for="default-picker" style="color: black; font-weight: 600;">Time:</label>
-                        <input type="time" id="default-picker" placeholder="Select time" formControlName="time" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.time.errors }">
-                        <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
-                            <div *ngIf="f.time.errors.required">Time is required</div>
-                        </div>
+                    <label for="default-picker" style="color: black; font-weight: 600;">Start Time:</label>
+
+                    <input type="time" id="default-picker" placeholder="Select time" formControlName="startTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.startTime.errors }">
+                    <div *ngIf="submitted && f.startTime.errors" class="invalid-feedback">
+                        <div *ngIf="f.startTime.errors.required">Time is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="default-picker" style="color: black; font-weight: 600;">End Time:</label>
+                
+                    <input type="time" id="default-picker" placeholder="Select time" formControlName="endTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.endTime.errors }">
+                    <div *ngIf="submitted && f.endTime.errors" class="invalid-feedback">
+                        <div *ngIf="f.endTime.errors.required">Time is required</div>
+                    </div>
                 </div>
                 <div class="form-wrapper justify-content-center">
                     <button [disabled]="loading" class="button">
-                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1" routerLink="/coffee-chat-profiles"></span>
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1" routerLink="/coffee-chat-pending-meetings"></span>
                         Create Meeting
                     </button>
                 </div>
@@ -74,7 +89,8 @@
             </div>
         </div>    
     </div>
-</div>
+    </div>
+
         
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->

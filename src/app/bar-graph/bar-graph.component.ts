@@ -66,15 +66,6 @@ export class BarGraphComponent implements OnInit{
   }
   ngOnInit(): void {
 
-  //   this.httpService.get('./assets/sales.json', {responseType: 'json'}).subscribe(
-  //     data => {
-  //         this.pieChartData = data as any [];	 // FILL THE CHART ARRAY WITH DATA.
-  //     },
-  //     (err: HttpErrorResponse) => {
-  //         console.log (err.message);
-  //     }
-  // );
-
   var date = new Date();
   var month = date.getMonth()+1;
   this.anxietyCount = 0;

@@ -22,6 +22,7 @@ import { CoffeeChatProfilesComponent } from './coffee-chat-profiles/coffee-chat-
 import { MoodChosenComponent } from './mood-chosen/mood-chosen.component';
 import { JournalPromptEditComponent } from './journal-prompt-edit/journal-prompt-edit.component';
 import { JournalFreeEditComponent } from './journal-free-edit/journal-free-edit.component';
+import { JournalMoodDoRerouteComponent } from './journal-mood-do-reroute/journal-mood-do-reroute.component';
 
 
 const routes: Routes = [
@@ -51,6 +52,7 @@ const routes: Routes = [
     { path: 'journal-published', component: JournalPublishedComponent},
     { path: 'journal-prompt-edit', component: JournalPromptEditComponent},
     { path: 'journal-free-edit', component: JournalFreeEditComponent},
+    { path: 'journal-mood-do-reroute', component: JournalMoodDoRerouteComponent},
 
     /*Mood-tracker*/
 

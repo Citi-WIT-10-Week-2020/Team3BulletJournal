@@ -17,7 +17,8 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
   loading = false;
   selectedPeople = [];
   maxCapacity = false;
-  host: any;
+
+  host;
   
   constructor(
     private router: Router,
@@ -28,8 +29,7 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
   {
 
     this.currentUser = this.authenticationService.currentUserValue[0];
-    this.host = this.currentUser.username;
-
+    this.host = this.currentUser.username
    }
 ​
    ngOnInit(){
@@ -37,7 +37,9 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
     this.createMeeting = this.formBuilder.group({
 
       date: ['', Validators.required],
-      time: ['', Validators.required],
+      startTime: ['', Validators.required],
+      endTime: ['', Validators.required],
+      title: ['', Validators.required]
     })
   }
 
@@ -76,11 +78,11 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
     // }
 ​
     this.loading = true;
-    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeople, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.time.value, this.host)
+    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeople, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.startTime.value, this.f.endTime.value, this.f.title.value, this.host)
         .subscribe(
             data => {
                 this.alertService.success('Meeting Scheduled', true);
-                this.router.navigate(['/coffee-chat-profiles'], { queryParams: { scheduled: true }});
+                this.router.navigate(['/coffee-chat-pending-meetings'], { queryParams: { scheduled: true }});
             },
             error => {
                 this.alertService.error(error);

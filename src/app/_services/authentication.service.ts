@@ -13,6 +13,8 @@ export class AuthenticationService {
     public currentMood: Observable<any>;
     public currentJournalSubject: BehaviorSubject<any>;
     public currentJournal: any;
+    public currentMeetingSubject: BehaviorSubject<any>;
+    public currentMeeting: any;
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
@@ -23,10 +25,17 @@ export class AuthenticationService {
         
         this.currentJournalSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentJournal')));
         this.currentJournal = this.currentJournalSubject.value;
+
+        this.currentMeetingSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentMeeting')));
+        this.currentMeeting = this.currentMeetingSubject.value;
     }
 
     public get currentUserValue() {
         return this.currentUserSubject.value;
+    }
+
+    public get currentMeetingValue() {
+        return this.currentMeetingSubject.value;
     }
 
     public get currentMoodValue() {
@@ -68,16 +77,40 @@ export class AuthenticationService {
         return this.http.get<any>(`http://localhost:8080/api/getAllJournals`);
     }
 
-    saveJournal(username, title, day, month, year, text, type){
-        return this.http.post<any>(`http://localhost:8080/api/saveJournalEntry`, {username, title, day, month, year, text, type});
+    saveJournal(username, title, prompt, day, month, year, text, type){
+        return this.http.post<any>(`http://localhost:8080/api/saveJournalEntry`, {username, title, prompt, day, month, year, text, type});
     }
 
     getAllMeetings(){
         return this.http.get<any>(`http://localhost:8080/api/getAllMeetings`);
     }
 
-    createMeeting(username, participants, day, month, year, time, host){
-        return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, time, host});
+    createMeeting(username, participants, day, month, year, startTime, endTime, title, host){
+        return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, startTime, endTime, title, host});
+    }
+
+    acceptMeeting(meeting, index){
+        console.log("in the authentication for accepted");
+        var _id = meeting._id;
+        console.log("_id: " + _id);
+
+        return this.http.put<any>(`http://localhost:8080/api/acceptMeeting`, {_id, index})
+        .pipe(map(user => {
+            console.log("inside the pipe")
+            return user;
+        }));
+    }
+
+    declineMeeting(meeting, index) {
+        console.log('inside new declineMeeting in auth');
+        var _id = meeting._id;
+        console.log("_id: " + _id);
+
+        return this.http.put<any>(`http://localhost:8080/api/declineMeeting`, {_id, index})
+        .pipe(map(user => {
+            console.log("inside the pipe")
+            return user;
+        }));
     }
     
     saveMood(username, mood, day, month, year){
@@ -119,6 +152,22 @@ export class AuthenticationService {
         }));
     }
 
+    updateUser(_id, userData){
+        console.log('hi')
+        console.log(userData)
+        return this.http.put<any>(`http://localhost:8080/api/updateUser`, {_id, userData})
+        .pipe(map(user => {
+            console.log('in update')
+            //console.log(user)
+            //this.currentUser = user;
+            //localStorage.setItem('currentUser', JSON.parse(user).asObservable())
+            return user;
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            //localStorage.removeItem('currentJournal');
+            //localStorage.removeItem('currentJournal')
+        }));
+    }
+
     deleteJournal(_id){
         const options = {
             headers: new HttpHeaders({
@@ -130,6 +179,31 @@ export class AuthenticationService {
         };
         return this.http.delete<any>(`http://localhost:8080/api/deleteJournal`, options)
     }
+
+    deleteUser(_id){
+        const options = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+              }),
+            body: {
+                _id: _id
+            },
+        };
+        return this.http.delete<any>(`http://localhost:8080/api/deleteUser`, options)
+    }
+
+    deleteMeeting(_id){
+        const options = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+              }),
+            body: {
+                _id: _id
+            },
+        };
+        return this.http.delete<any>(`http://localhost:8080/api/deleteMeeting`, options)
+    }
+
 
     updateFreeJournal(_id, title, textEntry){
         console.log('hi')

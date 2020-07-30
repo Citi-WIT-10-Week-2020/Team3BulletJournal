@@ -7,6 +7,7 @@
     CONTENT STYLE
 ----------------------------------------------------- */
 #content {
+    text-align: center;
     width: 100%;
     padding: 20px;
     min-height: 100vh;
@@ -22,13 +23,14 @@
   padding-bottom: 2%;
 } 
 
+
+
 .bkrd{
   background-color: #ffd59a;
   max-width: 600px !important;
   max-height: 300px !important;
   box-shadow: 3px !important;
 }
-
 
 .button {
   --offset: 10px;

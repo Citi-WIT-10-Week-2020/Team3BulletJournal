@@ -69,7 +69,7 @@ onSubmit() {
     console.log('valid')
     this.loading = true;
     
-      this.authenticationService.saveJournal(this.f.username.value, this.f.title.value, this.f.day.value, this.f.month.value, this.f.year.value, this.f.textEntry.value, this.f.type.value)
+      this.authenticationService.saveJournal(this.f.username.value, this.f.title.value, '', this.f.day.value, this.f.month.value, this.f.year.value, this.f.textEntry.value, this.f.type.value)
               .subscribe(
                 data => {
                   console.log('inside subscribe')

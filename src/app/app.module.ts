@@ -44,7 +44,8 @@ import { ChartsModule } from 'ng2-charts';
 import { JournalPromptEditComponent } from './journal-prompt-edit/journal-prompt-edit.component';
 import { JournalFreeEditComponent } from './journal-free-edit/journal-free-edit.component';
 import { BarGraphComponent } from './bar-graph/bar-graph.component';
-
+import { SafePipe } from 'src/safe.pipe';
+import { JournalMoodDoRerouteComponent } from './journal-mood-do-reroute/journal-mood-do-reroute.component';
 
 @NgModule({
     imports: [
@@ -91,7 +92,8 @@ import { BarGraphComponent } from './bar-graph/bar-graph.component';
         JournalPromptEditComponent,
         JournalFreeEditComponent,
         BarGraphComponent,
-
+        SafePipe,
+        JournalMoodDoRerouteComponent
 
     ],
     providers: [

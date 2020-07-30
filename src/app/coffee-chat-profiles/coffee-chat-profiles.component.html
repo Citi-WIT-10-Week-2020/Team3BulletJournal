@@ -5,52 +5,65 @@
     <app-coffee-chat-navbar style="z-index: 1;"></app-coffee-chat-navbar>
 </div>
  <!-- Page Content Holder -->
- <div id="content">
-
-
-<h3>Profiles</h3>
+ 
+ <div class="coffee-chat" id="content">
+    <h2>Meeting Participant Profiles</h2>
+    <div class="container mt-0">
+        <div class="chevron"></div>
+        <div class="chevron"></div>
+        <div class="chevron"></div>
+        <span class="text">Zoom Access Below</span>
+      </div>
+      <br>
+      <br>
 <!--Have each participants profile with pic/avatar, Name, profession, bio-->
-
-
 <div class="card-container">
-    <div class="card">
+    <div class="card" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
         <header class="article-header">
             <div>
-                <h2 class="article-title">
-                    John  
-                    <!--{{participants.firstName}}-->
-                </h2>
+                <h3 class="article-title">
+                    {{participant.firstName}} {{participant.lastName}}
+                </h3>
                 <div class="category-title">
-                    Data Scientist
-                    <!-- {{user.role}} -->
+                    {{participant.role}}
                 </div>
             </div>
 
             <img src="assets\images\brooke-cagle-Nm70URdtf3c-unsplash.jpg"/>
 
         </header>
-        <div class="Bio">
-            <div class="profile"></div>
+        <div>
             <div class="info">
                 <div class="caption">
+                    <h6>Bio:</h6>
                     <p>
-                        A little bit about me.....
-                        <!-- {{user.bio}} -->
+                        {{participant.bio}}
                     </p>
                 </div>
                 <div class="name">
                     <h6>Hobbies:</h6>
-                    <p>Puzzles, Studying Hurricane Patterns, etc...</p>
-                    <!-- <p>{{user.hobbies}}</p> -->
+                    <p>
+                        {{participant.hobbies}}
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+    
+</div>
+<div class="new-container">
+    <a>*Warning* Only input credentials required, do not select other icons. </a>
+    <a>If a redirect error occurs or if you have joined an uninitiated meeting, reload the page.</a> 
 </div>
 
 
+
 <!--Zoom Embed-->
-<!-- <div class="iframe-container" style="overflow: hidden; padding-top: 56.25%; position: relative;">
-        <iframe allow="microphone; camera" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;" src="https://success.zoom.us/wc/join/2576842504" frameborder="0"></iframe>
-</div> -->
+<div *ngIf="zoomUrl != 'https://success.zoom.us/wc/join/'">
+    <div class="iframe-container" style="overflow: hidden; padding-top: 56.25%; position: relative;">
+        <iframe allow="microphone; camera" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;" [src]="zoomUrl | safe" frameborder="0"></iframe>
+    </div>
+</div>
+
+
 
