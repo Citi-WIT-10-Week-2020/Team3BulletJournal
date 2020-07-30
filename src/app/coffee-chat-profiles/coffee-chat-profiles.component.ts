@@ -65,7 +65,9 @@ export class CoffeeChatProfilesComponent implements OnInit {
 
                     for(let user of userData){
                       if(this.currentMeeting.host == user.username){
-                        this.zoomLink = user.zoomLink;
+                        this.zoomLink = "7876137554";
+                        console.log(this.currentMeeting.host);
+                        console.log(this.zoomLink);
                         this.zoomUrl = this.startZoomURL.concat(this.zoomLink);
                         console.log("zoomUrl:" + this.zoomUrl);
 
