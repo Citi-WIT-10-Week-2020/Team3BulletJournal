@@ -28,9 +28,6 @@
     <div id="first" class= "first" >
         <div id="second" class="second">
             <div id="title">How are you feeling today?</div>
-            <button type="button" id="colorButton" (click)="colorBlue()">blue</button>
-            <button type="button" id="colorButton" (click)="colorPink()">pink</button>
-            <button type="button" id="colorButton" (click)="colorGreen()">green</button>
          </div>
         
     <div class="mood-container">
@@ -40,25 +37,25 @@
             <button class = "moodButton" id="anxious" value="false" name="button"></button><hr>Anxious </div>
             </div>
         </form>
-        <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitExcited()">
+        <form [formGroup]="excitedForm" (ngSubmit)="onSubmitExcited()">
             <div class="form-group"> 
-        <div class="mood-item">
-            <button id="excited" class = "moodButton" nvalue="excited" name="button"></button> <hr>Excited </div>
+            <div class="mood-item">
+            <button id="excited" class = "moodButton" value="excited" name="button"></button> <hr>Excited </div>
         </div>
         </form>
-        <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitConfused()">
-        <div class="form-group">
-        <div class="mood-item">
-            <button id="confused" class = "moodButton" value="confused" name="button"></button><hr>Tired </div>
-        </div>
+        <form [formGroup]="tiredForm" (ngSubmit)="onSubmitTired()">
+                <div class="form-group">
+                <div class="mood-item">
+                    <button id="tired" class = "moodButton" value="tired" name="button"></button><hr>Tired </div>
+                </div>
         </form>
-        <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitHappy()">
-        <div class="form-group">
-        <div class="mood-item">
-            <button id="happy" value="happy" class = "moodButton" name="button"></button> <hr>Happy </div>
-        </div>
+        <form [formGroup]="contentForm" (ngSubmit)="onSubmitContent()">
+                <div class="form-group">
+                <div class="mood-item">
+                    <button id="content1" class="moodButton" value="content" name="button"></button><hr>Content </div>
+                </div>
         </form>
-        <form [formGroup]="anxietyForm" (ngSubmit)="onSubmitSad()">
+        <form [formGroup]="sadForm" (ngSubmit)="onSubmitSad()">
         <div class="form-group">
         <div class="mood-item">
             <button id="sad" value="sad" class = "moodButton" name="button"></button><hr> Sad </div>

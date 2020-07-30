@@ -1,5 +1,5 @@
 
-          <nav class="navbar navbar-expand-lg" style="background-color: #E2b8af;">
+          <nav class="navbar navbar-expand-lg" id="navbarMood">
             <div class="container-fluid"> 
                 <a class="navbar-brand fancy-font text-grey" style="font-size: 40px;">Mood Tracker</a>
                 <a class="reg-font text-grey" style="font-size: 30">>> {{currentPage}}</a>
@@ -13,6 +13,17 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link reg-font text-grey hoverable" href="mood-tracker">Update Mood</a>
+                            </li>
+                            <li class="dropdown nav-item">
+                                <a class="nav-link dropdown-toggle reg-font text-grey hoverable" href="#new-entry-submenu" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Change Color</a>
+                                <ul class="dropdown-menu reg-font dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <li class="dropdown-item text-grey" style="cursor: pointer;" >
+                                    <button type="button" (click)="colorPink()">Pink</button>
+                                    <button type="button" (click)="colorGreen()">Green</button>
+                                    <button type="button" (click)="colorBlue()">Blue</button>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>

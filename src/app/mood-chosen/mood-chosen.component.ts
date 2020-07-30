@@ -40,30 +40,30 @@ export class MoodChosenComponent implements OnInit {
     {title: 'EDo1', link: 'https://www.danielbranch.com/50-crazy-things-to-do-that-will-put-excitement-in-your-life/'}
   ]
 
-  ConfusedWatch = [
+  TiredWatch = [
     {title: 'CWatch1', link: 'https://www.youtube.com/watch?v=6LZ7QqoY_1w'}
   ]
 
-  ConfusedRead = [
+  TiredRead = [
     {title: 'CRead1', link: 'https://theconversation.com/confused-dont-worry-because-that-can-be-a-good-thing-64421'},
      {title: 'CRead2', link: 'https://tinybuddha.com/blog/how-to-find-clarity-when-youre-confused-about-what-to-do/'}
   ]
 
-  ConfusedDo = [
+  TiredDo = [
     {title: 'CDo1', link: 'https://www.huffpost.com/entry/4-ways-to-find-direction-when-you-are-feeling-confused_b_5798e0dde4b0e339c2400320'},
     {title: 'CDo2', link: 'https://lifehacks.io/lost-and-confused/'}
   ]
 
-  HappyWatch = [
+  ContentWatch = [
     {title: 'HWatch1', link: 'https://www.ted.com/talks/dan_gilbert_the_surprising_science_of_happiness?language=en'},
     {title: 'HWatch2', link: 'https://www.ted.com/talks/matthieu_ricard_the_habits_of_happiness?language=en'}
   ]
 
-  HappyRead = [
+  ContentRead = [
     {title: 'HRead1', link: 'https://greatergood.berkeley.edu/article/item/happy_life_different_from_meaningful_life'}
   ]
 
-  HappyDo = [
+  ContentDo = [
     {title: 'HDo1', link: 'https://www.nytimes.com/guides/well/how-to-be-happy'}
   ]
 
@@ -118,17 +118,17 @@ export class MoodChosenComponent implements OnInit {
       var promptIndexSelected = Math.random() * (this.ExcitedRead.length - 1);
       linkToAdd = this.ExcitedRead[Math.floor(promptIndexSelected)].link;
       window.open(linkToAdd);
-    }else if(this.currentMood.mood == 'confused'){
-      var promptIndexSelected = Math.random() * (this.ConfusedRead.length - 1);
-      linkToAdd = this.ConfusedRead[Math.floor(promptIndexSelected)].link;
+    }else if(this.currentMood.mood == 'tired'){
+      var promptIndexSelected = Math.random() * (this.TiredRead.length - 1);
+      linkToAdd = this.TiredRead[Math.floor(promptIndexSelected)].link;
       window.open(linkToAdd);
     }else if(this.currentMood.mood == 'sad'){
       var promptIndexSelected = Math.random() * (this.SadRead.length - 1);
       linkToAdd = this.SadRead[Math.floor(promptIndexSelected)].link;
       window.open(linkToAdd);
-    }else if(this.currentMood.mood == 'happy'){
-      var promptIndexSelected = Math.random() * (this.HappyRead.length - 1);
-      linkToAdd = this.HappyRead[Math.floor(promptIndexSelected)].link;
+    }else if(this.currentMood.mood == 'content'){
+      var promptIndexSelected = Math.random() * (this.ContentRead.length - 1);
+      linkToAdd = this.ContentRead[Math.floor(promptIndexSelected)].link;
       window.open(linkToAdd);
     }
   }
@@ -144,17 +144,17 @@ export class MoodChosenComponent implements OnInit {
       var promptIndexSelected = Math.random() * (this.ExcitedWatch.length - 1);
       linkToAdd = this.ExcitedWatch[Math.floor(promptIndexSelected)].link;
       window.open(linkToAdd);
-    }else if(this.currentMood.mood == 'confused'){
-      var promptIndexSelected = Math.random() * (this.ConfusedWatch.length - 1);
-      linkToAdd = this.ConfusedWatch[Math.floor(promptIndexSelected)].link;
+    }else if(this.currentMood.mood == 'tired'){
+      var promptIndexSelected = Math.random() * (this.TiredWatch.length - 1);
+      linkToAdd = this.TiredWatch[Math.floor(promptIndexSelected)].link;
       window.open(linkToAdd);
     }else if(this.currentMood.mood == 'sad'){
       var promptIndexSelected = Math.random() * (this.SadWatch.length - 1);
       linkToAdd = this.SadWatch[Math.floor(promptIndexSelected)].link;
       window.open(linkToAdd);
-    }else if(this.currentMood.mood == 'happy'){
-      var promptIndexSelected = Math.random() * (this.HappyWatch.length - 1);
-      linkToAdd = this.HappyWatch[Math.floor(promptIndexSelected)].link;
+    }else if(this.currentMood.mood == 'content'){
+      var promptIndexSelected = Math.random() * (this.ContentWatch.length - 1);
+      linkToAdd = this.ContentWatch[Math.floor(promptIndexSelected)].link;
       window.open(linkToAdd);
     }
   }
@@ -179,12 +179,12 @@ export class MoodChosenComponent implements OnInit {
       linkToAdd = this.ExcitedDo[Math.floor(promptIndexSelected)].link;
       window.open(linkToAdd);
     }
-    }else if(this.currentMood.mood == 'confused'){
-      var promptIndexSelected = Math.random() * (this.ConfusedDo.length);
-      if(promptIndexSelected >= this.ConfusedDo.length){
+    }else if(this.currentMood.mood == 'tired'){
+      var promptIndexSelected = Math.random() * (this.TiredDo.length);
+      if(promptIndexSelected >= this.TiredDo.length){
         this.router.navigate([this.returnUrl]);  
       }else{
-      linkToAdd = this.ConfusedDo[Math.floor(promptIndexSelected)].link;
+      linkToAdd = this.TiredDo[Math.floor(promptIndexSelected)].link;
       window.open(linkToAdd);
     }
     }else if(this.currentMood.mood == 'sad'){
@@ -195,12 +195,12 @@ export class MoodChosenComponent implements OnInit {
       linkToAdd = this.SadDo[Math.floor(promptIndexSelected)].link;
       window.open(linkToAdd);
     }
-    }else if(this.currentMood.mood == 'happy'){
-      var promptIndexSelected = Math.random() * (this.HappyDo.length);
-      if(promptIndexSelected >= this.HappyDo.length){
+    }else if(this.currentMood.mood == 'content'){
+      var promptIndexSelected = Math.random() * (this.ContentDo.length);
+      if(promptIndexSelected >= this.ContentDo.length){
         this.router.navigate([this.returnUrl]);  
       }else{
-      linkToAdd = this.HappyDo[Math.floor(promptIndexSelected)].link;
+      linkToAdd = this.ContentDo[Math.floor(promptIndexSelected)].link;
       window.open(linkToAdd);
     }
     }

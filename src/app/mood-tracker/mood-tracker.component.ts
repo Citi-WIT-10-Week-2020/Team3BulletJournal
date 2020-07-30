@@ -19,8 +19,8 @@ export class MoodTrackerComponent implements OnInit {
   validJournal: Array<String>;
   anxietyForm: any;
   excitedForm: any;
-  confusedForm: any;
-  happyForm: any;
+  tiredForm: any;
+  contentForm: any;
   sadForm: any;
   currentMood: any;
   themeSelected: any;
@@ -80,7 +80,7 @@ export class MoodTrackerComponent implements OnInit {
 
     });
 
-    this.confusedForm = this.formBuilder.group({
+    this.tiredForm = this.formBuilder.group({
       username: [this.currentUser.username],
       mood: ["tired"],
       day: [date],
@@ -89,9 +89,9 @@ export class MoodTrackerComponent implements OnInit {
 
     });
 
-    this.happyForm = this.formBuilder.group({
+    this.contentForm = this.formBuilder.group({
       username: [this.currentUser.username],
-      mood: ["happy"],
+      mood: ["content"],
       day: [date],
       month: [month],
       year: [year]
@@ -114,8 +114,8 @@ export class MoodTrackerComponent implements OnInit {
 
   get f() { return this.anxietyForm.controls; }
   get h() { return this.excitedForm.controls; }
-  get i() { return this.confusedForm.controls; }
-  get j() { return this.happyForm.controls; }
+  get i() { return this.tiredForm.controls; }
+  get j() { return this.contentForm.controls; }
   get k() { return this.sadForm.controls; }
 
   colorPink(){
@@ -284,7 +284,7 @@ onSubmitExcited() {
   
 }
 
-onSubmitConfused() {
+onSubmitTired() {
   this.submitted = true;
   console.log('submitted');
   // reset alerts on submit
@@ -337,57 +337,53 @@ onSubmitConfused() {
   
 }
 
-onSubmitHappy() {
+onSubmitContent() {
   this.submitted = true;
   console.log('submitted');
   // reset alerts on submit
   this.alertService.clear();
   this.moodExists = false;
 
-  
   this.authenticationService.getAllMoods()
-  .subscribe(
-    data => {
-      for (let user of data){
-        console.log(user.username)
-        if(user.username == this.j.username.value && user.day == this.j.day.value && user.month == this.j.month.value && user.year == this.j.year.value){
+    .subscribe(
+      data => {
+        for (let user of data){
+          console.log(user.username)
+          if(user.username == this.j.username.value && user.day == this.j.day.value && user.month == this.j.month.value && user.year == this.j.year.value){
             this.moodExists = true;
-            this.loading = false;
-            this.authenticationService.deleteMood(user._id, this.j.mood.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-              
-                    this.router.navigate([this.returnUrl]);
-                    //this.alertService.success("Added Friend to Contacts");
-                    //add put request to update
-                 },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-        });
-        }
-      }
-
-      if(this.moodExists == false){
-        this.loading = true;
-        this.validJournal = [];
-        this.moodExists = false;
-      
-        this.authenticationService.saveMood(this.j.username.value, this.j.mood.value, this.j.day.value, this.j.month.value, this.j.year.value)
+              this.loading = false;
+              this.authenticationService.deleteMood(user._id, this.j.mood.value)
               .pipe(first())
-                  .subscribe(
-                    data => {
-                      console.log('inside subscribe')
-                      this.router.navigate([this.returnUrl]);          
-                    },
-                    error => {
-                         this.alertService.error(error);
-                         this.loading = false;
-           });
-          } 
+              .subscribe(
+                  data => {
+                
+                      this.router.navigate([this.returnUrl]);
+                      //this.alertService.success("Added Friend to Contacts");
+                      //add put request to update
+                   },
+                  error => {
+                      this.alertService.error(error);
+                      this.loading = false;
+          });
+          }
+        }
 
-    });
+        if(this.moodExists == false){
+          this.loading = true;
+          this.validJournal = [];
+          this.authenticationService.saveMood(this.j.username.value, this.j.mood.value, this.j.day.value, this.j.month.value, this.j.year.value)
+                .pipe(first())
+                    .subscribe(
+                      data => {
+                        console.log('inside subscribe')
+                        this.router.navigate([this.returnUrl]);          
+                      },
+                      error => {
+                           this.alertService.error(error);
+                           this.loading = false;
+             });
+            }
+      });
 
   //console.log(this.f.username.value);
   
