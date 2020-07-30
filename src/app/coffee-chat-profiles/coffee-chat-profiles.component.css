@@ -212,6 +212,24 @@ p{
   }
   
 iframe{
-  max-height: fit-content;
-  margin: 1;
+  max-height: 650px;
+  min-height: 650px !important;
+  max-width: 100%;
+  min-width: 100%;
+  justify-content: center;
+  margin-top: -150px !important;
+}
+
+.iframe-container{
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+@media (max-width: 800px){
+  .iframe-container{
+      margin-left: 0;
+      margin-right: 0;
+      overflow: scroll !important;
+      overflow-y: scroll !important;
+  }
 }
