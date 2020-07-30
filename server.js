@@ -60,6 +60,7 @@ const MeetingSchema = Schema({
 const JournalSchema = Schema({
     username: {type: String},
     title: {type: String},
+    prompt: {type: String},
     day: {type: String},
     month: {type: String},
     year: {type: String},

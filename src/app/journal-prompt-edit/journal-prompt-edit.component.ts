@@ -58,12 +58,7 @@ export class JournalPromptEditComponent implements OnInit {
     this.title = this.prompts[Math.round(promptIndexSelected)];
   }
   ngOnInit(): void {
-    if (!localStorage.getItem('autoLoad')) { 
-      localStorage.setItem('autoLoad', 'no reload') 
-      location.reload() 
-    } else {
-      localStorage.removeItem('autoLoad') 
-    }
+    
     var d = new Date();
     var promptIndexSelected = Math.random() * (this.prompts.length - 1);
     var date = d.getUTCDate();
@@ -73,6 +68,7 @@ export class JournalPromptEditComponent implements OnInit {
     this.journalForm = this.formBuilder.group({
         username: [this.currentUser.username],
         title: [this.currentJournal.title],
+        prompt: [this.currentJournal.prompt],
         day: [date],
         month: [month],
         year: [year],
