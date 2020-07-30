@@ -1,6 +1,5 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
-
 /* ---------------------------------------------------
     BUTTONS
 ----------------------------------------------------- */
@@ -35,7 +34,7 @@ button#watch{
 ----------------------------------------------------- */
 #content {
     width: 100%;
-    padding: 0px;
+    padding: 20px;
     margin-top: 0px;
     min-height: 100vh;
     transition: all 0.3s;
@@ -55,31 +54,6 @@ p {
     color: #999;
 }
 
-#first {
-    color:black;
-    font-size: 28px;
-    margin:auto;
-    width: 700px;
-    height: 350px;
-    background: #F9F0EF;
-    overflow: hidden;
-    border-radius:3px;
-    border:1px solid black;
-}
-
-#second{
-    border-radius:3px;
-    border:1px solid black;
-    width: 75%;
-    height: 25%;
-    margin: auto;
-    margin-top: 10px;
-    background: #EED4CF;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-
-}
 #title{
     margin-top: 20px;
     font-family: 'Playfair Display', serif;
@@ -124,11 +98,5 @@ ul.CTAs a {
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
-#content {
-    width: 100%;
-    padding: 20px;
-    min-height: 100vh;
-    transition: all 0.3s;
-}
 
     
