@@ -52,18 +52,18 @@
     
 </div>
 <div class="new-container">
-    <a>*Warning* Only input credentials required, do not select other icons. </a>
-    <a>If a redirect error occurs or if you have joined an uninitiated meeting, reload the page.</a> 
+    <p style="color: white;">*Warning* Only input credentials required, do not select other icons. </p>
+    <p style="color: white;">If a redirect error occurs or if you have joined an uninitiated meeting, reload the page.</p> 
+    <p style="color: white;">If you are the host you must open Zoom externally, only participants can you use the embed to automatically join the hosted meeting</p>
 </div>
-
 
 
 <!--Zoom Embed-->
-<div *ngIf="zoomUrl != 'https://success.zoom.us/wc/join/'">
-    <div class="iframe-container" style="overflow: hidden; padding-top: 56.25%; position: relative;">
-        <iframe allow="microphone; camera" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;" [src]="zoomUrl | safe" frameborder="0"></iframe>
-    </div>
+<div class="iframe-container" style="overflow: hidden; padding-top: 56.25%; position: relative;">
+    <iframe allow="microphone; camera" style="border: 0; height: 90%; left: 0; position: absolute; top: 0; width: 100%;" [src]="zoomUrl | safe" frameborder="0"></iframe>
 </div>
+
+
 
 
 
