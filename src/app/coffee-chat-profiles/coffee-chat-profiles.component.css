@@ -130,6 +130,17 @@ p{
     vertical-align: bottom;
   }
   
+  .iframe-container{
+    overflow: hidden;
+  }
+  .iframe-container::-webkit-scrollbar {
+    display: none;
+  }
+  .iframe-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
   .chevron {
     position: absolute;
     width: 28px;
