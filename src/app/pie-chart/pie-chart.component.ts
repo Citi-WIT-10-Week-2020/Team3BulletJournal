@@ -17,9 +17,9 @@ export class PieChartComponent implements OnInit {
   pieChartData: any[];
   anxietyCount: number;
   excitedCount: number;
-  confusedCount: number;
+  tiredCount: number;
   sadCount: number;
-  happyCount: number;
+  contentCount: number;
   pieChartLabels: string[];
   currentUser: any;
 
@@ -34,7 +34,7 @@ export class PieChartComponent implements OnInit {
     this.currentUser = this.authenticationService.currentUserValue[0];  
 
 
-    this.pieChartLabels =  ['Anxious', 'Excited', 'Tired', 'Sad', 'Happy'];
+    this.pieChartLabels =  ['Anxious', 'Excited', 'Tired', 'Sad', 'Content'];
 
 
     // CHART COLOR.
@@ -50,12 +50,12 @@ export class PieChartComponent implements OnInit {
     ]
 
   
-    
+
     this.anxietyCount = 0;
     this.excitedCount = 0;
-    this.confusedCount = 0;
+    this.tiredCount = 0;
     this.sadCount = 0;
-    this.happyCount = 0;
+    this.contentCount = 0;
     this.authenticationService.getAllMoods()
     .subscribe(
       data => {
@@ -66,11 +66,11 @@ export class PieChartComponent implements OnInit {
             }else if(user.mood == 'excited'){
               this.excitedCount++;
             }else if(user.mood == 'tired'){
-              this.confusedCount++;
+              this.tiredCount++;
             }else if(user.mood == 'sad'){
               this.sadCount++;
-            }else if(user.mood == 'happy'){
-                this.happyCount++;
+            }else if(user.mood == 'content'){
+                this.contentCount++;
             }
         }
 
@@ -81,7 +81,7 @@ export class PieChartComponent implements OnInit {
       console.log(this.anxietyCount)
       this.pieChartData = [
         { 
-            data: [Number(this.anxietyCount), this.excitedCount, this.confusedCount, this.sadCount, this.happyCount]
+            data: [Number(this.anxietyCount), this.excitedCount, this.tiredCount, this.sadCount, this.contentCount]
         }
     ];
     
@@ -98,9 +98,9 @@ export class PieChartComponent implements OnInit {
 
   this.anxietyCount = 0;
   this.excitedCount = 0;
-  this.confusedCount = 0;
+  this.tiredCount = 0;
   this.sadCount = 0;
-  this.happyCount = 0;
+  this.contentCount = 0;
 
   this.authenticationService.getAllMoods()
   .subscribe(
@@ -114,11 +114,11 @@ export class PieChartComponent implements OnInit {
           }else if(user.mood == 'excited'){
             this.excitedCount++;
           }else if(user.mood == 'tired'){
-            this.confusedCount++;
+            this.tiredCount++;
           }else if(user.mood == 'sad'){
             this.sadCount++;
-          }else if(user.mood == 'happy'){
-              this.happyCount++;
+          }else if(user.mood == 'content'){
+              this.contentCount++;
           }
         }
       }
@@ -126,7 +126,7 @@ export class PieChartComponent implements OnInit {
       console.log(this.anxietyCount);
       this.pieChartData = [
         { 
-            data: [Number(this.anxietyCount), this.excitedCount, this.confusedCount, this.sadCount, this.happyCount]
+            data: [Number(this.anxietyCount), this.excitedCount, this.tiredCount, this.sadCount, this.contentCount]
         }
     ];
     }
