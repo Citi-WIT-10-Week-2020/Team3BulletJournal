@@ -35,6 +35,14 @@ export class LoginComponent implements OnInit {
             username: ['', Validators.required],
             password: ['', Validators.required]
         });
+        console.log(localStorage.getItem('needReload'))
+        if (localStorage.getItem('needReload') == null) { 
+            console.log('hehe')
+          } else {
+              console.log('reloading')
+            localStorage.removeItem('needReload') 
+            location.reload() 
+          }
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
