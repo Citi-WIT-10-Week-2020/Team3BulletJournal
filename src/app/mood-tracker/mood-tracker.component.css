@@ -3,21 +3,25 @@
 :host{
     --color-first:#f9f0ef;
     --color-second: #eed4cf;
+    --color-navbar: #E2b8af;
 }
 
 html[data-theme="blue"] {
     --color-first: #D8E4E7;
     --color-second: #AFC5CA;
+    --color-navbar: #99b6dc;
 }
 
 html[data-theme="pink"] {
         --color-first: #f9f0ef;
         --color-second: #eed4cf;
+        --color-navbar: #E2b8af;
 }
 
 html[data-theme="green"] {
-    --color-first: #c8e2c7;
-    --color-second: #b4ceb3;
+    --color-first: #e7ffe6;
+    --color-second: #c8e2c7;
+    --color-navbar: #B4ceb3;
 }
 /* ---------------------------------------------------
     BUTTONS
@@ -28,6 +32,7 @@ html[data-theme="green"] {
     border-radius: 50%;
     border: none;
 }
+
 
 .moodButton#anxious{
     background-image: url(/assets/images/anxious.png);
@@ -40,19 +45,19 @@ html[data-theme="green"] {
     background-repeat: no-repeat;
     background-size: contain;
 }
-#confused{
+.moodButton#tired{
     background-image: url(/assets/images/confused.png);
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-#happy{
+.moodButton#content1{
     background-image: url(/assets/images/happy.png);
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-#sad{
+.moodButton#sad{
     background-image: url("/assets/images/sad boy.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -61,6 +66,11 @@ html[data-theme="green"] {
 /* ---------------------------------------------------
     CONTENT
 ----------------------------------------------------- */
+#navbar{
+    background: var(--color-navbar);
+}
+
+
 #content {
     width: 100%;
     padding: 0px;
@@ -80,33 +90,6 @@ p {
     font-weight: 300;
     line-height: 1.7em;
     color: #999;
-}
-
-.first{
-    background: var(--color-first);
-    color:black;
-    font-size: 28px;
-    margin:auto;
-    width: 700px;
-    height: 350px;
-    overflow: hidden;
-    border-radius:3px;
-    border:1px solid rgb(117, 116, 116);
-    
-}
-
-
-.second{
-    border-radius:3px;
-    border: 1px solid rgb(117, 116, 116);
-    width: 75%;
-    height: 25%;
-    margin: auto;
-    margin-top: 10px;
-    background: var(--color-second);
-    display: flex;
-    justify-content: center;
-    align-content: center;
 }
 
 
@@ -150,15 +133,3 @@ ul.CTAs a {
     margin-bottom: 5px;
 }
 
-
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-#content {
-    width: 100%;
-    padding: 20px;
-    min-height: 100vh;
-    transition: all 0.3s;
-}
-
-    

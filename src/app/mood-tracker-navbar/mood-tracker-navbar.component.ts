@@ -22,4 +22,24 @@ export class MoodTrackerNavbarComponent implements OnInit {
       this.currentPage == 'Home'
     }
   }
+
+  colorPink(){
+    console.log("pink")
+    const htmlTag = document.getElementById("html")
+      htmlTag.setAttribute('data-theme', 'pink');
+      localStorage.setItem('site-theme', 'pink');
+  }
+
+  colorBlue(){
+    console.log("blue")
+    const htmlTag = document.getElementById("html")
+      htmlTag.setAttribute('data-theme', 'blue');
+      localStorage.setItem('site-theme', 'blue');
+  }
+
+  colorGreen(){
+    const htmlTag = document.getElementById("html")
+      htmlTag.setAttribute('data-theme', 'green');
+      localStorage.setItem('site-theme', 'green');
+  }
 }

@@ -59,6 +59,12 @@ export class UserProfileComponent implements OnInit {
       );
   }
 
+  logout(){
+    console.log('in logout')
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
+  }
+
   onSubmit() {
     this.submitted = true;
     console.log('in')
@@ -77,8 +83,10 @@ export class UserProfileComponent implements OnInit {
             data => {
                 //this.alertService.success('Registration successful', true);
                 console.log(data)
-                this.authenticationService.logout();
-                this.router.navigate(['/login']);
+                localStorage.setItem('needReload', "true");
+                this.logout();
+
+                
             },
             error => {
                 this.alertService.error(error);
