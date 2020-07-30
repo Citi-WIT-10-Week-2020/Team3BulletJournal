@@ -211,3 +211,7 @@ p{
     text-align: center;
   }
   
+iframe{
+  max-height: fit-content;
+  margin: 1;
+}
