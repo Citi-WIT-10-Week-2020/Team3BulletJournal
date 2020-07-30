@@ -244,3 +244,11 @@ iframe{
       overflow-y: scroll !important;
   }
 }
+@media (max-width: 1100px){
+  .card-container{
+      margin-left: 0;
+      margin-right: 0;
+      overflow-x: scroll !important;
+      scroll-behavior: inherit;
+  }
+}
