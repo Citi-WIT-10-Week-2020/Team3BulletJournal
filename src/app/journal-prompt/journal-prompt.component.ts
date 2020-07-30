@@ -54,9 +54,11 @@ export class JournalPromptComponent implements OnInit {
   ngOnInit(): void {
     var d = new Date();
     var promptIndexSelected = Math.random() * (this.prompts.length - 1);
+    console.log('running')
     var date = d.getUTCDate();
     var month = d.getUTCMonth() + 1;
     var year = d.getUTCFullYear();
+    
     this.journalForm = this.formBuilder.group({
         username: [this.currentUser.username],
         title: [this.title.title],
@@ -98,13 +100,5 @@ export class JournalPromptComponent implements OnInit {
   }
 }
 
-export class PromptsRepo {
-  prompts = [
-    {title: 'Accomplishment', text: 'What is your greatest accomplishment?'}, 
-    {title: 'Role Model', text: 'Describe someone you look up to and why.'},
-    {title: 'Extra Time', text: 'If you had 2 extra hours every day, how would you spend them?'},
-    {title: 'Dream Vacation', text: 'Describe your dream vacation.'},
-    {title: 'Smile', text: 'List all the things that made you smile today.'}
-  ]
-}
+
 
