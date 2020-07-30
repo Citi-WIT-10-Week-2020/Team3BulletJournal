@@ -79,7 +79,7 @@ export class UserProfileContactsComponent implements OnInit {
     
       this.loading = true;
       this.authenticationService.getAllUsers()
-          //.pipe(first())
+          .pipe(first())
           .subscribe(
               data => {
                   this.loading = false;
@@ -92,12 +92,13 @@ export class UserProfileContactsComponent implements OnInit {
                           found = true;
                           this.loading = false;
                           this.currentUser.friends.push(user);
-                          this.authenticationService.addAFriend(this.currentUser._id, user) //look into pushng whole user
+                          this.authenticationService.addAFriend(this.currentUser._id, user) 
                                   .subscribe(
                                       data => {
                                           this.currentUser = data;
                                           this.router.navigate([this.returnUrl]);
                                           this.alertService.success("Added Friend to Contacts");
+                                          this.currentUser = data;
                                           console.log(data)
                                           //add put request to update
                                        },
@@ -106,6 +107,7 @@ export class UserProfileContactsComponent implements OnInit {
                                           this.loading = false;
                               });
                       }
+                      
                   }
                 }
                   if(found == false && this.validUser == true){
@@ -122,6 +124,7 @@ export class UserProfileContactsComponent implements OnInit {
                 console.log('ah')
                
             }
+            
               
   }
     updateStats() {

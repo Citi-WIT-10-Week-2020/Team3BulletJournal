@@ -33,6 +33,12 @@ export class CoffeeChatProfilesComponent implements OnInit {
 
    ngOnInit(){
     this.peopleList = this.currentUser.friends;
+    if (!localStorage.getItem('autoLoad')) { 
+      localStorage.setItem('autoLoad', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('autoLoad') 
+    }
     //this.currentMeeting = {participants: this.currentUser.friends}; 
     this.onSubmit();
   }
