@@ -40,12 +40,9 @@ export class CoffeeChatProfilesComponent implements OnInit {
       localStorage.removeItem('autoLoad') 
     }
     //this.currentMeeting = {participants: this.currentUser.friends}; 
+
     this.onSubmit();
   }
-
-  // receiveMeeting($event){
-  //   this.meetingID = $event;
-  // }
 
   onSubmit() {
     console.log("reached");
@@ -71,7 +68,9 @@ export class CoffeeChatProfilesComponent implements OnInit {
 
                     for(let user of userData){
                       if(this.currentMeeting.host == user.username){
-                        this.zoomLink = user.zoomLink;
+                        this.zoomLink = "7876137554";
+                        console.log(this.currentMeeting.host);
+                        console.log(this.zoomLink);
                         this.zoomUrl = this.startZoomURL.concat(this.zoomLink);
                         console.log("zoomUrl:" + this.zoomUrl);
 

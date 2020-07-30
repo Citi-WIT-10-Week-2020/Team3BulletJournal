@@ -58,7 +58,7 @@ export class JournalPromptEditComponent implements OnInit {
     this.title = this.prompts[Math.round(promptIndexSelected)];
   }
   ngOnInit(): void {
-    
+
     var d = new Date();
     var promptIndexSelected = Math.random() * (this.prompts.length - 1);
     var date = d.getUTCDate();
