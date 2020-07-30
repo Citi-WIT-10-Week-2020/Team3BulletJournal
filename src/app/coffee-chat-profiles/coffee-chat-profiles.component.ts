@@ -33,13 +33,8 @@ export class CoffeeChatProfilesComponent implements OnInit {
 
    ngOnInit(){
     this.peopleList = this.currentUser.friends;
-    //this.currentMeeting = {participants: this.currentUser.friends}; 
     this.onSubmit();
   }
-
-  // receiveMeeting($event){
-  //   this.meetingID = $event;
-  // }
 
   onSubmit() {
     console.log("reached");
