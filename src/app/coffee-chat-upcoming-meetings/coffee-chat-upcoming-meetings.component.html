@@ -76,6 +76,7 @@
                     </div>
                     <div class="modal-body">      
                         <p><a>Number of Participants:    </a>{{currentMeeting.participants.length}}</p>
+                        <p><a>Meeting Host:    </a>{{hostFname}} {{hostLname}}</p>
                         <a>Participants: </a>
                         <div *ngFor="let participant of currentMeeting.participants" [ngValue]="participant"> 
                             <ol *ngIf="participant.status === 'Accepted'">

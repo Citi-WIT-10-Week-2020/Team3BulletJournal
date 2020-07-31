@@ -21,6 +21,8 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
   currentMeeting: any;
   userService:UserService;
   returnUrl: any;
+  hostFname: any;
+  hostLname: any;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -45,7 +47,18 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
 
   getMeeting(meeting){
     this.currentMeeting = meeting;
-    console.log("Meeting to look at" + this.currentMeeting)
+    console.log("Meeting to look at" + this.currentMeeting);
+    this.authenticationService.getAllUsers()
+    .subscribe(
+      data=>{
+        for(let user of data){
+          if(user.username == this.currentMeeting.host){
+            this.hostFname = user.firstName;
+            this.hostLname = user.lastName;
+          }
+        }
+      }
+    );
   }
 
   declineMeeting(meeting){
