@@ -4,37 +4,42 @@
     --color-first: #D8E4E7;
     --color-second: #AFC5CA;
     --color-navbar: #99b6dc;
+    --color-light: #F7FFFF;
 }
 
 ::ng-deep html [data-theme="pink"] {
         --color-first: #f9f0ef;
         --color-second: #eed4cf;
         --color-navbar: #E2b8af;
+        --color-light: #FFF8F7;
 }
 
  ::ng-deep html[data-theme="green"] {
     --color-first: #e7ffe6;
     --color-second: #c8e2c7;
     --color-navbar: #B4ceb3;
+    --color-light: #F6FFF5;
 }
 
 ::ng-deep html[data-theme="purple"] {
     --color-first: #FFF0FF;
     --color-second: #E0C7DA;
     --color-navbar: #B79EB1;
+    --color-light: #FFF8FF;
 }
 
 ::ng-deep html[data-theme="orange"] {
     --color-first: #FAE5CC;
     --color-second: #F7D4AB;
     --color-navbar: #F4C389;
+    --color-light: #FFFFEB;
 }
 
-::ng-deep .button:hover {
+::ng-deep #ccButton.button:hover{
     background: var(--color-second);
 }
 
-::ng-deep #ccButton{
+::ng-deep .bkrd{
     background-color: var(--color-first);
     max-width: 600px !important;
     max-height: 300px !important;
@@ -49,21 +54,21 @@
 }
 
 ::ng-deep #ccForm{
-    background: var(--color-first);
+    background: var(--color-light);
 }
 
 ::ng-deep #createMeeting{
-    background-color: var(--color-first);
+    background-color: ivory;
     color: var(--color-navbar);
-    border: 2px solid var(--color-navbar);
+    border: 1px solid var(--color-navbar);
 }
 
 ::ng-deep #createMeeting:hover{
-    background: var(--color-second);
+    background: var(--color-first);
 }
 
 ::ng-deep #pendingMeetings{
-    background: var(--color-first);
+    background: var(--color-second);
 }
 
 ::ng-deep #ccUpcoming{
@@ -75,7 +80,11 @@
 }
 
 ::ng-deep .modal-body{
-    background-color: var(--color-first);
+    background-color: var(--color-light);
+}
+
+::ng-deep .card-body{
+    background-color: var(--color-light);
 }
 
 

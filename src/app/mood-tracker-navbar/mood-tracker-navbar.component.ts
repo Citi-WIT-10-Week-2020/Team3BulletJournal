@@ -43,6 +43,9 @@ export class MoodTrackerNavbarComponent implements OnInit {
     if(this.themeSelected=="orange") {
       this.colorOrange()
     }
+    if(this.themeSelected==null) {
+      this.colorPink()
+    }
   }
 
   colorPink(){
@@ -76,4 +79,5 @@ export class MoodTrackerNavbarComponent implements OnInit {
       htmlTag.setAttribute('data-theme', 'orange');
       localStorage.setItem('site-theme', 'orange');
   }
+  
 }
