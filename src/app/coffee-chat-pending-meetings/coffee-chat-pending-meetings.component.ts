@@ -39,7 +39,7 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
      
   ngOnInit(): void {
     this.currentMeeting = {participants: this.currentUser.friends};
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/coffee-chat';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/coffee-chat-upcoming-meetings';
     this.onSubmit();
   }
 
@@ -65,8 +65,7 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
   sendMeeting(currentMeeting){
     this.meetingID = currentMeeting._id;
     localStorage.setItem('currentMeeting', JSON.stringify(this.meetingID));
-    //console.log("emitted");
-    //this.meetingEvent.emit(this.meetingID);
+  
   }
 
   deleteMeeting(meeting){

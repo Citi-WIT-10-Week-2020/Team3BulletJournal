@@ -21,6 +21,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
   currentMeeting: any;
   userService:UserService;
   returnUrl: any;
+  meetingID: any;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -46,6 +47,13 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
   getMeeting(meeting){
     this.currentMeeting = meeting;
     console.log("Meeting to look at" + this.currentMeeting)
+  }
+
+  sendMeeting(currentMeeting){
+    this.meetingID = currentMeeting._id;
+    localStorage.setItem('currentMeeting', JSON.stringify(this.meetingID));
+    //console.log("emitted");
+    //this.meetingEvent.emit(this.meetingID);
   }
 
   declineMeeting(meeting){

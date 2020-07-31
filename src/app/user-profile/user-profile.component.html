@@ -69,15 +69,15 @@
                 </div>  
             </div>
             
-            <div class="modal" id="edit-profile" style="z-index: 3000;">
+            <div class="modal" id="edit-profile">
                 <div class="modal-sandbox"></div>
                 <div class="modal-box">
                     <div class="modal-header">
                         <h3 class="type-font">Edit Profile</h3>
                     <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
                     </div>
-                    <div class="modal-body" aria-label="Close">
-                        <form [formGroup]="registerForm" aria-label="Close" (ngSubmit)="onSubmit()" >
+                    <div class="modal-body">
+                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" aria-label="close">
                            <hr>
                             <div class="form-group">
                                 <label>First Name: </label>
@@ -133,7 +133,9 @@
                             </div>
                         </div>
                         <div class="form-group">
+
                             <button [disabled]="loading" class="modal-button" >
+
                                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                 Update Account
                             </button>
