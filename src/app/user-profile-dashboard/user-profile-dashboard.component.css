@@ -158,6 +158,13 @@ h4{
 	display: none;
 }
 
+.truncate{
+  text-align: center;
+  width: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /*-------------------------------------
 Modal CSS
 --------------------------------------*/

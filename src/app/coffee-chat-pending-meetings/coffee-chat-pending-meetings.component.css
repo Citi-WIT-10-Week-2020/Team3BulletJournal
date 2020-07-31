@@ -160,6 +160,7 @@ Modal CSS
 .modal-body {
   background: ivory;
   padding: 60px 40px;
+  font-size: 24px;
 }
 
 .padding {

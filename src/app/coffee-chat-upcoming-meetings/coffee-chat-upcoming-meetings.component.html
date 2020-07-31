@@ -75,8 +75,8 @@
                     <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
                     </div>
                     <div class="modal-body">      
-                        <p><a>Number of Participants:    </a>{{currentMeeting.participants.length}}</p>
-                        <a>Participants: </a>
+                        <p><a>Number of Invitees:    </a>{{currentMeeting.participants.length}}</p>
+                        <a>Participants Attending: </a>
                         <div *ngFor="let participant of currentMeeting.participants" [ngValue]="participant"> 
                             <ol *ngIf="participant.status === 'Accepted'">
                                 <li>
