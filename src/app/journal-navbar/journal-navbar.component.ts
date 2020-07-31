@@ -46,7 +46,9 @@ export class JournalNavbarComponent implements OnInit {
     if(this.themeSelected=="orange") {
       this.colorOrange()
     }
-    
+    if(this.themeSelected==null) {
+      this.colorBlue()
+    }
   }
 
   colorPink(){

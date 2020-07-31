@@ -53,6 +53,9 @@ export class CoffeeChatNavbarComponent implements OnInit {
     if(this.themeSelected=="orange") {
       this.colorOrange()
     }
+    if(this.themeSelected==null) {
+      this.colorOrange()
+    }
   }
 
   colorPink(){
