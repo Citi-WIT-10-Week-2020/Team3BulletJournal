@@ -1,5 +1,55 @@
+::ng-deep html [data-theme="blue"] {
+    --color-first: #D8E4E7;
+    --color-second: #AFC5CA;
+    --color-navbar: #99b6dc;
+}
+
+::ng-deep html [data-theme="pink"] {
+        --color-first: #f9f0ef;
+        --color-second: #eed4cf;
+        --color-navbar: #E2b8af;
+}
+
+ ::ng-deep html[data-theme="green"] {
+    --color-first: #e7ffe6;
+    --color-second: #c8e2c7;
+    --color-navbar: #B4ceb3;
+}
+
+::ng-deep html[data-theme="purple"] {
+    --color-first: #FFF0FF;
+    --color-second: #E0C7DA;
+    --color-navbar: #B79EB1;
+}
+
+::ng-deep html[data-theme="orange"] {
+    --color-first: #FAE5CC;
+    --color-second: #F7D4AB;
+    --color-navbar: #F4C389;
+}
+
+::ng-deep #userCard{
+    background-image: linear-gradient(to bottom, var(--color-second), rgb(241, 240, 240))
+}
+
+::ng-deep #cardTitle{
+    background: var(--color-first);
+}
+
+::ng-deep #navbarProfile{
+    background: var(--color-navbar);
+}
+
+::ng-deep #userButton{
+    background: var(--color-second);
+}
+
+::ng-deep #userButton:hover{
+    background: var(--color-navbar);
+}
+
 .dropdown-menu{
-    background-color: #7ca5af !important;
+    background-color: var(--color-navbar);
     width: fit-content !important;
     border: none !important;
     top: 56px !important;
@@ -7,7 +57,7 @@
 
 .dropdown-item:hover{
     cursor: pointer;
-    background-color: #b3cbd0;
+    background-color: var(--color-second);
 }
 .text-grey{
     color: rgb(97, 96, 96) !important;

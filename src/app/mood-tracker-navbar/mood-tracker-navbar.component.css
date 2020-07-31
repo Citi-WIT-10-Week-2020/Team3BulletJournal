@@ -4,25 +4,39 @@
     --color-second: #eed4cf;
 }
 
-html ::ng-deep [data-theme="blue"] {
+::ng-deep html [data-theme="blue"] {
     --color-first: #D8E4E7;
     --color-second: #AFC5CA;
     --color-navbar: #99b6dc;
 }
 
-html ::ng-deep [data-theme="pink"] {
+::ng-deep html [data-theme="pink"] {
         --color-first: #f9f0ef;
         --color-second: #eed4cf;
         --color-navbar: #E2b8af;
 }
 
-html ::ng-deep [data-theme="green"] {
+ ::ng-deep html[data-theme="green"] {
     --color-first: #e7ffe6;
     --color-second: #c8e2c7;
     --color-navbar: #B4ceb3;
 }
 
-#navbarMood{
+::ng-deep html[data-theme="purple"] {
+    --color-first: #FFF0FF;
+    --color-second: #E0C7DA;
+    --color-navbar: #B79EB1;
+}
+
+::ng-deep html[data-theme="orange"] {
+    --color-first: #FAE5CC;
+    --color-second: #F7D4AB;
+    --color-navbar: #F4C389;
+}
+
+
+
+::ng-deep #navbarMood{
     background: var(--color-navbar);
 }
 
@@ -55,7 +69,7 @@ html ::ng-deep [data-theme="green"] {
 
 
 .dropdown-menu{
-    background-color: #E2b8af  !important;
+    background-color: var(--color-navbar);
     width: fit-content !important;
     border: none !important;
     top: 45px !important;
@@ -63,7 +77,7 @@ html ::ng-deep [data-theme="green"] {
 
 .dropdown-item:hover{
     cursor: pointer;
-    background-color: #F9f0ef ;
+    background-color: var(--color-second);
 }
 .text-grey{
     color: rgb(97, 96, 96) !important;

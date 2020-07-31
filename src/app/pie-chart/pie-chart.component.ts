@@ -59,6 +59,7 @@ export class PieChartComponent implements OnInit {
     
   }
   ngOnInit(): void {
+
   //   this.httpService.get('./assets/sales.json', {responseType: 'json'}).subscribe(
   //     data => {
   //         this.pieChartData = data as any [];	 // FILL THE CHART ARRAY WITH DATA.
@@ -69,6 +70,7 @@ export class PieChartComponent implements OnInit {
   // );
   var date = new Date();
   var month = date.getMonth()+1;
+
   this.anxietyCount = 0;
   this.excitedCount = 0;
   this.tiredCount = 0;

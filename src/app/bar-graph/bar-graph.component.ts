@@ -55,6 +55,8 @@ export class BarGraphComponent implements OnInit{
             ]
         }
     ]
+
+      console.log(this.anxietyCount)
       this.barGraphData = [
         { 
             data: [Number(this.anxietyCount), this.excitedCount, this.tiredCount, this.sadCount, this.contentCount]
@@ -99,12 +101,12 @@ export class BarGraphComponent implements OnInit{
       
       console.log(this.anxietyCount);
       console.log(this.contentCount);
-      
       this.barGraphData = [
         { 
             data: [Number(this.anxietyCount), this.excitedCount, this.tiredCount, this.sadCount, this.contentCount]
         }
     ];
+      
     
     }
     

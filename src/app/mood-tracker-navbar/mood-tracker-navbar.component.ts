@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 export class MoodTrackerNavbarComponent implements OnInit {
   href: string;
   currentPage: string;
-  
+
+  themeSelected: any;
+
 
   constructor(private router: Router) {
     
@@ -23,6 +25,23 @@ export class MoodTrackerNavbarComponent implements OnInit {
     }
     if(this.href == '/mood-tracker'){
       this.currentPage == 'Home'
+    }
+
+    this.themeSelected = localStorage.getItem("site-theme");
+    if(this.themeSelected=="blue") {
+      this.colorBlue()
+    }
+    if(this.themeSelected=="pink") {
+      this.colorPink()
+    }
+    if(this.themeSelected=="green") {
+      this.colorGreen()
+    }
+    if(this.themeSelected=="purple") {
+      this.colorPurple()
+    }
+    if(this.themeSelected=="orange") {
+      this.colorOrange()
     }
   }
 
@@ -44,5 +63,17 @@ export class MoodTrackerNavbarComponent implements OnInit {
     const htmlTag = document.getElementById("html")
       htmlTag.setAttribute('data-theme', 'green');
       localStorage.setItem('site-theme', 'green');
+  }
+
+  colorPurple(){
+    const htmlTag = document.getElementById("html")
+      htmlTag.setAttribute('data-theme', 'purple');
+      localStorage.setItem('site-theme', 'purple');
+  }
+
+  colorOrange(){
+    const htmlTag = document.getElementById("html")
+      htmlTag.setAttribute('data-theme', 'orange');
+      localStorage.setItem('site-theme', 'orange');
   }
 }

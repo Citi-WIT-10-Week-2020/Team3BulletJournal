@@ -90,7 +90,6 @@ img {
   
   /* Style the front side (fallback if image is missing) */
   .flip-card-front {
-    background-image: linear-gradient(to bottom, rgb(210, 247, 210), lightgray);
     color: black;
     box-shadow: 1px 1px 5px grey;
   }
