@@ -8,13 +8,14 @@ import { AuthenticationService } from '../_services';
   styleUrls: ['./journal.component.css']
 })
 export class JournalComponent implements OnInit {
+  currentUser: any;
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
   ) {
-    this.authenticationService.currentUserValue[0]
-   }
+    this.currentUser = this.authenticationService.currentUserValue[0];
+  }
   ngOnInit(): void {
    
   }

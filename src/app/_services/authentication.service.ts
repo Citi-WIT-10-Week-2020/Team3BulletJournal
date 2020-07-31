@@ -61,12 +61,13 @@ export class AuthenticationService {
 
     addAFriend(_id, friendToAdd){
         return this.http.put<any>(`http://localhost:8080/api/addAFriend`, { _id, friendToAdd })
-        // .pipe(map(user => {
-        //     // store user details and jwt token in local storage to keep user logged in between page refreshes
-        //     localStorage.setItem('currentUser', JSON.stringify(user));
-        //     this.currentUserSubject.next(JSON.stringify(user));
-        //     return user;
-        // }));
+        .pipe(map(user => {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            //localStorage.setItem('currentUser', JSON.stringify(user));
+            this.currentUser = user;
+            //this.currentUserSubject.next(JSON.stringify(user));
+            return user;
+        }));
     }
 
     getAllUsers(){
