@@ -43,6 +43,20 @@
     background: var(--color-second);
 }
 
+::ng-deep #journalHeading{
+    background: var(--color-first);
+}
+
+::ng-deep #journalModal{
+    background: var(--color-second);
+}
+
+::ng-deep #jModalButton{
+    border: 2px solid var(--color-second);
+    color: var(--color-navbar);
+}
+
+
 .dropdown-menu{
     background-color: var(--color-navbar);
     width: fit-content !important;

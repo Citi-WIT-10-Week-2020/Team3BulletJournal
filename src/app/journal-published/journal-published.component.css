@@ -22,7 +22,6 @@
 
 .heading{
     border-color: grey;
-    background-color: #D8E4E7;
 }
 
 .btn-2{
@@ -87,7 +86,6 @@ Modal CSS
 
 .modal-header {
   padding: 20px 40px;
-  background: #7CA5AF;
   color: #ffffff;
 }
 
@@ -126,9 +124,7 @@ Modal CSS
 }
 
 .modal-button{
-    border: 2px solid #7CA5AF;
     background-color: whitesmoke;
-    color: #7CA5AF;
     padding: 10px 24px;
     font-size: 16px;
     cursor: pointer;

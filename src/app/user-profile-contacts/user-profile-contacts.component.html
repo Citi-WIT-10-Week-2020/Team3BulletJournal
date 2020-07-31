@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="profile">
 
 <head>
     <meta charset="utf-8">
@@ -48,13 +48,13 @@
             <div class="card-deck">
                 <div class="flip-card" *ngFor="let friend of currentUser.friends"  [ngValue]="friend">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front">
+                        <div class="flip-card-front" id="userCard">
                           <h3>{{friend.firstName}} {{friend.lastName}}</h3>
                           <img src="assets\images\kal-visuals-b1Hg7QI-zcc-unsplash.jpg"/>
                           <p>{{friend.role}}</p>
                         </div>
                         <div class="flip-card-back">
-                          <h5 class="card-title">{{friend.firstName}} {{friend.lastName}}</h5>
+                          <h5 class="card-title" id="cardTitle">{{friend.firstName}} {{friend.lastName}}</h5>
                           <p>({{friend.username}})</p>
                           <p><a>Bio: </a>{{friend.bio}}</p>
                           <p><a>Hobbies: </a>{{friend.hobbies}}</p>

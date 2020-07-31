@@ -56,7 +56,7 @@ img {
 .flip-card {
     background-color: transparent;
     width: 300px;
-    height: 300px;
+    height: 400px;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
     margin: auto;
     margin-bottom: 10px;
@@ -90,7 +90,6 @@ img {
   
   /* Style the front side (fallback if image is missing) */
   .flip-card-front {
-    background-image: linear-gradient(to bottom, rgb(210, 247, 210), lightgray);
     color: black;
     box-shadow: 1px 1px 5px grey;
   }

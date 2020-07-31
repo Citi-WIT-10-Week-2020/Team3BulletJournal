@@ -24,7 +24,7 @@ body {
 .card {
     min-width: 300px;
     max-width: 300px;
-    height: fit-content;
+    height: 500px;
     border-radius: 16px;
     background-color: #ffd59a;
     box-shadow: -1rem 0 3rem rgb(146, 142, 142);
@@ -32,6 +32,7 @@ body {
     flex-direction: column;
     padding: 1.5rem;
     transition: 0.2s;
+    font-family: 'Montserrat';
 }
 
 .date {
@@ -106,7 +107,7 @@ img{
 h6{
     color: rgb(75, 74, 74);
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 h2{

@@ -77,7 +77,7 @@
 
 .dropdown-item:hover{
     cursor: pointer;
-    background-color: #F9f0ef ;
+    background-color: var(--color-second);
 }
 .text-grey{
     color: rgb(97, 96, 96) !important;
