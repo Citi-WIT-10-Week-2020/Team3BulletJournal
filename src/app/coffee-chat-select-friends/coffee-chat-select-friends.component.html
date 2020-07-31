@@ -1,4 +1,4 @@
-<html>
+<html id="coffeechat">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,8 +24,8 @@
         <div class="coffee-chat" id="content">
             <div class="wrapper">
                 <div class="inner">
-                    <form [formGroup]="createMeeting" (ngSubmit)="onSubmit()">
-                    <h3>Start Connecting</h3>
+                    <form [formGroup]="createMeeting" (ngSubmit)="onSubmit()" id="ccForm">
+                    <h3 id="ccTitle">Start Connecting</h3>
                     <label for="people" style="color: black; font-weight: 600;">People:</label>
                     <div class="user-select">
                         <div *ngFor="let person of peopleList"  [ngValue]="person">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="form-wrapper justify-content-center">
-                        <button [disabled]="loading">
+                        <button [disabled]="loading" id="createMeeting">
                             <a routerLink="/coffee-chat-pending-meetings"></a>
                             Create Meeting
                         </button>

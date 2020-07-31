@@ -117,12 +117,10 @@ display: none;
 
 .modal-header {
   padding: 20px 40px;
-  background: #F2B57C;
   color: #ffffff;
 }
 
 .modal-body {
-  background: ivory;
   padding: 60px 40px;
   font-family: 'Montserrat'
 }

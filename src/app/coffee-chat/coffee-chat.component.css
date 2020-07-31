@@ -24,14 +24,6 @@
 } 
 
 
-
-.bkrd{
-  background-color: #ffd59a;
-  max-width: 600px !important;
-  max-height: 300px !important;
-  box-shadow: 3px !important;
-}
-
 .button {
   --offset: 10px;
   --border-size: 2px;
@@ -58,9 +50,7 @@
 
 
 }
-.button:hover {
-  background: #F2B57C;
-}
+
 .button__horizontal, .button__vertical {
   position: absolute;
   top: var(--horizontal-offset, 0);
