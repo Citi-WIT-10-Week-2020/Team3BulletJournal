@@ -1,5 +1,50 @@
+::ng-deep html [data-theme="blue"] {
+    --color-first: #D8E4E7;
+    --color-second: #AFC5CA;
+    --color-navbar: #7ca5af;
+}
+
+::ng-deep html [data-theme="pink"] {
+        --color-first: #f9f0ef;
+        --color-second: #eed4cf;
+        --color-navbar: #E2b8af;
+}
+
+ ::ng-deep html[data-theme="green"] {
+    --color-first: #e7ffe6;
+    --color-second: #c8e2c7;
+    --color-navbar: #B4ceb3;
+}
+
+::ng-deep html[data-theme="purple"] {
+    --color-first: #FFF0FF;
+    --color-second: #E0C7DA;
+    --color-navbar: #B79EB1;
+}
+
+::ng-deep html[data-theme="orange"] {
+    --color-first: #FAE5CC;
+    --color-second: #F7D4AB;
+    --color-navbar: #F4C389;
+}
+
+
+::ng-deep #navbarJournal{
+    background: var(--color-navbar);
+}
+
+::ng-deep .bkrd{
+    background-color: var(--color-first);
+    max-width: 600px !important;
+    max-height: 300px !important;
+}
+
+::ng-deep #journalButton.button:hover {
+    background: var(--color-second);
+}
+
 .dropdown-menu{
-    background-color: #7ca5af !important;
+    background-color: var(--color-navbar);
     width: fit-content !important;
     border: none !important;
     top: 56px !important;
@@ -12,5 +57,17 @@
 .text-grey{
     color: rgb(97, 96, 96) !important;
 }
+
+.color-button{
+    height: 20px !important;
+    width: 20px !important;
+    border: 2px solid grey;
+    margin: 2px;
+}
+
+.color-button:hover{
+    box-shadow: 1px 1px 5px grey;
+}
+
 
 

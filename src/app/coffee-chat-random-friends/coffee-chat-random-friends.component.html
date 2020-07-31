@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="coffeechat">
 
 <head>
     <meta charset="utf-8">
@@ -32,8 +32,8 @@
         <!---Pull from JSON for Participant names-->
         <div class="wrapper">
             <div class="inner">
-            <form [formGroup]="createMeeting" (ngSubmit)="onSubmit()">
-                 <h3>Start Connecting</h3>
+            <form [formGroup]="createMeeting" id="ccForm" (ngSubmit)="onSubmit()">
+                 <h3 id="ccTitle">Start Connecting</h3>
                 <div class="form-wrapper">
                     <label style="font-weight: 600;">Number of People:</label>
 
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="form-wrapper justify-content-center">
-                    <button [disabled]="loading" class="button">
+                    <button [disabled]="loading" class="button" id="createMeeting">
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1" routerLink="/coffee-chat-pending-meetings"></span>
                         Create Meeting
                     </button>

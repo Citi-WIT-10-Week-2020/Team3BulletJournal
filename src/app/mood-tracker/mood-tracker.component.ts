@@ -23,7 +23,7 @@ export class MoodTrackerComponent implements OnInit {
   contentForm: any;
   sadForm: any;
   currentMood: any;
-  themeSelected: any;
+  
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,16 +46,7 @@ export class MoodTrackerComponent implements OnInit {
     } else {
       localStorage.removeItem('autoLoad') 
     }
-    this.themeSelected = localStorage.getItem("site-theme");
-    if(this.themeSelected=="blue") {
-      this.colorBlue()
-    }
-    if(this.themeSelected=="pink") {
-      this.colorPink()
-    }
-    if(this.themeSelected=="green") {
-      this.colorGreen()
-    }
+    
 
     var d = new Date();
     var date = d.getUTCDate();

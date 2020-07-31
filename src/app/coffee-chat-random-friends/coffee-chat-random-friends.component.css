@@ -56,7 +56,6 @@ p, h1, h2, h3, h4, h5, h6, ul {
   
     form {
         width: 50%;
-        background: ivory;
         background-size: 100%;
         padding-top: 35px;
         padding-left: 30px;
@@ -67,8 +66,7 @@ p, h1, h2, h3, h4, h5, h6, ul {
   h3 {
     font-size: 28px;
     text-align: center;
-    margin-bottom: 38px;
-    color: #f2b57c; }
+    margin-bottom: 38px; }
   
   .form-wrapper {
     color: black;
@@ -130,14 +128,11 @@ p, h1, h2, h3, h4, h5, h6, ul {
     margin-top: 24px;
     cursor: pointer;
     transition: all 0.5s ease;
-    background-color: ivory;
-    color: #f2b57c;
-    border: 2px solid #f2b57c;
+    
     border-radius: 5px;
     font-family: 'Montserrat';
   }
     button:hover {
-      background-color: #f2b57c;
       color: #fff;
      }
   

@@ -13,3 +13,13 @@
     color: rgb(97, 96, 96) !important;
 }
 
+.color-button{
+    height: 20px !important;
+    width: 20px !important;
+    border: 2px solid grey;
+    margin: 2px;
+}
+
+.color-button:hover{
+    box-shadow: 1px 1px 5px grey;
+}
