@@ -53,12 +53,12 @@
             <div class="col-sm-10 offset-sm-1">
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between heading">
-                        <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Date:</p>
-                        <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Title:</p>
+                        <p class="p-0 m-0 flex-grow-1 reg-font" style="color: black; font-weight: 600;">Date:</p>
+                        <p class="p-0 m-0 flex-grow-1 reg-font" style="color: black; font-weight: 600;">Title:</p>
                     </li>
                     <li class="list-group-item d-flex justify-content-between" *ngFor="let entry of entries.reverse()" [ngValue]="entry">
-                        <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.month}}/{{entry.day}}</p>
-                        <p class="p-0 m-0 flex-grow-1" style="color: black">{{entry.title}}</p>
+                        <p class="p-0 mr-3 reg-font" style="color: black">{{entry.month}}/{{entry.day}}</p>
+                        <p class="p-0 mr-3 flex-grow-1 reg-font truncate" style="color: black">{{entry.title}}</p>
                         <div class="icons">
                             <button class="btn-2" title="View" (click)="getEntry(entry)" data-toggle="modal" data-target="#entry"><span class="fa fa-eye fa-sm"  style="color: grey"></span></button>
                         </div>
@@ -75,7 +75,7 @@
             <div class="modal-sandbox"></div>
             <div class="modal-box">
                 <div class="modal-header">
-                    <h1 class="reg-font">{{currentEntry.title}}</h1>
+                    <h1 class="type-font">{{currentEntry.title}}</h1>
                 <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
                 
                 </div>

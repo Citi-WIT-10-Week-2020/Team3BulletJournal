@@ -5,6 +5,8 @@
     --color-second: #AFC5CA;
     --color-navbar: #99b6dc;
     --color-light: #F7FFFF;
+    /*--color-navbar: #7ca5af; */
+
 }
 
 ::ng-deep html [data-theme="pink"] {
@@ -106,4 +108,15 @@
 .navbar{
     margin-bottom: 0;
     padding: 5px;
+}
+
+.color-button{
+    height: 20px !important;
+    width: 20px !important;
+    border: 2px solid grey;
+    margin: 2px;
+}
+
+.color-button:hover{
+    box-shadow: 1px 1px 5px grey;
 }
