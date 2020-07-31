@@ -102,7 +102,6 @@ display: none;
   background: rgb(0,0,0);
   background: rgba(0,0,0,.8);
   overflow: auto;
-  z-index: 3000;
 }
 
 .modal-box {
@@ -122,7 +121,8 @@ display: none;
 
 .modal-body {
   padding: 60px 40px;
-  font-family: 'Montserrat'
+  font-family: 'Montserrat';
+  font-size: 24px;
 }
 
 /* Close Button */

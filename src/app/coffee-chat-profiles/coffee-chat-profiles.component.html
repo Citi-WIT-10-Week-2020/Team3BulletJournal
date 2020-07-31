@@ -19,8 +19,8 @@
       <br>
       <br>
 <!--Have each participants profile with pic/avatar, Name, profession, bio-->
-<div class="card-container">
-    <div class="card" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant" id="ccForm">
+<div class="card-container" style="overflow-y: hidden; overflow-x: hidden;">
+    <div class="card" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
         <header class="article-header">
             <div>
                 <h3 class="article-title">

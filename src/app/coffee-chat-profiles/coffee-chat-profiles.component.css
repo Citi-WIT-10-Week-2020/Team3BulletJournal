@@ -24,7 +24,7 @@ body {
 .card {
     min-width: 300px;
     max-width: 300px;
-    height: fit-content;
+    height: 500px;
     border-radius: 16px;
     background-color: #ffd59a;
     box-shadow: -1rem 0 3rem rgb(146, 142, 142);
@@ -32,6 +32,7 @@ body {
     flex-direction: column;
     padding: 1.5rem;
     transition: 0.2s;
+    font-family: 'Montserrat';
 }
 
 .date {
@@ -106,7 +107,7 @@ img{
 h6{
     color: rgb(75, 74, 74);
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 h2{
@@ -223,6 +224,32 @@ p{
   }
   
 iframe{
-  max-height: fit-content;
-  margin: 1;
+  max-height: 650px;
+  min-height: 650px !important;
+  max-width: 100%;
+  min-width: 100%;
+  justify-content: center;
+  margin-top: -150px !important;
+}
+
+.iframe-container{
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+@media (max-width: 800px){
+  .iframe-container{
+      margin-left: 0;
+      margin-right: 0;
+      overflow: scroll !important;
+      overflow-y: scroll !important;
+  }
+}
+@media (max-width: 1100px){
+  .card-container{
+      margin-left: 0;
+      margin-right: 0;
+      overflow-x: scroll !important;
+      scroll-behavior: inherit;
+  }
 }
