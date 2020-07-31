@@ -46,7 +46,7 @@ html[data-theme="green"] {
     background-size: contain;
 }
 .moodButton#tired{
-    background-image: url(/assets/images/confused.png);
+    background-image: url(/assets/images/newtired.png);
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -58,7 +58,7 @@ html[data-theme="green"] {
 }
 
 .moodButton#sad{
-    background-image: url("/assets/images/sad boy.png");
+    background-image: url(/assets/images/sad.png);
     background-repeat: no-repeat;
     background-size: contain;
 }
