@@ -30,7 +30,7 @@
             <div id="content">
                 <div class="col-sm-10 offset-sm-1">
                     <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between heading">
+                        <li class="list-group-item d-flex justify-content-between heading" id = "journalHeading">
                             <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Date:</p>
                             <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Title:</p>
                         </li>
@@ -51,7 +51,7 @@
 
             <div class="modal-sandbox"></div>
             <div class="modal-box">
-                <div class="modal-header">
+                <div class="modal-header" id="journalModal">
                     <h1 class="reg-font">{{currentEntry.title}}</h1>
                 <div class="close-modal justify-content-end" style="margin-top: 1em; color: black" data-dismiss="modal" aria-label="Close">&#10006;</div> 
                 
@@ -59,7 +59,7 @@
                 <div class="modal-body">
                     <p style="white-space: pre-line;"> {{currentEntry.text}} </p>
                 <br />
-                <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Close</button>
+                <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close" id="jModalButton">Close</button>
                 </div>
             </div>
             </div>
@@ -68,7 +68,7 @@
 
                 <div class="modal-sandbox"></div>
                 <div class="modal-box">
-                    <div class="modal-header">
+                    <div class="modal-header" id="journalModal">
                         <h1 class="reg-font">Delete Entry</h1>
                     <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
                     
@@ -76,7 +76,7 @@
                     <div class="modal-body">
                         <p>Are you sure you want to delete entry: {{currentEntry.title}}</p>
                     <br />
-                    <button type="button" class="modal-button" (click)="removeJournal(currentEntry)" data-dismiss="modal" aria-label="Delete">Delete</button>
+                    <button type="button" class="modal-button" (click)="removeJournal(currentEntry)" data-dismiss="modal" aria-label="Delete" id="jModalButton">Delete</button>
                     </div>
                 </div>
                 </div>
