@@ -1,3 +1,5 @@
+<html id="coffeechat">
+
 <div>
     <app-navbar style="z-index: 9999;"></app-navbar>
 </div>
@@ -18,7 +20,7 @@
       <br>
 <!--Have each participants profile with pic/avatar, Name, profession, bio-->
 <div class="card-container">
-    <div class="card" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
+    <div class="card" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant" id="ccForm">
         <header class="article-header">
             <div>
                 <h3 class="article-title">
@@ -59,11 +61,9 @@
 
 
 <!--Zoom Embed-->
-<div class="iframe-container" style="overflow: hidden; padding-top: 56.25%; position: relative;">
-    <iframe scrolling="no" allow="microphone; camera" style="border: 0; height: 90%; left: 0; position: absolute; max-height: fit-content; top:0; width: 100%;" [src]="zoomUrl | safe" frameborder="0"></iframe>
+
+<div class="iframe-container" style="padding-top: 56.25%; position: relative; overflow-y: hidden; overflow-x: hidden;">
+    <iframe allow="microphone; camera" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;" [src]="zoomUrl | safe" frameborder="0" scrolling="no"></iframe>
 </div>
-
-
-
 
 

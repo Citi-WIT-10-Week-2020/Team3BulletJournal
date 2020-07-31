@@ -1,4 +1,4 @@
-
+<html id="html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,20 +25,20 @@
 
 
     <div class="background-mood" id="content">
-            <div id="first">
-                <div id="second">
+            <div class="first">
+                <div class="second">
                     <div id="title"> You're feeling: {{currentMood.mood}} </div>
                 </div>
             <div class="resource-container">
                 <div class="resource-item">
-                        <button id="read" value="anxious" name="button"(click) = "onSubmitRead()" routerLink="/mood-chosen"></button> <hr>Read </div>
+                        <button id="read"  name="button"(click) = "onSubmitRead()" routerLink="/mood-chosen"></button> <hr>Read </div>
                 <div class="resource-item">
-                    <button id="watch" value="excited" name="button" (click) = "onSubmitWatch()" routerLink="/mood-chosen"></button><hr> Watch </div>
+                    <button id="watch"  name="button" (click) = "onSubmitWatch()" routerLink="/mood-chosen"></button><hr> Watch </div>
                 <div class="resource-item">
-                    <button id="do" value="confused" name="button" (click) = "onSubmitDo()" routerLink="/mood-chosen"></button><hr>Do </div>
+                    <button id="do" name="button" (click) = "onSubmitDo()" routerLink="/mood-chosen"></button><hr>Do </div>
                 </div>
             </div>
          </div>
         </body>
-      
+    </html>
 

@@ -31,13 +31,14 @@ export class UserProfileContactsComponent implements OnInit {
       private alertService: AlertService
   ) {
 
-    this.currentUser = this.authenticationService.currentUserValue[0];
+    //this.currentUser = this.authenticationService.currentUserValue[0];
     console.log(this.currentUser);
   }
 
   ngOnInit() {
       //this.friendList = this.currentUser.friends;
-      
+      this.currentUser = this.authenticationService.currentUserValue[0];
+
       this.loginForm = this.formBuilder.group({
           friendToAdd: ['', Validators.required],
           
@@ -79,7 +80,7 @@ export class UserProfileContactsComponent implements OnInit {
     
       this.loading = true;
       this.authenticationService.getAllUsers()
-          //.pipe(first())
+          .pipe(first())
           .subscribe(
               data => {
                   this.loading = false;
@@ -92,13 +93,16 @@ export class UserProfileContactsComponent implements OnInit {
                           found = true;
                           this.loading = false;
                           this.currentUser.friends.push(user);
-                          this.authenticationService.addAFriend(this.currentUser._id, user) //look into pushng whole user
+                          this.authenticationService.addAFriend(this.currentUser._id, user) 
                                   .subscribe(
                                       data => {
-                                          this.currentUser = data;
+                                          //this.currentUser = data;
+                                          console.log(data.friends)
+                                          //this.authenticationService.currentUserValue[0].friends = data.friends;
                                           this.router.navigate([this.returnUrl]);
                                           this.alertService.success("Added Friend to Contacts");
-                                          console.log(data)
+                                          //this.currentUser = data;
+                                          //console.log(data)
                                           //add put request to update
                                        },
                                       error => {
@@ -106,6 +110,7 @@ export class UserProfileContactsComponent implements OnInit {
                                           this.loading = false;
                               });
                       }
+                      
                   }
                 }
                   if(found == false && this.validUser == true){
@@ -122,6 +127,7 @@ export class UserProfileContactsComponent implements OnInit {
                 console.log('ah')
                
             }
+            
               
   }
     updateStats() {

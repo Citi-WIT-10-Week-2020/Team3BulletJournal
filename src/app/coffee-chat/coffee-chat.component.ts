@@ -17,7 +17,7 @@ export class CoffeeChatComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService) 
     {
-      this.currentUser = this.authenticationService.currentUserValue;
+      this.currentUser = this.authenticationService.currentUserValue[0];
     }
 
   ngOnInit(): void {

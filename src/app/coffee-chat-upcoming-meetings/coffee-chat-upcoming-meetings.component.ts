@@ -23,6 +23,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
   returnUrl: any;
   hostFname: any;
   hostLname: any;
+  meetingID: any;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -59,6 +60,13 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
         }
       }
     );
+  }
+
+  sendMeeting(currentMeeting){
+    this.meetingID = currentMeeting._id;
+    localStorage.setItem('currentMeeting', JSON.stringify(this.meetingID));
+    //console.log("emitted");
+    //this.meetingEvent.emit(this.meetingID);
   }
 
   declineMeeting(meeting){

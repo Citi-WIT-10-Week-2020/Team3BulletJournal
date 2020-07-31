@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="coffeechat">
 
 <head>
     <meta charset="utf-8">
@@ -31,7 +31,7 @@
                 <div class="col-sm-6">
                     <h2 class="type-font text-center mt-3" style="color: white;">Meetings I am Hosting</h2>
                     <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-start heading">
+                        <li class="list-group-item d-flex justify-content-start heading" id="ccUpcoming">
                             <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Date:</p>
                             <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Time:</p>
                         </li>
@@ -48,7 +48,7 @@
                 <div class="col-6">
                     <h2 class="type-font text-center mt-3" style="color: white;">Meetings I am Attending</h2>
                     <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-start heading">
+                        <li class="list-group-item d-flex justify-content-start heading"  id="ccUpcoming">
                             <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Date:</p>
                             <p class="p-0 m-0 flex-grow-1" style="color: black; font-weight: 600;">Time:</p>
 
@@ -85,10 +85,10 @@
                                 </li>
                             </ol>
                         </div>
-                        <a class="link" routerLink="/coffee-chat-profiles" data-dismiss="modal" aria-label="Close">Click to Access Zoom Meeting and View Profiles <span class="fa fa-arrow"></span></a>
+                        <a class="link" (click)="sendMeeting(currentMeeting)" routerLink="/coffee-chat-profiles" data-dismiss="modal" aria-label="Close">Click to Access Zoom Meeting and View Profiles <span class="fa fa-arrow"></span></a>
                         <br>
                         <br>
-                    <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Close</button>
+                    <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close" id="createMeeting">Close</button>
                     </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
 
                 <div class="modal-sandbox"></div>
                 <div class="modal-box">
-                    <div class="modal-header">
+                    <div class="modal-header" id="ccModal">
                         <h1 class="reg-font">Decline Meeting</h1>
                     <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
                     
@@ -106,8 +106,8 @@
                     <div class="modal-body">
                         <p>Are you sure you want to decline this meeting? </p>
                     <br />
-                    <button type="button" class="modal-button" (click)="declineMeeting(currentMeeting)" data-dismiss="modal" aria-label="Delete">Decline</button>
-                    <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close">Cancel</button> 
+                    <button type="button" class="modal-button" (click)="declineMeeting(currentMeeting)" data-dismiss="modal" aria-label="Delete" id="createMeeting">Decline</button>
+                    <button type="button" class="modal-button" data-dismiss="modal" aria-label="Close" id="createMeeting">Cancel</button> 
                     </div>
                 </div>
                 </div>

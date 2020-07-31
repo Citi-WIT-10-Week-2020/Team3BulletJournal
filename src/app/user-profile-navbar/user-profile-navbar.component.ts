@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class UserProfileNavbarComponent implements OnInit {
   href: string;
   currentPage: string;
-
+  themeSelected:any;
 
   constructor(private router: Router) { }
 
@@ -25,5 +25,53 @@ export class UserProfileNavbarComponent implements OnInit {
     if(this.href == '/user-profile-contacts'){
       this.currentPage = 'Contacts'
     }
+
+    this.themeSelected = localStorage.getItem("site-themeU");
+    if(this.themeSelected=="blue") {
+      this.colorBlue()
+    }
+    if(this.themeSelected=="pink") {
+      this.colorPink()
+    }
+    if(this.themeSelected=="green") {
+      this.colorGreen()
+    }
+    if(this.themeSelected=="purple") {
+      this.colorPurple()
+    }
+    if(this.themeSelected=="orange") {
+      this.colorOrange()
+    }
+  }
+  colorPink(){
+    console.log("pink")
+    const htmlTag = document.getElementById("profile")
+      htmlTag.setAttribute('data-theme', 'pink');
+      localStorage.setItem('site-themeU', 'pink');
+  }
+
+  colorBlue(){
+    console.log("blue")
+    const htmlTag = document.getElementById("profile")
+      htmlTag.setAttribute('data-theme', 'blue');
+      localStorage.setItem('site-themeU', 'blue');
+  }
+
+  colorGreen(){
+    const htmlTag = document.getElementById("profile")
+      htmlTag.setAttribute('data-theme', 'green');
+      localStorage.setItem('site-themeU', 'green');
+  }
+
+  colorPurple(){
+    const htmlTag = document.getElementById("profile")
+      htmlTag.setAttribute('data-theme', 'purple');
+      localStorage.setItem('site-themeU', 'purple');
+  }
+
+  colorOrange(){
+    const htmlTag = document.getElementById("profile")
+      htmlTag.setAttribute('data-theme', 'orange');
+      localStorage.setItem('site-themeU', 'orange');
   }
 }

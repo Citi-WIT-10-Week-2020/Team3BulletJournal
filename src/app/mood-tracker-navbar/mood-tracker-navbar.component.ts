@@ -10,7 +10,12 @@ export class MoodTrackerNavbarComponent implements OnInit {
   href: string;
   currentPage: string;
 
-  constructor(private router: Router) {}
+  themeSelected: any;
+
+
+  constructor(private router: Router) {
+    
+  }
 
   ngOnInit(){
     this.href = this.router.url;
@@ -21,5 +26,54 @@ export class MoodTrackerNavbarComponent implements OnInit {
     if(this.href == '/mood-tracker'){
       this.currentPage == 'Home'
     }
+
+    this.themeSelected = localStorage.getItem("site-theme");
+    if(this.themeSelected=="blue") {
+      this.colorBlue()
+    }
+    if(this.themeSelected=="pink") {
+      this.colorPink()
+    }
+    if(this.themeSelected=="green") {
+      this.colorGreen()
+    }
+    if(this.themeSelected=="purple") {
+      this.colorPurple()
+    }
+    if(this.themeSelected=="orange") {
+      this.colorOrange()
+    }
+  }
+
+  colorPink(){
+    console.log("pink")
+    const htmlTag = document.getElementById("html")
+      htmlTag.setAttribute('data-theme', 'pink');
+      localStorage.setItem('site-theme', 'pink');
+  }
+
+  colorBlue(){
+    console.log("blue")
+    const htmlTag = document.getElementById("html")
+      htmlTag.setAttribute('data-theme', 'blue');
+      localStorage.setItem('site-theme', 'blue');
+  }
+
+  colorGreen(){
+    const htmlTag = document.getElementById("html")
+      htmlTag.setAttribute('data-theme', 'green');
+      localStorage.setItem('site-theme', 'green');
+  }
+
+  colorPurple(){
+    const htmlTag = document.getElementById("html")
+      htmlTag.setAttribute('data-theme', 'purple');
+      localStorage.setItem('site-theme', 'purple');
+  }
+
+  colorOrange(){
+    const htmlTag = document.getElementById("html")
+      htmlTag.setAttribute('data-theme', 'orange');
+      localStorage.setItem('site-theme', 'orange');
   }
 }

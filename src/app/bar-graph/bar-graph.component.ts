@@ -12,17 +12,18 @@ import { ThemeService } from 'ng2-charts';
   templateUrl: './bar-graph.component.html',
   styleUrls: ['./bar-graph.component.css']
 })
-export class BarGraphComponent implements OnInit {
+export class BarGraphComponent implements OnInit{
   barGraphColor: { backgroundColor: string[]; }[];
   barGraphData: any[];
   anxietyCount: number;
   excitedCount: number;
-  confusedCount: number;
+  tiredCount: number;
   sadCount: number;
-  happyCount: number;
+  contentCount: number;
   barGraphLabels: string[];
   currentUser: any;
   chartOptions: any;
+  currentMonth: any;
 
   constructor (private httpService: HttpClient,
     private authenticationService: AuthenticationService,
@@ -30,6 +31,8 @@ export class BarGraphComponent implements OnInit {
         private formBuilder: FormBuilder,
         private router: Router,
         private alertService: AlertService) { 
+        
+
 
     // ADD CHART OPTIONS. 
     this.currentUser = this.authenticationService.currentUserValue[0];  
@@ -38,7 +41,7 @@ export class BarGraphComponent implements OnInit {
       responsive: true    // THIS WILL MAKE THE CHART RESPONSIVE (VISIBLE IN ANY DEVICE).
     }
 
-    this.barGraphLabels =  ['Anxious', 'Excited', 'Tired', 'Sad', 'Happy'];
+    this.barGraphLabels =  ['Anxious', 'Excited', 'Tired', 'Sad', 'Content'];
 
 
     // CHART COLOR.
@@ -52,28 +55,32 @@ export class BarGraphComponent implements OnInit {
             ]
         }
     ]
-      
+
       console.log(this.anxietyCount)
       this.barGraphData = [
         { 
-            data: [Number(this.anxietyCount), this.excitedCount, this.confusedCount, this.sadCount, this.happyCount]
+            data: [Number(this.anxietyCount), this.excitedCount, this.tiredCount, this.sadCount, this.contentCount]
         }
     ];
+    
+
     
   }
   ngOnInit(): void {
 
+  var date = new Date();
+  var month = date.getMonth()+1;
   this.anxietyCount = 0;
   this.excitedCount = 0;
-  this.confusedCount = 0;
+  this.tiredCount = 0;
   this.sadCount = 0;
-  this.happyCount = 0;
+  this.contentCount = 0;
 
   this.authenticationService.getAllMoods()
   .subscribe(
     data => {
       for (let user of data){
-        if(this.currentUser.username == user.username){
+        if(this.currentUser.username == user.username && user.month == month){
           console.log(user.username);
           console.log(user.mood)
           if(user.mood == "anxious"){
@@ -81,26 +88,31 @@ export class BarGraphComponent implements OnInit {
           }else if(user.mood == 'excited'){
             this.excitedCount++;
           }else if(user.mood == 'tired'){
-            this.confusedCount++;
+            this.tiredCount++;
           }else if(user.mood == 'sad'){
             this.sadCount++;
-          }else if(user.mood == 'happy'){
-              this.happyCount++;
+          }else if(user.mood == 'content'){
+            console.log("in");
+              this.contentCount++;
+              console.log("out");
           }
         }
       }
       
       console.log(this.anxietyCount);
+      console.log(this.contentCount);
       this.barGraphData = [
         { 
-            data: [Number(this.anxietyCount), this.excitedCount, this.confusedCount, this.sadCount, this.happyCount]
+            data: [Number(this.anxietyCount), this.excitedCount, this.tiredCount, this.sadCount, this.contentCount]
         }
     ];
+      
+    
     }
     
     );
     console.log(this.anxietyCount);
-
+    console.log(this.barGraphData);
   }
 
   onChartClick(event) {
