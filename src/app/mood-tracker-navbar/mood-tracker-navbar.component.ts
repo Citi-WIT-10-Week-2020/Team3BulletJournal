@@ -9,8 +9,11 @@ import { Router } from '@angular/router';
 export class MoodTrackerNavbarComponent implements OnInit {
   href: string;
   currentPage: string;
+  
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    
+  }
 
   ngOnInit(){
     this.href = this.router.url;

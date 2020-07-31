@@ -31,13 +31,14 @@ export class UserProfileContactsComponent implements OnInit {
       private alertService: AlertService
   ) {
 
-    this.currentUser = this.authenticationService.currentUserValue[0];
+    //this.currentUser = this.authenticationService.currentUserValue[0];
     console.log(this.currentUser);
   }
 
   ngOnInit() {
       //this.friendList = this.currentUser.friends;
-      
+      this.currentUser = this.authenticationService.currentUserValue[0];
+
       this.loginForm = this.formBuilder.group({
           friendToAdd: ['', Validators.required],
           
@@ -95,11 +96,13 @@ export class UserProfileContactsComponent implements OnInit {
                           this.authenticationService.addAFriend(this.currentUser._id, user) 
                                   .subscribe(
                                       data => {
-                                          this.currentUser = data;
+                                          //this.currentUser = data;
+                                          console.log(data.friends)
+                                          //this.authenticationService.currentUserValue[0].friends = data.friends;
                                           this.router.navigate([this.returnUrl]);
                                           this.alertService.success("Added Friend to Contacts");
-                                          this.currentUser = data;
-                                          console.log(data)
+                                          //this.currentUser = data;
+                                          //console.log(data)
                                           //add put request to update
                                        },
                                       error => {

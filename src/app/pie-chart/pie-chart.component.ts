@@ -67,7 +67,8 @@ export class PieChartComponent implements OnInit {
   //         console.log (err.message);
   //     }
   // );
-
+  var date = new Date();
+  var month = date.getMonth()+1;
   this.anxietyCount = 0;
   this.excitedCount = 0;
   this.tiredCount = 0;
@@ -78,7 +79,7 @@ export class PieChartComponent implements OnInit {
   .subscribe(
     data => {
       for (let user of data){
-        if(this.currentUser.username == user.username){
+        if(this.currentUser.username == user.username && user.month == month){
           console.log(user.username);
           console.log(user.mood)
           if(user.mood == "anxious"){
