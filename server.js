@@ -2,7 +2,7 @@
 const express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 const { time } = require('console');
 require('dotenv').config();
 
@@ -24,8 +24,8 @@ app.use(bodyParser());
 app.use(bodyParser.json({linit:'5mb'}));
 app.use(bodyParser.urlencoded({extended:true}));
 
-//app.set('port', (process.env.PORT || 3000));
-
+app.set('port', (process.env.PORT || 3000));
+app.listen(port);
 
  app.use(function (req, res, next) {
      res.setHeader('Access-Control-Allow-Origin', '*');
@@ -582,7 +582,8 @@ app.put('/api/updateUser', function(req,res){
     // })
 
     //app.listen(process.env.PORT || 8080, () => console.log(`Example app listening at http://localhost:8080`))
-    const port = process.env.PORT || 3000;
-    app.listen(port);
 
-    module.exports = app;
+    // const port = process.env.PORT || 3000;
+    // app.listen(port);
+
+    // module.exports = app;
