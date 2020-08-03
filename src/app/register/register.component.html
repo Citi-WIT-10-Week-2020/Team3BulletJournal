@@ -27,7 +27,7 @@
             <div class="login-form">
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                     <img src="assets/images/logo.jpg" alt="" width="100" height="80"><br><br>
-                    <div class="reg-font">Meaningful Minutes</div>
+                    <div class="type-font" style="color:black; font-size: 22px">Meaningful Minutes</div>
                     <hr>
                 <div class="form-group">
                     <input type="text" placeholder="First Name" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
@@ -77,16 +77,16 @@
         <label for="profilepicture">Choose a Profile Picture</label>
         <div class="row justify-content-center">
             <div class="col-3">
-                <input type="checkbox" id="checkbox" name="profilePicture" value="'../assets/images/creek.jpg'" class="picture-button"><img src='../assets/images/creek.jpg'>
+                <input type="checkbox" id="checkbox" value="'../assets/images/creek.jpg')" class="picture-button"><img src='../assets/images/creek.jpg'>
             </div>
             <div class="col-3">
-                <input type="checkbox" id="checkbox" name="profilePicture" value="'../assets/images/dog.jpg'" class="picture-button"><img src='../assets/images/dog.jpg'>
+                <input type="checkbox" id="checkbox" value="'../assets/images/dog.jpg')" class="picture-button"><img src='../assets/images/dog.jpg'>
             </div>
             <div class="col-3">
-                <input type="checkbox" id="checkbox" name="profilePicture" value="'../assets/images/road.jpg'" class="picture-button"><img src='../assets/images/road.jpg'>
+                <input type="checkbox" id="checkbox" value="'../assets/images/road.jpg')" class="picture-button"><img src='../assets/images/road.jpg'>
             </div>
             <div class="col-3">
-                <input type="checkbox" id="checkbox" name="profilePicture" value="'../assets/images/trees.jpg'" class="picture-button"><img src='../assets/images/trees.jpg'>
+                <input type="checkbox" id="checkbox" value="'../assets/images/trees.jpg')" class="picture-button"><img src='../assets/images/trees.jpg'>
             </div>
          </div>
     </div>

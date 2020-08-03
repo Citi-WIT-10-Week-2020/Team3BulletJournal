@@ -10,8 +10,6 @@ export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
     submitted = false;
-    profilePictures = ['../assets/images/creek.jpg', '../assets/images/dog.jpg', '../assets/images/road.jpg', '../assets/images/trees.jpg' ]
-    userProfile = '';
     
 
     constructor(
@@ -27,15 +25,6 @@ export class RegisterComponent implements OnInit {
         }
     }
 
-    userSelect(picture){
-        if(this.userProfile !== picture){ 
-          this.userProfile = picture;
-        }
-        else{
-            this.userProfile = '../assets/images/default.jpg'
-        }
-      }
-
     ngOnInit() {
         var status = "Pending";
         var host = 'false';
@@ -47,7 +36,6 @@ export class RegisterComponent implements OnInit {
             role: ['', Validators.required],
             bio: ['', Validators.required],
             hobbies: ['', Validators.required],
-            profilePicture: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]],
             email: ['', [Validators.required, Validators.email]],
             status: [status],
