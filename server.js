@@ -4,6 +4,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 const { time } = require('console');
+require('dotenv').config();
 
 var db = mongoose.connect("mongodb+srv://ekelsey:Gogators123@cluster0-rglxo.mongodb.net/Test?retryWrites=true&w=majority", function(err, responses){
     if(err) {
@@ -23,7 +24,7 @@ app.use(bodyParser());
 app.use(bodyParser.json({linit:'5mb'}));
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.set('port', (process.env.PORT || 8080));
+app.set('port', (process.env.PORT || 3000));
 
  app.use(function (req, res, next) {
      res.setHeader('Access-Control-Allow-Origin', '*');
