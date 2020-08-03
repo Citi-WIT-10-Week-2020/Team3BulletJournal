@@ -582,7 +582,7 @@ app.put('/api/updateUser', function(req,res){
     // })
 
     //app.listen(process.env.PORT || 8080, () => console.log(`Example app listening at http://localhost:8080`))
-    const port = process.env.PORT || 8080;
+    const port = process.env.PORT || 3000;
     app.listen(port);
 
     module.exports = app;
