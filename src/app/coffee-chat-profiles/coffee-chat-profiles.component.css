@@ -81,6 +81,18 @@ body {
     color: #8a8a8a;
 }
 
+.article-header{
+  margin-bottom: 5px !important;
+}
+
+.category-title{
+  text-transform: capitalize;
+}
+
+.article-title{
+  text-transform: capitalize;
+}
+
 .card:not(:first-child) {
     margin-left: -130px;
 }
