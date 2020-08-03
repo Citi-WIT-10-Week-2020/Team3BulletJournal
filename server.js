@@ -24,8 +24,8 @@ app.use(bodyParser());
 app.use(bodyParser.json({linit:'5mb'}));
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.set('port', (process.env.PORT || 3000));
-app.listen(port);
+//app.set('port', (process.env.PORT || 3000));
+
 
  app.use(function (req, res, next) {
      res.setHeader('Access-Control-Allow-Origin', '*');
@@ -582,3 +582,5 @@ app.put('/api/updateUser', function(req,res){
     // })
 
     //app.listen(process.env.PORT || 8080, () => console.log(`Example app listening at http://localhost:8080`))
+    const port = process.env.PORT || 8080;
+    app.listen(port);
