@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService, AlertService } from '../_services';
 import { FormBuilder, Validators } from '@angular/forms';
-import { NavButtonsHomeComponent } from '../nav-buttons-home/nav-buttons-home.component';
 import { first } from 'rxjs/operators';
 
 @Component({
