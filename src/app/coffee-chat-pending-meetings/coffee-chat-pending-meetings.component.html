@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="row justify-content-center mt-3">
                                     <button class="accept-button mr-1" data-toggle="modal" (click)="getMeeting(meeting)" data-target="#accept-calendar">Accept</button>
-                                    <button class="decline-button ml-1" (click)="declineMeeting(meeting)">Decline</button>
+                                    <button class="decline-button ml-1" (click)="declineMeeting(meeting)" data-dismiss="modal" aria-label="Close">Decline</button>
                                 </div>
                             </div>
                             </div>
@@ -124,7 +124,7 @@
                 <div class="modal-box">
                     <div class="modal-header">
                         <h1 class="reg-font">Delete Meeting</h1>
-                    <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
+                    <div class="close-modal justify-content-end" style="margin-top: 1em">&#10006;</div> 
                     
                     </div>
                     <div class="modal-body">
