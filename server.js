@@ -2,7 +2,7 @@
 const express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 const { time } = require('console');
 require('dotenv').config();
 
@@ -584,3 +584,5 @@ app.put('/api/updateUser', function(req,res){
     //app.listen(process.env.PORT || 8080, () => console.log(`Example app listening at http://localhost:8080`))
     const port = process.env.PORT || 8080;
     app.listen(port);
+
+    module.exports = app;
