@@ -209,6 +209,12 @@ hr.divide2 {
 }
 
 
-
+.user-icon {
+  height: 100px;
+  width: 100px;
+  background-image: "assets/images/dog.jpg";
+  border-radius: 100%;
+  display: inline-block;
+}
 
 

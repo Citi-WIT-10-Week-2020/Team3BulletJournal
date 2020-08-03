@@ -43,7 +43,7 @@ body{
 }
 
 .login-form button {
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   outline: 0;
   background: #f2b57c;
@@ -70,6 +70,34 @@ body{
 .login-form .message a {
   text-decoration: none;
 }
+
+img {
+  height: 6em !important;
+  width: 6em !important;
+  border: 2px solid grey;
+  border-radius: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#checkbox{
+  margin-left: -3 !important;
+}
+
+.picture-button {
+  background: unset !important;
+  border: unset !important;
+  outline: unset !important;
+  display: inline-block !important;
+  width: 25% !important;
+}
+
+img:hover{
+  box-shadow: 2px 2px 5px grey;
+}
+
+
 
 
 
