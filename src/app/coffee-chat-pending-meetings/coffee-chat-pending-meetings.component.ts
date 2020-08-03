@@ -77,7 +77,7 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
     .subscribe(
       data => {
         console.log(data);
-        this.returnUrl = '/coffee-chat';
+        this.returnUrl = '/coffee-chat-upcoming-meetings';
         this.router.navigate([this.returnUrl]);          
 
       }
