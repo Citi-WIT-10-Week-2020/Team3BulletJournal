@@ -23,6 +23,10 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
   timeZoneOffset = ((new Date().getTimezoneOffset()) / 60);
   sTime; //startTime without delimiter (:)
   eTime; //endTime without delimiter (:)
+  time: any[];
+  currentEndTimeHour: any;
+  currentEndTimeMinutes: any;
+
 
   //@Output() meetingEvent = new EventEmitter<string>();
 
@@ -73,7 +77,7 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
     .subscribe(
       data => {
         console.log(data);
-        this.returnUrl = '/coffee-chat';
+        this.returnUrl = '/coffee-chat-upcoming-meetings';
         this.router.navigate([this.returnUrl]);          
 
       }
@@ -166,20 +170,22 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
                 }
                 //look into querying data
                 for (let user of data){
-                
+                  this.time = user.endTime.split(':', 2);
+                  this.currentEndTimeHour = this.time[0];
+                  this.currentEndTimeMinutes = this.time[1];
                   //hostingMeetings
                     if(user.username == this.currentUser.username){
                       if (user.year == year){
                         if(user.month == month){
                           if(user.day == day){
-                            if(user.endTime == hour){
-                              if(user.endTime >= minutes){
+                            if(this.currentEndTimeHour == hour){
+                              if(this.currentEndTimeMinutes >= minutes){
                                 this.loading = false;
                                 this.hostingMeetings.push(user);
                                 found = true;
                               }
                             }
-                            if(user.endTime > hour){
+                            if(this.currentEndTimeHour > hour){
                               this.loading = false;
                               this.hostingMeetings.push(user);
                               found = true;
@@ -210,18 +216,22 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
                   }
                     //attendingMeetings
                     for(var i = 0; i < this.selectedMeetings.length; i++){
+                      this.time = this.selectedMeetings[i].endTime.split(':', 2);
+                      this.currentEndTimeHour = this.time[0];
+                      this.currentEndTimeMinutes = this.time[1];
+
                       console.log("in");
                       if (this.selectedMeetings[i].year == year){
                         if(this.selectedMeetings[i].month == month){
                           if(this.selectedMeetings[i].day == day){
-                            if(this.selectedMeetings[i].endTime == hour){
-                              if(this.selectedMeetings[i].endTime >= minutes){
+                            if(this.currentEndTimeHour == hour){
+                              if(this.currentEndTimeMinutes >= minutes){
                                 this.loading = false;
                                 this.attendingMeetings.push(this.selectedMeetings[i]);
                                 found = true;
                               }
                             }
-                            if(this.selectedMeetings[i].endTime > hour){
+                            if(this.currentEndTimeHour > hour){
                               this.loading = false;
                               this.attendingMeetings.push(this.selectedMeetings[i]);
                               found = true;

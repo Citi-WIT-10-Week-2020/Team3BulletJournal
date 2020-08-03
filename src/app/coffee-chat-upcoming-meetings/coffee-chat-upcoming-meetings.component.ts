@@ -21,7 +21,12 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
   currentMeeting: any;
   userService:UserService;
   returnUrl: any;
+  hostFname: any;
+  hostLname: any;
   meetingID: any;
+  time: any[];
+  currentEndTimeHour: any;
+  currentEndTimeMinutes: any;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -31,8 +36,6 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
     private alertService: AlertService
   ) {
     this.currentUser = this.authenticationService.currentUserValue[0];
-    //this.meetings = this.meetings;
-    
     }
    
      
@@ -46,7 +49,18 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
 
   getMeeting(meeting){
     this.currentMeeting = meeting;
-    console.log("Meeting to look at" + this.currentMeeting)
+    console.log("Meeting to look at" + this.currentMeeting);
+    this.authenticationService.getAllUsers()
+    .subscribe(
+      data=>{
+        for(let user of data){
+          if(user.username == this.currentMeeting.host){
+            this.hostFname = user.firstName;
+            this.hostLname = user.lastName;
+          }
+        }
+      }
+    );
   }
 
   sendMeeting(currentMeeting){
@@ -123,25 +137,33 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                 //look into querying data
                 for (let user of data){
                 
+                  this.time = user.endTime.split(':', 2);
+                  this.currentEndTimeHour = this.time[0];
+                  this.currentEndTimeMinutes = this.time[1];
+
                   //hostingMeetings
                     if(user.username == this.currentUser.username){
                       if (user.year == year){
                         if(user.month == month){
-                          if(user.day == day){
-                            if(user.endTime == hour){
-                              if(user.endTime >= minutes){
+                          if(user.day == day){      
+                            if(this.currentEndTimeHour == hour){
+                              console.log("hour mark");
+                              if(this.currentEndTimeMinutes >= minutes){
+                                console.log("pushed");
                                 this.loading = false;
                                 this.hostingMeetings.push(user);
                                 found = true;
                               }
                             }
-                            if(user.endTime > hour){
+                            if(this.currentEndTimeHour > hour){
                               this.loading = false;
+                              console.log("greater hour");
                               this.hostingMeetings.push(user);
                               found = true;
                             }
                           }
                           if (user.day > day){
+                            console.log("greater day");
                               this.loading = false;
                               this.hostingMeetings.push(user);
                               found = true;
@@ -163,21 +185,26 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                               found = true;
                         }
                     }
-                  }
+                }
+                  
                     //attendingMeetings
                     for(var i = 0; i < this.selectedMeetings.length; i++){
-                      console.log("in");
+
+                      this.time = this.selectedMeetings[i].endTime.split(':', 2);
+                      this.currentEndTimeHour = this.time[0];
+                      this.currentEndTimeMinutes = this.time[1];
+
                       if (this.selectedMeetings[i].year == year){
                         if(this.selectedMeetings[i].month == month){
                           if(this.selectedMeetings[i].day == day){
-                            if(this.selectedMeetings[i].endTime == hour){
-                              if(this.selectedMeetings[i].endTime >= minutes){
+                            if(this.currentEndTimeHour == hour){
+                              if(this.currentEndTimeMinutes >= minutes){
                                 this.loading = false;
                                 this.attendingMeetings.push(this.selectedMeetings[i]);
                                 found = true;
                               }
                             }
-                            if(this.selectedMeetings[i].endTime > hour){
+                            if(this.currentEndTimeHour > hour){
                               this.loading = false;
                               this.attendingMeetings.push(this.selectedMeetings[i]);
                               found = true;
@@ -206,16 +233,12 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                         }
                     }
                 
+                
                 if(found == false){
                     console.log("No meetings found :(");
                     this.loading = false;
                     this.alertService.error("No scheduled meetings");
                 }
-
-                // for(let user of this.hostingMeetings){
-                //   console.log('got through');
-                //   console.log(user);
-                // }
 
             },
             error => {
