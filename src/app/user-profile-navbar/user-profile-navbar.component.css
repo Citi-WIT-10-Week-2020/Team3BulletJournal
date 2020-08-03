@@ -73,3 +73,7 @@
 .color-button:hover{
     box-shadow: 1px 1px 5px grey;
 }
+
+.navbar{
+    padding: 15px;
+}
