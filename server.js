@@ -24,7 +24,7 @@ app.use(bodyParser());
 app.use(bodyParser.json({linit:'5mb'}));
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 8080));
 
  app.use(function (req, res, next) {
      res.setHeader('Access-Control-Allow-Origin', '*');
@@ -82,7 +82,8 @@ const UsersSchema = Schema({
     hobbies: {type:String},
     role: {type:String}, 
     status: {type:String},
-    hostBool: {type: Boolean}
+    hostBool: {type: Boolean},
+    icon: {type: String}
 
 },{versionKey: false});
 
