@@ -35,7 +35,7 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
    ngOnInit(){
     this.peopleList = this.currentUser.friends;
     this.createMeeting = this.formBuilder.group({
-
+      participants: ['', Validators.required],
       date: ['', Validators.required],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
@@ -67,18 +67,22 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
   get f() { return this.createMeeting.controls; }
   
   onSubmit() {
-
+    this.createMeeting.value.participants = this.selectedPeople;
     this.submitted = true;
     console.log("in on SUBMIT")
+
     // reset alerts on submit
     this.alertService.clear();
-    // stop here if form is invalid
-    // if (this.createMeeting.invalid) {
-    //     return;
-    // }
-​
+ 
+    if (this.createMeeting.invalid || this.selectedPeople.length < 1) {
+        console.log ("invalid");
+        console.log(this.createMeeting);
+        console.log(this.createMeeting.invalid);
+        console.log (this.selectedPeople.length);
+          return;
+    }
     this.loading = true;
-    this.authenticationService.createMeeting(this.currentUser.username, this.selectedPeople, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.startTime.value, this.f.endTime.value, this.f.title.value, this.host)
+    this.authenticationService.createMeeting(this.currentUser.username, this.f.participants.value, this.f.date.value.substring(8,10), this.f.date.value.substring(5,7), this.f.date.value.substring(0,4), this.f.startTime.value, this.f.endTime.value, this.f.title.value, this.host)
         .subscribe(
             data => {
                 this.alertService.success('Meeting Scheduled', true);
