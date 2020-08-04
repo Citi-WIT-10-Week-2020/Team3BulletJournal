@@ -39,12 +39,12 @@ export class PieChartComponent implements OnInit {
     // CHART COLOR.
     this.pieChartColor = [
         {
-            backgroundColor: ['rgba(30, 169, 224, 0.8)',
-            'rgba(255,165,0,0.9)',
-            'rgba(139, 136, 136, 0.9)',
-            'rgba(255, 161, 181, 0.9)',
-            'rgba(255, 102, 0, 0.9)'
-            ]
+          backgroundColor: ['rgba(189, 218, 255, 0.9)',
+          'rgba(244, 195, 137, 0.9)',
+          'rgba(183, 158, 177, 0.9)',
+          'rgba(226, 184, 175, 0.9)',
+          'rgba(200, 226, 199, 0.9)'
+          ]
         }
     ]
 

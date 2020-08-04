@@ -42,6 +42,9 @@ export class UserProfileNavbarComponent implements OnInit {
     if(this.themeSelected=="orange") {
       this.colorOrange()
     }
+    if(this.themeSelected==null) {
+      this.colorGreen()
+    }
   }
   colorPink(){
     console.log("pink")
