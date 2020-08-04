@@ -44,6 +44,7 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
   ngOnInit(): void {
     this.currentMeeting = {participants: this.currentUser.friends};
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/coffee-chat-upcoming-meetings';
+    
     this.onSubmit();
   }
 

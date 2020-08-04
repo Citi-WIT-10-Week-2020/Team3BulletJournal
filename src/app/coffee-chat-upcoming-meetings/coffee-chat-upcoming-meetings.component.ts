@@ -44,7 +44,12 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
     this.currentMeeting = {participants: this.currentUser.friends}; 
     this.onSubmit();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/coffee-chat-pending-meetings';
-
+    if (!localStorage.getItem('autoLoad')) { 
+      localStorage.setItem('autoLoad', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('autoLoad') 
+    }
   }
 
   getMeeting(meeting){
