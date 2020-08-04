@@ -29,11 +29,11 @@
                     <label for="people" style="color: black; font-weight: 600;">People:</label>
                     <div class="user-select">
                         <div *ngFor="let person of peopleList"  [ngValue]="person">
-                            <input type="checkbox" id="checkbox"(change)="userSelect(person)" [disabled]="maxCapacity && !this.selectedPeople.includes(person)">
-
+                            <input type="checkbox" id="checkbox" (change)="userSelect(person)" [disabled]="maxCapacity && !this.selectedPeople.includes(person)">
                             <label>{{person.firstName}} {{person.lastName}}</label>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label style="color: black; font-weight: 600;">Meeting Title</label>
                         <input type="text" placeholder="type title here" formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />

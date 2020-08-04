@@ -4,7 +4,11 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 const { time } = require('console');
+
 const bcrypt = require('bcrypt');
+
+require('dotenv').config();
+
 
 var db = mongoose.connect("mongodb+srv://ekelsey:Gogators123@cluster0-rglxo.mongodb.net/Test?retryWrites=true&w=majority", function(err, responses){
     if(err) {
@@ -82,7 +86,8 @@ const UsersSchema = Schema({
     hobbies: {type:String},
     role: {type:String}, 
     status: {type:String},
-    hostBool: {type: Boolean}
+    hostBool: {type: Boolean},
+    icon: {type: String}
 
 },{versionKey: false});
 
