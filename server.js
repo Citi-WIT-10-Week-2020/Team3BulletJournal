@@ -4,6 +4,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 const { time } = require('console');
+const bcrypt = require('bcrypt');
 
 var db = mongoose.connect("mongodb+srv://ekelsey:Gogators123@cluster0-rglxo.mongodb.net/Test?retryWrites=true&w=majority", function(err, responses){
     if(err) {
@@ -122,6 +123,19 @@ app.put('/api/updateUser', function(req,res){
         });
 })   
 
+app.post("/api/fakeLogin", function(req,res){
+    console.log('login reached');
+    model.find({username: req.body.username}, function(err, data) {
+        if(err) {
+            res.send(err);
+        }
+        else{
+            res.send(data);
+            
+        }
+    });
+})
+
     app.post("/api/login", function(req,res){
         console.log('login reached');
         model.find({username: req.body.username}, function(err, data) {
@@ -129,14 +143,31 @@ app.put('/api/updateUser', function(req,res){
                 res.send(err);
             }
             else{
-                res.send(data);
+                console.log(data[0].password)
+                bcrypt.compare(req.body.password, data[0].password, function(err, isMatch) {
+                if (err) {
+                    throw err
+                  } else if (!isMatch) {
+                    console.log("Password doesn't match!")
+                    
+                  } else {
+                    console.log("Password matches!")
+                    res.send(data)
+                  }
                 
+                })
             }
         });
     })
 
-    app.post("/api/register", function(req,res){
+    app.post("/api/register", async (req,res) => {
         console.log('working in server');
+        
+        try {
+        const salt = await bcrypt.genSalt();
+        const hashedPassword = await bcrypt.hash(req.body.password, salt)
+        req.body.password = hashedPassword;
+        console.log(req.body.password);
         var mod = new model(req.body);
         mod.save(function(err,data){
             if(err){
@@ -144,9 +175,16 @@ app.put('/api/updateUser', function(req,res){
                 res.send(err);
             }
             else{
+             
                 res.send(data);
             }
-        });
+        });    
+    }catch{
+
+    }
+
+        
+       
     })
 
     app.get("/api/getUser", function(req,res){
