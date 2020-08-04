@@ -34,6 +34,7 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
 ​
    ngOnInit(){
     this.peopleList = this.currentUser.friends;
+   
     this.createMeeting = this.formBuilder.group({
       participants: ['', Validators.required],
       date: ['', Validators.required],

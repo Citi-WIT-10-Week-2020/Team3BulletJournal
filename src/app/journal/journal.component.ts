@@ -17,7 +17,9 @@ export class JournalComponent implements OnInit {
     this.currentUser = this.authenticationService.currentUserValue[0];
   }
   ngOnInit(): void {
-   
+    if(this.currentUser.friends == undefined){
+      window.location.reload();        
+    }
   }
 
 }

@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
           }
         this.loadAllUsers();
         this.currentUser = this.authenticationService.currentUserValue[0];
-        console.log(this.currentUser.friends)
+        console.log(this.currentUser)
     }
 
     deleteUser(id: number) {

@@ -97,13 +97,21 @@ export class UserProfileContactsComponent implements OnInit {
                                   .subscribe(
                                       data => {
                                           //this.currentUser = data;
-                                          console.log(data.friends)
-                                          //this.authenticationService.currentUserValue[0].friends = data.friends;
-                                          this.router.navigate([this.returnUrl]);
-                                          this.alertService.success("Added Friend to Contacts");
-                                          //this.currentUser = data;
-                                          //console.log(data)
-                                          //add put request to update
+                                          var username = this.currentUser.username;
+                                          var password = this.currentUser.password;
+                                          localStorage.removeItem('currentUser');
+                                          this.authenticationService.fakeLogin(username, password)
+                                          .subscribe(
+                                            data => {
+                                              console.log(data.friends)
+                                              //this.authenticationService.currentUserValue[0] = data;
+                                              this.router.navigate([this.returnUrl]);
+                                              this.alertService.success("Added Friend to Contacts");
+                                              //console.log(data)
+                                              //add put request to update
+                                            }
+                                          )
+                                          
                                        },
                                       error => {
                                           this.alertService.error(error);
@@ -128,7 +136,7 @@ export class UserProfileContactsComponent implements OnInit {
                
             }
             
-              
+              console.log(this.authenticationService.currentUserValue[0] )
   }
     updateStats() {
         throw new Error("Method not implemented.");
