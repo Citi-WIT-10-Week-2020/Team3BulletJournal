@@ -20,7 +20,7 @@
       <br>
 <!--Have each participants profile with pic/avatar, Name, profession, bio-->
 <div class="card-container" style="overflow-y: hidden; overflow-x: hidden;">
-    <div class="card" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant">
+    <div class="card" *ngFor="let participant of currentMeeting.participants" [ngValue]="participant" id="profiles">
         <header class="article-header">
             <div>
                 <h3 class="article-title">

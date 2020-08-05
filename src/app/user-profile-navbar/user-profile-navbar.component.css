@@ -48,6 +48,20 @@
     background: var(--color-navbar);
 }
 
+::ng-deep #userModal{
+    background: var(--color-second);
+}
+
+::ng-deep #userModalButton{
+    border: 2px solid var(--color-second);
+    color: var(--color-navbar);
+}
+
+::ng-deep #userModalButton:hover{
+    color: var(--color-navbar);
+    background: var(--color-first);
+}
+
 .dropdown-menu{
     background-color: var(--color-navbar);
     width: fit-content !important;
