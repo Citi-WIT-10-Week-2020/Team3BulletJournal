@@ -72,8 +72,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
   sendMeeting(currentMeeting){
     this.meetingID = currentMeeting._id;
     localStorage.setItem('currentMeeting', JSON.stringify(this.meetingID));
-    //console.log("emitted");
-    //this.meetingEvent.emit(this.meetingID);
+    
   }
 
   declineMeeting(meeting){
@@ -164,6 +163,14 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                               if(this.currentEndTimeMinutes >= minutes){
                                 console.log("pushed");
                                 this.loading = false;
+                                this.time = user.startTime.split(':', 2);
+                                var startHour = this.time[0];
+                                var startMinutes = this.time[1];
+                                if(!isNaN(Number(startHour))){
+                                  startHour = Number(startHour) + (this.timeZoneOffset / 60);
+                                }
+                                user.startTime = String(startHour) + ":" + String(startMinutes);
+                                user.endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                                 this.hostingMeetings.push(user);
                                 found = true;
                               }
@@ -171,6 +178,15 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                             if(this.currentEndTimeHour > hour){
                               this.loading = false;
                               console.log("greater hour");
+                              this.time = user.startTime.split(':', 2);
+                                var startHour = this.time[0];
+                                var startMinutes = this.time[1];
+                                if(!isNaN(Number(startHour))){
+                                  startHour = Number(startHour) + (this.timeZoneOffset / 60);
+                                 
+                                }
+                                user.startTime = String(startHour) + ":" + String(startMinutes);
+                                user.endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.hostingMeetings.push(user);
                               found = true;
                             }
@@ -178,6 +194,15 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                           if (user.day > day){
                             console.log("greater day");
                               this.loading = false;
+                              this.time = user.startTime.split(':', 2);
+                                var startHour = this.time[0];
+                                var startMinutes = this.time[1];
+                                if(!isNaN(Number(startHour))){
+                                  startHour = Number(startHour) + (this.timeZoneOffset / 60);
+                                 
+                                }
+                                user.startTime = String(startHour) + ":" + String(startMinutes);
+                                user.endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.hostingMeetings.push(user);
                               found = true;
                           }
@@ -186,6 +211,15 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                         if(user.month > month){
                           console.log('greater month');
                               this.loading = false;
+                              this.time = user.startTime.split(':', 2);
+                                var startHour = this.time[0];
+                                var startMinutes = this.time[1];
+                                if(!isNaN(Number(startHour))){
+                                  startHour = Number(startHour) + (this.timeZoneOffset / 60);
+                                 
+                                }
+                                user.startTime = String(startHour) + ":" + String(startMinutes);
+                                user.endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.hostingMeetings.push(user);
                               found = true;
                         }
@@ -194,6 +228,15 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                       if(user.year > year){
                         console.log('greater year');
                               this.loading = false;
+                              this.time = user.startTime.split(':', 2);
+                                var startHour = this.time[0];
+                                var startMinutes = this.time[1];
+                                if(!isNaN(Number(startHour))){
+                                  startHour = Number(startHour) + (this.timeZoneOffset / 60);
+                                 
+                                }
+                                user.startTime = String(startHour) + ":" + String(startMinutes);
+                                user.endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.hostingMeetings.push(user);
                               found = true;
                         }
@@ -220,18 +263,45 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                             if(this.currentEndTimeHour == hour){
                               if(this.currentEndTimeMinutes >= minutes){
                                 this.loading = false;
+                                this.time = this.selectedMeetings[i].startTime.split(':', 2);
+                                var startHour = this.time[0];
+                                var startMinutes = this.time[1];
+                                if(!isNaN(Number(startHour))){
+                                  startHour = Number(startHour) + (this.timeZoneOffset / 60);
+                                  
+                                }
+                                this.selectedMeetings[i].startTime = String(startHour) + ":" + String(startMinutes);
+                                this.selectedMeetings[i].endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                                 this.attendingMeetings.push(this.selectedMeetings[i]);
                                 found = true;
                               }
                             }
                             if(this.currentEndTimeHour > hour){
                               this.loading = false;
+                              this.time = this.selectedMeetings[i].startTime.split(':', 2);
+                                var startHour = this.time[0];
+                                var startMinutes = this.time[1];
+                                if(!isNaN(Number(startHour))){
+                                  startHour = Number(startHour) + (this.timeZoneOffset / 60);
+                                  
+                                }
+                                this.selectedMeetings[i].startTime = String(startHour) + ":" + String(startMinutes);
+                                this.selectedMeetings[i].endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.attendingMeetings.push(this.selectedMeetings[i]);
                               found = true;
                             }
                           }
                           if (this.selectedMeetings[i].day > day){
                               this.loading = false;
+                              this.time = this.selectedMeetings[i].startTime.split(':', 2);
+                                var startHour = this.time[0];
+                                var startMinutes = this.time[1];
+                                if(!isNaN(Number(startHour))){
+                                  startHour = Number(startHour) + (this.timeZoneOffset / 60);
+                                 
+                                }
+                                this.selectedMeetings[i].startTime = String(startHour) + ":" + String(startMinutes);
+                                this.selectedMeetings[i].endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.attendingMeetings.push(this.selectedMeetings[i]);
                               found = true;
                           }
@@ -240,6 +310,15 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                         if(this.selectedMeetings[i].month > month){
                           console.log('greater month');
                               this.loading = false;
+                              this.time = this.selectedMeetings[i].startTime.split(':', 2);
+                                var startHour = this.time[0];
+                                var startMinutes = this.time[1];
+                                if(!isNaN(Number(startHour))){
+                                  startHour = Number(startHour) + (this.timeZoneOffset / 60);
+                                  
+                                }
+                                this.selectedMeetings[i].startTime = String(startHour) + ":" + String(startMinutes);
+                                this.selectedMeetings[i].endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.attendingMeetings.push(this.selectedMeetings[i]);
                               found = true;
                         }
@@ -248,6 +327,15 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                       if(this.selectedMeetings[i].year > year){
                         console.log('greater year');
                               this.loading = false;
+                              this.time = this.selectedMeetings[i].startTime.split(':', 2);
+                                var startHour = this.time[0];
+                                var startMinutes = this.time[1];
+                                if(!isNaN(Number(startHour))){
+                                  startHour = Number(startHour) + (this.timeZoneOffset / 60);
+                                 
+                                }
+                                this.selectedMeetings[i].startTime = String(startHour) + ":" + String(startMinutes);
+                                this.selectedMeetings[i].endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.attendingMeetings.push(this.selectedMeetings[i]);
                               found = true;
                         }
