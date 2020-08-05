@@ -26,7 +26,6 @@ body {
     max-width: 300px;
     height: 500px;
     border-radius: 16px;
-    background-color: #ffd59a;
     box-shadow: -1rem 0 3rem rgb(146, 142, 142);
     display: flex;
     flex-direction: column;

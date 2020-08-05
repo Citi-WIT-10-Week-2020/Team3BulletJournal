@@ -56,6 +56,11 @@
     color: var(--color-navbar);
 }
 
+::ng-deep #jModalButton:hover{
+    color: var(--color-navbar);
+    background: var(--color-first);
+}
+
 
 .dropdown-menu{
     background-color: var(--color-navbar);
@@ -66,7 +71,7 @@
 
 .dropdown-item:hover{
     cursor: pointer;
-    background-color: #b3cbd0;
+    background-color: var(--color-first);
 }
 .text-grey{
     color: rgb(97, 96, 96) !important;

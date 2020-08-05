@@ -25,6 +25,7 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
   hostLname: any;
   meetingID: any;
   time: any[];
+  timeZoneOffset = ((new Date().getTimezoneOffset()));
   currentEndTimeHour: any;
   currentEndTimeMinutes: any;
   
@@ -146,6 +147,13 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                   this.currentEndTimeHour = this.time[0];
                   this.currentEndTimeMinutes = this.time[1];
 
+                  if(!isNaN(Number(this.currentEndTimeHour))){
+                    this.currentEndTimeHour = Number(this.currentEndTimeHour) + (this.timeZoneOffset / 60);
+                    if(!isNaN(Number(this.currentEndTimeMinutes))){
+                      this.currentEndTimeMinutes = Number(this.currentEndTimeMinutes) + (this.timeZoneOffset % 60);
+                    }
+                  }
+
                   //hostingMeetings
                     if(user.username == this.currentUser.username){
                       if (user.year == year){
@@ -198,6 +206,13 @@ export class CoffeeChatUpcomingMeetingsComponent implements OnInit {
                       this.time = this.selectedMeetings[i].endTime.split(':', 2);
                       this.currentEndTimeHour = this.time[0];
                       this.currentEndTimeMinutes = this.time[1];
+                      
+                      if(!isNaN(Number(this.currentEndTimeHour))){
+                        this.currentEndTimeHour = Number(this.currentEndTimeHour) + (this.timeZoneOffset / 60);
+                        if(!isNaN(Number(this.currentEndTimeMinutes))){
+                          this.currentEndTimeMinutes = Number(this.currentEndTimeMinutes) + (this.timeZoneOffset % 60);
+                        }
+                      }
 
                       if (this.selectedMeetings[i].year == year){
                         if(this.selectedMeetings[i].month == month){

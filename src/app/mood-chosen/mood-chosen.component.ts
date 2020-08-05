@@ -41,17 +41,17 @@ export class MoodChosenComponent implements OnInit {
   ]
 
   TiredWatch = [
-    {title: 'CWatch1', link: 'https://www.youtube.com/watch?v=6LZ7QqoY_1w'}
+    {title: 'CWatch1', link: 'https://www.youtube.com/watch?v=nn42RC1zT_A'}
   ]
 
   TiredRead = [
-    {title: 'CRead1', link: 'https://theconversation.com/confused-dont-worry-because-that-can-be-a-good-thing-64421'},
-     {title: 'CRead2', link: 'https://tinybuddha.com/blog/how-to-find-clarity-when-youre-confused-about-what-to-do/'}
+    {title: 'CRead1', link: 'https://www.medicalnewstoday.com/articles/8877'},
+     {title: 'CRead2', link: 'https://www.newscientist.com/article/mg23230950-400-tired-all-the-time-why-fatigue-isnt-just-about-sleep/'}
   ]
 
   TiredDo = [
-    {title: 'CDo1', link: 'https://www.huffpost.com/entry/4-ways-to-find-direction-when-you-are-feeling-confused_b_5798e0dde4b0e339c2400320'},
-    {title: 'CDo2', link: 'https://lifehacks.io/lost-and-confused/'}
+    {title: 'CDo1', link: 'https://www.yourworldhealthcare.com/uk/news/7-activities-for-when-youre-tired'},
+    {title: 'CDo2', link: 'https://tinybuddha.com/blog/how-to-deal-with-exhaustion-10-tips-to-function-better-when-youre-tired/'}
   ]
 
   ContentWatch = [

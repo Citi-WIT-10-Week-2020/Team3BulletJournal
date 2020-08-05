@@ -36,7 +36,7 @@ export class CoffeeChatSelectFriendsComponent implements OnInit {
     this.peopleList = this.currentUser.friends;
    
     this.createMeeting = this.formBuilder.group({
-      participants: ['', Validators.required],
+      participants: [this.selectedPeople, this.selectedPeople.length > 0],
       date: ['', Validators.required],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
