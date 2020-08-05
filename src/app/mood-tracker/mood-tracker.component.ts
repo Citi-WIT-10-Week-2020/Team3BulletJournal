@@ -39,11 +39,15 @@ export class MoodTrackerComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (!localStorage.getItem('autoLoad')) { 
-      localStorage.setItem('autoLoad', 'no reload') 
-      location.reload() 
-    } else {
-      localStorage.removeItem('autoLoad') 
+    // if (!localStorage.getItem('autoLoad')) { 
+    //   localStorage.setItem('autoLoad', 'no reload') 
+    //   location.reload() 
+    // } else {
+    //   localStorage.removeItem('autoLoad') 
+    // }
+
+    if(this.currentUser.friends == undefined){
+      window.location.reload();        
     }
     
 

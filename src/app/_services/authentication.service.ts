@@ -46,10 +46,8 @@ export class AuthenticationService {
         return this.currentJournalSubject.value;
     }
 
-    
-
-    login(username, password) {
-        return this.http.post<any>(`http://localhost:8080/api/login`, { username, password })
+    fakeLogin(username, password) {
+        return this.http.post<any>(`http://localhost:8080/api/fakeLogin`, { username, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
@@ -59,8 +57,22 @@ export class AuthenticationService {
             }));
     }
 
+
+//https://meaningful-minutes.herokuapp.com
+    login(username, password) {
+        return this.http.post<any>(`http://localhost:8080/api/login`, { username, password })
+            .pipe(map(user => {
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                this.currentUserSubject.next(JSON.stringify(user));
+                
+                return user;
+            }));
+    }
+
     addAFriend(_id, friendToAdd){
-        return this.http.put<any>(`http://localhost:8080/api/addAFriend`, { _id, friendToAdd })
+        return this.http.put<any>(`https://meaningful-minutes.herokuapp.com/api/addAFriend`, { _id, friendToAdd })
         .pipe(map(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             //localStorage.setItem('currentUser', JSON.stringify(user));
@@ -71,23 +83,23 @@ export class AuthenticationService {
     }
 
     getAllUsers(){
-        return this.http.get<any>(`http://localhost:8080/api/getAllUsers`);
+        return this.http.get<any>(`https://meaningful-minutes.herokuapp.com/api/getAllUsers`);
     }
 
     getAllJournals(){
-        return this.http.get<any>(`http://localhost:8080/api/getAllJournals`);
+        return this.http.get<any>(`https://meaningful-minutes.herokuapp.com/api/getAllJournals`);
     }
 
     saveJournal(username, title, prompt, day, month, year, text, type){
-        return this.http.post<any>(`http://localhost:8080/api/saveJournalEntry`, {username, title, prompt, day, month, year, text, type});
+        return this.http.post<any>(`https://meaningful-minutes.herokuapp.com/api/saveJournalEntry`, {username, title, prompt, day, month, year, text, type});
     }
 
     getAllMeetings(){
-        return this.http.get<any>(`http://localhost:8080/api/getAllMeetings`);
+        return this.http.get<any>(`https://meaningful-minutes.herokuapp.com/api/getAllMeetings`);
     }
 
     createMeeting(username, participants, day, month, year, startTime, endTime, title, host){
-        return this.http.post<any>(`http://localhost:8080/api/createMeeting`, {username, participants, day, month, year, startTime, endTime, title, host});
+        return this.http.post<any>(`https://meaningful-minutes.herokuapp.com/api/createMeeting`, {username, participants, day, month, year, startTime, endTime, title, host});
     }
 
     acceptMeeting(meeting, index){
@@ -95,7 +107,7 @@ export class AuthenticationService {
         var _id = meeting._id;
         console.log("_id: " + _id);
 
-        return this.http.put<any>(`http://localhost:8080/api/acceptMeeting`, {_id, index})
+        return this.http.put<any>(`https://meaningful-minutes.herokuapp.com/api/acceptMeeting`, {_id, index})
         .pipe(map(user => {
             console.log("inside the pipe")
             return user;
@@ -107,7 +119,7 @@ export class AuthenticationService {
         var _id = meeting._id;
         console.log("_id: " + _id);
 
-        return this.http.put<any>(`http://localhost:8080/api/declineMeeting`, {_id, index})
+        return this.http.put<any>(`https://meaningful-minutes.herokuapp.com/api/declineMeeting`, {_id, index})
         .pipe(map(user => {
             console.log("inside the pipe")
             return user;
@@ -115,7 +127,7 @@ export class AuthenticationService {
     }
     
     saveMood(username, mood, day, month, year){
-        return this.http.post<any>(`http://localhost:8080/api/saveMood`, {username, mood, day, month, year})
+        return this.http.post<any>(`https://meaningful-minutes.herokuapp.com/api/saveMood`, {username, mood, day, month, year})
         .pipe(map(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentMood', JSON.stringify(user));
@@ -126,13 +138,13 @@ export class AuthenticationService {
     }
 
     getAllMoods(){
-        return this.http.get<any>(`http://localhost:8080/api/getAllMoods`);
+        return this.http.get<any>(`https://meaningful-minutes.herokuapp.com/api/getAllMoods`);
     }
 
     
     deleteMood(id, mood) {
         console.log('inside new deleteMood in auth');
-        return this.http.put<any>(`http://localhost:8080/api/removeMood`, {id, mood})
+        return this.http.put<any>(`https://meaningful-minutes.herokuapp.com/api/removeMood`, {id, mood})
         .pipe(map(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentMood', JSON.stringify(user));
@@ -144,7 +156,7 @@ export class AuthenticationService {
 
     updatePromptJournal(_id, title, textEntry){
         console.log('hi')
-        return this.http.put<any>(`http://localhost:8080/api/updatePromptJournal`, {_id, title, textEntry})
+        return this.http.put<any>(`https://meaningful-minutes.herokuapp.com/api/updatePromptJournal`, {_id, title, textEntry})
         .pipe(map(user => {
             console.log('in update')
             // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -156,7 +168,7 @@ export class AuthenticationService {
     updateUser(_id, userData){
         console.log('hi')
         console.log(userData)
-        return this.http.put<any>(`http://localhost:8080/api/updateUser`, {_id, userData})
+        return this.http.put<any>(`https://meaningful-minutes.herokuapp.com/api/updateUser`, {_id, userData})
         .pipe(map(user => {
             console.log('in update')
             //console.log(user)
@@ -178,7 +190,7 @@ export class AuthenticationService {
                 _id: _id
             },
         };
-        return this.http.delete<any>(`http://localhost:8080/api/deleteJournal`, options)
+        return this.http.delete<any>(`https://meaningful-minutes.herokuapp.com/api/deleteJournal`, options)
     }
 
     deleteUser(_id){
@@ -190,7 +202,7 @@ export class AuthenticationService {
                 _id: _id
             },
         };
-        return this.http.delete<any>(`http://localhost:8080/api/deleteUser`, options)
+        return this.http.delete<any>(`https://meaningful-minutes.herokuapp.com/api/deleteUser`, options)
     }
 
     deleteMeeting(_id){
@@ -202,13 +214,13 @@ export class AuthenticationService {
                 _id: _id
             },
         };
-        return this.http.delete<any>(`http://localhost:8080/api/deleteMeeting`, options)
+        return this.http.delete<any>(`https://meaningful-minutes.herokuapp.com/api/deleteMeeting`, options)
     }
 
 
     updateFreeJournal(_id, title, textEntry){
         console.log('hi')
-        return this.http.put<any>(`http://localhost:8080/api/updateFreeJournal`, {_id, title, textEntry})
+        return this.http.put<any>(`https://meaningful-minutes.herokuapp.com/api/updateFreeJournal`, {_id, title, textEntry})
         .pipe(map(user => {
             console.log('in update')
             // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -229,8 +241,13 @@ export class AuthenticationService {
     }
 
     delete(id) {
-        return this.http.delete(`http://localhost:8080/api/deleteUser`, id);
+        return this.http.delete(`https://meaningful-minutes.herokuapp.com/api/deleteUser`, id);
     }
+
+    // delete(id) {
+    //     return this.http.delete(`http://localhost:8080/api/deleteUser`, id);
+    // }
+
 
 
 }

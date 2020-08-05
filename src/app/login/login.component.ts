@@ -82,8 +82,13 @@ export class LoginComponent implements OnInit {
                                 //.pipe(first())
                                     .subscribe(
                                         data => {
-                                            this.router.navigate([this.returnUrl]);
-                                            
+                                            console.log(this.authenticationService.currentUserValue)
+                                            if(this.authenticationService.currentUserValue == "null"){
+                                                console.log('its null')
+                                                this.alertService.error("User name or password is incorrect")
+                                            }else{
+                                                this.router.navigate([this.returnUrl]);
+                                            }
                                          },
                                         error => {
                                             this.alertService.error(error);
