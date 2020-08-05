@@ -6,7 +6,6 @@
     --color-navbar: #99b6dc;
     --color-light: #F7FFFF;
     /*--color-navbar: #7ca5af; */
-
 }
 
 ::ng-deep html [data-theme="pink"] {
@@ -89,6 +88,9 @@
     background-color: var(--color-light);
 }
 
+::ng-deep #profiles{
+    background-color: var(--color-second)
+}
 
 .dropdown-menu{
     background-color: var(--color-navbar);

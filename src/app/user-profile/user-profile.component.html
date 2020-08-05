@@ -72,7 +72,7 @@
             <div class="modal" id="edit-profile">
                 <div class="modal-sandbox"></div>
                 <div class="modal-box">
-                    <div class="modal-header">
+                    <div class="modal-header" id="userModal">
                         <h3 class="type-font">Edit Profile</h3>
                     <div class="close-modal justify-content-end" style="margin-top: 1em" data-dismiss="modal" aria-label="Close">&#10006;</div> 
                     </div>
@@ -134,7 +134,7 @@
                         </div>
                         <div class="form-group">
 
-                            <button [disabled]="loading" class="modal-button" >
+                            <button [disabled]="loading" class="modal-button" id="userModalButton">
 
                                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                 Update Account
