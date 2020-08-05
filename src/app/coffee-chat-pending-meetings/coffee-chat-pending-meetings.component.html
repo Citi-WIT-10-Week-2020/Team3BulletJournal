@@ -37,7 +37,7 @@
                         <div class="card" id="pendingMeetings">
                         <div class="card-title justify-content-end reg-font m-3">
                             <a style="font-size: 18px; font-weight: 600;">{{meeting.month}}/{{meeting.day}}/{{meeting.year}}</a>
-                            <a style="font-size: 18px;">{{meeting.startTime}} — {{meeting.endTime}}</a>
+                            <a style="font-size: 18px;">{{meeting.startTime}} — {{meeting.endTime}} (local time)</a>
                             <button class="btn-2 collapsed justify-content-end" data-toggle="collapse" (click)="getMeeting(meeting)" data-target="#collapse1" aria-expanded="false" aria-controls="collapse">
                                 <a style="font-size: 15px;">{{meeting.participants.length}} Attendee(s)</a><span class="fa fa-chevron-down fa-sm"></span>
                             </button>
@@ -75,7 +75,7 @@
                         <div class="card" id="pendingMeetings">
                         <div class="card-title justify-content-end reg-font m-3">
                             <a style=" font-size: 18px; font-weight: 600;">{{meeting.month}}/{{meeting.day}}/{{meeting.year}}</a>
-                            <a style=" font-size: 18px;">{{meeting.startTime}} — {{meeting.endTime}}</a>
+                            <a style=" font-size: 18px;">{{meeting.startTime}} — {{meeting.endTime}} (local time)</a>
                         </div>
                         <div class="card-body mt-0">
                             <a style="font-size: 18px;">{{meeting.title}}</a>
@@ -137,7 +137,7 @@
                 <div class="modal-body">
                     <p>Would you like to add this meeting to your Google Calendar? </p>
                 <br />
-                <a class="modal-button" aria-label="Close" (click)="updateTimeVariables(currentMeeting); getParticipantEmails(currentMeeting); acceptMeeting(currentMeeting)"
+                <a type="button" class="modal-button" aria-label="Close" (click)="updateTimeVariables(currentMeeting); getParticipantEmails(currentMeeting); acceptMeeting(currentMeeting)"
                 href="http://www.google.com/calendar/event?action=TEMPLATE&text={{currentMeeting.title}}&dates={{currentMeeting.year}}{{currentMeeting.month}}{{currentMeeting.day}}T{{sTime}}00/{{currentMeeting.year}}{{currentMeeting.month}}{{currentMeeting.day}}T{{eTime}}00&trp=false&sprop=&sprop=name:" target="_blank" rel="nofollow" id="createMeeting">Yes, Add to Google Calendar</a>
                 
                 <button type="button" class="modal-button" data-dismiss="modal"  (click)="acceptMeeting(currentMeeting)" aria-label="Close">No, Don't Add to my Google Calendar</button> 
