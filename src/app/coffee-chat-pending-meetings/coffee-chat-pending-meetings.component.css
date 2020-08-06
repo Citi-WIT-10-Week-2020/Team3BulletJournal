@@ -195,7 +195,10 @@ Modal CSS
 }
 
 .modal-button{
-    background-color: ivory;
+
+    border: 2px solid #e4955e !important;
+    background-color: ivory !important;
+    color: #e4955e !important;
     padding: 10px 24px;
     font-size: 16px;
     cursor: pointer;
@@ -204,6 +207,9 @@ Modal CSS
 }
 
 .modal-button:hover{
-    color: white; 
+
+    background-color:#e4955e !important;
+    color: white !important;
+    text-decoration: none !important; 
 }
 

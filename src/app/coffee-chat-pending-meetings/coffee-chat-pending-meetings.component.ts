@@ -20,15 +20,13 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
   currentMeeting: any;
   meetingID: string;
   participantsEmailList: any[];
-  timeZoneOffset = ((new Date().getTimezoneOffset()) / 60);
+  timeZoneOffset = ((new Date().getTimezoneOffset()));
   sTime; //startTime without delimiter (:)
   eTime; //endTime without delimiter (:)
   time: any[];
   currentEndTimeHour: any;
   currentEndTimeMinutes: any;
 
-
-  //@Output() meetingEvent = new EventEmitter<string>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -139,6 +137,7 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
     // reset alerts on submit
     this.alertService.clear();
     
+  
     var date = new Date();
     var day = date.getDate();
     var month = date.getMonth()+1;
@@ -158,6 +157,8 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
                 let found = false;
 
                 for (let user of data){
+                  console.log(user.startTime);
+
                   for(var i = 0; i < user.participants.length; i++){
                     if(user.participants[i].username == this.currentUser.username){
                       if(user.participants[i].status == "Pending"){
@@ -173,6 +174,126 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
                   this.time = user.endTime.split(':', 2);
                   this.currentEndTimeHour = this.time[0];
                   this.currentEndTimeMinutes = this.time[1];
+
+                  if(!isNaN(Number(this.currentEndTimeHour))){
+                    this.currentEndTimeHour = Number(this.currentEndTimeHour) - (this.timeZoneOffset / 60);
+                    if(this.currentEndTimeHour < 0 || this.currentEndTimeHour > 24){
+                      if(this.currentEndTimeHour < 0){
+                        if(user.day != 1){
+                          user.day = user.day - 1;
+                          user.hour = 24 + this.currentEndTimeHour;
+                        }
+                        else{//equals 1 so go to end of previous month
+                          if(user.month === 1 && user.day === 1){
+                            user.month = 12;
+                            user.day = 31;
+                            user.year = user.year - 1;
+                            user.hour = 24 + this.currentEndTimeHour;
+                          }
+                          else if((user.year) % 4 === 0){ //leap year
+                            if(user.month === 3){
+                              user.day = 29;
+                              user.month = 2;
+                              user.hour = 24 + this.currentEndTimeHour;
+                            }
+                            else if(user.month === 2 || user.month === 6 || user.month === 8 || user.month === 9 || user.month === 11){
+                              user.month = user.month - 1;
+                              user.day = 31;
+                              user.hour = 24 + this.currentEndTimeHour;
+                            }
+                            else{
+                              user.month = user.month - 1;
+                              user.day = 30;
+                              user.hour = 24 + this.currentEndTimeHour;
+                            }
+                          }
+                          else{ //normal year
+                            if(user.month === 3){
+                              user.day = 28;
+                              user.month = 2;
+                              user.hour = 24 + this.currentEndTimeHour;
+                            }
+                            else if(user.month === 2 || user.month === 4 || user.month === 6 || user.month === 8 || user.month === 9 || user.month === 11){
+                              user.month = user.month - 1;
+                              user.day = 31;
+                              user.hour = 24 + this.currentEndTimeHour;
+                            }
+                            else{
+                              user.month = user.month - 1;
+                              user.day = 30;
+                              user.hour = 24 + this.currentEndTimeHour;
+                            }
+                          }
+                        }
+                      }
+                      else{ // greater than 24
+                        if(user.month === 12 && user.day === 31){
+                          user.year = user.year + 1;
+                          user.day = 1;
+                          user.month = 1;
+                          user.hour = this.currentEndTimeHour - 24;
+                        }
+                        else if(user.year % 4 === 0){//leap year
+                          if(month === 2 && user.day != 29){
+                            user.day = user.day + 1;
+                            user.hour = this.currentEndTimeHour - 24;
+                          }
+                          else if(user.month === 1 || user.month === 3 || user.month === 5 || user.month === 7 || user.month === 8 || user.month === 10){
+                            if(user.day === 31){
+                              user.day = 1;
+                              user.month = user.month + 1;
+                              user.hour = this.currentEndTimeHour - 24;
+                            }
+                            else{
+                              user.day = user.day + 1;
+                              user.hour = this.currentEndTimeHour - 24;
+                            }
+                          }
+                          else{
+                            if(user.day === 30){
+                              user.day = 1;
+                              user.month = user.month + 1;
+                              user.hour = this.currentEndTimeHour - 24;
+                            }
+                            else{
+                              user.day = user.day + 1;
+                              user.hour = this.currentEndTimeHour - 24;
+                            }
+                          }
+                        }
+                        else{ //normal year
+                          if(month === 2 && user.day != 28){
+                            user.day = user.day + 1;
+                            user.hour = this.currentEndTimeHour - 24;
+                          }
+                          else if(user.month === 1 || user.month === 3 || user.month === 5 || user.month === 7 || user.month === 8 || user.month === 10){
+                            if(user.day === 31){
+                              user.day = 1;
+                              user.month = user.month + 1;
+                              user.hour = this.currentEndTimeHour - 24;
+                            }
+                            else{
+                              user.day = user.day + 1;
+                              user.hour = this.currentEndTimeHour - 24;
+                            }
+                          }
+                          else{
+                            if(user.day === 30){
+                              user.day = 1;
+                              user.month = user.month + 1;
+                              user.hour = this.currentEndTimeHour - 24;
+                            }
+                            else{
+                              user.day = user.day + 1;
+                              user.hour = this.currentEndTimeHour - 24;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  
+             
                   //hostingMeetings
                     if(user.username == this.currentUser.username){
                       if (user.year == year){
@@ -181,18 +302,384 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
                             if(this.currentEndTimeHour == hour){
                               if(this.currentEndTimeMinutes >= minutes){
                                 this.loading = false;
+                                this.time = user.startTime.split(':', 2);
+                                var startHour = this.time[0];
+                                var startMinutes = this.time[1];
+                                if(!isNaN(Number(startHour))){
+                                  startHour = Number(startHour) - (this.timeZoneOffset / 60);
+                                  if(startHour < 0 || startHour > 24){
+                                    if(startHour < 0){
+                                      if(user.day != 1){
+                                        user.day = user.day - 1;
+                                        user.hour = 24 + startHour;
+                                      }
+                                      else{//equals 1 so go to end of previous month
+                                        if(user.month === 1 && user.day === 1){
+                                          user.month = 12;
+                                          user.day = 31;
+                                          user.year = user.year - 1;
+                                          user.hour = 24 + startHour;
+                                        }
+                                        else if((user.year) % 4 === 0){ //leap year
+                                          if(user.month === 3){
+                                            user.day = 29;
+                                            user.month = 2;
+                                            user.hour = 24 + startHour;
+                                          }
+                                          else if(user.month === 2 || user.month === 6 || user.month === 8 || user.month === 9 || user.month === 11){
+                                            user.month = user.month - 1;
+                                            user.day = 31;
+                                            user.hour = 24 + startHour;
+                                          }
+                                          else{
+                                            user.month = user.month - 1;
+                                            user.day = 30;
+                                            user.hour = 24 + startHour;
+                                          }
+                                        }
+                                        else{ //normal year
+                                          if(user.month === 3){
+                                            user.day = 28;
+                                            user.month = 2;
+                                            user.hour = 24 + startHour;
+                                          }
+                                          else if(user.month === 2 || user.month === 4 || user.month === 6 || user.month === 8 || user.month === 9 || user.month === 11){
+                                            user.month = user.month - 1;
+                                            user.day = 31;
+                                            user.hour = 24 + startHour;
+                                          }
+                                          else{
+                                            user.month = user.month - 1;
+                                            user.day = 30;
+                                            user.hour = 24 + startHour;
+                                          }
+                                        }
+                                      }
+                                    }
+                                    else{ // greater than 24
+                                      if(user.month === 12 && user.day === 31){
+                                        user.year = user.year + 1;
+                                        user.day = 1;
+                                        user.month = 1;
+                                        user.hour = startHour - 24;
+                                      }
+                                      else if(user.year % 4 === 0){//leap year
+                                        if(month === 2 && user.day != 29){
+                                          user.day = user.day + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                        else if(user.month === 1 || user.month === 3 || user.month === 5 || user.month === 7 || user.month === 8 || user.month === 10){
+                                          if(user.day === 31){
+                                            user.day = 1;
+                                            user.month = user.month + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                          else{
+                                            user.day = user.day + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                        }
+                                        else{
+                                          if(user.day === 30){
+                                            user.day = 1;
+                                            user.month = user.month + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                          else{
+                                            user.day = user.day + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                        }
+                                      }
+                                      else{ //normal year
+                                        if(month === 2 && user.day != 28){
+                                          user.day = user.day + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                        else if(user.month === 1 || user.month === 3 || user.month === 5 || user.month === 7 || user.month === 8 || user.month === 10){
+                                          if(user.day === 31){
+                                            user.day = 1;
+                                            user.month = user.month + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                          else{
+                                            user.day = user.day + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                        }
+                                        else{
+                                          if(user.day === 30){
+                                            user.day = 1;
+                                            user.month = user.month + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                          else{
+                                            user.day = user.day + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                                user.startTime = String(startHour) + ":" + String(startMinutes);
+                                user.endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                                 this.hostingMeetings.push(user);
                                 found = true;
                               }
                             }
                             if(this.currentEndTimeHour > hour){
                               this.loading = false;
+                              this.time = user.startTime.split(':', 2);
+                              var startHour = this.time[0];
+                              var startMinutes = this.time[1];
+                              if(!isNaN(Number(startHour))){
+                                startHour = Number(startHour) - (this.timeZoneOffset / 60);
+                                if(startHour < 0 || startHour > 24){
+                                  if(startHour < 0){
+                                    if(user.day != 1){
+                                      user.day = user.day - 1;
+                                      user.hour = 24 + startHour;
+                                    }
+                                    else{//equals 1 so go to end of previous month
+                                      if(user.month === 1 && user.day === 1){
+                                        user.month = 12;
+                                        user.day = 31;
+                                        user.year = user.year - 1;
+                                        user.hour = 24 + startHour;
+                                      }
+                                      else if((user.year) % 4 === 0){ //leap year
+                                        if(user.month === 3){
+                                          user.day = 29;
+                                          user.month = 2;
+                                          user.hour = 24 + startHour;
+                                        }
+                                        else if(user.month === 2 || user.month === 6 || user.month === 8 || user.month === 9 || user.month === 11){
+                                          user.month = user.month - 1;
+                                          user.day = 31;
+                                          user.hour = 24 + startHour;
+                                        }
+                                        else{
+                                          user.month = user.month - 1;
+                                          user.day = 30;
+                                          user.hour = 24 + startHour;
+                                        }
+                                      }
+                                      else{ //normal year
+                                        if(user.month === 3){
+                                          user.day = 28;
+                                          user.month = 2;
+                                          user.hour = 24 + startHour;
+                                        }
+                                        else if(user.month === 2 || user.month === 4 || user.month === 6 || user.month === 8 || user.month === 9 || user.month === 11){
+                                          user.month = user.month - 1;
+                                          user.day = 31;
+                                          user.hour = 24 + startHour;
+                                        }
+                                        else{
+                                          user.month = user.month - 1;
+                                          user.day = 30;
+                                          user.hour = 24 + startHour;
+                                        }
+                                      }
+                                    }
+                                  }
+                                  else{ // greater than 24
+                                    if(user.month === 12 && user.day === 31){
+                                      user.year = user.year + 1;
+                                      user.day = 1;
+                                      user.month = 1;
+                                      user.hour = startHour - 24;
+                                    }
+                                    else if(user.year % 4 === 0){//leap year
+                                      if(month === 2 && user.day != 29){
+                                        user.day = user.day + 1;
+                                        user.hour = startHour - 24;
+                                      }
+                                      else if(user.month === 1 || user.month === 3 || user.month === 5 || user.month === 7 || user.month === 8 || user.month === 10){
+                                        if(user.day === 31){
+                                          user.day = 1;
+                                          user.month = user.month + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                        else{
+                                          user.day = user.day + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                      }
+                                      else{
+                                        if(user.day === 30){
+                                          user.day = 1;
+                                          user.month = user.month + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                        else{
+                                          user.day = user.day + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                      }
+                                    }
+                                    else{ //normal year
+                                      if(month === 2 && user.day != 28){
+                                        user.day = user.day + 1;
+                                        user.hour = startHour - 24;
+                                      }
+                                      else if(user.month === 1 || user.month === 3 || user.month === 5 || user.month === 7 || user.month === 8 || user.month === 10){
+                                        if(user.day === 31){
+                                          user.day = 1;
+                                          user.month = user.month + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                        else{
+                                          user.day = user.day + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                      }
+                                      else{
+                                        if(user.day === 30){
+                                          user.day = 1;
+                                          user.month = user.month + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                        else{
+                                          user.day = user.day + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                              user.startTime = String(startHour) + ":" + String(startMinutes);
+                              user.endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.hostingMeetings.push(user);
                               found = true;
                             }
                           }
                           if (user.day > day){
                               this.loading = false;
+                              this.time = user.startTime.split(':', 2);
+                              var startHour = this.time[0];
+                              var startMinutes = this.time[1];
+                              if(!isNaN(Number(startHour))){
+                                startHour = Number(startHour) - (this.timeZoneOffset / 60);
+                                if(startHour < 0 || startHour > 24){
+                                  if(startHour < 0){
+                                    if(user.day != 1){
+                                      user.day = user.day - 1;
+                                      user.hour = 24 + startHour;
+                                    }
+                                    else{//equals 1 so go to end of previous month
+                                      if(user.month === 1 && user.day === 1){
+                                        user.month = 12;
+                                        user.day = 31;
+                                        user.year = user.year - 1;
+                                        user.hour = 24 + startHour;
+                                      }
+                                      else if((user.year) % 4 === 0){ //leap year
+                                        if(user.month === 3){
+                                          user.day = 29;
+                                          user.month = 2;
+                                          user.hour = 24 + startHour;
+                                        }
+                                        else if(user.month === 2 || user.month === 6 || user.month === 8 || user.month === 9 || user.month === 11){
+                                          user.month = user.month - 1;
+                                          user.day = 31;
+                                          user.hour = 24 + startHour;
+                                        }
+                                        else{
+                                          user.month = user.month - 1;
+                                          user.day = 30;
+                                          user.hour = 24 + startHour;
+                                        }
+                                      }
+                                      else{ //normal year
+                                        if(user.month === 3){
+                                          user.day = 28;
+                                          user.month = 2;
+                                          user.hour = 24 + startHour;
+                                        }
+                                        else if(user.month === 2 || user.month === 4 || user.month === 6 || user.month === 8 || user.month === 9 || user.month === 11){
+                                          user.month = user.month - 1;
+                                          user.day = 31;
+                                          user.hour = 24 + startHour;
+                                        }
+                                        else{
+                                          user.month = user.month - 1;
+                                          user.day = 30;
+                                          user.hour = 24 + startHour;
+                                        }
+                                      }
+                                    }
+                                  }
+                                  else{ // greater than 24
+                                    if(user.month === 12 && user.day === 31){
+                                      user.year = user.year + 1;
+                                      user.day = 1;
+                                      user.month = 1;
+                                      user.hour = startHour - 24;
+                                    }
+                                    else if(user.year % 4 === 0){//leap year
+                                      if(month === 2 && user.day != 29){
+                                        user.day = user.day + 1;
+                                        user.hour = startHour - 24;
+                                      }
+                                      else if(user.month === 1 || user.month === 3 || user.month === 5 || user.month === 7 || user.month === 8 || user.month === 10){
+                                        if(user.day === 31){
+                                          user.day = 1;
+                                          user.month = user.month + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                        else{
+                                          user.day = user.day + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                      }
+                                      else{
+                                        if(user.day === 30){
+                                          user.day = 1;
+                                          user.month = user.month + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                        else{
+                                          user.day = user.day + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                      }
+                                    }
+                                    else{ //normal year
+                                      if(month === 2 && user.day != 28){
+                                        user.day = user.day + 1;
+                                        user.hour = startHour - 24;
+                                      }
+                                      else if(user.month === 1 || user.month === 3 || user.month === 5 || user.month === 7 || user.month === 8 || user.month === 10){
+                                        if(user.day === 31){
+                                          user.day = 1;
+                                          user.month = user.month + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                        else{
+                                          user.day = user.day + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                      }
+                                      else{
+                                        if(user.day === 30){
+                                          user.day = 1;
+                                          user.month = user.month + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                        else{
+                                          user.day = user.day + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                              user.startTime = String(startHour) + ":" + String(startMinutes);
+                              user.endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.hostingMeetings.push(user);
                               found = true;
                           }
@@ -201,6 +688,128 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
                         if(user.month > month){
                           console.log('greater month');
                               this.loading = false;
+                              this.time = user.startTime.split(':', 2);
+                                var startHour = this.time[0];
+                                var startMinutes = this.time[1];
+                                if(!isNaN(Number(startHour))){
+                                  startHour = Number(startHour) - (this.timeZoneOffset / 60);
+                                  if(startHour < 0 || startHour > 24){
+                                    if(startHour < 0){
+                                      if(user.day != 1){
+                                        user.day = user.day - 1;
+                                        user.hour = 24 + startHour;
+                                      }
+                                      else{//equals 1 so go to end of previous month
+                                        if(user.month === 1 && user.day === 1){
+                                          user.month = 12;
+                                          user.day = 31;
+                                          user.year = user.year - 1;
+                                          user.hour = 24 + startHour;
+                                        }
+                                        else if((user.year) % 4 === 0){ //leap year
+                                          if(user.month === 3){
+                                            user.day = 29;
+                                            user.month = 2;
+                                            user.hour = 24 + startHour;
+                                          }
+                                          else if(user.month === 2 || user.month === 6 || user.month === 8 || user.month === 9 || user.month === 11){
+                                            user.month = user.month - 1;
+                                            user.day = 31;
+                                            user.hour = 24 + startHour;
+                                          }
+                                          else{
+                                            user.month = user.month - 1;
+                                            user.day = 30;
+                                            user.hour = 24 + startHour;
+                                          }
+                                        }
+                                        else{ //normal year
+                                          if(user.month === 3){
+                                            user.day = 28;
+                                            user.month = 2;
+                                            user.hour = 24 + startHour;
+                                          }
+                                          else if(user.month === 2 || user.month === 4 || user.month === 6 || user.month === 8 || user.month === 9 || user.month === 11){
+                                            user.month = user.month - 1;
+                                            user.day = 31;
+                                            user.hour = 24 + startHour;
+                                          }
+                                          else{
+                                            user.month = user.month - 1;
+                                            user.day = 30;
+                                            user.hour = 24 + startHour;
+                                          }
+                                        }
+                                      }
+                                    }
+                                    else{ // greater than 24
+                                      if(user.month === 12 && user.day === 31){
+                                        user.year = user.year + 1;
+                                        user.day = 1;
+                                        user.month = 1;
+                                        user.hour = startHour - 24;
+                                      }
+                                      else if(user.year % 4 === 0){//leap year
+                                        if(month === 2 && user.day != 29){
+                                          user.day = user.day + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                        else if(user.month === 1 || user.month === 3 || user.month === 5 || user.month === 7 || user.month === 8 || user.month === 10){
+                                          if(user.day === 31){
+                                            user.day = 1;
+                                            user.month = user.month + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                          else{
+                                            user.day = user.day + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                        }
+                                        else{
+                                          if(user.day === 30){
+                                            user.day = 1;
+                                            user.month = user.month + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                          else{
+                                            user.day = user.day + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                        }
+                                      }
+                                      else{ //normal year
+                                        if(month === 2 && user.day != 28){
+                                          user.day = user.day + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                        else if(user.month === 1 || user.month === 3 || user.month === 5 || user.month === 7 || user.month === 8 || user.month === 10){
+                                          if(user.day === 31){
+                                            user.day = 1;
+                                            user.month = user.month + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                          else{
+                                            user.day = user.day + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                        }
+                                        else{
+                                          if(user.day === 30){
+                                            user.day = 1;
+                                            user.month = user.month + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                          else{
+                                            user.day = user.day + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                                user.startTime = String(startHour) + ":" + String(startMinutes);
+                                user.endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.hostingMeetings.push(user);
                               found = true;
                         }
@@ -209,6 +818,128 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
                       if(user.year > year){
                         console.log('greater year');
                               this.loading = false;
+                              this.time = user.startTime.split(':', 2);
+                                var startHour = this.time[0];
+                                var startMinutes = this.time[1];
+                                if(!isNaN(Number(startHour))){
+                                  startHour = Number(startHour) - (this.timeZoneOffset / 60);
+                                  if(startHour < 0 || startHour > 24){
+                                    if(startHour < 0){
+                                      if(user.day != 1){
+                                        user.day = user.day - 1;
+                                        user.hour = 24 + startHour;
+                                      }
+                                      else{//equals 1 so go to end of previous month
+                                        if(user.month === 1 && user.day === 1){
+                                          user.month = 12;
+                                          user.day = 31;
+                                          user.year = user.year - 1;
+                                          user.hour = 24 + startHour;
+                                        }
+                                        else if((user.year) % 4 === 0){ //leap year
+                                          if(user.month === 3){
+                                            user.day = 29;
+                                            user.month = 2;
+                                            user.hour = 24 + startHour;
+                                          }
+                                          else if(user.month === 2 || user.month === 6 || user.month === 8 || user.month === 9 || user.month === 11){
+                                            user.month = user.month - 1;
+                                            user.day = 31;
+                                            user.hour = 24 + startHour;
+                                          }
+                                          else{
+                                            user.month = user.month - 1;
+                                            user.day = 30;
+                                            user.hour = 24 + startHour;
+                                          }
+                                        }
+                                        else{ //normal year
+                                          if(user.month === 3){
+                                            user.day = 28;
+                                            user.month = 2;
+                                            user.hour = 24 + startHour;
+                                          }
+                                          else if(user.month === 2 || user.month === 4 || user.month === 6 || user.month === 8 || user.month === 9 || user.month === 11){
+                                            user.month = user.month - 1;
+                                            user.day = 31;
+                                            user.hour = 24 + startHour;
+                                          }
+                                          else{
+                                            user.month = user.month - 1;
+                                            user.day = 30;
+                                            user.hour = 24 + startHour;
+                                          }
+                                        }
+                                      }
+                                    }
+                                    else{ // greater than 24
+                                      if(user.month === 12 && user.day === 31){
+                                        user.year = user.year + 1;
+                                        user.day = 1;
+                                        user.month = 1;
+                                        user.hour = startHour - 24;
+                                      }
+                                      else if(user.year % 4 === 0){//leap year
+                                        if(month === 2 && user.day != 29){
+                                          user.day = user.day + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                        else if(user.month === 1 || user.month === 3 || user.month === 5 || user.month === 7 || user.month === 8 || user.month === 10){
+                                          if(user.day === 31){
+                                            user.day = 1;
+                                            user.month = user.month + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                          else{
+                                            user.day = user.day + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                        }
+                                        else{
+                                          if(user.day === 30){
+                                            user.day = 1;
+                                            user.month = user.month + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                          else{
+                                            user.day = user.day + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                        }
+                                      }
+                                      else{ //normal year
+                                        if(month === 2 && user.day != 28){
+                                          user.day = user.day + 1;
+                                          user.hour = startHour - 24;
+                                        }
+                                        else if(user.month === 1 || user.month === 3 || user.month === 5 || user.month === 7 || user.month === 8 || user.month === 10){
+                                          if(user.day === 31){
+                                            user.day = 1;
+                                            user.month = user.month + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                          else{
+                                            user.day = user.day + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                        }
+                                        else{
+                                          if(user.day === 30){
+                                            user.day = 1;
+                                            user.month = user.month + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                          else{
+                                            user.day = user.day + 1;
+                                            user.hour = startHour - 24;
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                                user.startTime = String(startHour) + ":" + String(startMinutes);
+                                user.endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.hostingMeetings.push(user);
                               found = true;
                         }
@@ -220,25 +951,508 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
                       this.currentEndTimeHour = this.time[0];
                       this.currentEndTimeMinutes = this.time[1];
 
-                      console.log("in");
+                      if(!isNaN(Number(this.currentEndTimeHour))){
+                        this.currentEndTimeHour = Number(this.currentEndTimeHour) - (this.timeZoneOffset / 60);
+                        if(this.currentEndTimeHour < 0 || this.currentEndTimeHour > 24){
+                          if(this.currentEndTimeHour < 0){
+                            if(this.selectedMeetings[i].day != 1){
+                              this.selectedMeetings[i].day = this.selectedMeetings[i].day - 1;
+                              this.selectedMeetings[i].hour = 24 + this.currentEndTimeHour;
+                            }
+                            else{//equals 1 so go to end of previous month
+                              if(this.selectedMeetings[i].month === 1 && this.selectedMeetings[i].day === 1){
+                                this.selectedMeetings[i].month = 12;
+                                this.selectedMeetings[i].day = 31;
+                                this.selectedMeetings[i].year = this.selectedMeetings[i].year - 1;
+                                this.selectedMeetings[i].hour = 24 + this.currentEndTimeHour;
+                              }
+                              else if((this.selectedMeetings[i].year) % 4 === 0){ //leap year
+                                if(this.selectedMeetings[i].month === 3){
+                                  this.selectedMeetings[i].day = 29;
+                                  this.selectedMeetings[i].month = 2;
+                                  this.selectedMeetings[i].hour = 24 + this.currentEndTimeHour;
+                                }
+                                else if(this.selectedMeetings[i].month === 2 || this.selectedMeetings[i].month === 6 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 9 || this.selectedMeetings[i].month === 11){
+                                  this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                  this.selectedMeetings[i].day = 31;
+                                  this.selectedMeetings[i].hour = 24 + this.currentEndTimeHour;
+                                }
+                                else{
+                                  this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                  this.selectedMeetings[i].day = 30;
+                                  this.selectedMeetings[i].hour = 24 + this.currentEndTimeHour;
+                                }
+                              }
+                              else{ //normal year
+                                if(this.selectedMeetings[i].month === 3){
+                                  this.selectedMeetings[i].day = 28;
+                                  this.selectedMeetings[i].month = 2;
+                                  this.selectedMeetings[i].hour = 24 + this.currentEndTimeHour;
+                                }
+                                else if(this.selectedMeetings[i].month === 2 || this.selectedMeetings[i].month === 4 || this.selectedMeetings[i].month === 6 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 9 || this.selectedMeetings[i].month === 11){
+                                  this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                  this.selectedMeetings[i].day = 31;
+                                  this.selectedMeetings[i].hour = 24 + this.currentEndTimeHour;
+                                }
+                                else{
+                                  this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                  this.selectedMeetings[i].day = 30;
+                                  this.selectedMeetings[i].hour = 24 + this.currentEndTimeHour;
+                                }
+                              }
+                            }
+                          }
+                          else{ // greater than 24
+                            if(this.selectedMeetings[i].month === 12 && this.selectedMeetings[i].day === 31){
+                              this.selectedMeetings[i].year = this.selectedMeetings[i].year + 1;
+                              this.selectedMeetings[i].day = 1;
+                              this.selectedMeetings[i].month = 1;
+                              this.selectedMeetings[i].hour = this.currentEndTimeHour - 24;
+                            }
+                            else if(this.selectedMeetings[i].year % 4 === 0){//leap year
+                              if(month === 2 && this.selectedMeetings[i].day != 29){
+                                this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                this.selectedMeetings[i].hour = this.currentEndTimeHour - 24;
+                              }
+                              else if(this.selectedMeetings[i].month === 1 || this.selectedMeetings[i].month === 3 || this.selectedMeetings[i].month === 5 || this.selectedMeetings[i].month === 7 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 10){
+                                if(this.selectedMeetings[i].day === 31){
+                                  this.selectedMeetings[i].day = 1;
+                                  this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                  this.selectedMeetings[i].hour = this.currentEndTimeHour - 24;
+                                }
+                                else{
+                                  this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                  this.selectedMeetings[i].hour = this.currentEndTimeHour - 24;
+                                }
+                              }
+                              else{
+                                if(this.selectedMeetings[i].day === 30){
+                                  this.selectedMeetings[i].day = 1;
+                                  this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                  this.selectedMeetings[i].hour = this.currentEndTimeHour - 24;
+                                }
+                                else{
+                                  this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                  this.selectedMeetings[i].hour = this.currentEndTimeHour - 24;
+                                }
+                              }
+                            }
+                            else{ //normal year
+                              if(month === 2 && this.selectedMeetings[i].day != 28){
+                                this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                this.selectedMeetings[i].hour = this.currentEndTimeHour - 24;
+                              }
+                              else if(this.selectedMeetings[i].month === 1 || this.selectedMeetings[i].month === 3 || this.selectedMeetings[i].month === 5 || this.selectedMeetings[i].month === 7 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 10){
+                                if(this.selectedMeetings[i].day === 31){
+                                  this.selectedMeetings[i].day = 1;
+                                  this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                  this.selectedMeetings[i].hour = this.currentEndTimeHour - 24;
+                                }
+                                else{
+                                  this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                  this.selectedMeetings[i].hour = this.currentEndTimeHour - 24;
+                                }
+                              }
+                              else{
+                                if(this.selectedMeetings[i].day === 30){
+                                  this.selectedMeetings[i].day = 1;
+                                  this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                  this.selectedMeetings[i].hour = this.currentEndTimeHour - 24;
+                                }
+                                else{
+                                  this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                  this.selectedMeetings[i].hour = this.currentEndTimeHour - 24;
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+
                       if (this.selectedMeetings[i].year == year){
                         if(this.selectedMeetings[i].month == month){
                           if(this.selectedMeetings[i].day == day){
                             if(this.currentEndTimeHour == hour){
                               if(this.currentEndTimeMinutes >= minutes){
                                 this.loading = false;
+                                this.time = this.selectedMeetings[i].startTime.split(':', 2);
+                                var startHour = this.time[0];
+                                var startMinutes = this.time[1];
+                                if(!isNaN(Number(startHour))){
+                                  startHour = Number(startHour) - (this.timeZoneOffset / 60);
+                                  if(startHour < 0 || startHour > 24){
+                                    if(startHour < 0){
+                                      if(this.selectedMeetings[i].day != 1){
+                                        this.selectedMeetings[i].day = this.selectedMeetings[i].day - 1;
+                                        this.selectedMeetings[i].hour = 24 + startHour;
+                                      }
+                                      else{//equals 1 so go to end of previous month
+                                        if(this.selectedMeetings[i].month === 1 && this.selectedMeetings[i].day === 1){
+                                          this.selectedMeetings[i].month = 12;
+                                          this.selectedMeetings[i].day = 31;
+                                          this.selectedMeetings[i].year = this.selectedMeetings[i].year - 1;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else if((this.selectedMeetings[i].year) % 4 === 0){ //leap year
+                                          if(this.selectedMeetings[i].month === 3){
+                                            this.selectedMeetings[i].day = 29;
+                                            this.selectedMeetings[i].month = 2;
+                                            this.selectedMeetings[i].hour = 24 + startHour;
+                                          }
+                                          else if(this.selectedMeetings[i].month === 2 || this.selectedMeetings[i].month === 6 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 9 || this.selectedMeetings[i].month === 11){
+                                            this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                            this.selectedMeetings[i].day = 31;
+                                            this.selectedMeetings[i].hour = 24 + startHour;
+                                          }
+                                          else{
+                                            this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                            this.selectedMeetings[i].day = 30;
+                                            this.selectedMeetings[i].hour = 24 + startHour;
+                                          }
+                                        }
+                                        else{ //normal year
+                                          if(this.selectedMeetings[i].month === 3){
+                                            this.selectedMeetings[i].day = 28;
+                                            this.selectedMeetings[i].month = 2;
+                                            this.selectedMeetings[i].hour = 24 + startHour;
+                                          }
+                                          else if(this.selectedMeetings[i].month === 2 || this.selectedMeetings[i] === 4 || this.selectedMeetings[i].month === 6 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 9 || this.selectedMeetings[i].month === 11){
+                                            this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                            this.selectedMeetings[i].day = 31;
+                                            this.selectedMeetings[i].hour = 24 + startHour;
+                                          }
+                                          else{
+                                            this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                            this.selectedMeetings[i].day = 30;
+                                            this.selectedMeetings[i].hour = 24 + startHour;
+                                          }
+                                        }
+                                      }
+                                    }
+                                    else{ // greater than 24
+                                      if(this.selectedMeetings[i].month === 12 && this.selectedMeetings[i].day === 31){
+                                        this.selectedMeetings[i].year = this.selectedMeetings[i].year + 1;
+                                        this.selectedMeetings[i].day = 1;
+                                        this.selectedMeetings[i].month = 1;
+                                        this.selectedMeetings[i].hour = startHour - 24;
+                                      }
+                                      else if(this.selectedMeetings[i].year % 4 === 0){//leap year
+                                        if(month === 2 && this.selectedMeetings[i].day != 29){
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else if(this.selectedMeetings[i].month === 1 || this.selectedMeetings[i].month === 3 || this.selectedMeetings[i].month === 5 || this.selectedMeetings[i].month === 7 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 10){
+                                          if(this.selectedMeetings[i].day === 31){
+                                            this.selectedMeetings[i].day = 1;
+                                            this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                            this.selectedMeetings[i].hour = startHour - 24;
+                                          }
+                                          else{
+                                            this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                            this.selectedMeetings[i].hour = startHour - 24;
+                                          }
+                                        }
+                                        else{
+                                          if(this.selectedMeetings[i].day === 30){
+                                            this.selectedMeetings[i].day = 1;
+                                            this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                            this.selectedMeetings[i].hour = startHour - 24;
+                                          }
+                                          else{
+                                            this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                            this.selectedMeetings[i].hour = startHour - 24;
+                                          }
+                                        }
+                                      }
+                                      else{ //normal year
+                                        if(month === 2 && this.selectedMeetings[i].day != 28){
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else if(this.selectedMeetings[i].month === 1 || this.selectedMeetings[i].month === 3 || this.selectedMeetings[i].month === 5 || this.selectedMeetings[i].month === 7 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 10){
+                                          if(this.selectedMeetings[i].day === 31){
+                                            this.selectedMeetings[i].day = 1;
+                                            this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                            this.selectedMeetings[i].hour = startHour - 24;
+                                          }
+                                          else{
+                                            this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                            this.selectedMeetings[i].hour = startHour - 24;
+                                          }
+                                        }
+                                        else{
+                                          if(this.selectedMeetings[i].day === 30){
+                                            this.selectedMeetings[i].day = 1;
+                                            this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                            this.selectedMeetings[i].hour = startHour - 24;
+                                          }
+                                          else{
+                                            this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                            this.selectedMeetings[i].hour = startHour - 24;
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                                this.selectedMeetings[i].startTime = String(startHour) + ":" + String(startMinutes);
+                                this.selectedMeetings[i].endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                                 this.attendingMeetings.push(this.selectedMeetings[i]);
                                 found = true;
                               }
                             }
                             if(this.currentEndTimeHour > hour){
                               this.loading = false;
+                              this.time = this.selectedMeetings[i].startTime.split(':', 2);
+                              var startHour = this.time[0];
+                              var startMinutes = this.time[1];
+                              if(!isNaN(Number(startHour))){
+                                startHour = Number(startHour) - (this.timeZoneOffset / 60);
+                                if(startHour < 0 || startHour > 24){
+                                  if(startHour < 0){
+                                    if(this.selectedMeetings[i].day != 1){
+                                      this.selectedMeetings[i].day = this.selectedMeetings[i].day - 1;
+                                      this.selectedMeetings[i].hour = 24 + startHour;
+                                    }
+                                    else{//equals 1 so go to end of previous month
+                                      if(this.selectedMeetings[i].month === 1 && this.selectedMeetings[i].day === 1){
+                                        this.selectedMeetings[i].month = 12;
+                                        this.selectedMeetings[i].day = 31;
+                                        this.selectedMeetings[i].year = this.selectedMeetings[i].year - 1;
+                                        this.selectedMeetings[i].hour = 24 + startHour;
+                                      }
+                                      else if((this.selectedMeetings[i].year) % 4 === 0){ //leap year
+                                        if(this.selectedMeetings[i].month === 3){
+                                          this.selectedMeetings[i].day = 29;
+                                          this.selectedMeetings[i].month = 2;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else if(this.selectedMeetings[i].month === 2 || this.selectedMeetings[i].month === 6 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 9 || this.selectedMeetings[i].month === 11){
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 31;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 30;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                      }
+                                      else{ //normal year
+                                        if(this.selectedMeetings[i].month === 3){
+                                          this.selectedMeetings[i].day = 28;
+                                          this.selectedMeetings[i].month = 2;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else if(this.selectedMeetings[i].month === 2 || this.selectedMeetings[i] === 4 || this.selectedMeetings[i].month === 6 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 9 || this.selectedMeetings[i].month === 11){
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 31;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 30;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                      }
+                                    }
+                                  }
+                                  else{ // greater than 24
+                                    if(this.selectedMeetings[i].month === 12 && this.selectedMeetings[i].day === 31){
+                                      this.selectedMeetings[i].year = this.selectedMeetings[i].year + 1;
+                                      this.selectedMeetings[i].day = 1;
+                                      this.selectedMeetings[i].month = 1;
+                                      this.selectedMeetings[i].hour = startHour - 24;
+                                    }
+                                    else if(this.selectedMeetings[i].year % 4 === 0){//leap year
+                                      if(month === 2 && this.selectedMeetings[i].day != 29){
+                                        this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                        this.selectedMeetings[i].hour = startHour - 24;
+                                      }
+                                      else if(this.selectedMeetings[i].month === 1 || this.selectedMeetings[i].month === 3 || this.selectedMeetings[i].month === 5 || this.selectedMeetings[i].month === 7 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 10){
+                                        if(this.selectedMeetings[i].day === 31){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                      else{
+                                        if(this.selectedMeetings[i].day === 30){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                    }
+                                    else{ //normal year
+                                      if(month === 2 && this.selectedMeetings[i].day != 28){
+                                        this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                        this.selectedMeetings[i].hour = startHour - 24;
+                                      }
+                                      else if(this.selectedMeetings[i].month === 1 || this.selectedMeetings[i].month === 3 || this.selectedMeetings[i].month === 5 || this.selectedMeetings[i].month === 7 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 10){
+                                        if(this.selectedMeetings[i].day === 31){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                      else{
+                                        if(this.selectedMeetings[i].day === 30){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                              this.selectedMeetings[i].startTime = String(startHour) + ":" + String(startMinutes);
+                              this.selectedMeetings[i].endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.attendingMeetings.push(this.selectedMeetings[i]);
                               found = true;
                             }
                           }
                           if (this.selectedMeetings[i].day > day){
                               this.loading = false;
+                              this.time = this.selectedMeetings[i].startTime.split(':', 2);
+                              var startHour = this.time[0];
+                              var startMinutes = this.time[1];
+                              if(!isNaN(Number(startHour))){
+                                startHour = Number(startHour) - (this.timeZoneOffset / 60);
+                                if(startHour < 0 || startHour > 24){
+                                  if(startHour < 0){
+                                    if(this.selectedMeetings[i].day != 1){
+                                      this.selectedMeetings[i].day = this.selectedMeetings[i].day - 1;
+                                      this.selectedMeetings[i].hour = 24 + startHour;
+                                    }
+                                    else{//equals 1 so go to end of previous month
+                                      if(this.selectedMeetings[i].month === 1 && this.selectedMeetings[i].day === 1){
+                                        this.selectedMeetings[i].month = 12;
+                                        this.selectedMeetings[i].day = 31;
+                                        this.selectedMeetings[i].year = this.selectedMeetings[i].year - 1;
+                                        this.selectedMeetings[i].hour = 24 + startHour;
+                                      }
+                                      else if((this.selectedMeetings[i].year) % 4 === 0){ //leap year
+                                        if(this.selectedMeetings[i].month === 3){
+                                          this.selectedMeetings[i].day = 29;
+                                          this.selectedMeetings[i].month = 2;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else if(this.selectedMeetings[i].month === 2 || this.selectedMeetings[i].month === 6 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 9 || this.selectedMeetings[i].month === 11){
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 31;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 30;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                      }
+                                      else{ //normal year
+                                        if(this.selectedMeetings[i].month === 3){
+                                          this.selectedMeetings[i].day = 28;
+                                          this.selectedMeetings[i].month = 2;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else if(this.selectedMeetings[i].month === 2 || this.selectedMeetings[i] === 4 || this.selectedMeetings[i].month === 6 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 9 || this.selectedMeetings[i].month === 11){
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 31;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 30;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                      }
+                                    }
+                                  }
+                                  else{ // greater than 24
+                                    if(this.selectedMeetings[i].month === 12 && this.selectedMeetings[i].day === 31){
+                                      this.selectedMeetings[i].year = this.selectedMeetings[i].year + 1;
+                                      this.selectedMeetings[i].day = 1;
+                                      this.selectedMeetings[i].month = 1;
+                                      this.selectedMeetings[i].hour = startHour - 24;
+                                    }
+                                    else if(this.selectedMeetings[i].year % 4 === 0){//leap year
+                                      if(month === 2 && this.selectedMeetings[i].day != 29){
+                                        this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                        this.selectedMeetings[i].hour = startHour - 24;
+                                      }
+                                      else if(this.selectedMeetings[i].month === 1 || this.selectedMeetings[i].month === 3 || this.selectedMeetings[i].month === 5 || this.selectedMeetings[i].month === 7 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 10){
+                                        if(this.selectedMeetings[i].day === 31){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                      else{
+                                        if(this.selectedMeetings[i].day === 30){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                    }
+                                    else{ //normal year
+                                      if(month === 2 && this.selectedMeetings[i].day != 28){
+                                        this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                        this.selectedMeetings[i].hour = startHour - 24;
+                                      }
+                                      else if(this.selectedMeetings[i].month === 1 || this.selectedMeetings[i].month === 3 || this.selectedMeetings[i].month === 5 || this.selectedMeetings[i].month === 7 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 10){
+                                        if(this.selectedMeetings[i].day === 31){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                      else{
+                                        if(this.selectedMeetings[i].day === 30){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                              this.selectedMeetings[i].startTime = String(startHour) + ":" + String(startMinutes);
+                              this.selectedMeetings[i].endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.attendingMeetings.push(this.selectedMeetings[i]);
                               found = true;
                           }
@@ -247,6 +1461,128 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
                         if(this.selectedMeetings[i].month > month){
                           console.log('greater month');
                               this.loading = false;
+                              this.time = this.selectedMeetings[i].startTime.split(':', 2);
+                              var startHour = this.time[0];
+                              var startMinutes = this.time[1];
+                              if(!isNaN(Number(startHour))){
+                                startHour = Number(startHour) - (this.timeZoneOffset / 60);
+                                if(startHour < 0 || startHour > 24){
+                                  if(startHour < 0){
+                                    if(this.selectedMeetings[i].day != 1){
+                                      this.selectedMeetings[i].day = this.selectedMeetings[i].day - 1;
+                                      this.selectedMeetings[i].hour = 24 + startHour;
+                                    }
+                                    else{//equals 1 so go to end of previous month
+                                      if(this.selectedMeetings[i].month === 1 && this.selectedMeetings[i].day === 1){
+                                        this.selectedMeetings[i].month = 12;
+                                        this.selectedMeetings[i].day = 31;
+                                        this.selectedMeetings[i].year = this.selectedMeetings[i].year - 1;
+                                        this.selectedMeetings[i].hour = 24 + startHour;
+                                      }
+                                      else if((this.selectedMeetings[i].year) % 4 === 0){ //leap year
+                                        if(this.selectedMeetings[i].month === 3){
+                                          this.selectedMeetings[i].day = 29;
+                                          this.selectedMeetings[i].month = 2;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else if(this.selectedMeetings[i].month === 2 || this.selectedMeetings[i].month === 6 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 9 || this.selectedMeetings[i].month === 11){
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 31;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 30;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                      }
+                                      else{ //normal year
+                                        if(this.selectedMeetings[i].month === 3){
+                                          this.selectedMeetings[i].day = 28;
+                                          this.selectedMeetings[i].month = 2;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else if(this.selectedMeetings[i].month === 2 || this.selectedMeetings[i] === 4 || this.selectedMeetings[i].month === 6 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 9 || this.selectedMeetings[i].month === 11){
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 31;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 30;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                      }
+                                    }
+                                  }
+                                  else{ // greater than 24
+                                    if(this.selectedMeetings[i].month === 12 && this.selectedMeetings[i].day === 31){
+                                      this.selectedMeetings[i].year = this.selectedMeetings[i].year + 1;
+                                      this.selectedMeetings[i].day = 1;
+                                      this.selectedMeetings[i].month = 1;
+                                      this.selectedMeetings[i].hour = startHour - 24;
+                                    }
+                                    else if(this.selectedMeetings[i].year % 4 === 0){//leap year
+                                      if(month === 2 && this.selectedMeetings[i].day != 29){
+                                        this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                        this.selectedMeetings[i].hour = startHour - 24;
+                                      }
+                                      else if(this.selectedMeetings[i].month === 1 || this.selectedMeetings[i].month === 3 || this.selectedMeetings[i].month === 5 || this.selectedMeetings[i].month === 7 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 10){
+                                        if(this.selectedMeetings[i].day === 31){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                      else{
+                                        if(this.selectedMeetings[i].day === 30){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                    }
+                                    else{ //normal year
+                                      if(month === 2 && this.selectedMeetings[i].day != 28){
+                                        this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                        this.selectedMeetings[i].hour = startHour - 24;
+                                      }
+                                      else if(this.selectedMeetings[i].month === 1 || this.selectedMeetings[i].month === 3 || this.selectedMeetings[i].month === 5 || this.selectedMeetings[i].month === 7 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 10){
+                                        if(this.selectedMeetings[i].day === 31){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                      else{
+                                        if(this.selectedMeetings[i].day === 30){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                              this.selectedMeetings[i].startTime = String(startHour) + ":" + String(startMinutes);
+                              this.selectedMeetings[i].endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.attendingMeetings.push(this.selectedMeetings[i]);
                               found = true;
                         }
@@ -255,6 +1591,128 @@ export class CoffeeChatPendingMeetingsComponent implements OnInit {
                       if(this.selectedMeetings[i].year > year){
                         console.log('greater year');
                               this.loading = false;
+                              this.time = this.selectedMeetings[i].startTime.split(':', 2);
+                              var startHour = this.time[0];
+                              var startMinutes = this.time[1];
+                              if(!isNaN(Number(startHour))){
+                                startHour = Number(startHour) - (this.timeZoneOffset / 60);
+                                if(startHour < 0 || startHour > 24){
+                                  if(startHour < 0){
+                                    if(this.selectedMeetings[i].day != 1){
+                                      this.selectedMeetings[i].day = this.selectedMeetings[i].day - 1;
+                                      this.selectedMeetings[i].hour = 24 + startHour;
+                                    }
+                                    else{//equals 1 so go to end of previous month
+                                      if(this.selectedMeetings[i].month === 1 && this.selectedMeetings[i].day === 1){
+                                        this.selectedMeetings[i].month = 12;
+                                        this.selectedMeetings[i].day = 31;
+                                        this.selectedMeetings[i].year = this.selectedMeetings[i].year - 1;
+                                        this.selectedMeetings[i].hour = 24 + startHour;
+                                      }
+                                      else if((this.selectedMeetings[i].year) % 4 === 0){ //leap year
+                                        if(this.selectedMeetings[i].month === 3){
+                                          this.selectedMeetings[i].day = 29;
+                                          this.selectedMeetings[i].month = 2;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else if(this.selectedMeetings[i].month === 2 || this.selectedMeetings[i].month === 6 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 9 || this.selectedMeetings[i].month === 11){
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 31;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 30;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                      }
+                                      else{ //normal year
+                                        if(this.selectedMeetings[i].month === 3){
+                                          this.selectedMeetings[i].day = 28;
+                                          this.selectedMeetings[i].month = 2;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else if(this.selectedMeetings[i].month === 2 || this.selectedMeetings[i] === 4 || this.selectedMeetings[i].month === 6 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 9 || this.selectedMeetings[i].month === 11){
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 31;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month - 1;
+                                          this.selectedMeetings[i].day = 30;
+                                          this.selectedMeetings[i].hour = 24 + startHour;
+                                        }
+                                      }
+                                    }
+                                  }
+                                  else{ // greater than 24
+                                    if(this.selectedMeetings[i].month === 12 && this.selectedMeetings[i].day === 31){
+                                      this.selectedMeetings[i].year = this.selectedMeetings[i].year + 1;
+                                      this.selectedMeetings[i].day = 1;
+                                      this.selectedMeetings[i].month = 1;
+                                      this.selectedMeetings[i].hour = startHour - 24;
+                                    }
+                                    else if(this.selectedMeetings[i].year % 4 === 0){//leap year
+                                      if(month === 2 && this.selectedMeetings[i].day != 29){
+                                        this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                        this.selectedMeetings[i].hour = startHour - 24;
+                                      }
+                                      else if(this.selectedMeetings[i].month === 1 || this.selectedMeetings[i].month === 3 || this.selectedMeetings[i].month === 5 || this.selectedMeetings[i].month === 7 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 10){
+                                        if(this.selectedMeetings[i].day === 31){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                      else{
+                                        if(this.selectedMeetings[i].day === 30){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                    }
+                                    else{ //normal year
+                                      if(month === 2 && this.selectedMeetings[i].day != 28){
+                                        this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                        this.selectedMeetings[i].hour = startHour - 24;
+                                      }
+                                      else if(this.selectedMeetings[i].month === 1 || this.selectedMeetings[i].month === 3 || this.selectedMeetings[i].month === 5 || this.selectedMeetings[i].month === 7 || this.selectedMeetings[i].month === 8 || this.selectedMeetings[i].month === 10){
+                                        if(this.selectedMeetings[i].day === 31){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                      else{
+                                        if(this.selectedMeetings[i].day === 30){
+                                          this.selectedMeetings[i].day = 1;
+                                          this.selectedMeetings[i].month = this.selectedMeetings[i].month + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                        else{
+                                          this.selectedMeetings[i].day = this.selectedMeetings[i].day + 1;
+                                          this.selectedMeetings[i].hour = startHour - 24;
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                              this.selectedMeetings[i].startTime = String(startHour) + ":" + String(startMinutes);
+                              this.selectedMeetings[i].endTime = String(this.currentEndTimeHour) + ":" + String(this.currentEndTimeMinutes);
                               this.attendingMeetings.push(this.selectedMeetings[i]);
                               found = true;
                         }

@@ -74,21 +74,29 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="profilepicture">Choose a Profile Picture</label>
-        <div class="row justify-content-center">
+        <label for="profilepicture">Choose a Profile Picture
+        </label>
+        <div class="row justify-content-center" required> 
             <div class="col-3">
-                <input type="checkbox" id="checkbox" value="'../assets/images/creek.jpg')" class="picture-button"><img src='../assets/images/creek.jpg'>
+                <input type="checkbox" id="checkbox1" value="'../assets/images/creek.jpg')" (change)="userSelect('../assets/images/creek.jpg')" [disabled]="maxCapacity && !this.selectedImage.includes('../assets/images/creek.jpg')" 
+                class="picture-button" formControlName="icon" [ngClass]="{ 'is-invalid': submitted && f.icon.errors }"><img src='../assets/images/creek.jpg'>
             </div>
             <div class="col-3">
-                <input type="checkbox" id="checkbox" value="'../assets/images/dog.jpg')" class="picture-button"><img src='../assets/images/dog.jpg'>
+                <input type="checkbox" id="checkbox2" value="'../assets/images/dog.jpg')" (change)="userSelect('../assets/images/dog.jpg')" [disabled]="maxCapacity && !this.selectedImage.includes('../assets/images/dog.jpg')" 
+                class="picture-button" formControlName="icon" [ngClass]="{ 'is-invalid': submitted && f.icon.errors }"><img src='../assets/images/dog.jpg'>
             </div>
             <div class="col-3">
-                <input type="checkbox" id="checkbox" value="'../assets/images/road.jpg')" class="picture-button"><img src='../assets/images/road.jpg'>
+                <input type="checkbox" id="checkbox3" value="'../assets/images/road.jpg')" (change)="userSelect('../assets/images/road.jpg')" [disabled]="maxCapacity && !this.selectedImage.includes('../assets/images/road.jpg')" 
+                class="picture-button" formControlName="icon" [ngClass]="{ 'is-invalid': submitted && f.icon.errors }"><img src='../assets/images/road.jpg'>
             </div>
             <div class="col-3">
-                <input type="checkbox" id="checkbox" value="'../assets/images/trees.jpg')" class="picture-button"><img src='../assets/images/trees.jpg'>
+                <input type="checkbox" id="checkbox4" value="'../assets/images/trees.jpg')" (change)="userSelect('../assets/images/trees.jpg')" [disabled]="maxCapacity && !this.selectedImage.includes('../assets/images/trees.jpg')" 
+                class="picture-button" formControlName="icon" [ngClass]="{ 'is-invalid': submitted && f.icon.errors }"><img src='../assets/images/trees.jpg'>
             </div>
          </div>
+         <div *ngIf="submitted && selectedImage.length < 1" class="invalid-feedback">
+            Icon is required
+        </div> 
     </div>
     <div class="form-group">
         <input type="password" placeholder= "Password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />

@@ -1,9 +1,3 @@
-
-:host{
-    --color-first:#f9f0ef;
-    --color-second: #eed4cf;
-}
-
 ::ng-deep html [data-theme="blue"] {
     --color-first: #D8E4E7;
     --color-second: #AFC5CA;

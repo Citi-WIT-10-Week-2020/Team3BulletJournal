@@ -21,6 +21,9 @@ export class CoffeeChatComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    if(this.currentUser.friends == undefined){
+      window.location.reload();        
+    }
   }
 
 }

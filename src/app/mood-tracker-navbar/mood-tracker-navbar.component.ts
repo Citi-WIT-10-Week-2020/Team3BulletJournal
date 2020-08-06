@@ -21,10 +21,10 @@ export class MoodTrackerNavbarComponent implements OnInit {
     this.href = this.router.url;
     console.log(this.router.url);
     if(this.href == '/mood-tracker-weekly-charts'){
-      this.currentPage = 'Weekly Graph'
+      this.currentPage = 'Monthly Graph'
     }
-    if(this.href == '/mood-tracker'){
-      this.currentPage == 'Home'
+    if(this.href == '/mood-chosen'){
+      this.currentPage = 'Chosen Mood'
     }
 
     this.themeSelected = localStorage.getItem("site-theme");
