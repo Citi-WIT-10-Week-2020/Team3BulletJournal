@@ -14,7 +14,7 @@ import { ThemeService } from 'ng2-charts';
 })
 export class BarGraphComponent implements OnInit{
   barGraphColor: { backgroundColor: string[]; }[];
-  barGraphData: any[];
+  barGraphData: any = [{data: []}];
   anxietyCount: number;
   excitedCount: number;
   tiredCount: number;
@@ -38,7 +38,17 @@ export class BarGraphComponent implements OnInit{
     this.currentUser = this.authenticationService.currentUserValue[0];  
 
     this.chartOptions = {
-      responsive: true    // THIS WILL MAKE THE CHART RESPONSIVE (VISIBLE IN ANY DEVICE).
+      responsive: true, 
+      scales : {
+        yAxes: [{
+           ticks: {
+              steps : 10,
+              stepValue : 1,
+              max : 7,
+              min: 0
+            }
+        }]
+      }   // THIS WILL MAKE THE CHART RESPONSIVE (VISIBLE IN ANY DEVICE).
     }
 
     this.barGraphLabels =  ['Anxious', 'Excited', 'Tired', 'Sad', 'Content'];
