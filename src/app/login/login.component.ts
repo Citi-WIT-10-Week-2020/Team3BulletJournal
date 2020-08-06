@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
                     for (let user of data){
                         if(user.username == this.f.username.value){
                             console.log('Yay we found it');
-                            found = true;
+                           
                             this.loading = false;
                             
                             this.authenticationService.login(this.f.username.value, this.f.password.value)
@@ -83,6 +83,7 @@ export class LoginComponent implements OnInit {
                                     .subscribe(
                                         data => {
                                             console.log(this.authenticationService.currentUserValue)
+                                            found = true;
                                             if(this.authenticationService.currentUserValue == "null"){
                                                 console.log('its null')
                                                 this.alertService.error("User name or password is incorrect")
