@@ -153,7 +153,6 @@ Modal CSS
 
 .modal-header {
   padding: 20px 40px;
-  background:#e4955e;
   color: #ffffff;
 }
 
@@ -196,6 +195,7 @@ Modal CSS
 }
 
 .modal-button{
+
     border: 2px solid #e4955e !important;
     background-color: ivory !important;
     color: #e4955e !important;
@@ -207,6 +207,7 @@ Modal CSS
 }
 
 .modal-button:hover{
+
     background-color:#e4955e !important;
     color: white !important;
     text-decoration: none !important; 
